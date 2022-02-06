@@ -1,0 +1,11 @@
+.dropdown {
+	position: relative;
+	span {
+		cursor: pointer;
+	}
+
+	ul {
+		position: absolute;
+		width: 100%;
+	}
+}

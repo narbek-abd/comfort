@@ -1,6 +1,6 @@
 import React from "react";
-import { SNavbarItem, SNavbarLink } from "../style";
-import NavbarDropdown from "./NavbarDropdown";
+import { SNavbarItem, SNavbarLink } from "./style";
+import NavbarDropdown from "../NavbarDropdown";
 
 const NavbarItem = ({ link, hasChildren, toggleDropdown, visibleDropdown }) => {
 	return (

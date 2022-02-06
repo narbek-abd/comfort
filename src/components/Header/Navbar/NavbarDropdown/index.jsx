@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { SDropdownList, SNavbarLink } from "../style";
-import NavbarItem from "./NavbarItem";
+import { SDropdownList, SDropdownToggle } from "./style";
+import NavbarItem from "../NavbarItem";
+import { Icon } from '../../../Icon';
 
 const NavbarDropdown = ({
 	link,
@@ -23,9 +24,9 @@ const NavbarDropdown = ({
 
 	return (
 		<>
-			<SNavbarLink as="span" onClick={toggleDropdown} data-id={link.id}>
-				{link["name"]} *
-			</SNavbarLink>
+			<SDropdownToggle onClick={toggleDropdown} data-id={link.id}>
+				{link["name"]} <Icon name="arrow" />
+			</SDropdownToggle>
 
 			<SDropdownList ref={dropdown}>
 				{childLinks.map((link) => {
