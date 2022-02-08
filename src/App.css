@@ -1,3 +1,6 @@
+@import-normalize;
+
+
 :root {
   --color-purple: #7e33e0;
   --color-pink: #FB2E86;
