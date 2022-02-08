@@ -1,7 +1,7 @@
 import React from "react";
 import { SectionTitle, SContainer } from "../../globalStyle.js";
 import { SFeaturedProducts, SInner } from "./style";
-import ProductCard from "../ProductCard";
+import ProductCard from "../../components/ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";

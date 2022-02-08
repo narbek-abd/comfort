@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { SName } from "../ProductCard/style";
+import { SName } from "../../components/ProductCard/style";
 
 export const SFeaturedProducts = styled.section`
 	margin-top: 130px;

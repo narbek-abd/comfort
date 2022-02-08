@@ -56,7 +56,6 @@ input,
 textarea,
 button {
   outline: none; 
-  width: 100%;
 }
 
 textarea{

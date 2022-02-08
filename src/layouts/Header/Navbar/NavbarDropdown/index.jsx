@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { SDropdownList, SDropdownToggle } from "./style";
 import NavbarItem from "../NavbarItem";
-import { Icon } from '../../../Icon';
+import { Icon } from '../../../../components/Icon';
+
 
 const NavbarDropdown = ({
 	link,

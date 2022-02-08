@@ -1,7 +1,7 @@
 import React from "react";
 import { SSearchBar, SSearchButton } from "./style";
 
-import { Icon } from "../../Icon";
+import { Icon } from "../../../components/Icon";
 import { SInput } from "../../../globalStyle";
 
 

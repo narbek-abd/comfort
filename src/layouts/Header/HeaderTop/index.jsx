@@ -8,8 +8,8 @@ import {
 	SUserButton,
 	SDropdown,
 } from "./style";
-import { Icon } from "../../Icon.js";
-import Dropdown from "../../ui/Dropdown";
+import { Icon } from '../../../components/Icon';
+import Dropdown from "../../../components/Dropdown";
 
 const HeaderTop = () => {
 	return (

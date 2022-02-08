@@ -1,0 +1,76 @@
+import styled from "styled-components/macro";
+import { SButton, SectionTitle } from "../../globalStyle";
+
+export const SUniqueProduct = styled.div`
+margin-top: 150px;
+ `;
+
+export const SInner = styled.div`
+	display: flex;
+
+	${SectionTitle} {
+		text-align: left;
+	}
+`;
+
+export const SLeft = styled.div`
+	flex: 0 0 544px;
+
+	@media only screen and (max-width:992px) {
+		flex: 0 0 400px;
+	}
+
+	@media only screen and (max-width:768px) {
+		display: none;
+	}
+`;
+export const SRight = styled.div`
+	margin-top: 82px;
+	ul {
+		margin-top: 30px;
+		li {
+			margin-top: 13px;
+			font-family: Lato;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 132%;
+			letter-spacing: 0.015em;
+			color: #acabc3;
+			position: relative;
+			padding-left: 20px;
+
+			&:before {
+				content: ".";
+				font-size: 63px;
+				font-weight: bold;
+				display: inline-block;
+				position: absolute;
+				left: -4px;
+				right: 15px;
+				top: -19px;
+			}
+
+			&:first-child {
+				&:before {
+					color: #F52B70;
+				}
+			}
+
+			&:nth-child(2) {
+				&:before {
+					color: #2B2BF5;
+				}
+			}
+
+			&:last-child {
+				&:before {
+					color: #2BF5CC;
+				}
+			}
+		}
+	}
+
+	${SButton} {
+		margin-top: 38px;
+	}
+`;

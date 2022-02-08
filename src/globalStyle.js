@@ -43,11 +43,15 @@ export const SLogo = styled.a`
 
 export const SButton = styled.button`
   padding: 17px 47px;
-  background-color: #ff9700;
-  color: #fff;
+  background-color: var(--color-pink);
   display: inline-block;
   text-align: center;
-  text-transform: uppercase;
+  font-family: Josefin Sans;
+font-weight: 600;
+font-size: 17px;
+line-height: 17px;
+letter-spacing: 0.02em;
+color: #FFFFFF;
 `;
 
 

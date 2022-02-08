@@ -42,15 +42,8 @@ const ${componentName} = () => {
   );
 };
 
-export default ${componentName};
-
-
 export default ${componentName};`;
-fs.writeFileSync(path.resolve(...componentPath, `${componentName}.jsx`), componentCode);
-
-// создание индексного файла
-const indexCode = `export { default } from './${componentName}';`;
-fs.writeFileSync(path.resolve(...componentPath, 'index.js'), indexCode);
+fs.writeFileSync(path.resolve(...componentPath, `index.jsx`), componentCode);
 
 // создание файла стилей
 const styleCode = `import styled from "styled-components/macro";
@@ -65,4 +58,4 @@ export const SInner = styled.div\`
 
 \`
  `;
-fs.writeFileSync(path.resolve(...componentPath, `${componentName}.js`), styleCode);
+fs.writeFileSync(path.resolve(...componentPath, `style.js`), styleCode);

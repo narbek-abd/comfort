@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import dropdowns from "../../composables/dropdowns";
 import { SContainer, SLogo } from "../../globalStyle";
 import { SHeader, SInner, SNavbarWrapper, SNavbar, SHamburger } from "./style";
 import NavbarItem from "./Navbar/NavbarItem";
 import navbarLinks from "./HeaderData";
 import HeaderTop from "./HeaderTop";
-import { Icon } from "../Icon";
+import { Icon } from '../../components/Icon';
 import SearchBar from "./SearchBar";
 
 const Header = () => {
