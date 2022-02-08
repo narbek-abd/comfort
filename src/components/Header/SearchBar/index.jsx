@@ -1,13 +1,14 @@
 import React from "react";
 import { SSearchBar, SSearchButton } from "./style";
 
-import Input from "../../ui/Input";
 import { Icon } from "../../Icon";
+import { SInput } from "../../../globalStyle";
+
 
 const SearchBar = () => {
 	return (
 		<SSearchBar>
-			<Input inputStyle="square" type="text" />
+			<SInput square type="text" />
 
 			<SSearchButton>
 				<Icon name="search" />

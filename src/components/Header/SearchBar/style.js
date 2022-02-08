@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 
 export const SSearchBar = styled.form`
-	// margin-left: auto;
+	margin-left: auto;
 	display: flex;
 
 	input {

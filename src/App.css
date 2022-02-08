@@ -1,8 +1,10 @@
 :root {
   --color-purple: #7e33e0;
   --color-pink: #FB2E86;
+  --color-dark-blue:  #151875;
 
   --color-tr: color 0.1s ease-in;
+  --opacity-tr: opacity 0.2s ease-in;
 }
 * {
   margin: 0;
@@ -29,6 +31,7 @@ body {
  position: relative;
  font-family: 'Lato';
  font-weight: normal;
+  padding-bottom: 500px;
 }
 
 a {

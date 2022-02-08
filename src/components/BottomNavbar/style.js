@@ -6,6 +6,8 @@ export const SMobileNav = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  z-index: 100;
+  background-color: #fff;
   bottom: 0;
   border-top: 1px solid rgb(230, 230, 230);
   display: flex;

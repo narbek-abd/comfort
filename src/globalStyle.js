@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const SContainer = styled.div`
   max-width: ${1177 + 30}px;
@@ -19,7 +19,29 @@ export const SContainer = styled.div`
   }
 `;
 
-export const SBtn = styled.a`
+
+
+export const SectionTitle = styled.h2`
+font-family: Josefin Sans;
+font-weight: bold;
+font-size: 42px;
+line-height: 42px;
+color: #1A0B5B;
+text-align: center;
+`;
+
+
+
+
+export const SLogo = styled.a`
+  svg {
+    width: 98px;
+    height: 34px;
+    color: #0d0e43;
+  }
+`;
+
+export const SButton = styled.button`
   padding: 17px 47px;
   background-color: #ff9700;
   color: #fff;
@@ -29,10 +51,13 @@ export const SBtn = styled.a`
 `;
 
 
-export const SLogo = styled.a`
-svg {
-  width: 98px;
-  height: 34px;
-  color: #0D0E43;
-}
+
+export const SInput = styled.input`
+padding: 0 15px;
+
+  ${(props) =>
+    props.square &&
+    css`
+      border: 2px solid #e7e6ef;
+    `}
 `;
