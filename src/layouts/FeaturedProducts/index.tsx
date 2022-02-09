@@ -1,6 +1,6 @@
 import React from "react";
-import { SectionTitle, SContainer } from "../../globalStyle.js";
-import { SFeaturedProducts, SInner } from "./style";
+import * as G from "../../globalStyle";
+import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,14 +8,14 @@ import { Pagination } from "swiper";
 
 const FeaturedProducts = () => {
 	return (
-		<SFeaturedProducts>
-			<SectionTitle>Featured Products</SectionTitle>
+		<S.FeaturedProducts>
+			<G.SectionTitle>Featured Products</G.SectionTitle>
 
-			<SContainer>
+			<G.Container>
 				<Swiper
 					modules={[Pagination]}
 					spaceBetween={50}
-							slidesPerView= {3}
+					slidesPerView={3}
 					pagination={{ el: ".swiper-pagination", clickable: true }}
 					breakpoints={{
 						1: {
@@ -30,51 +30,51 @@ const FeaturedProducts = () => {
 					}}
 				>
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<SInner>
+						<S.Inner>
 							<ProductCard></ProductCard>
-						</SInner>
+						</S.Inner>
 					</SwiperSlide>
 
 					<div className="swiper-pagination"></div>
 				</Swiper>
-			</SContainer>
-		</SFeaturedProducts>
+			</G.Container>
+		</S.FeaturedProducts>
 	);
 };
 

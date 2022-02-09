@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
 
-export const SDropdownList = styled.ul`
+export const DropdownList = styled.ul`
 	position: absolute;
 	z-index: 99;
 	text-align: center;
@@ -25,7 +25,7 @@ export const SDropdownList = styled.ul`
 
 
 
-export const SDropdownToggle = styled.span`
+export const DropdownToggle = styled.span`
 	display: block;
 	height: 50px;
 	line-height: 50px;

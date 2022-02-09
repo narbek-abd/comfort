@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
-export const SActions = styled.div`
+export const Actions = styled.div`
 	opacity: 0;
 	visibility: 0;
 	position: absolute;
@@ -22,17 +22,17 @@ export const SActions = styled.div`
 	}
 `;
 
-export const SProductCard = styled.div`
+export const ProductCard = styled.div`
 	position: relative;
 	&:hover {
 		background-color: #ebf4f3;
-		${SActions} {
+		${Actions} {
 			opacity: 1;
 			visibility: 1;
 		}
 	}
 `;
-export const SImg = styled.div`
+export const Img = styled.div`
 	height: 269.96px;
 	position: relative;
 
@@ -43,10 +43,10 @@ export const SImg = styled.div`
 		transform: translate(-50%, -50%);
 	}
 `;
-export const SInf = styled.div`
+export const Inf = styled.div`
 	color: var(--color-dark-blue);
 `;
-export const SName = styled.p`
+export const Name = styled.p`
 	font-family: Josefin Sans;
 	font-weight: bold;
 	font-size: 18px;
@@ -54,15 +54,15 @@ export const SName = styled.p`
 	display: block;
 	width: 100%;
 `;
-export const SPrice = styled.div`
+export const Price = styled.div`
 	font-family: Josefin Sans;
 	text-align: center;
 	margin-top: 15px;
 `;
-export const SPriceNew = styled.span`
+export const PriceNew = styled.span`
 	font-size: 14px;
 `;
-export const SPriceOld = styled.span`
+export const PriceOld = styled.span`
 	font-size: 12px;
 	color: #fb2448;
 	margin-left: 10px;

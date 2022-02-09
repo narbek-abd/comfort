@@ -1,11 +1,11 @@
-import styled from "styled-components/macro";
-import { SButton, SectionTitle } from "../../globalStyle";
+import styled from "styled-components";
+import { Button, SectionTitle } from "../../globalStyle";
 
-export const SUniqueProduct = styled.div`
+export const UniqueProduct = styled.div`
 margin-top: 150px;
  `;
 
-export const SInner = styled.div`
+export const Inner = styled.div`
 	display: flex;
 
 	${SectionTitle} {
@@ -13,7 +13,7 @@ export const SInner = styled.div`
 	}
 `;
 
-export const SLeft = styled.div`
+export const Left = styled.div`
 	flex: 0 0 544px;
 
 	@media only screen and (max-width:992px) {
@@ -24,7 +24,7 @@ export const SLeft = styled.div`
 		display: none;
 	}
 `;
-export const SRight = styled.div`
+export const Right = styled.div`
 	margin-top: 82px;
 	ul {
 		margin-top: 30px;
@@ -70,7 +70,7 @@ export const SRight = styled.div`
 		}
 	}
 
-	${SButton} {
+	${Button} {
 		margin-top: 38px;
 	}
 `;

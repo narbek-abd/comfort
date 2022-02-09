@@ -1,7 +1,7 @@
-import styled from "styled-components/macro";
-import { SName } from "../../components/ProductCard/style";
+import styled from "styled-components";
+import { Name } from "../../components/ProductCard/style";
 
-export const SFeaturedProducts = styled.section`
+export const FeaturedProducts = styled.section`
 	margin-top: 130px;
 
 	.swiper-pagination {
@@ -20,10 +20,10 @@ export const SFeaturedProducts = styled.section`
 	}
 `;
 
-export const SInner = styled.div`
+export const Inner = styled.div`
 	margin-top: 48px;
 
-	${SName} {
+	${Name} {
 		color: var(--color-pink);
 	}
 `;

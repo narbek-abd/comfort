@@ -1,13 +1,13 @@
-import styled from "styled-components/macro";
-import { SProductCard } from '../../components/ProductCard/style.js';
+import styled from "styled-components";
+import { ProductCard } from '../../components/ProductCard/style';
 
-export const STabsProducts = styled.div`
+export const TabsProducts = styled.div`
 margin-top: 70px;
  `;
 
-export const SInner = styled.div``;
+export const Inner = styled.div``;
 
-export const Stabs = styled.div`
+export const tabs = styled.div`
 margin-top: 20px;
 	display: flex;
 	flex-wrap: wrap;
@@ -15,11 +15,11 @@ margin-top: 20px;
 `;
 
 
-export const SProducts = styled.div`
+export const Products = styled.div`
 margin-top: 60px;
 display: flex;
 flex-wrap: wrap;
-${SProductCard } {
+${ProductCard } {
  width: 32%;
  @media only screen and (max-width:768px) {
  	width: 48%;

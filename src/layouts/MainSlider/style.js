@@ -1,6 +1,6 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
-export const SMainSlider = styled.section`
+export const MainSlider = styled.section`
 margin-top: 20px;
 
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet
@@ -14,7 +14,7 @@ margin: 5.5px 5.5px;
 }
 `; 
 
-export const SlideLink = styled.a`
+export const lideLink = styled.a`
 display: block;
 	background: url(${props => props.bg}) no-repeat center center;
 	background-size: cover;
@@ -23,7 +23,7 @@ display: block;
 
 
 
-export const SMiniTitle = styled.div`
+export const MiniTitle = styled.div`
 padding-top: 203px;
 font-family: Lato;
 font-weight: bold;
@@ -35,7 +35,7 @@ color: var(--color-pink);
 padding-top: 50px;
 }
 `; 
-export const STitle = styled.div`
+export const Title = styled.div`
 font-family: Josefin Sans;
 font-weight: bold;
 font-size: 53px;
@@ -49,7 +49,7 @@ font-size: 43px;
 line-height: 50px;
 }
 `; 
-export const SSubTitle = styled.div`
+export const SubTitle = styled.div`
 font-family: Lato;
 font-style: normal;
 font-weight: bold;

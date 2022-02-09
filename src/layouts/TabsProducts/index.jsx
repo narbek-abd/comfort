@@ -1,7 +1,7 @@
 import React from "react";
-import { SContainer, SectionTitle } from "../../globalStyle";
+import * as G from "../../globalStyle";
 
-import { STabsProducts, SInner, Stabs, StabsItem, SProducts } from "./style";
+import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
 import TabsItem from "./TabsItem";
 
@@ -11,11 +11,12 @@ const TabsProducts = () => {
   }
 
   return (
-    <STabsProducts>
-      <SectionTitle>Leatest Products</SectionTitle>
-      <SContainer>
-        <SInner>
-          <Stabs>
+    <S.TabsProducts>
+      <G.SectionTitle>Leatest Products</G.SectionTitle>
+      
+      <G.Container>
+        <S.Inner>
+          <S.tabs>
             {filterBy.map((filterBy) => {
               return (
                 <TabsItem
@@ -27,16 +28,16 @@ const TabsProducts = () => {
                 </TabsItem>
               );
             })}
-          </Stabs>
+          </S.tabs>
 
-          <SProducts>
+          <S.Products>
             <ProductCard></ProductCard>
             <ProductCard></ProductCard>
             <ProductCard></ProductCard>
-          </SProducts>
-        </SInner>
-      </SContainer>
-    </STabsProducts>
+          </S.Products>
+        </S.Inner>
+      </G.Container>
+    </S.TabsProducts>
   );
 };
 

@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
-export const SHeaderTop = styled.div`
+export const HeaderTop = styled.div`
 	background-color: var(--color-purple);
 
 	@media only screen and (max-width: 576px) {
@@ -8,7 +8,7 @@ export const SHeaderTop = styled.div`
 	}
 `;
 
-export const SInner = styled.div`
+export const Inner = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -28,7 +28,7 @@ export const SInner = styled.div`
 	}
 `;
 
-export const SLeft = styled.div`
+export const Left = styled.div`
 	display: flex;
 	height: 100%;
 	line-height: 44px;
@@ -48,7 +48,7 @@ export const SLeft = styled.div`
 	}
 `;
 
-export const SUserButton = styled.div`
+export const UserButton = styled.div`
 	display: flex;
 	align-items: center;
 	svg {
@@ -77,12 +77,12 @@ export const SUserButton = styled.div`
 	}
 `;
 
-export const SRight = styled.div`
+export const Right = styled.div`
 	display: flex;
 	height: 100%;
 	line-height: 44px;
 	justify-content: space-between;
-	${SUserButton} {
+	${UserButton} {
 		span {
 			padding-right: 16px;
 		}

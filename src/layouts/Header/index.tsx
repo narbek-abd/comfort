@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { SContainer, SLogo } from "../../globalStyle";
-import { SHeader, SInner, SNavbarWrapper, SNavbar, SHamburger } from "./style";
+import * as G from "../../globalStyle";
+import * as S from "./style";
 import NavbarItem from "./Navbar/NavbarItem";
 import navbarLinks from "./HeaderData";
 import HeaderTop from "./HeaderTop";
-import { Icon } from '../../components/Icon';
+import { Icon } from "../../components/Icon";
 import SearchBar from "./SearchBar";
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
 		toggleMobileMenuOpen(!isMobileMenuOpen);
 	}
 
-	function toggleDropdown(e) {
+	function toggleDropdown(e: any) {
 		if (visibleDropdown == e.currentTarget.dataset.id) {
 			setVisibleDropdown(null);
 		} else {
@@ -38,18 +38,18 @@ const Header = () => {
 		<>
 			<HeaderTop />
 
-			<SHeader>
-				<SContainer>
-					<SInner>
-						<SLogo href="/" className="logo">
+			<S.Header>
+				<G.Container>
+					<S.Inner>
+						<G.Logo href="/" className="logo">
 							<Icon name="logo" />
-						</SLogo>
+						</G.Logo>
 
-						<SNavbarWrapper
+						<S.NavbarWrapper
 							active={isMobileMenuOpen ? true : false}
 							onClick={toggleHam}
 						>
-							<SNavbar
+							<S.Navbar
 								opened={isMobileMenuOpen ? true : false}
 								onClick={(e) => e.stopPropagation()}
 							>
@@ -73,22 +73,22 @@ const Header = () => {
 										);
 									})}
 								</ul>
-							</SNavbar>
-						</SNavbarWrapper>
+							</S.Navbar>
+						</S.NavbarWrapper>
 
 						<SearchBar />
 
-						<SHamburger
+						<S.Hamburger
 							crossed={isMobileMenuOpen ? true : false}
 							onClick={toggleHam}
 						>
 							<span></span>
 							<span></span>
 							<span></span>
-						</SHamburger>
-					</SInner>
-				</SContainer>
-			</SHeader>
+						</S.Hamburger>
+					</S.Inner>
+				</G.Container>
+			</S.Header>
 		</>
 	);
 };

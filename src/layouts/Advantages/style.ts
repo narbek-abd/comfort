@@ -1,17 +1,17 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
-export const SAdvantages = styled.section`
-margin-top: 58px;
- `;
+export const Advantages = styled.section`
+	margin-top: 58px;
+`;
 
-export const SInner = styled.div`
-margin-top: 116px;
+export const Inner = styled.div`
+	margin-top: 116px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 `;
 
-export const SItem = styled.div`
+export const Item = styled.div`
 	width: 270px;
 	text-align: center;
 	h3 {
@@ -32,14 +32,14 @@ export const SItem = styled.div`
 		color: rgba(26, 11, 91, 0.3);
 	}
 
-	@media only screen and (max-width:768px) {
+	@media only screen and (max-width: 768px) {
 		width: 49%;
-		&:nth-child(n+3) {
+		&:nth-child(n + 3) {
 			margin-top: 50px;
 		}
 	}
 
-	@media only screen and (max-width:576px) {
+	@media only screen and (max-width: 576px) {
 		width: 100%;
 		&:not(:first-child) {
 			margin-top: 50px;

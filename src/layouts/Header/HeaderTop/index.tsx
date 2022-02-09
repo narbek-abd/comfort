@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import { SContainer } from "../../../globalStyle";
-import {
-	SHeaderTop,
-	SInner,
-	SLeft,
-	SRight,
-	SUserButton,
-	SDropdown,
-} from "./style";
+import * as G from "../../../globalStyle";
+import * as S from "./style";
 import { Icon } from '../../../components/Icon';
 import Dropdown from "../../../components/Dropdown";
 
 const HeaderTop = () => {
 	return (
-		<SHeaderTop>
-			<SContainer>
-				<SInner>
-					<SLeft>
+		<S.HeaderTop>
+			<G.Container>
+				<S.Inner>
+					<S.Left>
 						<div>
 							<a href="mailto:mhhasanul@gmail.com">
 								<Icon name="mail" />
@@ -29,40 +22,40 @@ const HeaderTop = () => {
 								(12345)67890
 							</a>
 						</div>
-					</SLeft>
-					<SRight>
-						<SUserButton>
+					</S.Left>
+					<S.Right>
+						<S.UserButton>
 							<Dropdown
 								title={ <> English <Icon name="arrow" /></> } >
 								<li>Russian</li>
 							</Dropdown>
-						</SUserButton>
+						</S.UserButton>
 
-						<SUserButton>
+						<S.UserButton>
 							<Dropdown
 								title={ <> USD <Icon name="arrow" /></> } >
 								<li>Euro</li>
 							</Dropdown>
-						</SUserButton>
+						</S.UserButton>
 
-						<SUserButton>
+						<S.UserButton>
 							<a href="#">Login <Icon name="user" /></a>
-						</SUserButton>
+						</S.UserButton>
 
-						<SUserButton>
+						<S.UserButton>
 							<a href="#">Wishlist <Icon name="heart" /></a>
-						</SUserButton>
+						</S.UserButton>
 
-						<SUserButton>
+						<S.UserButton>
 						<a href="#">
 							<Icon name="basket" />
 						</a>
-						</SUserButton>
+						</S.UserButton>
 
-					</SRight>
-				</SInner>
-			</SContainer>
-		</SHeaderTop>
+					</S.Right>
+				</S.Inner>
+			</G.Container>
+		</S.HeaderTop>
 	);
 };
 

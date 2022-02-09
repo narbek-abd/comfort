@@ -1,10 +1,18 @@
 import React from "react";
-import { SNavbarItem, SNavbarLink } from "./style";
+import * as S from "./style";
 import NavbarDropdown from "../NavbarDropdown";
 
-const NavbarItem = ({ link, hasChildren, toggleDropdown, visibleDropdown }) => {
+
+interface NavbarItemProps {
+	link: any;
+	toggleDropdown: (e: any) => void;
+	visibleDropdown: number;
+	hasChildren: boolean;
+}
+
+const NavbarItem = ({ link, hasChildren, toggleDropdown, visibleDropdown }: NavbarItemProps) => {
 	return (
-		<SNavbarItem>
+		<S.NavbarItem>
 			{hasChildren ? (
 				<>
 					{" "}
@@ -16,9 +24,9 @@ const NavbarItem = ({ link, hasChildren, toggleDropdown, visibleDropdown }) => {
 					/>{" "}
 				</>
 			) : (
-				<SNavbarLink>{link.name}</SNavbarLink>
+				<S.NavbarLink>{link.name}</S.NavbarLink>
 			)}
-		</SNavbarItem>
+		</S.NavbarItem>
 	);
 };
 

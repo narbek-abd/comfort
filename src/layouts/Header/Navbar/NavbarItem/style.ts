@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
 
-export const SNavbarItem = styled.li`
+export const NavbarItem = styled.li`
 	position: relative;
 	display: inline-block;
 	list-style: none;
@@ -13,7 +13,7 @@ export const SNavbarItem = styled.li`
 `;
 
 
-export const SNavbarLink = styled.a`
+export const NavbarLink = styled.a`
 	display: block;
 	height: 50px;
 	line-height: 50px;

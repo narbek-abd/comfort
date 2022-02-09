@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
-export const SContainer = styled.div`
+export const Container = styled.div`
   max-width: ${1177 + 30}px;
   margin: 0 auto;
   padding: 0 15px;
@@ -19,21 +19,16 @@ export const SContainer = styled.div`
   }
 `;
 
-
-
 export const SectionTitle = styled.h2`
-font-family: Josefin Sans;
-font-weight: bold;
-font-size: 42px;
-line-height: 42px;
-color: #1A0B5B;
-text-align: center;
+  font-family: Josefin Sans;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 42px;
+  color: #1a0b5b;
+  text-align: center;
 `;
 
-
-
-
-export const SLogo = styled.a`
+export const Logo = styled.a`
   svg {
     width: 98px;
     height: 34px;
@@ -41,23 +36,21 @@ export const SLogo = styled.a`
   }
 `;
 
-export const SButton = styled.button`
+export const Button = styled.button`
   padding: 17px 47px;
   background-color: var(--color-pink);
   display: inline-block;
   text-align: center;
   font-family: Josefin Sans;
-font-weight: 600;
-font-size: 17px;
-line-height: 17px;
-letter-spacing: 0.02em;
-color: #FFFFFF;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
 `;
 
-
-
-export const SInput = styled.input`
-padding: 0 15px;
+export const Input = styled.input<{ square: any}>`
+  padding: 0 15px;
 
   ${(props) =>
     props.square &&

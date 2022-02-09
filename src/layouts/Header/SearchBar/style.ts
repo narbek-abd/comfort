@@ -1,6 +1,6 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
-export const SSearchBar = styled.form`
+export const SearchBar = styled.form`
 	margin-left: auto;
 	display: flex;
 
@@ -20,7 +20,7 @@ export const SSearchBar = styled.form`
 	}
 `;
 
-export const SSearchButton = styled.button`
+export const SearchButton = styled.button`
 	width: 51px;
 	height: 40px;
 	background-color: var(--color-pink);

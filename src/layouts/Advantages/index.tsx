@@ -1,54 +1,62 @@
-import React from 'react';
-import { SContainer, SectionTitle } from "../../globalStyle";
-import delivery  from '../../assets/icons/delivery.svg';
-import cashback  from '../../assets/icons/cashback.svg';
-import premium  from '../../assets/icons/premium.svg';
-import support  from '../../assets/icons/support.svg';
+import React from "react";
+import * as G from "../../globalStyle";
+import delivery from "../../assets/icons/delivery.svg";
+import cashback from "../../assets/icons/cashback.svg";
+import premium from "../../assets/icons/premium.svg";
+import support from "../../assets/icons/support.svg";
 
-import {
-  SAdvantages,
-  SInner,
-SItem,
-} from "./style";
-import { Icon } from '../../components/Icon';
+import * as S from "./style";
+import { Icon } from "../../components/Icon";
 
 const Advantages = () => {
   return (
-    <SAdvantages>
-    <SectionTitle>What Shopex Offer!</SectionTitle>
-      <SContainer>
-        <SInner>
-          <SItem>
+    <S.Advantages>
+      <G.SectionTitle>What Shopex Offer!</G.SectionTitle>
+      
+      <G.Container>
+        <S.Inner>
+          <S.Item>
             <img src={delivery} alt="" />
 
             <h3>24/7 Support</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
-          </SItem>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
+              purus gravida.
+            </p>
+          </S.Item>
 
-          <SItem>
+          <S.Item>
             <img src={cashback} alt="" />
 
             <h3>24/7 Support</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
-          </SItem>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
+              purus gravida.
+            </p>
+          </S.Item>
 
-          <SItem>
+          <S.Item>
             <img src={premium} alt="" />
 
             <h3>24/7 Support</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
-          </SItem>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
+              purus gravida.
+            </p>
+          </S.Item>
 
-          <SItem>
+          <S.Item>
             <img src={support} alt="" />
 
             <h3>24/7 Support</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
-          </SItem>
-        </SInner>
-      </SContainer>
-      
-    </SAdvantages>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
+              purus gravida.
+            </p>
+          </S.Item>
+        </S.Inner>
+      </G.Container>
+    </S.Advantages>
   );
 };
 

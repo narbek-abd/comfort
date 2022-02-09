@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../layouts/Header/Header";
+import Header from "../../layouts/Header";
 import BottomNavBar from "../../components/BottomNavbar";
 import MainSlider from "../../layouts/MainSlider";
 import FeaturedProducts from "../../layouts/FeaturedProducts";

@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "../Icon";
-import { SMobileNav, SMobileList, SMobileItem } from "./style";
+import * as S from "./style";
 
-const MobileNavBar = (props) => {
+
+interface MobileNavBarProps {
+    name: string
+}
+
+const MobileNavBar = ({ name }: MobileNavBarProps) => {
     const history = useNavigate();
-    const [activeTabs, setActiveTabs] = useState(props.name);
+    const [activeTabs, setActiveTabs] = useState(name);
     useEffect(() => {
         switch (activeTabs) {
             case "home":
@@ -27,40 +32,40 @@ const MobileNavBar = (props) => {
     }, [activeTabs, history]);
 
     return (
-        <SMobileNav>
-            <SMobileList>
+        <S.MobileNav>
+            <S.MobileList>
                 {/* {activeTabs === 'home' &&
                 <Icon name="mail" onClick={() => setActiveTabs('home')} />
                   }*/}
-                <SMobileItem
+                <S.MobileItem
                     onClick={() => setActiveTabs("home")}
                     active={+(activeTabs === "home")}
                 >
                     <Icon name="mail" />
-                </SMobileItem>
+                </S.MobileItem>
 
-                <SMobileItem
+                <S.MobileItem
                     onClick={() => setActiveTabs("basket")}
                     active={+(activeTabs === "basket")}
                 >
                     <Icon name="basket" />
-                </SMobileItem>
+                </S.MobileItem>
 
-                <SMobileItem
+                <S.MobileItem
                     onClick={() => setActiveTabs("wishlist")}
                     active={+(activeTabs === "wishlist")}
                 >
                     <Icon name="heart" />
-                </SMobileItem>
+                </S.MobileItem>
 
-                <SMobileItem
+                <S.MobileItem
                     onClick={() => setActiveTabs("user")}
                     active={+(activeTabs === "user")}
                 >
                     <Icon name="user" />
-                </SMobileItem>
-            </SMobileList>
-        </SMobileNav>
+                </S.MobileItem>
+            </S.MobileList>
+        </S.MobileNav>
     );
 };
 

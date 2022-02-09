@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import "./style.scss";
 
-const Dropdown = ({ title, children }) => {
+interface DropdownProps {
+	title: any;
+}
+
+const Dropdown: FC<DropdownProps> = ({ title, children }) => {
 	const [openedDropdown, setOpenDropdown] = useState(false);
-	const el = useRef();
+	const el = useRef(null);
 
 	useEffect(() => {
-		function toggleClick(e) {
+		function toggleClick(e: any) {
 			const dropdown = e.target.closest(".dropdown");
 			if (dropdown && dropdown !== el.current) {
 				setOpenDropdown(false);

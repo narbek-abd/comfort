@@ -1,25 +1,20 @@
 import React from 'react';
-import { SButton, SContainer, SectionTitle } from "../../globalStyle";
+import * as G from "../../globalStyle";
 import unique from "../../assets/img/unique-product.jpg";
 
-import {
-  SUniqueProduct,
-  SInner,
-  SLeft,
-SRight,
-} from "./style";
+import * as S from "./style";
 
 const UniqueProduct = () => {
   return (
-    <SUniqueProduct>
-      <SContainer>
-        <SInner>
-          <SLeft>
+    <S.UniqueProduct>
+      <G.Container>
+        <S.Inner>
+          <S.Left>
             <img src={unique} alt="unique product" />
-          </SLeft>
+          </S.Left>
 
-          <SRight>
-            <SectionTitle>Unique Features Of leatest & Trending Poducts</SectionTitle>
+          <S.Right>
+            <G.SectionTitle>Unique Features Of leatest & Trending Poducts</G.SectionTitle>
 
             <ul>
               <li>All frames constructed with hardwood solids and laminates</li>
@@ -27,12 +22,12 @@ const UniqueProduct = () => {
               <li>Arms, backs and seats are structurally reinforced</li>
             </ul>
 
-            <SButton>Add To Cart</SButton>
-          </SRight>
-        </SInner>
-      </SContainer>
+            <G.Button>Add To Cart</G.Button>
+          </S.Right>
+        </S.Inner>
+      </G.Container>
       
-    </SUniqueProduct>
+    </S.UniqueProduct>
   );
 };
 

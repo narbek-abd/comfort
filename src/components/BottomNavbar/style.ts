@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
-export const SMobileNav = styled.div`
+export const MobileNav = styled.div`
   width: 100%;
   height: 50px;
   justify-content: center;
@@ -16,7 +16,7 @@ export const SMobileNav = styled.div`
     display: none;
   }
 `;
-export const SMobileList = styled.div`
+export const MobileList = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,7 +24,8 @@ export const SMobileList = styled.div`
   align-items: center;
 `;
 
-export const SMobileItem = styled.span`
+
+export const MobileItem = styled.span<{active: number}>`
   width: 25%;
   height: 100%;
   text-align: center;

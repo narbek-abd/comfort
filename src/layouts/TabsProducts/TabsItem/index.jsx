@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
-import { StabsItem } from "./style";
+import * as S from "./style";
 
 const TabsItem = ({ children, filterById, filter }) => {
   let [active, setActive] = useState(false);
@@ -29,9 +28,9 @@ const TabsItem = ({ children, filterById, filter }) => {
   }, []);
 
   return (
-    <StabsItem active={active} onClick={handleClick} ref={el} data-tabid={filterById}>
+    <S.TabsItem active={active} onClick={handleClick} ref={el} data-tabid={filterById}>
       {children}
-    </StabsItem>
+    </S.TabsItem>
   );
 };
 

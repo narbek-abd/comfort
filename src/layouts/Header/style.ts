@@ -1,19 +1,19 @@
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
-export const SHeader = styled.div`
+export const Header = styled.div`
 	margin-top: 20px;
 `;
-export const SInner = styled.div`
+export const Inner = styled.div`
 	display: flex;
 	align-items: center;
 	height: 50px;
 	background-color: #fff;
-	@media only screen and (max-width:768px) {
+	@media only screen and (max-width: 768px) {
 		justify-content: space-between;
 	}
 `;
 
-export const SNavbarWrapper = styled.div`
+export const NavbarWrapper = styled.div<{ active: boolean }>`
 	margin-left: 88px;
 	${(props) =>
 		props.active &&
@@ -27,12 +27,12 @@ export const SNavbarWrapper = styled.div`
 			background-color: rgba(0, 0, 0, 0.53);
 		`}
 
-		@media only screen and (max-width:768px) {
-			margin-left: 0;
-		}
+	@media only screen and (max-width:768px) {
+		margin-left: 0;
+	}
 `;
 
-export const SNavbar = styled.nav`
+export const Navbar = styled.nav<{ opened: boolean }>`
 	@media only screen and (max-width:768px) {
 		position: absolute;
 		z-index: 99;
@@ -48,7 +48,7 @@ ${(props) =>
 	`}
 	`;
 
-export const SHamburger = styled.div`
+export const Hamburger = styled.div<{ crossed: boolean} >`
 	display: inline-block;
 	position: relative;
 	z-index: 100;
