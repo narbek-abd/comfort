@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Button, SectionTitle } from "../../globalStyle";
 
 export const UniqueProduct = styled.div`
-margin-top: 150px;
- `;
+	margin-top: 150px;
+`;
 
 export const Inner = styled.div`
 	display: flex;
@@ -16,11 +16,11 @@ export const Inner = styled.div`
 export const Left = styled.div`
 	flex: 0 0 544px;
 
-	@media only screen and (max-width:992px) {
+	@media only screen and (max-width: 992px) {
 		flex: 0 0 400px;
 	}
 
-	@media only screen and (max-width:768px) {
+	@media only screen and (max-width: 768px) {
 		display: none;
 	}
 `;
@@ -52,19 +52,19 @@ export const Right = styled.div`
 
 			&:first-child {
 				&:before {
-					color: #F52B70;
+					color: #f52b70;
 				}
 			}
 
 			&:nth-child(2) {
 				&:before {
-					color: #2B2BF5;
+					color: #2b2bf5;
 				}
 			}
 
 			&:last-child {
 				&:before {
-					color: #2BF5CC;
+					color: #2bf5cc;
 				}
 			}
 		}

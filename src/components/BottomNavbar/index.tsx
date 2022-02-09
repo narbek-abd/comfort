@@ -8,7 +8,7 @@ interface MobileNavBarProps {
     name: string
 }
 
-const MobileNavBar = ({ name }: MobileNavBarProps) => {
+const MobileNavBar: React.FC<MobileNavBarProps> = ({ name }) => {
     const history = useNavigate();
     const [activeTabs, setActiveTabs] = useState(name);
     useEffect(() => {

@@ -5,7 +5,7 @@ import { Icon } from "../Icon";
 import * as S from "./style";
 import { Link } from 'react-router-dom';
 
-const ProductCard = () => {
+const ProductCard: React.FC = () => {
 	return (
 		<S.ProductCard>
 			<Link to="#">

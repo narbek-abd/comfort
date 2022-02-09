@@ -1,12 +1,11 @@
 import React from "react";
 import * as G from "../../globalStyle";
-
 import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
 import TabsItem from "./TabsItem";
 
-const TabsProducts = () => {
-  function filter(id) {
+const TabsProducts: React.FC = () => {
+  function filter(id: number) {
     console.log(id);
   }
 

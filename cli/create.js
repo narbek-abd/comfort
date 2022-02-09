@@ -40,10 +40,10 @@ const ${componentName} = () => {
 };
 
 export default ${componentName};`;
-fs.writeFileSync(path.resolve(...componentPath, `index.jsx`), componentCode);
+fs.writeFileSync(path.resolve(...componentPath, `index.tsx`), componentCode);
 
 // создание файла стилей
-const styleCode = `import styled from "styled-components/macro";
+const styleCode = `import styled from "styled-components";
 
 export const ${componentName} = styled.div\`
 
@@ -55,4 +55,4 @@ export const Inner = styled.div\`
 
 \`
  `;
-fs.writeFileSync(path.resolve(...componentPath, `style.js`), styleCode);
+fs.writeFileSync(path.resolve(...componentPath, `style.ts`), styleCode);

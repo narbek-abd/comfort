@@ -14,7 +14,7 @@ margin: 5.5px 5.5px;
 }
 `; 
 
-export const lideLink = styled.a`
+export const SlideLink = styled.a<{bg: any}>`
 display: block;
 	background: url(${props => props.bg}) no-repeat center center;
 	background-size: cover;

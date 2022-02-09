@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TabsItem = styled.p`
+export const TabsItem = styled.p<{active: boolean}>`
 	margin: 0 30px;
 	color: ${props => props.active
 		? "var(--color-pink)"

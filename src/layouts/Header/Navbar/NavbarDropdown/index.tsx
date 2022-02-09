@@ -10,12 +10,12 @@ interface NavbarDropdownProps {
 	visibleDropdown: number;
 }
 
-const NavbarDropdown = ({
+const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
 	link,
 	childLinks,
 	toggleDropdown,
 	visibleDropdown,
-}: NavbarDropdownProps) => {
+}) => {
 	const dropdown = useRef(null);
 
 	useEffect(() => {

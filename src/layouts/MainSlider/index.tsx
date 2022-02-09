@@ -9,7 +9,7 @@ import * as S from "./style";
 import mainImg from "../../assets/img/main.jpg";
 import * as G from "../../globalStyle";
 
-const MainSlider = () => {
+const MainSlider: React.FC = () => {
 	return (
 		<S.MainSlider>
 			<Swiper
@@ -19,7 +19,7 @@ const MainSlider = () => {
 				pagination={{ clickable: true }}
 			>
 				<SwiperSlide>
-					<S.lideLink bg={mainImg} href="#">
+					<S.SlideLink bg={mainImg} href="#">
 						<G.Container>
 							<S.MiniTitle>
 								Best Furniture For Your Castle....
@@ -33,11 +33,11 @@ const MainSlider = () => {
 								phasellus non in justo.
 							</S.SubTitle>
 						</G.Container>
-					</S.lideLink>
+					</S.SlideLink>
 				</SwiperSlide>
 
 				<SwiperSlide>
-					<S.lideLink bg={mainImg} href="#">
+					<S.SlideLink bg={mainImg} href="#">
 						<G.Container>
 							<S.MiniTitle>
 								Best Furniture For Your Castle....
@@ -51,11 +51,11 @@ const MainSlider = () => {
 								phasellus non in justo.
 							</S.SubTitle>
 						</G.Container>
-					</S.lideLink>
+					</S.SlideLink>
 				</SwiperSlide>
 
 				<SwiperSlide>
-					<S.lideLink bg={mainImg} href="#">
+					<S.SlideLink bg={mainImg} href="#">
 						<G.Container>
 							<S.MiniTitle>
 								Best Furniture For Your Castle....
@@ -69,11 +69,11 @@ const MainSlider = () => {
 								phasellus non in justo.
 							</S.SubTitle>
 						</G.Container>
-					</S.lideLink>
+					</S.SlideLink>
 				</SwiperSlide>
 
 				<SwiperSlide>
-					<S.lideLink bg={mainImg} href="#">
+					<S.SlideLink bg={mainImg} href="#">
 						<G.Container>
 							<S.MiniTitle>
 								Best Furniture For Your Castle....
@@ -87,11 +87,11 @@ const MainSlider = () => {
 								phasellus non in justo.
 							</S.SubTitle>
 						</G.Container>
-					</S.lideLink>
+					</S.SlideLink>
 				</SwiperSlide>
 
 				<SwiperSlide>
-					<S.lideLink bg={mainImg} href="#">
+					<S.SlideLink bg={mainImg} href="#">
 						<G.Container>
 							<S.MiniTitle>
 								Best Furniture For Your Castle....
@@ -105,7 +105,7 @@ const MainSlider = () => {
 								phasellus non in justo.
 							</S.SubTitle>
 						</G.Container>
-					</S.lideLink>
+					</S.SlideLink>
 				</SwiperSlide>
 			</Swiper>
 		</S.MainSlider>

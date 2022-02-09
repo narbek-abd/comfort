@@ -7,7 +7,7 @@ import HeaderTop from "./HeaderTop";
 import { Icon } from "../../components/Icon";
 import SearchBar from "./SearchBar";
 
-const Header = () => {
+const Header: React.FC = () => {
 	let [isMobileMenuOpen, toggleMobileMenuOpen] = useState(false);
 	let [visibleDropdown, setVisibleDropdown] = useState(null);
 

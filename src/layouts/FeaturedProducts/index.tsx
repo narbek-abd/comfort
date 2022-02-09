@@ -6,7 +6,7 @@ import ProductCard from "../../components/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
-const FeaturedProducts = () => {
+const FeaturedProducts: React.FC = () => {
 	return (
 		<S.FeaturedProducts>
 			<G.SectionTitle>Featured Products</G.SectionTitle>

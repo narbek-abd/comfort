@@ -4,7 +4,7 @@ import * as S from "./style";
 import { Icon } from '../../../components/Icon';
 import Dropdown from "../../../components/Dropdown";
 
-const HeaderTop = () => {
+const HeaderTop: React.FC = () => {
 	return (
 		<S.HeaderTop>
 			<G.Container>
