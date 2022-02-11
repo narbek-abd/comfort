@@ -2,41 +2,58 @@ import React, { useRef, useState, useEffect } from "react";
 import * as S from "./style";
 import NavbarItem from "../NavbarItem";
 import { Icon } from "../../../../components/Icon";
+import slideToggle, { slideUp } from "../../../../utils/SlideUpDown";
 
 interface NavbarDropdownProps {
 	link: any;
 	childLinks: any;
-	toggleDropdown: (e: any) => void;
-	visibleDropdown: number;
 }
 
 const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
 	link,
 	childLinks,
-	toggleDropdown,
-	visibleDropdown,
 }) => {
-	const dropdown = useRef(null);
+	const [isOpen, setIsOpen] = useState(false);
+	const dropdownRef = useRef(null);
+	const dropdownListRef = useRef(null);
 
 	useEffect(() => {
-		console.log(dropdown)
-		if (visibleDropdown == link.id && dropdown !== null) {
-			dropdown.current.style.height =
-				parseInt(dropdown.current.style.height, 10) == 0
-					? dropdown.current.scrollHeight + "px"
-					: 0;
-		} else {
-			dropdown.current.style.height = 0;
+		function toggleClick(e: any) {
+			const dropdown = e.target.closest(".navbar-dropdown");
+			if (!dropdown) {
+				slideUp(dropdownListRef.current, 200);
+				return;
+			}
+
+			// Если переключатель вложенный, не скрываем родительский элемент
+			if (e.target.closest("span").dataset.level >= 1) return;
+
+			if (dropdown !== dropdownRef.current) {
+				slideUp(dropdownListRef.current, 200);
+			}
 		}
-	}, [visibleDropdown]);
+
+		document.addEventListener("click", toggleClick);
+
+		return () => {
+			document.removeEventListener("click", toggleClick);
+		};
+	}, []);
+
+	function toggleDropdown() {
+		slideToggle(dropdownListRef.current, 200);
+	}
 
 	return (
-		<>
-			<S.DropdownToggle onClick={toggleDropdown} data-id={link.id}>
+		<div className="navbar-dropdown" ref={dropdownRef}>
+			<S.DropdownToggle
+				onClick={toggleDropdown}
+				data-level={link["level"]}
+			>
 				{link["name"]} <Icon name="arrow" />
 			</S.DropdownToggle>
 
-			<S.DropdownList ref={dropdown}>
+			<S.DropdownList ref={dropdownListRef}>
 				{childLinks.map((link: any) => {
 					return (
 						<NavbarItem
@@ -45,13 +62,11 @@ const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
 							hasChildren={
 								link["children"] === undefined ? false : true
 							}
-							toggleDropdown={toggleDropdown}
-							visibleDropdown={visibleDropdown}
 						></NavbarItem>
 					);
 				})}
 			</S.DropdownList>
-		</>
+		</div>
 	);
 };
 

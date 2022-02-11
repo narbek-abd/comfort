@@ -5,26 +5,19 @@ import NavbarDropdown from "../NavbarDropdown";
 
 interface NavbarItemProps {
 	link: any;
-	toggleDropdown: (e: any) => void;
-	visibleDropdown: number;
 	hasChildren: boolean;
 }
 
-const NavbarItem: React.FC<NavbarItemProps> = ({ link, hasChildren, toggleDropdown, visibleDropdown }) => {
+const NavbarItem: React.FC<NavbarItemProps> = ({ link, hasChildren }) => {
 	return (
 		<S.NavbarItem>
 			{hasChildren ? (
-				<>
-					{" "}
 					<NavbarDropdown
 						link={link}
 						childLinks={link["children"]}
-						toggleDropdown={toggleDropdown}
-						visibleDropdown={visibleDropdown}
-					/>{" "}
-				</>
+					/>
 			) : (
-				<S.NavbarLink>{link.name}</S.NavbarLink>
+				<S.NavbarLink href="#">{link.name}</S.NavbarLink>
 			)}
 		</S.NavbarItem>
 	);
