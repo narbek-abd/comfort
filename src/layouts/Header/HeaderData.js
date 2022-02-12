@@ -26,11 +26,5 @@ export default [
 		link: "/",
 		level: 0,
 	},
-
-	{
-		id: 5,
-		name: "Contact",
-		link: "/",
-		level: 0,
-	},
+	
 ];
