@@ -26,7 +26,12 @@ import * as G from "../../globalStyle";
 
 import * as S from "./style";
 
-const ${componentName} = () => {
+interface ${componentName}Props {
+  link: any;
+  hasChildren: boolean;
+}
+
+const ${componentName}: React.FC<${componentName}Props> = () => {
   return (
     <S.${componentName}>
       <G.Container>

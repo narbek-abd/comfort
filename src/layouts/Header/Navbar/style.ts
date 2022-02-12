@@ -20,6 +20,7 @@ export const NavbarWrapper = styled.div<{ active: boolean }>`
 `;
 
 export const Navbar = styled.nav<{ opened: boolean }>`
+display: flex;
 	@media only screen and (max-width:768px) {
 		position: absolute;
 		z-index: 99;
@@ -91,3 +92,6 @@ export const Hamburger = styled.div<{ crossed: boolean }>`
 		display: block;
 	}
 `;
+
+
+

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 
 import * as S from "./style";
+import CatalogMenu from "./CatalogMenu";
 import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";
 
@@ -30,12 +31,18 @@ const Navbar: React.FC = () => {
 					onClick={stop}
 				>
 					<ul>
+						<CatalogMenu list={ catalogList } />
+
 						{navbarLinks.map((link) => {
 							return (
 								<NavbarItem
 									link={link}
 									key={link.id}
-									hasChildren={link["children"] === undefined ? false : true}
+									hasChildren={
+										link["children"] === undefined
+											? false
+											: true
+									}
 								></NavbarItem>
 							);
 						})}
@@ -54,5 +61,39 @@ const Navbar: React.FC = () => {
 		</>
 	);
 };
+
+const catalogList = [
+	{
+		id: 1,
+		name: "Phones",
+		children: [
+			{
+				id: 2,
+				name: "Mobile Phones",
+				children: [
+					{ id: 4, name: "Samsung" },
+					{ id: 5, name: "LG" },
+				],
+			},
+			{
+				id: 3,
+				name: "Gadgets",
+				children: [
+					{ id: 6, name: "HeadPhones" },
+					{ id: 7, name: "battaries" },
+				],
+			},
+		],
+	},
+
+	{
+		id: 8,
+		name: "Clothing",
+		children: [
+			{ id: 9, name: "Clothing for men" },
+			{ id: 10, name: "Clothing for woman" },
+		],
+	},
+];
 
 export default Navbar;
