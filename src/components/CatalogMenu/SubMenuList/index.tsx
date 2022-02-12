@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
+import { Link } from "react-router-dom";
 
 interface CatalogMenuChildrenProps {
   list: Array<{ id: number; name: string; children?: any }>;
-  activeCategoryId: number;
+  focusedItemId: number;
 }
 
-const CatalogMenuChildren: React.FC<CatalogMenuChildrenProps> = ({
+const SubMenuList: React.FC<CatalogMenuChildrenProps> = ({
   list,
-  activeCategoryId,
+  focusedItemId,
 }) => {
   const [activeCategoryList, setActiveCategoryList] = useState([]);
 
   useEffect(() => {
-    let activeCategory = list.filter((item) => item.id == activeCategoryId)[0];
+    let activeCategory = list.filter((item) => item.id == focusedItemId)[0];
     setActiveCategoryList(activeCategory["children"]);
-  }, [activeCategoryId]);
+  }, [focusedItemId]);
 
   return (
-    <S.CatalogMenuChildren>
+    <S.SubMenuList>
       {activeCategoryList.map((category) => {
-        return(
+        return (
           <div key={category.id}>
-            <span>{category.name}</span>
+            <Link to="#s">{category.name}</Link>
 
             {category["children"] && (
-              <ul>
+              <S.SubList>
                 {category["children"].map((child: any) => {
-                  return <li key={child.id}>{child.name}</li>;
+                  return (
+                    <li key={child.id}>
+                      <Link to="#">{child.name}</Link>
+                    </li>
+                  );
                 })}
-              </ul>
+              </S.SubList>
             )}
           </div>
         );
       })}
-    </S.CatalogMenuChildren>
+    </S.SubMenuList>
   );
 };
 
-export default CatalogMenuChildren;
+export default SubMenuList;

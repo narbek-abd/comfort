@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const NavbarWrapper = styled.div<{ active: boolean }>`
-	margin-left: 88px;
+	margin-left: 28px;
 	${(props) =>
 		props.active &&
 		css`
@@ -20,7 +20,11 @@ export const NavbarWrapper = styled.div<{ active: boolean }>`
 `;
 
 export const Navbar = styled.nav<{ opened: boolean }>`
-display: flex;
+&>ul>li {
+	cursor: pointer;
+			display: inline-block;
+		}
+	display: flex;
 	@media only screen and (max-width:768px) {
 		position: absolute;
 		z-index: 99;
@@ -29,6 +33,7 @@ display: flex;
 		transition: left .3s;
 		background-color: #fff;
 		padding: 20px 20px;
+
 ${(props) =>
 	props.opened &&
 	css`
@@ -92,6 +97,3 @@ export const Hamburger = styled.div<{ crossed: boolean }>`
 		display: block;
 	}
 `;
-
-
-

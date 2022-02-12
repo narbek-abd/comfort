@@ -1,12 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import * as S from "./style";
-import CatalogMenu from "./CatalogMenu";
+import CatalogMenu from "../../../components/CatalogMenu";
+import { Icon } from "../../../components/Icon";
+
 import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";
 
 const Navbar: React.FC = () => {
 	let [isMobileMenuOpen, toggleMobileMenuOpen] = useState(false);
+	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
 
 	function toggleHam() {
 		if (window.innerWidth <= 768) {
@@ -20,6 +23,20 @@ const Navbar: React.FC = () => {
 		}
 	}
 
+	useEffect(() => {
+		function handleClick(e: any) {
+			if (!e.target.closest(".catalog-menu")) {
+				console.log(5)
+				setCatalogMenuVisible(false);
+			}
+		}
+		document.addEventListener("click", handleClick);
+
+		return () => {
+			document.removeEventListener("click", handleClick);
+		};
+	}, []);
+
 	return (
 		<>
 			<S.NavbarWrapper
@@ -31,7 +48,19 @@ const Navbar: React.FC = () => {
 					onClick={stop}
 				>
 					<ul>
-						<CatalogMenu list={ catalogList } />
+						<li
+							className="catalog-menu"
+							onClick={() =>
+								setCatalogMenuVisible(!isCatalogMenuVisible)
+							}
+						>
+							<span>Catalog <Icon name="arrow" /></span>
+							<CatalogMenu
+								list={catalogList}
+								isVisible={isCatalogMenuVisible}
+								activeItemId={1}
+							/>
+						</li>
 
 						{navbarLinks.map((link) => {
 							return (
@@ -91,7 +120,7 @@ const catalogList = [
 		name: "Clothing",
 		children: [
 			{ id: 9, name: "Clothing for men" },
-			{ id: 10, name: "Clothing for woman" },
+			{ id: 10, name: "Clothing for women" },
 		],
 	},
 ];
