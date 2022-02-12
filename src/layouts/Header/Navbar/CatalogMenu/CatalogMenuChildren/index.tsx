@@ -21,7 +21,7 @@ const CatalogMenuChildren: React.FC<CatalogMenuChildrenProps> = ({
   return (
     <S.CatalogMenuChildren>
       {activeCategoryList.map((category) => {
-        return (
+        return(
           <div key={category.id}>
             <span>{category.name}</span>
 
