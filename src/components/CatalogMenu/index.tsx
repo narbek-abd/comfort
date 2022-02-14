@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import MenuItem from "./MenuItem";
 import SubMenuList from "./SubMenuList";
-import { Icon } from "../../../../components/Icon";
+import { Icon } from "../Icon";
 
 interface CatalogMenuProps {
   list: Array<{ id: number; name: string; children?: any }>;
