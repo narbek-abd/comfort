@@ -6,6 +6,7 @@ import { Icon } from "../../../components/Icon";
 
 import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";
+import MultiMenu from "../../../components/MultiMenu";
 
 const Navbar: React.FC = () => {
 	let [isMobileMenuOpen, toggleMobileMenuOpen] = useState(false);
@@ -26,7 +27,6 @@ const Navbar: React.FC = () => {
 	useEffect(() => {
 		function handleClick(e: any) {
 			if (!e.target.closest(".catalog-menu")) {
-				console.log(5)
 				setCatalogMenuVisible(false);
 			}
 		}
@@ -48,7 +48,8 @@ const Navbar: React.FC = () => {
 					onClick={stop}
 				>
 					<ul>
-						<li
+						<MultiMenu list={catalogList} />
+						{/*	<li
 							className="catalog-menu"
 							onClick={() =>
 								setCatalogMenuVisible(!isCatalogMenuVisible)
@@ -74,7 +75,7 @@ const Navbar: React.FC = () => {
 									}
 								></NavbarItem>
 							);
-						})}
+						})}*/}
 					</ul>
 				</S.Navbar>
 			</S.NavbarWrapper>
@@ -95,21 +96,24 @@ const catalogList = [
 	{
 		id: 1,
 		name: "Phones",
+		level: 1,
 		children: [
 			{
 				id: 2,
 				name: "Mobile Phones",
+				level: 2,
 				children: [
-					{ id: 4, name: "Samsung" },
-					{ id: 5, name: "LG" },
+					{ id: 4, name: "Samsung", level: 3 },
+					{ id: 5, name: "LG", level: 3 },
 				],
 			},
 			{
 				id: 3,
 				name: "Gadgets",
+				level: 2,
 				children: [
-					{ id: 6, name: "HeadPhones" },
-					{ id: 7, name: "battaries" },
+					{ id: 6, name: "HeadPhones", level: 3 },
+					{ id: 7, name: "battaries", level: 3 },
 				],
 			},
 		],
@@ -118,11 +122,13 @@ const catalogList = [
 	{
 		id: 8,
 		name: "Clothing",
+		level: 1,
 		children: [
-			{ id: 9, name: "Clothing for men" },
-			{ id: 10, name: "Clothing for women" },
+			{ id: 9, name: "Clothing for men", level: 2 },
+			{ id: 10, name: "Clothing for women", level: 2 },
 		],
 	},
+
 ];
 
 export default Navbar;
