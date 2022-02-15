@@ -5,27 +5,34 @@ import MenuItem from "./MenuItem";
 import MenuSub from "./MenuSub";
 
 interface MultiMenuProps {
-  list: Array<{ id: number; name: string; children?: any; level: number; childListId?: number }>;
+  list: Array<{
+    id: number;
+    name: string;
+    children?: any;
+    level: number;
+    childListId?: number;
+  }>;
 }
 
 const MultiMenu: React.FC<MultiMenuProps> = ({ list }) => {
   let uniqueId = 1;
 
-  function giveChildListUniqueId(list: any) {
-    list.forEach((item: any) => {
-      if (item["children"]) {
-        item.childListId = uniqueId;
-        uniqueId++;
+  // function giveChildListUniqueId(list: any) {
+  //   list.forEach((item: any) => {
+  //     if (item["children"]) {
+  //       item.childListId = uniqueId;
+  //       uniqueId++;
 
-        giveChildListUniqueId(item["children"]);
-      }
-    });
-  }
+  //       giveChildListUniqueId(item["children"]);
+  //     }
+  //   });
+  // }
 
-  giveChildListUniqueId(list);
+  // giveChildListUniqueId(list);
 
   const listContainer = useRef(null);
   const [activeListId, setActiveListId] = useState(0);
+  const [prevListId, setPrevListId] = useState(-1);
 
   useEffect(() => {
     let childLists = listContainer.current.querySelectorAll("li ul");
@@ -35,18 +42,36 @@ const MultiMenu: React.FC<MultiMenuProps> = ({ list }) => {
     });
   }, []);
 
-  function callb(e: any) {
+  function changeCurrentList(e: any) {
     let item = e.target.closest("li");
     let childListId = item.dataset.listId;
+    let parentListId = item.dataset.parentId;
+
+    if (parentListId) {
+      // prevList текщуго prevList
+      let prevListOfPrev = prevListId == 0 ? -1 : listContainer.current
+          .querySelector(`li[data-list-id="${prevListId}"]`)
+          .closest("ul").dataset.id;
+
+      setPrevListId(prevListOfPrev);
+      setActiveListId(parentListId);
+      return;
+    }
 
     if (childListId != 0) {
+      setPrevListId(activeListId);
       setActiveListId(childListId);
     }
   }
 
   return (
     <S.MultiMenu ref={listContainer}>
-      <MenuSub list={list} callb={callb} activeListId={activeListId} />
+      <MenuSub
+        list={list}
+        changeCurrentList={changeCurrentList}
+        activeListId={activeListId}
+        prevListId={prevListId}
+      />
     </S.MultiMenu>
   );
 };
