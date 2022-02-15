@@ -94,12 +94,12 @@ const Navbar: React.FC = () => {
 
 const catalogList = [
 	{
-		id: 1,
+		id: 9,
 		name: "Phones",
 		level: 1,
 		children: [
 			{
-				id: 2,
+				id: 11,
 				name: "Mobile Phones",
 				level: 2,
 				children: [
