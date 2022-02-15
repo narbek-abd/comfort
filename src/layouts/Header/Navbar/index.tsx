@@ -9,12 +9,29 @@ import navbarLinks from "../HeaderData";
 import MultiMenu from "../../../components/MultiMenu";
 
 const Navbar: React.FC = () => {
-	let [isMobileMenuOpen, toggleMobileMenuOpen] = useState(false);
+	let [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
+	const [isdeskTop, setIsDeskTop] = useState(true);
+
+	/** Определяем ширину экрана и следим за шириной через watchmedia */
+	useEffect(() => {
+		if (window.innerWidth <= 768) {
+			setIsDeskTop(false);
+		}
+	}, []);
+
+	const mediaQueryList = window.matchMedia("(max-width: 768px)");
+	mediaQueryList.addEventListener("change", (event) => {
+		if (event.matches) {
+			setIsDeskTop(false);
+		} else {
+			setIsDeskTop(true);
+		}
+	});
 
 	function toggleHam() {
 		if (window.innerWidth <= 768) {
-			toggleMobileMenuOpen(!isMobileMenuOpen);
+			setMobileMenuOpen(!isMobileMenuOpen);
 		}
 	}
 
@@ -47,36 +64,41 @@ const Navbar: React.FC = () => {
 					opened={isMobileMenuOpen ? true : false}
 					onClick={stop}
 				>
-					<ul>
-						<MultiMenu list={catalogList} />
-						{/*	<li
-							className="catalog-menu"
-							onClick={() =>
-								setCatalogMenuVisible(!isCatalogMenuVisible)
-							}
-						>
-							<span>Catalog <Icon name="arrow" /></span>
-							<CatalogMenu
-								list={catalogList}
-								isVisible={isCatalogMenuVisible}
-								activeItemId={1}
-							/>
-						</li>
+					{isdeskTop && (
+						<ul>
+							<li
+								className="catalog-menu"
+								onClick={() =>
+									setCatalogMenuVisible(!isCatalogMenuVisible)
+								}
+							>
+								<span>
+									Catalog <Icon name="arrow" />
+								</span>
+								<CatalogMenu
+									list={catalogList}
+									isVisible={isCatalogMenuVisible}
+									activeItemId={1}
+								/>
+							</li>
 
-						{navbarLinks.map((link) => {
-							return (
-								<NavbarItem
-									link={link}
-									key={link.id}
-									hasChildren={
-										link["children"] === undefined
-											? false
-											: true
-									}
-								></NavbarItem>
-							);
-						})}*/}
-					</ul>
+							{navbarLinks.map((link) => {
+								return (
+									<NavbarItem
+										link={link}
+										key={link.id}
+										hasChildren={
+											link["children"] === undefined
+												? false
+												: true
+										}
+									></NavbarItem>
+								);
+							})}
+						</ul>
+					)}
+
+					{!isdeskTop && <MultiMenu list={catalogList} />}
 				</S.Navbar>
 			</S.NavbarWrapper>
 
@@ -94,7 +116,7 @@ const Navbar: React.FC = () => {
 
 const catalogList = [
 	{
-		id: 9,
+		id: 1,
 		name: "Phones",
 		level: 1,
 		children: [
@@ -128,7 +150,6 @@ const catalogList = [
 			{ id: 10, name: "Clothing for women", level: 2 },
 		],
 	},
-
 ];
 
 export default Navbar;

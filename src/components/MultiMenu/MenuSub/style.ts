@@ -3,15 +3,14 @@ import styled, { css } from "styled-components";
 export const MenuSub = styled.ul<{ active: boolean; prev: boolean }>`
     position: absolute;
     top: 0;
-    background-color: #fff;
     z-index: 1;
-    transition: all 0.8s ease;
+    transition: all .3s ease;
     transform: translateX(100%);
-    background-color: #fff;
     width: 100%;
     height: 100%;
+    background-color: #fff;
 
-     ${(props) =>
+    ${(props) =>
         props.prev &&
         css`
             transform: translateX(-100%);
@@ -25,6 +24,16 @@ export const MenuSub = styled.ul<{ active: boolean; prev: boolean }>`
             overflow: visible;
             opacity: 1;
         `}
+`;
 
-   
+export const MenuSubPrev = styled.li`
+    cursor: pointer;
+    padding: 10px 0;
+    font-size: 14px;
+    margin-left: -4px;
+
+    svg {
+        color: #000;
+        transform: rotate(90deg);
+    }
 `;

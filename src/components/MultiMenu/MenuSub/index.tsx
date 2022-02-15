@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import MenuItem from "../MenuItem";
+import { Icon } from "../../Icon";
 
 interface MenuSubProps {
   list: Array<{
@@ -24,7 +25,7 @@ const MenuSub: React.FC<MenuSubProps> = ({
   changeCurrentList,
   activeListId,
   prevListId,
-  parentId = 0,
+  parentId = null,
   parentName,
 }) => {
   return (
@@ -34,9 +35,13 @@ const MenuSub: React.FC<MenuSubProps> = ({
         prev={childListId == prevListId}
         data-id={childListId}
       >
-        <li onClick={changeCurrentList} data-parent-id={parentId}>
-          {parentName}
-        </li>
+        {parentId != null && (
+          <S.MenuSubPrev onClick={changeCurrentList} data-parent-id={parentId}>
+            <Icon name="arrow" />
+            {parentName}
+          </S.MenuSubPrev>
+        )}
+
         {list.map((item) => {
           return (
             <MenuItem

@@ -4,7 +4,7 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 
 interface CatalogMenuChildrenProps {
-  list: Array<{ id: number; name: string; children?: any }>;
+  list: Array<{ id: number; name: string; children?: any; }>;
   focusedItemId: number;
 }
 
@@ -16,8 +16,13 @@ const SubMenuList: React.FC<CatalogMenuChildrenProps> = ({
 
   useEffect(() => {
     let activeCategory = list.filter((item) => item.id == focusedItemId)[0];
-    setActiveCategoryList(activeCategory["children"]);
+
+    if(activeCategory !== undefined) {
+     setActiveCategoryList(activeCategory["children"]);
+    }
+
   }, [focusedItemId]);
+
 
   return (
     <S.SubMenuList>

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const NavbarWrapper = styled.div<{ active: boolean }>`
-	margin-left: 28px;
 	${(props) =>
 		props.active &&
 		css`
@@ -13,32 +12,46 @@ export const NavbarWrapper = styled.div<{ active: boolean }>`
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.53);
 		`}
-
-	@media only screen and (max-width:768px) {
-		margin-left: 0;
-	}
 `;
 
 export const Navbar = styled.nav<{ opened: boolean }>`
-&>ul>li {
-	cursor: pointer;
-			display: inline-block;
-		}
-	display: flex;
+	&>ul {
+		display: flex;
+	}
+	.catalog-menu {
+		span {
+			display: block;
+			height: 50px;
+			line-height: 50px;
+			margin: 0 15px 0 45px;
+			color: var(--color-pink);
+			text-decoration: none;
+			outline: 0;
+			transition: all 0.5s linear;
+			white-space: nowrap;
+			cursor: pointer;
+			transition: var(--color-tr);
+	}
+} 
+
 	@media only screen and (max-width:768px) {
-		position: absolute;
+		position: fixed;
 		z-index: 99;
-		left: -100%; 
+		left: -100%;
 		top: 0;
 		transition: left .3s;
 		background-color: #fff;
 		padding: 20px 20px;
 
-${(props) =>
-	props.opened &&
-	css`
-		left: 0;
-	`}
+		${(props) =>
+			props.opened &&
+			css`
+				left: 0;
+			`}
+
+	@media only screen and (max-width:768px) {
+		padding: 0;
+	}
 	`;
 
 export const Hamburger = styled.div<{ crossed: boolean }>`

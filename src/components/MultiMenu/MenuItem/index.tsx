@@ -1,6 +1,8 @@
 import React from "react";
 import * as S from "./style";
 import MenuSub from "../MenuSub";
+import { Link } from "react-router-dom";
+import { Icon } from "../../Icon";
 
 interface MenuItemProps {
   item: any;
@@ -21,7 +23,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
 }) => {
   return (
     <S.MenuItem data-list-id={id} onClick={changeCurrentList}>
-      <span>{item.name}</span>
+      {item["children"] ? (
+        <>
+          <span>{item.name}</span>
+          <Icon name="arrow" />
+        </>
+      ) : (
+        <Link to={"/"}>{item.name}</Link>
+      )}
 
       {item["children"] && (
         <MenuSub
