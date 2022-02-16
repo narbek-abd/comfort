@@ -14,6 +14,7 @@ const CatalogMenu: React.FC<CatalogMenuProps> = ({ list, isVisible = true, activ
   const [focusedItemId, setFocusedItemId] = useState(activeItemId);
 
   function changeFocusedItem(e: any) {
+    console.log(e)
     setFocusedItemId(e.currentTarget.dataset.itemId);
   }
 

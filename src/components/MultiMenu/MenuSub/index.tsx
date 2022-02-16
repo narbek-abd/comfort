@@ -12,7 +12,7 @@ interface MenuSubProps {
     childListId?: number;
   }>;
   childListId?: number;
-  changeCurrentList: any;
+  changeCurrentList: (event: React.MouseEvent<HTMLElement>) => void;
   activeListId: number;
   prevListId: number;
   parentId?: number;

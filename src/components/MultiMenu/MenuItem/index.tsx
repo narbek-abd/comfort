@@ -7,7 +7,7 @@ import { Icon } from "../../Icon";
 interface MenuItemProps {
   item: any;
   id: number;
-  changeCurrentList: any;
+  changeCurrentList: (e: React.MouseEvent<HTMLElement>) => void;
   activeListId: number;
   prevListId: number;
   parentId: number;
