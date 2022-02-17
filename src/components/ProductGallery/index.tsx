@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import ImageZoom from "../ImageZoom";
 
 import "swiper/css";
 
 import * as S from "./style";
+import { Icon } from "../Icon";
 
 interface ProductGalleryProps {
   images: Array<{ id: number; url: string; main?: boolean }>;
@@ -15,8 +17,11 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
     images.find((img) => img.main === true).url
   );
 
-  const [mainImgTransform, setMainImgTransform] = useState(`translate(-50%, -50%) scale(1)`);
-  const [mainImgtransformOrigin, setMainImgtransformOrigin] = useState('');
+  const [sliderDirection, setSliderDirection] = useState<
+    "vertical" | "horizontal"
+  >("vertical");
+  const [sliderPerView, setSliderPerView] = useState<number | 'auto'>(3);
+  const [sliderCenteredSlides, setSliderCenteredSlides] = useState<number | 'auto'>(3);
 
   function changeMainImg(e: any) {
     let selectedImgId = e.target.closest(".swiper-slide").dataset.id;
@@ -24,32 +29,43 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
     setMainImgUrl(images.find((img) => img.id == selectedImgId).url);
   }
 
-function handleMouseOver(e:any) {
-    setMainImgTransform(`translate(-50%, -50%) scale(2, 2)`);
-  }
+  useEffect(() => {
+    if (window.innerWidth <= 992) {
+      setSliderDirection("horizontal");
+      setSliderPerView('auto');
+    }
+  }, []);
 
-function handleMouseOut(e:any) {
-    setMainImgTransform(`translate(-50%, -50%) scale(1)`);
-    setMainImgtransformOrigin("0% 0%")
-  }
+  const mediaQueryList = window.matchMedia("(max-width: 992px)");
+  mediaQueryList.addEventListener("change", (event) => {
+    if (event.matches) {
+      setSliderDirection("horizontal");
+      setSliderPerView('auto');
+    } else {
+      setSliderDirection("vertical");
+      setSliderPerView(3);
+    }
+  });
 
-
-  function handleMouseMove(e:any) {
-    const { left, top, width, height } = e.target.getBoundingClientRect()
-    const x = (e.pageX - left) / width * 100
-    const y = (e.pageY - top) / height * 100
-
-    setMainImgtransformOrigin(`${x}% ${y}%`)
-  }
+  console.log(sliderDirection);
 
   return (
     <S.ProductGallery>
-      <S.Left style={{ height: "330px" }}>
+      <S.Left>
+        <div className="swiper-button-prev">
+          <Icon name="arrow" />
+        </div>
+
         <Swiper
           modules={[Navigation]}
-          direction={"vertical"}
-          slidesPerView={3}
-          spaceBetween={10}
+          direction={sliderDirection}
+          slidesPerView={sliderPerView}
+          navigation={{
+            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next",
+          }}
+          centeredSlides={true}
+          spaceBetween={0}
           style={{ height: "490px" }}
         >
           {images.map((img) => {
@@ -59,21 +75,20 @@ function handleMouseOut(e:any) {
                 key={img.id}
                 data-id={img.id}
               >
-                <img src={img.url} alt="product img" />
+                <S.ImgWrap active={img.url === mainImgUrl}>
+                  <img src={img.url} alt="product img" />
+                </S.ImgWrap>
               </SwiperSlide>
             );
           })}
         </Swiper>
+        <div className="swiper-button-next">
+          <Icon name="arrow" />
+        </div>
       </S.Left>
 
       <S.Right>
-        <S.MainImg>
-          <img src={mainImgUrl} alt="main img" 
-          onMouseOver={handleMouseOver} 
-          onMouseMove={handleMouseMove} 
-          onMouseOut={handleMouseOut} 
-          style={{transform: mainImgTransform, transformOrigin: mainImgtransformOrigin}}/>
-        </S.MainImg>
+        <ImageZoom src={mainImgUrl} />
       </S.Right>
     </S.ProductGallery>
   );
