@@ -1,22 +1,26 @@
 import React from "react";
-import product from "../../assets/img/products/product1.jpg";
+import productImg from "../../assets/img/products/product1.jpg";
 import { Icon } from "../Icon";
 
 import * as S from "./style";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const ProductCard: React.FC = () => {
+interface ProductCardProps {
+	product: { id: number; title: string; price: number; description: string };
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 	return (
 		<S.ProductCard>
-			<Link to="#">
+			<Link to={`/product/${product.id}`}>
 				<S.Img>
-					<img src={product} alt="" />
+					<img src={productImg} alt="" />
 				</S.Img>
 
 				<S.Inf>
-					<S.Name>Comfort Handy Craft</S.Name>
+					<S.Name>{product.title}</S.Name>
 					<S.Price>
-						<S.PriceNew>$42.00</S.PriceNew>
+						<S.PriceNew>{product.price}</S.PriceNew>
 						<S.PriceOld>$65.00</S.PriceOld>
 					</S.Price>
 				</S.Inf>

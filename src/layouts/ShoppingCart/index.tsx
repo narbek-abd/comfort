@@ -3,13 +3,11 @@ import * as G from "../../globalStyle";
 
 import * as S from "./style";
 import { Link } from "react-router-dom";
+import Counter from "../../components/Counter";
 
-interface ShoppingCartProps {
-  link: any;
-  hasChildren: boolean;
-}
+const ShoppingCart: React.FC = () => {
+  function onCountChange(count: number) {}
 
-const ShoppingCart: React.FC<ShoppingCartProps> = () => {
   return (
     <S.ShoppingCart>
       <G.Container>
@@ -36,9 +34,12 @@ const ShoppingCart: React.FC<ShoppingCartProps> = () => {
                 <S.Price>
                   <S.CurrentPrice>$32.00</S.CurrentPrice>
                   <S.Count>
-                    <button>-</button>
-                    <input type="text" value="1" />
-                    <button>+</button>
+                    <Counter
+                      min={0}
+                      max={15}
+                      current={1}
+                      onChange={onCountChange}
+                    />
                   </S.Count>
 
                   <S.Total>£219.00</S.Total>
