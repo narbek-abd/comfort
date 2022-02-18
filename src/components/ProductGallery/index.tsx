@@ -17,11 +17,11 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
     images.find((img) => img.main === true).url
   );
 
-  const [sliderDirection, setSliderDirection] = useState<
-    "vertical" | "horizontal"
-  >("vertical");
-  const [sliderPerView, setSliderPerView] = useState<number | 'auto'>(3);
-  const [sliderCenteredSlides, setSliderCenteredSlides] = useState<number | 'auto'>(3);
+  // const [sliderDirection, setSliderDirection] = useState<
+  //   "vertical" | "horizontal"
+  // >("vertical");
+  // const [sliderPerView, setSliderPerView] = useState<number | 'auto'>(3);
+  // const [sliderCenteredSlides, setSliderCenteredSlides] = useState<number | 'auto'>(3);
 
   function changeMainImg(e: any) {
     let selectedImgId = e.target.closest(".swiper-slide").dataset.id;
@@ -29,25 +29,25 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
     setMainImgUrl(images.find((img) => img.id == selectedImgId).url);
   }
 
-  useEffect(() => {
-    if (window.innerWidth <= 992) {
-      setSliderDirection("horizontal");
-      setSliderPerView('auto');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.innerWidth <= 992) {
+  //     setSliderDirection("horizontal");
+  //     setSliderPerView('auto');
+  //   }
+  // }, []);
 
-  const mediaQueryList = window.matchMedia("(max-width: 992px)");
-  mediaQueryList.addEventListener("change", (event) => {
-    if (event.matches) {
-      setSliderDirection("horizontal");
-      setSliderPerView('auto');
-    } else {
-      setSliderDirection("vertical");
-      setSliderPerView(3);
-    }
-  });
+  // const mediaQueryList = window.matchMedia("(max-width: 992px)");
+  // mediaQueryList.addEventListener("change", (event) => {
+  //   if (event.matches) {
+  //     setSliderDirection("horizontal");
+  //     setSliderPerView('auto');
+  //   } else {
+  //     setSliderDirection("vertical");
+  //     setSliderPerView(3);
+  //   }
+  // });
 
-  console.log(sliderDirection);
+  // console.log(sliderDirection);
 
   return (
     <S.ProductGallery>
@@ -58,14 +58,22 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
 
         <Swiper
           modules={[Navigation]}
-          direction={sliderDirection}
-          slidesPerView={sliderPerView}
           navigation={{
             prevEl: ".swiper-button-prev",
             nextEl: ".swiper-button-next",
           }}
-          centeredSlides={true}
           spaceBetween={0}
+          breakpoints={{
+            1: {
+          slidesPerView:'auto',
+          direction:'horizontal',
+          centeredSlides:true
+            },
+            992: {
+               slidesPerView:3,
+          direction:'vertical'
+            },
+          }}
           style={{ height: "490px" }}
         >
           {images.map((img) => {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProductMain = styled.div`
+export const Cart = styled.div`
 
 
 `

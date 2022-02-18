@@ -81,6 +81,9 @@ export const ImgWrap = styled.div<{ active: boolean }>`
 			height: 100%;
 			border-color: transparent;
 	}
+	@media only screen and (max-width:768px) {
+		width: 100%;
+	}
 `;
 
 export const Right = styled.div`
