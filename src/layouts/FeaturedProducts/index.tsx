@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as G from "../../globalStyle";
 import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
@@ -7,6 +7,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
 const FeaturedProducts: React.FC = () => {
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		async function getProducts() {
+			fetch("https://fakestoreapi.com/products")
+				.then((response) => response.json())
+				.then((json) => setProducts(json));
+		}
+
+		getProducts();
+	}, []);
 	return (
 		<S.FeaturedProducts>
 			<G.SectionTitle>Featured Products</G.SectionTitle>
@@ -29,48 +39,15 @@ const FeaturedProducts: React.FC = () => {
 						},
 					}}
 				>
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
-					<SwiperSlide>
-						<S.Inner>
-							<ProductCard></ProductCard>
-						</S.Inner>
-					</SwiperSlide>
-
+					{products.map((product) => {
+						return (
+							<SwiperSlide key={product.id}>
+								<S.Inner>
+									<ProductCard product={product} />
+								</S.Inner>
+							</SwiperSlide>
+						);
+					})}
 					<div className="swiper-pagination"></div>
 				</Swiper>
 			</G.Container>

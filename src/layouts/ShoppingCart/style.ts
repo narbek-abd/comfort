@@ -105,28 +105,6 @@ margin-left: 90px;
 
 export const Count = styled.div`
 margin-left: 122px;
-display: flex;
-align-items: center;
-
-input {
-	font-size: 18px;
-text-align: center;
-cursor: pointer;
-width: 42px;
-height: 24px;
-}
-button {
-	font-size: 18px;
-line-height: 24px;
-background: 0 0;
-padding: 0;
-text-align: center;
-cursor: pointer;
-width: 40px;
-height: 40px;
-border: 1px solid #d5d5d5;
-border-radius: 100%;
-}
 
 @media only screen and (max-width:768px) {
 margin-left: 70px;

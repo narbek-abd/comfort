@@ -12,7 +12,7 @@ const TabsProducts: React.FC = () => {
   return (
     <S.TabsProducts>
       <G.SectionTitle>Leatest Products</G.SectionTitle>
-      
+
       <G.Container>
         <S.Inner>
           <S.tabs>
@@ -30,9 +30,9 @@ const TabsProducts: React.FC = () => {
           </S.tabs>
 
           <S.Products>
+            {/*  <ProductCard></ProductCard>
             <ProductCard></ProductCard>
-            <ProductCard></ProductCard>
-            <ProductCard></ProductCard>
+            <ProductCard></ProductCard>*/}
           </S.Products>
         </S.Inner>
       </G.Container>

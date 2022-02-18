@@ -6,9 +6,12 @@ import * as S from "./style";
 import { Icon } from "../../components/Icon";
 import { Link } from "react-router-dom";
 
-interface ProductMainProps {}
+interface ProductMainProps {
+    product: any
+}
 
-const ProductMain: React.FC<ProductMainProps> = () => {
+const ProductMain: React.FC<ProductMainProps> = ({ product }) => {
+
   return (
     <S.ProductMain>
       <G.Container>
@@ -17,16 +20,16 @@ const ProductMain: React.FC<ProductMainProps> = () => {
             <ProductGallery images={images} />
           </S.Left>
           <S.Right>
-            <S.Name>Playwood arm chair</S.Name>
+            <S.Name>{product.title}</S.Name>
 
             <S.Rating>
               <S.Stars>⭐️⭐️⭐️⭐️⭐️</S.Stars>
 
-              <span>(22)</span>
+              <span>({product.stock})</span>
             </S.Rating>
 
             <S.Price>
-              $32.00
+              {product.price}
               <span>$40.00</span>
             </S.Price>
 
@@ -39,8 +42,7 @@ const ProductMain: React.FC<ProductMainProps> = () => {
             </S.Color>
 
             <S.Desc>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              tellus porttitor purus, et volutpat sit.
+              {product.description}
             </S.Desc>
 
             <S.Actions>
