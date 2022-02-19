@@ -3,6 +3,7 @@ import ProductMain from "../../layouts/ProductMain";
 
 import * as S from "./style";
 import { useParams } from "react-router-dom";
+import Header from "../../layouts/Header";
 
 const Product: React.FC = () => {
   const params = useParams();
@@ -14,7 +15,12 @@ const Product: React.FC = () => {
       .then((json) => setProduct(json));
   }, []);
 
-  return <S.Product>{product && <ProductMain product={product} />}</S.Product>;
+  return (
+    <>
+      <Header />
+      <S.Product>{product && <ProductMain product={product} />}</S.Product>;
+    </>
+  );
 };
 
 export default Product;

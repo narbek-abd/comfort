@@ -9,8 +9,8 @@ import { Pagination } from "swiper";
 const FeaturedProducts: React.FC = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
-		async function getProducts() {
-			fetch("https://fakestoreapi.com/products")
+		function getProducts() {
+			fetch("https://dummyjson.com/products")
 				.then((response) => response.json())
 				.then((json) => setProducts(json));
 		}

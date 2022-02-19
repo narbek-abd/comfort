@@ -7,10 +7,25 @@ import { Icon } from "../../components/Icon";
 import { Link } from "react-router-dom";
 
 interface ProductMainProps {
-    product: any
+  product: any;
 }
 
 const ProductMain: React.FC<ProductMainProps> = ({ product }) => {
+  function addToCart() {
+    let products: any = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let productExists = products.find(
+      (productItem: any) => productItem.id == product.id
+    );
+
+    if (productExists) {
+      productExists.quantity++;
+    } else {
+      products.push({ id: product.id, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(products));
+  }
 
   return (
     <S.ProductMain>
@@ -41,12 +56,10 @@ const ProductMain: React.FC<ProductMainProps> = ({ product }) => {
               </div>
             </S.Color>
 
-            <S.Desc>
-              {product.description}
-            </S.Desc>
+            <S.Desc>{product.description}</S.Desc>
 
             <S.Actions>
-              <G.Button>Add To Cart</G.Button>
+              <G.Button onClick={addToCart}>Add To Cart</G.Button>
 
               <S.Like>
                 <Icon name="heart" />
