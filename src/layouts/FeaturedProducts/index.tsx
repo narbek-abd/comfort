@@ -12,7 +12,7 @@ const FeaturedProducts: React.FC = () => {
 		function getProducts() {
 			fetch("https://dummyjson.com/products")
 				.then((response) => response.json())
-				.then((json) => setProducts(json));
+				.then((json) => setProducts(json.products));
 		}
 
 		getProducts();
