@@ -61,14 +61,14 @@ const CartProductItem: React.FC<CartProductItemProps> = ({
           <S.CurrentPrice>{product.price}</S.CurrentPrice>
           <S.Count>
             <Counter
-              min={0}
-              max={15}
+              min={1}
+              max={product.stock}
               current={storageProduct.quantity}
               onChange={onCountChange}
             />
           </S.Count>
 
-          <S.Total>£219.00</S.Total>
+          <S.Total>{product.price * storageProduct.quantity}</S.Total>
         </S.Price>
 
         <S.RemoveProductBtn onClick={removeProduct}>X</S.RemoveProductBtn>

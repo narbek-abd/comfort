@@ -22,7 +22,6 @@ const ShoppingCart: React.FC = () => {
           <S.Left>
             <S.ProductList>
               {storageProducts.map((storageProduct) => {
-                console.log(storageProducts)
                 return (
                   <CartProductItem
                     key={storageProduct.id}
