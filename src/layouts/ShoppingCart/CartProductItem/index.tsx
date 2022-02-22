@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 import Counter from "../../../components/Counter";
+import { removeFromCart, changeProductCount } from "../../../store/redusers/CartReduser";
+import { useDispatch } from 'react-redux';
+
 
 interface CartProductItemProps {
   storageProduct: any;
-  productMutated: (products: any) => void;
 }
 
 const CartProductItem: React.FC<CartProductItemProps> = ({
   storageProduct,
-  productMutated,
 }) => {
   const [product, setProduct] = useState(null);
+   const dispatch = useDispatch();
+
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${storageProduct.id}`)
@@ -21,24 +24,11 @@ const CartProductItem: React.FC<CartProductItemProps> = ({
   }, []);
 
   function onCountChange(count: number) {
-    let products: any = JSON.parse(localStorage.getItem("cart")) || [];
-    products.forEach((productItem: any) => {
-      if (productItem.id === product.id) {
-        productItem.quantity = count;
-      }
-    });
-
-     localStorage.setItem("cart", JSON.stringify(products));
-    productMutated(products);
+        dispatch(changeProductCount(product, count))
   }
 
   function removeProduct() {
-    let products: any = JSON.parse(localStorage.getItem("cart")) || [];
-    let filteredProductList = products.filter(
-      (productItem: any) => productItem.id !== product.id
-    );
-    localStorage.setItem("cart", JSON.stringify(filteredProductList));
-    productMutated(filteredProductList);
+    dispatch(removeFromCart(product));
   }
 
   return (

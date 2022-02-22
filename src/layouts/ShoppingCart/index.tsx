@@ -3,17 +3,16 @@ import * as G from "../../globalStyle";
 
 import * as S from "./style";
 import CartProductItem from "./CartProductItem";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/redusers";
 
 const ShoppingCart: React.FC = () => {
   const [storageProducts, setStorageProducts] = useState([]);
+  let cart = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
-    setStorageProducts(JSON.parse(localStorage.getItem("cart")) || []);
-  }, []);
-
-  function productMutated(products: any) {
-    setStorageProducts(products);
-  }
+    setStorageProducts(JSON.parse(cart.products));
+  }, [cart]);
 
   return (
     <S.ShoppingCart>
@@ -26,7 +25,6 @@ const ShoppingCart: React.FC = () => {
                   <CartProductItem
                     key={storageProduct.id}
                     storageProduct={storageProduct}
-                    productMutated={productMutated}
                   />
                 );
               })}
