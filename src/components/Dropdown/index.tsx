@@ -10,8 +10,8 @@ const Dropdown: FC<DropdownProps> = ({ title, children }) => {
 	const el = useRef(null);
 
 	useEffect(() => {
-		function toggleClick(e: any) {
-			const dropdown = e.target.closest(".dropdown");
+		function toggleClick(e: MouseEvent) {
+			const dropdown = (e.target as HTMLElement).closest(".dropdown");
 			if (dropdown && dropdown !== el.current) {
 				setOpenDropdown(false);
 			}

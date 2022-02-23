@@ -42,10 +42,10 @@ const MultiMenu: React.FC<MultiMenuProps> = ({ list }) => {
     });
   }, []);
 
-  function changeCurrentList(e: any) {
-    let item = e.target.closest("li");
-    let childListId = item.dataset.listId;
-    let parentListId = item.dataset.parentId;
+  function changeCurrentList(e: React.MouseEvent) {
+    let item = (e.target as HTMLElement).closest("li");
+    let childListId = +item.dataset.listId;
+    let parentListId = +item.dataset.parentId;
 
     if (parentListId) {
       // prevList текщуго prevList

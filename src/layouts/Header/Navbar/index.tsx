@@ -35,15 +35,15 @@ const Navbar: React.FC = () => {
 		}
 	}
 
-	function stop(e: any) {
+	function stop(e: React.MouseEvent) {
 		if (window.innerWidth <= 768) {
 			e.stopPropagation();
 		}
 	}
 
 	useEffect(() => {
-		function handleClick(e: any) {
-			if (!e.target.closest(".catalog-menu")) {
+		function handleClick(e: MouseEvent) {
+			if (!(e.target as HTMLElement).closest(".catalog-menu")) {
 				setCatalogMenuVisible(false);
 			}
 		}

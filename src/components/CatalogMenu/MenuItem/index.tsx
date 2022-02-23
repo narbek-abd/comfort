@@ -4,7 +4,7 @@ import * as S from "./style";
 
 interface CatalogMenuItemProps {
   item: { id: number; name: string; children?: any };
-  changeFocusedItem: any;
+  changeFocusedItem: (e: React.MouseEvent) => void;
   focusedItemId: number | null;
 }
 

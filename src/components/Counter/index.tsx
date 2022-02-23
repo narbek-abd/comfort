@@ -60,8 +60,8 @@ const Counter: React.FC<CounterProps> = ({ min, max, current, onChange }) => {
     onChange(+newValue);
   }
 
-  function changeCount(e: any) {
-    let value = e.target.value;
+  function changeCount(e: React.SyntheticEvent) {
+    let value = (e.target as HTMLInputElement).value;
 
     if (value == "") {
       minusBtn.current.disabled = true;
@@ -74,20 +74,20 @@ const Counter: React.FC<CounterProps> = ({ min, max, current, onChange }) => {
     let isNumber = /^\d*\.?\d*$/.test(value);
     if (!isNumber) return;
 
-    if (value > max) {
+    if (+value > max) {
       setWarning(`Доступно только ${max}`);
       return;
     }
 
-    if (value < min) {
+    if (+value < min) {
       setCount(min);
       onChange(+min);
       minusBtn.current.disabled = true;
       return;
     }
 
-    minusBtn.current.disabled = value == min;
-    plusBtn.current.disabled = value == max;
+    minusBtn.current.disabled = +value == min;
+    plusBtn.current.disabled = +value == max;
 
     setWarning("");
     setCount(+value);

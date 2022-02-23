@@ -18,15 +18,15 @@ const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
 	const dropdownListRef = useRef(null);
 
 	useEffect(() => {
-		function toggleClick(e: any) {
-			const dropdown = e.target.closest(".navbar-dropdown");
+		function toggleClick(e: MouseEvent) {
+			const dropdown = (e.target as HTMLElement).closest(".navbar-dropdown");
 			if (!dropdown) {
 				slideUp(dropdownListRef.current, 200);
 				return;
 			}
 
-			// Если переключатель вложенный, не скрываем родительский элемент
-			if (e.target.closest("span").dataset.level >= 1) return;
+			// Если переключатель вложенный, то не скрываем родительский элемент
+			if (+(e.target as HTMLElement).closest("span")?.dataset.level >= 1) return;
 
 			if (dropdown !== dropdownRef.current) {
 				slideUp(dropdownListRef.current, 200);

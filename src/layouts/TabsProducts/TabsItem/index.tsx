@@ -16,14 +16,14 @@ const TabsItem: React.FC<TabsItemProps> = ({
 
   const el = useRef(null);
 
-  function handleClick(e: any) {
+  function handleClick(e: React.MouseEvent) {
     setActive(true);
-    filter(e.target.dataset.tabid);
+    filter(+(e.target as HTMLElement).dataset.tabid);
   }
 
   useEffect(() => {
-    function toggleClick(e: any) {
-      if (!e.target.dataset.tabid) return;
+    function toggleClick(e: MouseEvent) {
+      if (!(e.target as HTMLElement).dataset.tabid) return;
 
       if (e.target !== el.current) {
         setActive(false);
