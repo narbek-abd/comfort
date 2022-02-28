@@ -13,7 +13,7 @@ interface ProductMainProps {
   product: any;
 }
 
-const ProductMain: React.FC<ProductMainProps> = ({ product }) => {
+const ProductMain = ({ product }: ProductMainProps) => {
   const dispatch = useDispatch();
 
   function addToCart() {

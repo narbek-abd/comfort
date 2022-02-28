@@ -8,7 +8,7 @@ import { RootState } from "../../../store/redusers";
 import { getTotalQuantity } from "../../../store/redusers/CartReduser";
 
 
-const HeaderTop: React.FC = () => {
+const HeaderTop = () => {
 	let cart = useSelector((state: RootState) => state.cart);
 	let [cartProductsTotal, setCartProductsTotal] = useState(0);
 

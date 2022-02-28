@@ -8,11 +8,11 @@ interface CatalogMenuItemProps {
   focusedItemId: number | null;
 }
 
-const MenuItem: React.FC<CatalogMenuItemProps> = ({
+const MenuItem = ({
   item,
   changeFocusedItem,
   focusedItemId,
-}) => {
+}: CatalogMenuItemProps) => {
   return (
     <S.MenuItem
       focused={focusedItemId == item.id}

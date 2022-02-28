@@ -7,7 +7,7 @@ interface ImageZoomProps {
   [params: string]: any;
 }
 
-const ImageZoom: React.FC<ImageZoomProps> = ({ src, ...params }) => {
+const ImageZoom = ({ src, ...params }: ImageZoomProps) => {
   const [mainImgTransform, setMainImgTransform] = useState(
     `translate(-50%, -50%) scale(1)`
   );

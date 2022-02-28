@@ -7,7 +7,7 @@ import HeaderTop from "./HeaderTop";
 import { Icon } from "../../components/Icon";
 import SearchBar from "./SearchBar";
 
-const Header: React.FC = () => {
+const Header = () => {
 	return (
 		<>
 			<HeaderTop />

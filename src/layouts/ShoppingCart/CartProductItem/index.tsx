@@ -10,9 +10,9 @@ interface CartProductItemProps {
   storageProduct: any;
 }
 
-const CartProductItem: React.FC<CartProductItemProps> = ({
+const CartProductItem = ({
   storageProduct,
-}) => {
+}: CartProductItemProps) => {
   const [product, setProduct] = useState(null);
    const dispatch = useDispatch();
 

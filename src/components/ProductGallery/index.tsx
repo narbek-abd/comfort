@@ -12,7 +12,7 @@ interface ProductGalleryProps {
   images: Array<{ id: number; url: string; main?: boolean }>;
 }
 
-const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
+const ProductGallery = ({ images }: ProductGalleryProps) => {
   const [mainImgUrl, setMainImgUrl] = useState(
     images.find((img) => img.main === true).url
   );

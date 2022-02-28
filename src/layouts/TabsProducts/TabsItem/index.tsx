@@ -4,13 +4,14 @@ import * as S from "./style";
 interface TabsItemProps {
   filterById: number;
   filter: (tabid: number) => void;
+  children: React.ReactNode;
 }
 
-const TabsItem: React.FC<TabsItemProps> = ({
+const TabsItem = ({
   children,
   filterById,
   filter,
-}) => {
+}: TabsItemProps) => {
   
   let [active, setActive] = useState(false);
 

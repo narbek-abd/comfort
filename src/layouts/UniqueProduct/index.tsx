@@ -4,7 +4,7 @@ import * as G from "../../globalStyle";
 import unique from "../../assets/img/unique-product.jpg";
 
 
-const UniqueProduct: React.FC = () => {
+const UniqueProduct = () => {
   return (
     <S.UniqueProduct>
       <G.Container>

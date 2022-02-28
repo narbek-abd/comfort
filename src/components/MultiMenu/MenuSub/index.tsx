@@ -19,7 +19,7 @@ interface MenuSubProps {
   parentName?: string;
 }
 
-const MenuSub: React.FC<MenuSubProps> = ({
+const MenuSub = ({
   list,
   childListId = 0,
   changeCurrentList,
@@ -27,7 +27,7 @@ const MenuSub: React.FC<MenuSubProps> = ({
   prevListId,
   parentId = null,
   parentName,
-}) => {
+}: MenuSubProps) => {
   return (
     <>
       <S.MenuSub

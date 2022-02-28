@@ -8,10 +8,10 @@ interface CatalogMenuChildrenProps {
   focusedItemId: number;
 }
 
-const SubMenuList: React.FC<CatalogMenuChildrenProps> = ({
+const SubMenuList = ({
   list,
   focusedItemId,
-}) => {
+}: CatalogMenuChildrenProps) => {
   const [activeCategoryList, setActiveCategoryList] = useState([]);
 
   useEffect(() => {

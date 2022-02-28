@@ -9,7 +9,7 @@ interface CounterProps {
   onChange: (count: number) => void;
 }
 
-const Counter: React.FC<CounterProps> = ({ min, max, current, onChange }) => {
+const Counter = ({ min, max, current, onChange }: CounterProps) => {
   const [count, setCount] = useState<number | "">(current);
   const [warning, setWarning] = useState("");
   const minusBtn = useRef(null);

@@ -5,7 +5,7 @@ import * as S from "./style";
 import { useParams } from "react-router-dom";
 import Header from "../../layouts/Header";
 
-const Product: React.FC = () => {
+const Product = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
 

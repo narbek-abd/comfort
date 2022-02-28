@@ -9,10 +9,10 @@ interface NavbarDropdownProps {
 	childLinks: any;
 }
 
-const NavbarDropdown: React.FC<NavbarDropdownProps> = ({
+const NavbarDropdown = ({
 	link,
 	childLinks,
-}) => {
+}: NavbarDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef(null);
 	const dropdownListRef = useRef(null);

@@ -6,7 +6,7 @@ import CartProductItem from "./CartProductItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
 
-const ShoppingCart: React.FC = () => {
+const ShoppingCart = () => {
   const [storageProducts, setStorageProducts] = useState([]);
   let cart = useSelector((state: RootState) => state.cart);
 

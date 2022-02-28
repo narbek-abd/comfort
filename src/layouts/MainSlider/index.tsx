@@ -9,7 +9,7 @@ import * as S from "./style";
 import mainImg from "../../assets/img/main.jpg";
 import * as G from "../../globalStyle";
 
-const MainSlider: React.FC = () => {
+const MainSlider = () => {
 	return (
 		<S.MainSlider>
 			<Swiper

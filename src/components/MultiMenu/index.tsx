@@ -14,7 +14,7 @@ interface MultiMenuProps {
   }>;
 }
 
-const MultiMenu: React.FC<MultiMenuProps> = ({ list }) => {
+const MultiMenu = ({ list }: MultiMenuProps) => {
   let uniqueId = 1;
 
   // function giveChildListUniqueId(list: any) {

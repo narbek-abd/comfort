@@ -3,9 +3,10 @@ import "./style.scss";
 
 interface DropdownProps {
 	title: any;
+	children: React.ReactNode;
 }
 
-const Dropdown: FC<DropdownProps> = ({ title, children }) => {
+const Dropdown = ({ title, children }: DropdownProps) => {
 	const [openedDropdown, setOpenDropdown] = useState(false);
 	const el = useRef(null);
 

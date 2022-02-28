@@ -13,14 +13,14 @@ interface MenuItemProps {
   parentId: number;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({
+const MenuItem = ({
   item,
   id,
   changeCurrentList,
   activeListId,
   parentId,
   prevListId,
-}) => {
+}: MenuItemProps) => {
   return (
     <S.MenuItem data-list-id={id} onClick={changeCurrentList}>
       {item["children"] ? (

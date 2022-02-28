@@ -8,7 +8,7 @@ import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";
 import MultiMenu from "../../../components/MultiMenu";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
 	let [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
 	const [isdeskTop, setIsDeskTop] = useState(true);

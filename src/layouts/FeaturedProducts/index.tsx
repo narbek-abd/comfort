@@ -6,7 +6,7 @@ import ProductCard from "../../components/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
-const FeaturedProducts: React.FC = () => {
+const FeaturedProducts = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		function getProducts() {
