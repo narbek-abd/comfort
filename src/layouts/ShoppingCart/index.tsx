@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   let cart = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
-    setStorageProducts(JSON.parse(cart.products));
+    setStorageProducts(cart.products);
   }, [cart]);
 
   return (

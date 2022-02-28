@@ -7,7 +7,7 @@ import { Icon } from "../../components/Icon";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/redusers';
-import { addProduct } from '../../store/redusers/CartReduser';
+import { addProduct } from '../../store/action-creators/Cart';
 
 interface ProductMainProps {
   product: any;

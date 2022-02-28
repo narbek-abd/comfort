@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 import Counter from "../../../components/Counter";
-import { removeFromCart, changeProductCount } from "../../../store/redusers/CartReduser";
+import { removeFromCart, changeProductCount } from "../../../store/action-creators/Cart";
 import { useDispatch } from 'react-redux';
 
 

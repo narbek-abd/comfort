@@ -5,7 +5,7 @@ import { Icon } from "../../../components/Icon";
 import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
-import { getTotalQuantity } from "../../../store/redusers/CartReduser";
+import { getTotalQuantity } from "../../../store/action-creators/Cart";
 
 
 const HeaderTop = () => {
