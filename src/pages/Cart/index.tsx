@@ -4,7 +4,7 @@ import Header from '../../layouts/Header';
 import ShoppingCart from '../../layouts/ShoppingCart';
 
 
-const Cart: React.FC = () => {
+const Cart = () => {
   return (
     <S.Cart>
     <Header />

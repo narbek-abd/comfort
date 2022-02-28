@@ -10,12 +10,11 @@ interface CatalogMenuProps {
   activeItemId?: number
 }
 
-const CatalogMenu: React.FC<CatalogMenuProps> = ({ list, isVisible = true, activeItemId = 1 }) => {
+const CatalogMenu = ({ list, isVisible = true, activeItemId = 1 }: CatalogMenuProps) => {
   const [focusedItemId, setFocusedItemId] = useState(activeItemId);
 
-  function changeFocusedItem(e: any) {
-    console.log(e)
-    setFocusedItemId(e.currentTarget.dataset.itemId);
+  function changeFocusedItem(e: React.MouseEvent) {
+    setFocusedItemId(+(e.currentTarget as HTMLElement).dataset.itemId);
   }
 
   return (

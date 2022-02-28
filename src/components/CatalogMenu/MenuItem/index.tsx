@@ -4,15 +4,15 @@ import * as S from "./style";
 
 interface CatalogMenuItemProps {
   item: { id: number; name: string; children?: any };
-  changeFocusedItem: any;
+  changeFocusedItem: (e: React.MouseEvent) => void;
   focusedItemId: number | null;
 }
 
-const MenuItem: React.FC<CatalogMenuItemProps> = ({
+const MenuItem = ({
   item,
   changeFocusedItem,
   focusedItemId,
-}) => {
+}: CatalogMenuItemProps) => {
   return (
     <S.MenuItem
       focused={focusedItemId == item.id}

@@ -12,42 +12,18 @@ interface ProductGalleryProps {
   images: Array<{ id: number; url: string; main?: boolean }>;
 }
 
-const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
+const ProductGallery = ({ images }: ProductGalleryProps) => {
   const [mainImgUrl, setMainImgUrl] = useState(
     images.find((img) => img.main === true).url
   );
 
-  // const [sliderDirection, setSliderDirection] = useState<
-  //   "vertical" | "horizontal"
-  // >("vertical");
-  // const [sliderPerView, setSliderPerView] = useState<number | 'auto'>(3);
-  // const [sliderCenteredSlides, setSliderCenteredSlides] = useState<number | 'auto'>(3);
-
-  function changeMainImg(e: any) {
-    let selectedImgId = e.target.closest(".swiper-slide").dataset.id;
+  function changeMainImg(e: React.MouseEvent) {
+    let selectedImgId = +(
+      (e.target as HTMLElement).closest(".swiper-slide") as HTMLElement
+    ).dataset.id;
 
     setMainImgUrl(images.find((img) => img.id == selectedImgId).url);
   }
-
-  // useEffect(() => {
-  //   if (window.innerWidth <= 992) {
-  //     setSliderDirection("horizontal");
-  //     setSliderPerView('auto');
-  //   }
-  // }, []);
-
-  // const mediaQueryList = window.matchMedia("(max-width: 992px)");
-  // mediaQueryList.addEventListener("change", (event) => {
-  //   if (event.matches) {
-  //     setSliderDirection("horizontal");
-  //     setSliderPerView('auto');
-  //   } else {
-  //     setSliderDirection("vertical");
-  //     setSliderPerView(3);
-  //   }
-  // });
-
-  // console.log(sliderDirection);
 
   return (
     <S.ProductGallery>
@@ -65,13 +41,13 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
           spaceBetween={0}
           breakpoints={{
             1: {
-          slidesPerView:'auto',
-          direction:'horizontal',
-          centeredSlides:true
+              slidesPerView: "auto",
+              direction: "horizontal",
+              centeredSlides: true,
             },
             992: {
-               slidesPerView:3,
-          direction:'vertical'
+              slidesPerView: 3,
+              direction: "vertical",
             },
           }}
           style={{ height: "490px" }}

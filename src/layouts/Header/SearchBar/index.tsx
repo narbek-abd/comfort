@@ -5,7 +5,7 @@ import { Icon } from "../../../components/Icon";
 import * as G from "../../../globalStyle";
 
 
-const SearchBar: React.FC = () => {
+const SearchBar = () => {
 	return (
 		<S.SearchBar>
 			<G.Input square type="text" />

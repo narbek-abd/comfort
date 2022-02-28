@@ -4,7 +4,7 @@ import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
 import TabsItem from "./TabsItem";
 
-const TabsProducts: React.FC = () => {
+const TabsProducts = () => {
   function filter(id: number) {
     console.log(id);
   }

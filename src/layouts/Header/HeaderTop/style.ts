@@ -48,9 +48,31 @@ export const Left = styled.div`
 	}
 `;
 
+export const CartCount = styled.p`
+	position: absolute;
+	top: 0;
+	right: -10px;
+	padding-right: 0;
+	font-size: 12px;
+	background-color: var(--color-dark-blue);
+	border-radius: 100px;
+	height: 16px;
+	width: 16px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	span {
+		font-size: 12px;
+	}
+`;
+
 export const UserButton = styled.div`
 	display: flex;
 	align-items: center;
+	a {
+		position: relative;
+	}
 	svg {
 		margin-left: 5px;
 	}
@@ -93,6 +115,12 @@ export const Right = styled.div`
 			a {
 				padding-right: 0;
 				padding-left: 10px;
+			}
+		}
+		${CartCount} {
+			span {
+				height: auto;
+				padding-right: 0;
 			}
 		}
 	}

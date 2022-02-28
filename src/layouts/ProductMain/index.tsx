@@ -5,26 +5,19 @@ import ProductGallery from "../../components/ProductGallery";
 import * as S from "./style";
 import { Icon } from "../../components/Icon";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/redusers';
+import { addProduct } from '../../store/redusers/CartReduser';
 
 interface ProductMainProps {
   product: any;
 }
 
-const ProductMain: React.FC<ProductMainProps> = ({ product }) => {
+const ProductMain = ({ product }: ProductMainProps) => {
+  const dispatch = useDispatch();
+
   function addToCart() {
-    let products: any = JSON.parse(localStorage.getItem("cart")) || [];
-
-    let productExists = products.find(
-      (productItem: any) => productItem.id == product.id
-    );
-
-    if (productExists) {
-      productExists.quantity++;
-    } else {
-      products.push({ id: product.id, quantity: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(products));
+    dispatch(addProduct(product))
   }
 
   return (

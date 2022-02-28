@@ -8,7 +8,7 @@ import support from "../../assets/icons/support.svg";
 import * as S from "./style";
 import { Icon } from "../../components/Icon";
 
-const Advantages: React.FC = () => {
+const Advantages = () => {
   return (
     <S.Advantages>
       <G.SectionTitle>What Shopex Offer!</G.SectionTitle>

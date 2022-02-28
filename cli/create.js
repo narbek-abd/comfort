@@ -27,11 +27,10 @@ import * as G from "../../globalStyle";
 import * as S from "./style";
 
 interface ${componentName}Props {
-  link: any;
-  hasChildren: boolean;
+  children?: React.ReactNode;
 }
 
-const ${componentName}: React.FC<${componentName}Props> = () => {
+const ${componentName} = ({children} : ${componentName}Props) => {
   return (
     <S.${componentName}>
       <G.Container>

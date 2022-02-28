@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as G from "../../../globalStyle";
 import * as S from "./style";
-import { Icon } from '../../../components/Icon';
+import { Icon } from "../../../components/Icon";
 import Dropdown from "../../../components/Dropdown";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/redusers";
+import { getTotalQuantity } from "../../../store/redusers/CartReduser";
 
-const HeaderTop: React.FC = () => {
+
+const HeaderTop = () => {
+	let cart = useSelector((state: RootState) => state.cart);
+	let [cartProductsTotal, setCartProductsTotal] = useState(0);
+
+	useEffect(() => {
+		let totalQuant = getTotalQuantity()
+
+		setCartProductsTotal(totalQuant);
+	}, [cart]);
+
 	return (
 		<S.HeaderTop>
 			<G.Container>
@@ -26,32 +39,50 @@ const HeaderTop: React.FC = () => {
 					<S.Right>
 						<S.UserButton>
 							<Dropdown
-								title={ <> English <Icon name="arrow" /></> } >
+								title={
+									<>
+										{" "}
+										English <Icon name="arrow" />
+									</>
+								}
+							>
 								<li>Russian</li>
 							</Dropdown>
 						</S.UserButton>
 
 						<S.UserButton>
 							<Dropdown
-								title={ <> USD <Icon name="arrow" /></> } >
+								title={
+									<>
+										{" "}
+										USD <Icon name="arrow" />
+									</>
+								}
+							>
 								<li>Euro</li>
 							</Dropdown>
 						</S.UserButton>
 
 						<S.UserButton>
-							<a href="#">Login <Icon name="user" /></a>
+							<a href="#">
+								Login <Icon name="user" />
+							</a>
 						</S.UserButton>
 
 						<S.UserButton>
-							<a href="#">Wishlist <Icon name="heart" /></a>
+							<a href="#">
+								Wishlist <Icon name="heart" />
+							</a>
 						</S.UserButton>
 
 						<S.UserButton>
-						<a href="#">
-							<Icon name="basket" />
-						</a>
+							<a href="#">
+								<Icon name="basket" />
+								<S.CartCount>
+									<span>{cartProductsTotal}</span>
+								</S.CartCount>
+							</a>
 						</S.UserButton>
-
 					</S.Right>
 				</S.Inner>
 			</G.Container>

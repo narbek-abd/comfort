@@ -8,7 +8,7 @@ interface NavbarItemProps {
 	hasChildren: boolean;
 }
 
-const NavbarItem: React.FC<NavbarItemProps> = ({ link, hasChildren }) => {
+const NavbarItem = ({ link, hasChildren }: NavbarItemProps) => {
 	return (
 		<S.NavbarItem>
 			{hasChildren ? (

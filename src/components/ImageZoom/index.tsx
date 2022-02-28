@@ -7,23 +7,23 @@ interface ImageZoomProps {
   [params: string]: any;
 }
 
-const ImageZoom: React.FC<ImageZoomProps> = ({ src, ...params }) => {
+const ImageZoom = ({ src, ...params }: ImageZoomProps) => {
   const [mainImgTransform, setMainImgTransform] = useState(
     `translate(-50%, -50%) scale(1)`
   );
   const [mainImgtransformOrigin, setMainImgtransformOrigin] = useState("");
 
-  function handleMouseOver(e: any) {
+  function handleMouseOver(e: React.MouseEvent) {
     setMainImgTransform(`translate(-50%, -50%) scale(2, 2)`);
   }
 
-  function handleMouseOut(e: any) {
+  function handleMouseOut(e: React.MouseEvent) {
     setMainImgTransform(`translate(-50%, -50%) scale(1)`);
     setMainImgtransformOrigin("0% 0%");
   }
 
-  function handleMouseMove(e: any) {
-    const { left, top, width, height } = e.target.getBoundingClientRect();
+  function handleMouseMove(e: React.MouseEvent) {
+    const { left, top, width, height } = (e.target as HTMLElement).getBoundingClientRect();
     const x = ((e.pageX - (left + window.pageXOffset)) / width) * 100;
     const y = ((e.pageY - (top + window.pageYOffset)) / height) * 100;
 
