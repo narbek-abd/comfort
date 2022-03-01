@@ -6,15 +6,16 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 
 interface ProductCardProps {
-	product: { id: number; title: string; price: number; description: string };
+	product: { id: number; title: string; price: number; description: string; thumbnail: string };
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+	console.log(product)
 	return (
 		<S.ProductCard>
 			<Link to={`/product/${product.id}`}>
 				<S.Img>
-					<img src={productImg} alt="" />
+					<img src={product.thumbnail} alt="" />
 				</S.Img>
 
 				<S.Inf>

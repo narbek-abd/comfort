@@ -15,7 +15,7 @@ const Header = () => {
 			<S.Header>
 				<G.Container>
 					<S.Inner>
-						<G.Logo href="/" className="logo">
+						<G.Logo to="/" className="logo">
 							<Icon name="logo" />
 						</G.Logo>
 

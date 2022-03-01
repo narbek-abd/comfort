@@ -6,7 +6,7 @@ import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
 import { getTotalQuantity } from "../../../store/action-creators/Cart";
-
+import { Link } from 'react-router-dom';
 
 const HeaderTop = () => {
 	let cart = useSelector((state: RootState) => state.cart);
@@ -76,12 +76,12 @@ const HeaderTop = () => {
 						</S.UserButton>
 
 						<S.UserButton>
-							<a href="#">
+							<Link to="/cart">
 								<Icon name="basket" />
 								<S.CartCount>
 									<span>{cartProductsTotal}</span>
 								</S.CartCount>
-							</a>
+							</Link>
 						</S.UserButton>
 					</S.Right>
 				</S.Inner>

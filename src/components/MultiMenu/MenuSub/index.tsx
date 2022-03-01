@@ -4,13 +4,13 @@ import MenuItem from "../MenuItem";
 import { Icon } from "../../Icon";
 
 interface MenuSubProps {
-  list: Array<{
+  list: {
     id: number;
     name: string;
     children?: any;
     level: number;
     childListId?: number;
-  }>;
+  }[];
   childListId?: number;
   changeCurrentList: (event: React.MouseEvent<HTMLElement>) => void;
   activeListId: number;

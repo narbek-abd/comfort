@@ -5,7 +5,7 @@ import SubMenuList from "./SubMenuList";
 import { Icon } from "../Icon";
 
 interface CatalogMenuProps {
-  list: Array<{ id: number; name: string; children?: any }>;
+  list: { id: number; name: string; children?: any }[];
   isVisible?: boolean;
   activeItemId?: number
 }

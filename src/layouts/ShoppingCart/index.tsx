@@ -33,8 +33,6 @@ const ShoppingCart = () => {
                 <S.CartEmpty>Корзина пуста</S.CartEmpty>
               )}
             </S.ProductList>
-
-            {storageProducts.length > 0 && <G.Button>Clear Curt</G.Button>}
           </S.Left>
           <S.Right></S.Right>
         </S.Inner>

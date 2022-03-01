@@ -10,7 +10,7 @@ const FeaturedProducts = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		function getProducts() {
-			fetch("https://dummyjson.com/products")
+			fetch("https://dummyjson.com/products?limit=10")
 				.then((response) => response.json())
 				.then((json) => setProducts(json.products));
 		}

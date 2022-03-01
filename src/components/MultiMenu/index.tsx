@@ -5,13 +5,13 @@ import MenuItem from "./MenuItem";
 import MenuSub from "./MenuSub";
 
 interface MultiMenuProps {
-  list: Array<{
+  list: {
     id: number;
     name: string;
     children?: any;
     level: number;
     childListId?: number;
-  }>;
+  }[];
 }
 
 const MultiMenu = ({ list }: MultiMenuProps) => {

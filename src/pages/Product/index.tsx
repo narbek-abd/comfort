@@ -7,7 +7,7 @@ import Header from "../../layouts/Header";
 
 const Product = () => {
   const params = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${params.id}`)

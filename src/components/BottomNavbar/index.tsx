@@ -41,7 +41,7 @@ const MobileNavBar = ({ name }: MobileNavBarProps) => {
                     onClick={() => setActiveTabs("home")}
                     active={+(activeTabs === "home")}
                 >
-                    <Icon name="mail" />
+                    <Icon name="mail" width={88}/>
                 </S.MobileItem>
 
                 <S.MobileItem

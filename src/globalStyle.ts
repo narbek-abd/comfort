@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   max-width: ${1177 + 30}px;
@@ -28,7 +29,7 @@ export const SectionTitle = styled.h2`
   text-align: center;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   svg {
     width: 98px;
     height: 34px;
@@ -36,7 +37,7 @@ export const Logo = styled.a`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{disabled?: boolean}>`
   padding: 17px 47px;
   background-color: var(--color-pink);
   display: inline-block;
@@ -47,6 +48,12 @@ export const Button = styled.button`
   line-height: 17px;
   letter-spacing: 0.02em;
   color: #ffffff;
+
+  ${props => props.disabled && css`
+    background-color: black;
+   `
+
+  }
 `;
 
 export const Input = styled.input<{ square: any}>`

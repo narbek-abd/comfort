@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as G from "../../globalStyle";
 import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
 import { Icon } from "../../components/Icon";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/redusers';
-import { addProduct } from '../../store/action-creators/Cart';
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/redusers";
+import { addProduct } from "../../store/action-creators/Cart";
 
 interface ProductMainProps {
-  product: any;
+  product: {
+    [key: string]: any;
+  };
 }
 
 const ProductMain = ({ product }: ProductMainProps) => {
   const dispatch = useDispatch();
+  const cartProducts = useSelector((state: RootState) => state.cart.products);
+  const [alreadyInCart, setAlreadyInCart] = useState(false);
 
-  function addToCart() {
-    dispatch(addProduct(product))
+  useEffect(() => {
+    cartProducts.forEach((cartProduct: any) => {
+      if (cartProduct.id === product.id) {
+        setAlreadyInCart(true);
+      }
+    });
+  }, []);
+
+  function addToCart(e: React.MouseEvent) {
+    dispatch(addProduct(product));
+
+    setAlreadyInCart(true);
   }
 
   return (
@@ -25,7 +39,7 @@ const ProductMain = ({ product }: ProductMainProps) => {
       <G.Container>
         <S.Inner>
           <S.Left>
-            <ProductGallery images={images} />
+            {product.images && <ProductGallery imgLinks={product.images} />}
           </S.Left>
           <S.Right>
             <S.Name>{product.title}</S.Name>
@@ -52,7 +66,9 @@ const ProductMain = ({ product }: ProductMainProps) => {
             <S.Desc>{product.description}</S.Desc>
 
             <S.Actions>
-              <G.Button onClick={addToCart}>Add To Cart</G.Button>
+              <G.Button onClick={addToCart} disabled={alreadyInCart}>
+                {alreadyInCart ? "Added to Cart" : "Add To Cart"}
+              </G.Button>
 
               <S.Like>
                 <Icon name="heart" />

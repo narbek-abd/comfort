@@ -4,7 +4,7 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 
 interface CatalogMenuChildrenProps {
-  list: Array<{ id: number; name: string; children?: any; }>;
+  list: { id: number; name: string; children?: any; }[];
   focusedItemId: number;
 }
 

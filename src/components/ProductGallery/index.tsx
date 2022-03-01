@@ -9,20 +9,19 @@ import * as S from "./style";
 import { Icon } from "../Icon";
 
 interface ProductGalleryProps {
-  images: Array<{ id: number; url: string; main?: boolean }>;
+  imgLinks: string[];
 }
 
-const ProductGallery = ({ images }: ProductGalleryProps) => {
-  const [mainImgUrl, setMainImgUrl] = useState(
-    images.find((img) => img.main === true).url
-  );
+const ProductGallery = ({ imgLinks }: ProductGalleryProps) => {
+  const [mainImgUrl, setMainImgUrl] = useState(imgLinks[0]);
 
   function changeMainImg(e: React.MouseEvent) {
-    let selectedImgId = +(
-      (e.target as HTMLElement).closest(".swiper-slide") as HTMLElement
-    ).dataset.id;
+    let selectedImgUrl = (e.target as HTMLElement)
+      .closest(".swiper-slide")
+      .querySelector("img")
+      .getAttribute("src");
 
-    setMainImgUrl(images.find((img) => img.id == selectedImgId).url);
+    setMainImgUrl(selectedImgUrl);
   }
 
   return (
@@ -52,15 +51,11 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
           }}
           style={{ height: "490px" }}
         >
-          {images.map((img) => {
+          {imgLinks.map((url, index) => {
             return (
-              <SwiperSlide
-                onClick={changeMainImg}
-                key={img.id}
-                data-id={img.id}
-              >
-                <S.ImgWrap active={img.url === mainImgUrl}>
-                  <img src={img.url} alt="product img" />
+              <SwiperSlide onClick={changeMainImg} key={url + index.toString()}>
+                <S.ImgWrap active={url === mainImgUrl}>
+                  <img src={url} alt="product img" />
                 </S.ImgWrap>
               </SwiperSlide>
             );
