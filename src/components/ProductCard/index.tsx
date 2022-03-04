@@ -10,7 +10,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-	console.log(product)
 	return (
 		<S.ProductCard>
 			<Link to={`/product/${product.id}`}>
