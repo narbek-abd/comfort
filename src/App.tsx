@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
-
 import'./App.css';
 
 function App() {
@@ -17,5 +16,5 @@ function App() {
       </BrowserRouter>
   );
 }
-
+ 
 export default App;
