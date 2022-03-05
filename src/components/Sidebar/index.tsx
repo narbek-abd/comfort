@@ -4,13 +4,7 @@ import SidebarItem from "./SidebarItem";
 import { SidebarItemType } from "../../types/SidebarTypes";
 
 interface SidebarProps {
-  list: {
-    id: number;
-    name: string;
-    icon?: string;
-    link?: string;
-    children?: any;
-  }[];
+  list: SidebarItemType[];
 }
 
 const Sidebar = ({ list }: SidebarProps) => {

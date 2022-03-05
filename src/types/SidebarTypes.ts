@@ -3,5 +3,7 @@ export interface SidebarItemType {
 	name: string;
 	icon?: string;
 	link?: string;
-	children?: any;
+	children?: SidebarItemType[];
 }
+
+
