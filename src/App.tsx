@@ -5,7 +5,6 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 
 import Admin from './pages/Admin';
-import CategoryCreate from './layouts/Admin/Categories/CategoryCreate';
 
 import'./App.css';
 
@@ -16,8 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="admin" element={<Admin />} />
-          <Route path="/admin/categories/create" element={<CategoryCreate />} />
+          <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </BrowserRouter>
   );

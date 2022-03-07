@@ -16,5 +16,5 @@ export const SidebarSub = styled.ul`
 	z-index: 99;
 	width: 100%;
 	display: none;
-	margin-left: 30px;
+	padding-left: 30px;
 `;
