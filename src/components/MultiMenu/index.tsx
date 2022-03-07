@@ -47,7 +47,7 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
     let childListId = +item.dataset.listId;
     let parentListId = +item.dataset.parentId;
 
-    if (parentListId) {
+    if (Number.isInteger(parentListId)) {
       // prevList текщуго prevList
       let prevListOfPrev = prevListId == 0 ? -1 : listContainer.current
           .querySelector(`li[data-list-id="${prevListId}"]`)
