@@ -1,19 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as yup from 'yup'; 
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
+import axios from "axios";
+import Alert from "../../../../components/Alert";
 
 type FormFields = {
   name: string;
-  parend_id: number;
+  parent_id: number;
 };
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  parend_id: yup.number().required().integer(),
+  parent_id: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .nullable()
+    .integer(),
 });
 
 const CategoryCreate = () => {
@@ -22,7 +28,12 @@ const CategoryCreate = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormFields>({ resolver: yupResolver(validationSchema) });
-  const onSubmit: SubmitHandler<FormFields> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    axios.post("http://comfort.loc/api/categories", {
+      name: data.name,
+      parent_id: data.parent_id,
+    });
+  };
 
   useEffect(() => {
     for (const field of Object.values(errors)) {
@@ -30,8 +41,13 @@ const CategoryCreate = () => {
     }
   }, [errors]);
 
+  const [alertmessage, setAlertMessage] = useState("");
+  const [alertvariant, setAlertvariant] = useState("success");
+
   return (
     <S.Create>
+      <Alert message={alertmessage} variant={alertvariant} />
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>
           <input
@@ -43,12 +59,12 @@ const CategoryCreate = () => {
         </S.Group>
 
         <S.Group>
-          <select {...register("parend_id", { required: true })}>
-            <option value="0">no parent category</option>
+          <select {...register("parent_id", { required: true })}>
+            <option value="">no parent category</option>
             <option value="1">first</option>
             <option value="2">second</option>
           </select>
-          {errors.parend_id && <span>{errors.parend_id.message}</span>}
+          {errors.parent_id && <span>{errors.parent_id.message}</span>}
         </S.Group>
 
         <S.Group>
