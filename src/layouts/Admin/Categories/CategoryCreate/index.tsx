@@ -7,6 +7,7 @@ import * as S from "./style";
 import * as G from "../../../../globalStyle";
 import axios from "axios";
 import Alert from "../../../../components/Alert";
+import Spinner from "../../../../components/Spinner";
 
 type FormFields = {
   name: string;
@@ -27,19 +28,33 @@ const CategoryCreate = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormFields>({ resolver: yupResolver(validationSchema) });
+
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    axios.post("http://comfort.loc/api/categories", {
-      name: data.name,
-      parent_id: data.parent_id,
-    });
+    setIsLoading(true);
+
+    axios
+      .post("http://comfort.loc/api/categories", {
+        name: data.name,
+        parent_id: data.parent_id,
+      })
+      .then(function (response) {
+        setCategories([...categories, response.data]);
+        reset();
+        setAlertMessage("Category was created successfully");
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
-    for (const field of Object.values(errors)) {
-      (field.ref as HTMLElement).style.border = "1px solid var(--color-pink)";
-    }
-  }, [errors]);
+    axios.get("http://comfort.loc/api/categories").then(function (response) {
+      setCategories(response.data);
+    });
+  }, []);
 
   const [alertmessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
@@ -61,15 +76,21 @@ const CategoryCreate = () => {
         <S.Group>
           <select {...register("parent_id", { required: true })}>
             <option value="">no parent category</option>
-            <option value="1">first</option>
-            <option value="2">second</option>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
           </select>
           {errors.parent_id && <span>{errors.parent_id.message}</span>}
         </S.Group>
 
-        <S.Group>
-          <G.Button type="submit">submit</G.Button>
-        </S.Group>
+        <G.Button type="submit" disabled={isLoading}>
+          <span>Submit</span>
+          {isLoading && <Spinner variant="white" />}
+        </G.Button>
       </form>
     </S.Create>
   );
