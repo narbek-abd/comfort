@@ -50,7 +50,7 @@ export const Button = styled.button<{disabled?: boolean}>`
   color: #ffffff;
 
   ${props => props.disabled && css`
-    background-color: black;
+    background-color: #D9588F;
    `
 
   }
