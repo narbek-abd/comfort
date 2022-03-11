@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import * as S from "./style";
+import axios from "axios";
 import CatalogMenu from "../../../components/CatalogMenu";
 import { Icon } from "../../../components/Icon";
 
@@ -12,6 +13,7 @@ const Navbar = () => {
 	let [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
 	const [isdeskTop, setIsDeskTop] = useState(true);
+	const [catalogList, setCatalogList] = useState([]);
 
 	/** Определяем ширину экрана и следим за шириной через watchmedia */
 	useEffect(() => {
@@ -52,6 +54,14 @@ const Navbar = () => {
 		return () => {
 			document.removeEventListener("click", handleClick);
 		};
+	}, []);
+
+	useEffect(() => {
+		axios
+			.get("http://comfort.loc/api/categories")
+			.then(function (response) {
+				setCatalogList(response.data);
+			});
 	}, []);
 
 	return (
@@ -114,28 +124,28 @@ const Navbar = () => {
 	);
 };
 
-const catalogList = [
+const catalogListss = [
 	{
 		id: 1,
 		name: "Phones",
-		level: 1,
+
 		children: [
 			{
 				id: 11,
 				name: "Mobile Phones",
-				level: 2,
-				children: [
-					{ id: 4, name: "Samsung", level: 3 },
-					{ id: 5, name: "LG", level: 3 },
+		
+			children: [
+					{ id: 4, name: "Samsung" },
+					{ id: 5, name: "LG" },
 				],
 			},
 			{
 				id: 3,
 				name: "Gadgets",
-				level: 2,
+		
 				children: [
-					{ id: 6, name: "HeadPhones", level: 3 },
-					{ id: 7, name: "battaries", level: 3 },
+					{ id: 6, name: "HeadPhones" },
+					{ id: 7, name: "battaries" },
 				],
 			},
 		],
@@ -144,10 +154,9 @@ const catalogList = [
 	{
 		id: 8,
 		name: "Clothing",
-		level: 1,
 		children: [
-			{ id: 9, name: "Clothing for men", level: 2 },
-			{ id: 10, name: "Clothing for women", level: 2 },
+			{ id: 9, name: "Clothing for men" },
+			{ id: 10, name: "Clothing for women" },
 		],
 	},
 ];

@@ -5,14 +5,9 @@ export const Create = styled.div`
 form {
 	margin-top: 10px;
 }
-
 ${Button} {
-	display: flex;
-	align-items:center;
 	margin-top: 20px;
-	span {
-		padding-right: 10px;
-	}
+}
  `;
 
 export const Group = styled.div`
@@ -37,4 +32,3 @@ export const Group = styled.div`
 		font-size: 12px;
 	}
 `;
-export const Inner = styled.div``;

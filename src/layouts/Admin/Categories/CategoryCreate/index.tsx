@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import axios from "axios";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
-import axios from "axios";
 import Alert from "../../../../components/Alert";
 import Spinner from "../../../../components/Spinner";
+import LoadingButton from "../../../../components/LoadingButton";
 
 type FormFields = {
   name: string;
@@ -51,9 +52,11 @@ const CategoryCreate = () => {
   };
 
   useEffect(() => {
-    axios.get("http://comfort.loc/api/categories").then(function (response) {
-      setCategories(response.data);
-    });
+    axios
+      .get("http://comfort.loc/api/categories/list")
+      .then(function (response) {
+        setCategories(response.data);
+      });
   }, []);
 
   const [alertmessage, setAlertMessage] = useState("");
@@ -87,10 +90,7 @@ const CategoryCreate = () => {
           {errors.parent_id && <span>{errors.parent_id.message}</span>}
         </S.Group>
 
-        <G.Button type="submit" disabled={isLoading}>
-          <span>Submit</span>
-          {isLoading && <Spinner variant="white" />}
-        </G.Button>
+        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
       </form>
     </S.Create>
   );
