@@ -3,33 +3,13 @@ import React, { useState, useRef, useEffect } from "react";
 import * as S from "./style";
 import MenuItem from "./MenuItem";
 import MenuSub from "./MenuSub";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
 interface MultiMenuProps {
-  list: {
-    id: number;
-    name: string;
-    children?: any;
-    level: number;
-    childListId?: number;
-  }[];
+  list: CategoryTypes[];
 }
 
 const MultiMenu = ({ list }: MultiMenuProps) => {
-  let uniqueId = 1;
-
-  // function giveChildListUniqueId(list: any) {
-  //   list.forEach((item: any) => {
-  //     if (item["children"]) {
-  //       item.childListId = uniqueId;
-  //       uniqueId++;
-
-  //       giveChildListUniqueId(item["children"]);
-  //     }
-  //   });
-  // }
-
-  // giveChildListUniqueId(list);
-
   const listContainer = useRef(null);
   const [activeListId, setActiveListId] = useState(0);
   const [prevListId, setPrevListId] = useState(-1);
@@ -40,7 +20,7 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
     childLists.forEach((childList: any) => {
       listContainer.current.append(childList);
     });
-  }, []);
+  }, [list]);
 
   function changeCurrentList(e: React.MouseEvent) {
     let item = (e.target as HTMLElement).closest("li");
@@ -49,9 +29,12 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
 
     if (Number.isInteger(parentListId)) {
       // prevList текщуго prevList
-      let prevListOfPrev = prevListId == 0 ? -1 : listContainer.current
-          .querySelector(`li[data-list-id="${prevListId}"]`)
-          .closest("ul").dataset.id;
+      let prevListOfPrev =
+        prevListId == 0
+          ? -1
+          : listContainer.current
+              .querySelector(`li[data-list-id="${prevListId}"]`)
+              .closest("ul").dataset.id;
 
       setPrevListId(prevListOfPrev);
       setActiveListId(parentListId);

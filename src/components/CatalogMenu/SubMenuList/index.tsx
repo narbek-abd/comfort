@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from "react";
 
+import { CategoryTypes } from "../../../types/CategoryTypes";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 
 interface CatalogMenuChildrenProps {
-  list: { id: number; name: string; children?: any; }[];
+  list: CategoryTypes[];
   focusedItemId: number;
 }
 
-const SubMenuList = ({
-  list,
-  focusedItemId,
-}: CatalogMenuChildrenProps) => {
+const SubMenuList = ({ list, focusedItemId }: CatalogMenuChildrenProps) => {
   const [activeCategoryList, setActiveCategoryList] = useState([]);
 
   useEffect(() => {
     let activeCategory = list.filter((item) => item.id == focusedItemId)[0];
 
-    if(activeCategory !== undefined) {
-     setActiveCategoryList(activeCategory["children"]);
+    if (activeCategory !== undefined) {
+      setActiveCategoryList(activeCategory["children"]);
     }
-
   }, [focusedItemId]);
-
 
   return (
     <S.SubMenuList>
@@ -33,7 +29,7 @@ const SubMenuList = ({
 
             {category["children"] && (
               <S.SubList>
-                {category["children"].map((child: any) => {
+                {category["children"].map((child: CategoryTypes) => {
                   return (
                     <li key={child.id}>
                       <Link to="#">{child.name}</Link>

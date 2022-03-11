@@ -1,16 +1,12 @@
 import React from "react";
 import * as S from "./style";
+import { CategoryTypes } from "../../../types/CategoryTypes";
+
 import MenuItem from "../MenuItem";
 import { Icon } from "../../Icon";
 
 interface MenuSubProps {
-  list: {
-    id: number;
-    name: string;
-    children?: any;
-    level: number;
-    childListId?: number;
-  }[];
+  list: CategoryTypes[];
   childListId?: number;
   changeCurrentList: (event: React.MouseEvent<HTMLElement>) => void;
   activeListId: number;
@@ -47,7 +43,7 @@ const MenuSub = ({
             <MenuItem
               key={item.id}
               item={item}
-              id={item["children"] ? item.id : 0}
+              id={item["children"] && item["children"].length > 0 ? item.id : 0}
               changeCurrentList={changeCurrentList}
               activeListId={activeListId}
               parentId={childListId}

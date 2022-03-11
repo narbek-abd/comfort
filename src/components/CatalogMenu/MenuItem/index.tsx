@@ -1,9 +1,9 @@
 import React from "react";
-
 import * as S from "./style";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 
 interface CatalogMenuItemProps {
-  item: { id: number; name: string; children?: any };
+  item: CategoryTypes;
   changeFocusedItem: (e: React.MouseEvent) => void;
   focusedItemId: number | null;
 }

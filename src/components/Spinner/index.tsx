@@ -8,7 +8,7 @@ interface SpinnerProps {
 
 const Spinner = ({variant, ...params} : SpinnerProps) => {
   return (
-    <S.Spinner {...params} variant={variant ? variant : 'pink'}>
+    <S.Spinner {...params} variant={variant}>
     </S.Spinner>
   );
 };

@@ -48,9 +48,11 @@ export const Button = styled.button<{disabled?: boolean}>`
   line-height: 17px;
   letter-spacing: 0.02em;
   color: #ffffff;
+  border-radius: 3px;
 
   ${props => props.disabled && css`
     background-color: #D9588F;
+    cursor: default;
    `
 
   }

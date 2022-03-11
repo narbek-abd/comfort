@@ -1,11 +1,12 @@
 import React from "react";
 import * as S from "./style";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 import MenuSub from "../MenuSub";
 import { Link } from "react-router-dom";
 import { Icon } from "../../Icon";
 
 interface MenuItemProps {
-  item: any;
+  item: CategoryTypes;
   id: number;
   changeCurrentList: (e: React.MouseEvent<HTMLElement>) => void;
   activeListId: number;
@@ -23,7 +24,7 @@ const MenuItem = ({
 }: MenuItemProps) => {
   return (
     <S.MenuItem data-list-id={id} onClick={changeCurrentList}>
-      {item["children"] ? (
+      {item["children"] && item["children"].length > 0 ? (
         <>
           <span>{item.name}</span>
           <Icon name="arrow" />
@@ -32,7 +33,7 @@ const MenuItem = ({
         <Link to={"/"}>{item.name}</Link>
       )}
 
-      {item["children"] && (
+      {item["children"] && item["children"].length > 0 && (
         <MenuSub
           list={item["children"]}
           childListId={item.id}

@@ -3,14 +3,19 @@ import * as S from "./style";
 import MenuItem from "./MenuItem";
 import SubMenuList from "./SubMenuList";
 import { Icon } from "../Icon";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
 interface CatalogMenuProps {
-  list: { id: number; name: string; children?: any }[];
+  list: CategoryTypes[];
   isVisible?: boolean;
-  activeItemId?: number
+  activeItemId?: number;
 }
 
-const CatalogMenu = ({ list, isVisible = true, activeItemId = 1 }: CatalogMenuProps) => {
+const CatalogMenu = ({
+  list,
+  isVisible = true,
+  activeItemId = 1,
+}: CatalogMenuProps) => {
   const [focusedItemId, setFocusedItemId] = useState(activeItemId);
 
   function changeFocusedItem(e: React.MouseEvent) {
