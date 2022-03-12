@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import * as S from "./style";
+import Categories from "../../layouts/Admin/Categories";
 import CategoryCreate from "../../layouts/Admin/Categories/CategoryCreate";
 import ProductCreate from "../../layouts/Admin/Products/ProductCreate";
 import { Route, Routes } from "react-router-dom";
@@ -18,6 +19,7 @@ const Admin = ({ children }: AdminProps) => {
 
       <S.Right>
         <Routes>
+          <Route path="categories" element={<Categories />} />
           <Route path="categories/create" element={<CategoryCreate />} />
           <Route path="products/create" element={<ProductCreate />} />
         </Routes>
@@ -42,7 +44,7 @@ const sidebarList = [
     name: "categories",
     icon: "arrow",
     children: [
-      { id: 6, name: "all categories", link: "admin/categories" },
+      { id: 6, name: "all categories", link: "/admin/categories" },
       { id: 7, name: "new category", link: "/admin/categories/create" },
     ],
   },

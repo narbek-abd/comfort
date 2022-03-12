@@ -55,6 +55,10 @@ button{
   cursor: pointer;
 }
 
+td, th {
+  padding: 10px;
+}
+
 input,
 textarea,
 button {

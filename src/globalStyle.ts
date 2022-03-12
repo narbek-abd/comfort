@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   max-width: ${1177 + 30}px;
@@ -37,28 +37,56 @@ export const Logo = styled(Link)`
   }
 `;
 
-export const Button = styled.button<{disabled?: boolean}>`
-  padding: 17px 47px;
-  background-color: var(--color-pink);
+const ButtonColor = (color: string) => {
+  switch (color) {
+    case "pink":
+      return "background-color: var(--color-pink);";
+    case "red":
+      return "background-color: #dc3545;";
+    case "orange":
+      return "background-color: #ffc107;";
+  }
+};
+
+const ButtonSize = (color: string) => {
+  switch (color) {
+    case "big":
+      return "padding: 17px 47px; font-size: 17px;";
+    case "small":
+      return "padding: .25rem .50rem; font-size: 12px;";
+  }
+};
+
+export const Button = styled.button<{
+  disabled?: boolean;
+  color?: string;
+  size?: string;
+}>`
+  ${({ size }) => ButtonSize(size)};
+  ${({ color }) => ButtonColor(color)};
   display: inline-block;
   text-align: center;
   font-family: Josefin Sans;
   font-weight: 600;
-  font-size: 17px;
   line-height: 17px;
   letter-spacing: 0.02em;
   color: #ffffff;
   border-radius: 3px;
 
-  ${props => props.disabled && css`
-    background-color: #D9588F;
-    cursor: default;
-   `
-
-  }
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: #d9588f;
+      cursor: default;
+    `}
 `;
 
-export const Input = styled.input<{ square: any}>`
+Button.defaultProps = {
+  color: "pink",
+  size: "big",
+};
+
+export const Input = styled.input<{ square: any }>`
   padding: 0 15px;
 
   ${(props) =>
