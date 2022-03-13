@@ -12,18 +12,21 @@ interface CategoriesProps {
 
 const Categories = ({ children }: CategoriesProps) => {
   const [data, setData] = useState<any>({});
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = +(searchParams.get("page") ?? 1);
+  const perPage = 6;
 
   useEffect(() => {
     axios
-      .get(
-        "http://comfort.loc/api/categories/list?limit=3&page=" +
-          searchParams.get("page")
-      )
+      .get(`http://comfort.loc/api/categories/list?limit=${perPage}&page=` + currentPage)
       .then(function (response) {
         setData(response.data);
       });
   }, [searchParams]);
+
+  function onChange(page: string) {
+    setSearchParams({ page: page });
+  }
 
   return (
     <S.Categories>
@@ -58,7 +61,9 @@ const Categories = ({ children }: CategoriesProps) => {
         </tbody>
       </table>
 
-      {data.total && <Pagination totalItem={data.total} perPage={3} />}
+      {data.total && (
+        <Pagination onChange={onChange} totalItem={data.total} perPage={perPage} />
+      )}
     </S.Categories>
   );
 };
