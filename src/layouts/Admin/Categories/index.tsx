@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import LoadingButton from "../../../components/LoadingButton";
+import CategoryItem from './CategoryItem'
 import Pagination from "../../../components/Pagination";
 import * as S from "./style";
 import * as G from "../../../globalStyle";
@@ -41,21 +41,7 @@ const Categories = ({ children }: CategoriesProps) => {
         <tbody>
           {data?.data?.map((category: any) => {
             return (
-              <tr key={category.id}>
-                <td>{category.id}</td>
-                <td>{category.name}</td>
-                <td>Vend</td>
-                <td>
-                  <S.Actions>
-                    <LoadingButton isLoading={false} size="small" color="red">
-                      Delete
-                    </LoadingButton>
-                    <G.Button size="small" color="orange">
-                      Edit
-                    </G.Button>
-                  </S.Actions>
-                </td>
-              </tr>
+              <CategoryItem key={category.id} category={category} />
             );
           })}
         </tbody>
