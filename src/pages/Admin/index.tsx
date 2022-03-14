@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import * as S from "./style";
 import Categories from "../../layouts/Admin/Categories";
 import CategoryCreate from "../../layouts/Admin/Categories/CategoryCreate";
+import CategoryEdit from "../../layouts/Admin/Categories/CategoryEdit";
 import ProductCreate from "../../layouts/Admin/Products/ProductCreate";
 import { Route, Routes } from "react-router-dom";
 
@@ -21,6 +22,8 @@ const Admin = ({ children }: AdminProps) => {
         <Routes>
           <Route path="categories" element={<Categories />} />
           <Route path="categories/create" element={<CategoryCreate />} />
+          <Route path="categories/edit/:categoryid" element={<CategoryEdit />} />
+
           <Route path="products/create" element={<ProductCreate />} />
         </Routes>
       </S.Right>
