@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as yup from 'yup'; 
-import { yupResolver } from '@hookform/resolvers/yup';
+import axios from "axios";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
+import Alert from "../../../../components/Alert";
+import Spinner from "../../../../components/Spinner";
+import LoadingButton from "../../../../components/LoadingButton";
 
 type FormFields = {
   name: string;
-  parend_id: number;
+  parent_id: number;
 };
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  parend_id: yup.number().required().integer(),
+  parent_id: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .nullable()
+    .integer(),
 });
 
 const CategoryCreate = () => {
@@ -21,17 +29,43 @@ const CategoryCreate = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormFields>({ resolver: yupResolver(validationSchema) });
-  const onSubmit: SubmitHandler<FormFields> = (data) => console.log(data);
+
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    setIsLoading(true);
+
+    axios
+      .post("http://comfort.loc/api/categories", {
+        name: data.name,
+        parent_id: data.parent_id,
+      })
+      .then(function (response) {
+        setCategories([...categories, response.data]);
+        reset();
+        setAlertMessage("Category was created successfully");
+        setIsLoading(false);
+      });
+  };
 
   useEffect(() => {
-    for (const field of Object.values(errors)) {
-      (field.ref as HTMLElement).style.border = "1px solid var(--color-pink)";
-    }
-  }, [errors]);
+    axios
+      .get("http://comfort.loc/api/categories/list")
+      .then(function (response) {
+        setCategories(response.data);
+      });
+  }, []);
+
+  const [alertmessage, setAlertMessage] = useState("");
+  const [alertvariant, setAlertvariant] = useState("success");
 
   return (
     <S.Create>
+      <Alert message={alertmessage} variant={alertvariant} />
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>
           <input
@@ -43,17 +77,20 @@ const CategoryCreate = () => {
         </S.Group>
 
         <S.Group>
-          <select {...register("parend_id", { required: true })}>
-            <option value="0">no parent category</option>
-            <option value="1">first</option>
-            <option value="2">second</option>
+          <select {...register("parent_id", { required: true })}>
+            <option value="">no parent category</option>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
           </select>
-          {errors.parend_id && <span>{errors.parend_id.message}</span>}
+          {errors.parent_id && <span>{errors.parent_id.message}</span>}
         </S.Group>
 
-        <S.Group>
-          <G.Button type="submit">submit</G.Button>
-        </S.Group>
+        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
       </form>
     </S.Create>
   );
