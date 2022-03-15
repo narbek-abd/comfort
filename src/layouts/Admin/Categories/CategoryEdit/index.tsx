@@ -5,11 +5,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
 import Alert from "../../../../components/Alert";
-import Spinner from "../../../../components/Spinner";
 import LoadingButton from "../../../../components/LoadingButton";
 import { useParams } from "react-router-dom";
+import { getCategories, getCategory } from "../../../../api/Category";
 
 type FormFields = {
   name: string;
@@ -29,8 +28,7 @@ const CategoryEdit = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields },
-    reset,
+    formState: { errors },
   } = useForm<FormFields>({ resolver: yupResolver(validationSchema) });
 
   const [categories, setCategories] = useState([]);
@@ -40,16 +38,10 @@ const CategoryEdit = () => {
   const [currentCategory, setCurrentCategory] = useState<any>({});
 
   useEffect(() => {
-    getCurrentCategory();
-  }, []);
-
-  function getCurrentCategory() {
-    axios
-      .get(`http://comfort.loc/api/categories/${categoryid}`)
-      .then(function (response) {
-        setCurrentCategory(response.data);
-      });
-  }
+    getCategory(+categoryid).then((response) =>
+      setCurrentCategory(response.data)
+    );
+  }, [categoryid]);
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     setIsLoading(true);
@@ -61,7 +53,9 @@ const CategoryEdit = () => {
       })
       .then(function (response) {
         if (response.data === 1) {
-          getCurrentCategory();
+          getCategory(+categoryid).then((response) =>
+            setCurrentCategory(response.data)
+          );
         }
         setAlertMessage("Category was updated successfully");
         setIsLoading(false);
@@ -69,11 +63,7 @@ const CategoryEdit = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://comfort.loc/api/categories/list")
-      .then(function (response) {
-        setCategories(response.data);
-      });
+    getCategories().then((response) => setCategories(response.data));
   }, []);
 
   const [alertmessage, setAlertMessage] = useState("");

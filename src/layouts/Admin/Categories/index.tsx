@@ -3,14 +3,9 @@ import axios from "axios";
 import CategoryItem from './CategoryItem'
 import Pagination from "../../../components/Pagination";
 import * as S from "./style";
-import * as G from "../../../globalStyle";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-interface CategoriesProps {
-  children?: React.ReactNode;
-}
-
-const Categories = ({ children }: CategoriesProps) => {
+const Categories = () => {
   const [data, setData] = useState<any>({});
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = +(searchParams.get("page") ?? 1);
