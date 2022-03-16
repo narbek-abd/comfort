@@ -1,111 +1,94 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
 import Alert from "../../../../components/Alert";
-import Spinner from "../../../../components/Spinner";
 import LoadingButton from "../../../../components/LoadingButton";
 import { useParams } from "react-router-dom";
-
-type FormFields = {
-  name: string;
-  parent_id: number;
-};
-
-const validationSchema = yup.object().shape({
-  name: yup.string().required(),
-  parent_id: yup
-    .number()
-    .transform((value) => (isNaN(value) ? undefined : value))
-    .nullable()
-    .integer(),
-});
+import {
+  getCategories,
+  getCategory,
+  updateCategory,
+} from "../../../../api/Category";
+import { CategoryValidation } from "../../../../validation/Category";
+import {
+  CategoryTypes,
+  CategoryFormTypes,
+} from "../../../../types/CategoryTypes";
 
 const CategoryEdit = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields },
-    reset,
-  } = useForm<FormFields>({ resolver: yupResolver(validationSchema) });
+    formState: { errors },
+  } = useForm<CategoryFormTypes>({ resolver: yupResolver(CategoryValidation) });
 
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   let { categoryid } = useParams();
-  const [currentCategory, setCurrentCategory] = useState<any>({});
+  const [currentCategory, setCurrentCategory] = useState<CategoryTypes | null>(
+    null
+  );
+  const [categoryParentId, setCategoryParentId] = useState(0);
 
   useEffect(() => {
-    getCurrentCategory();
+    getCategories().then((response) => setCategories(response.data));
   }, []);
 
-  function getCurrentCategory() {
-    axios
-      .get(`http://comfort.loc/api/categories/${categoryid}`)
-      .then(function (response) {
-        setCurrentCategory(response.data);
-      });
+  function defineCurrentCategory() {
+    categories.forEach((category) => {
+      if (category.id == categoryid) {
+        setCurrentCategory(category);
+        setCategoryParentId(category.parent_id);
+      }
+    });
   }
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  useEffect(() => {
+    defineCurrentCategory();
+  }, [categoryid, categories]);
+
+  const onSubmit: SubmitHandler<CategoryFormTypes> = (data) => {
     setIsLoading(true);
 
-    axios
-      .put(`http://comfort.loc/api/categories/${currentCategory.id}`, {
-        name: data.name,
-        parent_id: data.parent_id,
-      })
-      .then(function (response) {
-        if (response.data === 1) {
-          getCurrentCategory();
-        }
-        setAlertMessage("Category was updated successfully");
-        setIsLoading(false);
-      });
+    updateCategory(currentCategory.id, data).then(function (response) {
+      if (response.data === 1) {
+        defineCurrentCategory();
+        setAlertMessage("The category has been successfully updated");
+      } else {
+        setAlertMessage("An error has occurred");
+        setAlertvariant("error");
+      }
+      setIsLoading(false);
+    });
   };
-
-  useEffect(() => {
-    axios
-      .get("http://comfort.loc/api/categories/list")
-      .then(function (response) {
-        setCategories(response.data);
-      });
-  }, []);
 
   const [alertmessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
 
-  useEffect(() => {
-    setCategoryParentId(currentCategory.parent_id);
-  }, [currentCategory]);
-
-  const [categoryParentId, setCategoryParentId] = useState(null);
   return (
     <S.Create>
       <Alert message={alertmessage} variant={alertvariant} />
 
-      {currentCategory.id && (
+      {currentCategory && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <S.Group>
             <input
               type="text"
               placeholder="name"
               defaultValue={currentCategory.name}
-              {...register("name", { required: true })}
+              {...register("name")}
             />
             {errors.name && <span>{errors.name.message}</span>}
           </S.Group>
 
           <S.Group>
             <select
-              {...register("parent_id", { required: true })}
+              {...register("parent_id")}
               value={categoryParentId}
               onChange={(e: React.ChangeEvent) =>
-                setCategoryParentId((e.target as HTMLInputElement).value)
+                setCategoryParentId(+(e.target as HTMLInputElement).value)
               }
             >
               <option value="">no parent category</option>
