@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { Button } from "../../../../globalStyle";
 
 export const Create = styled.div`
-form {
-	margin-top: 10px;
-}
-${Button} {
-	margin-top: 20px;
-}
- `;
+	form {
+		margin-top: 10px;
+	}
+	${Button} {
+		margin-top: 20px;
+	}
+`;
 
 export const Group = styled.div`
 	width: 300px;
