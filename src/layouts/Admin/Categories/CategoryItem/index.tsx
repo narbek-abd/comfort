@@ -1,31 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
 import LoadingButton from "../../../../components/LoadingButton";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { deleteCategory } from "../../../../api/Category";
+import { CategoryTypes } from '../../../../types/CategoryTypes';
 
 interface CategoryItemProps {
   children?: React.ReactNode;
-  category: any
+  category: CategoryTypes;
+  onDelete: () => void;
 }
 
-const CategoryItem = ({ category, children }: CategoryItemProps) => {
+const CategoryItem = ({ category, children, onDelete }: CategoryItemProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  function removeCategory() {
+    setIsLoading(true);
+    deleteCategory(category.id).then((response) => onDelete());
+  }
   return (
-    <S.CategoryItem>
+    <tr>
       <td>{category.id}</td>
       <td>{category.name}</td>
       <td>Vend</td>
       <td>
         <S.Actions>
-          <LoadingButton isLoading={false} size="small" color="red">
-            Delete
+          <LoadingButton isLoading={isLoading} size="small" color="red">
+            <span onClick={removeCategory}>Delete</span>
           </LoadingButton>
           <G.Button size="small" color="orange">
-          <Link to={`edit/${category.id}`}>Edit</Link>
+            <Link to={`edit/${category.id}`}>Edit</Link>
           </G.Button>
         </S.Actions>
       </td>
-    </S.CategoryItem>
+    </tr>
   );
 };
 
