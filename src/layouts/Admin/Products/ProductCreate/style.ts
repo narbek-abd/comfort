@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { Button } from "../../../../globalStyle";
 
-export const Create = styled.div``;
+export const Create = styled.div`
+	form {
+		margin-top: 15px;
+	}
+`;
 
 export const Group = styled.div`
-width: 300px;
+	width: 300px;
 	&:not(:first-child) {
 		margin-top: 30px;
 	}
@@ -16,15 +20,15 @@ width: 300px;
 		padding: 10px;
 	}
 
-	span {
-		display: block;
-		margin-top: 3px;
-		color: var(--color-pink);
-		font-size: 12px;	
-	}
-
 	${Button} {
 		margin-top: 10px;
 	}
 `;
-export const Inner = styled.div``;
+
+export const SelectGroup = styled(Group)`
+	select {
+		&:not(:first-child) {
+			margin-top: 15px;
+		}
+	}
+`;

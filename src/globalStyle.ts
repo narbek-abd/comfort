@@ -95,3 +95,10 @@ export const Input = styled.input<{ square: any }>`
       border: 2px solid #e7e6ef;
     `}
 `;
+
+export const Err = styled.span`
+  display: block;
+  margin-top: 3px;
+  color: var(--color-pink);
+  font-size: 12px;
+`;

@@ -5,6 +5,10 @@ export function getCategories() {
 	return axiosClient.get("/categories/list");
 }
 
+export function getCategoriesWithChildren() {
+	return axiosClient.get("/categories");
+}
+
 export function getCategory(id: number) {
 	return axiosClient.get(`/categories/${id}`);
 }
