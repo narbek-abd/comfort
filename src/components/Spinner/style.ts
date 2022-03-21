@@ -21,6 +21,9 @@ export const Spinner = styled.div<{ variant: string }>`
 				width: 15px;
 				height: 15px;
 				border-top: 3px solid #fff;
+				position: absolute;
+				top: calc(50% - 9px);
+				left: calc(50% - 9px);
 			`
 		);
 	}}

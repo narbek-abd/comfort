@@ -19,6 +19,9 @@ export const Images = styled.div`
 		}
 	}
 	input {
+		height: 0;
+		width: 0;
+		border: 0;
 		padding: 0;
 		width: 0;
 		opacity: 0;
@@ -43,16 +46,18 @@ export const Image = styled.div`
 		object-fit: cover;
 	}
 
-	span {
+	button {
 		display: none;
 		position: absolute;
+		width: 100%;
+		height: 100%;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		background: rgba(0, 0, 0, 0.6) none repeat scroll 0% 0%;
+		border-radius: 4px;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
 		z-index: 2;
 		font-size: 16px;
 		color: #fff;
@@ -61,15 +66,7 @@ export const Image = styled.div`
 	}
 
 	&:hover {
-		&:before {
-			content: "";
-			position: absolute;
-			inset: 0px;
-			background: rgba(0, 0, 0, 0.6) none repeat scroll 0% 0%;
-			border-radius: 4px;
-			z-index: 1;
-		}
-		span {
+		button {
 			display: flex;
 		}
 	}

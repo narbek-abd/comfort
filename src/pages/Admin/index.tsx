@@ -4,7 +4,10 @@ import * as S from "./style";
 import Categories from "../../layouts/Admin/Categories";
 import CategoryCreate from "../../layouts/Admin/Categories/CategoryCreate";
 import CategoryEdit from "../../layouts/Admin/Categories/CategoryEdit";
+
+import Products from "../../layouts/Admin/Products";
 import ProductCreate from "../../layouts/Admin/Products/ProductCreate";
+import ProductEdit from "../../layouts/Admin/Products/ProductEdit";
 import { Route, Routes } from "react-router-dom";
 
 interface AdminProps {
@@ -24,7 +27,9 @@ const Admin = ({ children }: AdminProps) => {
           <Route path="categories/create" element={<CategoryCreate />} />
           <Route path="categories/edit/:categoryid" element={<CategoryEdit />} />
 
+          <Route path="products" element={<Products />} />
           <Route path="products/create" element={<ProductCreate />} />
+          <Route path="products/edit/:productid" element={<ProductEdit />} />
         </Routes>
       </S.Right>
     </S.Admin>
@@ -38,7 +43,7 @@ const sidebarList = [
     name: "products",
     icon: "arrow",
     children: [
-      { id: 3, name: "all products", link: "admin/products" },
+      { id: 3, name: "all products", link: "products" },
       { id: 4, name: "new product", link: "/admin/products/create" },
     ],
   },

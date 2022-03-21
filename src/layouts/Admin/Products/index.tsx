@@ -1,19 +1,75 @@
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ProductItem from "./ProductItem";
+import Pagination from "../../../components/Pagination";
 import * as S from "./style";
+import { useSearchParams } from "react-router-dom";
+import { ProductTypes } from "../../../types/ProductTypes";
+import Spinner from '../../../components/Spinner';
 
-interface ProductsProps {
-  children?: React.ReactNode;
-}
+const Products = () => {
+  const [products, setProducts] = useState<ProductTypes[]>([]);
 
-const Products = ({children} : ProductsProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = +(searchParams.get("page") ?? 1);
+
+  const perPage = 6;
+  const [totalItems, setTotalItems] = useState(null);
+
+  useEffect(() => {
+    getCategories();
+  }, [searchParams]);
+
+  function getCategories() {
+    axios
+      .get(
+        `http://comfort.loc/api/products/list?limit=${perPage}&page=` +
+          currentPage
+      )
+      .then(function (response) {
+        setProducts(response.data.data);
+        setTotalItems(response.data.total);
+      });
+  }
+
+  function onChange(page: string) {
+    setSearchParams({ page: page });
+  }
+
   return (
-    <S.Products>
-        <S.Inner>
-        
-        </S.Inner>
-      
-    </S.Products>
+    products.length > 0 ? (
+      <S.Products>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product: ProductTypes) => {
+              return (
+                <ProductItem
+                  key={product.id}
+                  product={product}
+                  onDelete={getCategories}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+
+        {totalItems && (
+          <Pagination
+            onChange={onChange}
+            totalItem={totalItems}
+            perPage={perPage}
+          />
+        )}
+      </S.Products>
+    ) : <Spinner />
   );
 };
 
