@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { UploadedImageTypes } from "../../types/UploadedImageTypes";
+import {
+  UploadedImageTypes,
+  InitialImagesTypes,
+} from "../../types/UploadedImageTypes";
 import * as S from "./style";
 import * as G from "../../globalStyle";
 import { Icon } from "../Icon";
 
 interface ImageUploadProps {
   onUpload: (images: UploadedImageTypes[]) => void;
+  initialImages?: InitialImagesTypes[];
+  onRemoveInitialImage?: (id: number) => void;
   keyForReRender?: number;
 }
 
-const ImageUpload = ({ onUpload, keyForReRender = 0 }: ImageUploadProps) => {
+const ImageUpload = ({
+  onUpload,
+  initialImages = null,
+  onRemoveInitialImage,
+  keyForReRender = 0,
+}: ImageUploadProps) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [images, setImages] = useState<UploadedImageTypes[]>([]);
   const [errors, setErrors] = useState("");
@@ -64,23 +74,55 @@ const ImageUpload = ({ onUpload, keyForReRender = 0 }: ImageUploadProps) => {
   }
 
   function removeImg(e: React.MouseEvent) {
+    e.preventDefault();
+    let imageItem = e.currentTarget as HTMLButtonElement;
+    imageItem.disabled = true;
+
     let filteredImages = images.filter(
-      (image) => image.id !== +(e.currentTarget as HTMLElement).dataset.imgId
+      (image) => image.id !== +imageItem.dataset.imgId
     );
 
     setImages(filteredImages);
     onUpload(filteredImages);
   }
 
+  function removeInitialImg(e: React.MouseEvent) {
+    e.preventDefault();
+    let imageItem = e.currentTarget as HTMLButtonElement;
+    imageItem.disabled = true;
+
+    onRemoveInitialImage(+imageItem.dataset.imgId);
+  }
+
   return (
     <div>
       <S.Images>
+        {/*Изображения с сервера*/}
+        {initialImages &&
+          initialImages.map((image) => {
+            return (
+              <S.Image key={image.id}>
+                <img
+                  src={"http://comfort.loc/storage/" + image.image}
+                  alt="uploaded item"
+                />
+
+                <button onClick={removeInitialImg} data-img-id={image.id}>
+                  X
+                </button>
+              </S.Image>
+            );
+          })}
+
+        {/*Локальные изображения*/}
         {images.map((image) => {
           return (
-            <S.Image key={image.id} onClick={removeImg} data-img-id={image.id}>
+            <S.Image key={image.id}>
               <img src={image.url} alt="uploaded item" />
 
-              <span>X</span>
+              <button onClick={removeImg} data-img-id={image.id}>
+                X
+              </button>
             </S.Image>
           );
         })}

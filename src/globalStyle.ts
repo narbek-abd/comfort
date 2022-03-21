@@ -72,11 +72,13 @@ export const Button = styled.button<{
   letter-spacing: 0.02em;
   color: #ffffff;
   border-radius: 3px;
+  transition: all .2s linear;
+  position: relative;
 
   ${(props) =>
     props.disabled &&
     css`
-      background-color: #d9588f;
+      filter: brightness(125%);
       cursor: default;
     `}
 `;
