@@ -1,9 +1,12 @@
 import styled from "styled-components";
-import { Button } from "../../../../globalStyle";
+import { ButtonDanger } from "../../../../components/Button";
 
 export const Actions = styled.div`
-	${Button} {
-		margin-right: 10px;
+	display: flex;
+	align-items: center;
+
+	button {
+		margin-right: 15px;
 		a {
 			color: #fff;
 		}

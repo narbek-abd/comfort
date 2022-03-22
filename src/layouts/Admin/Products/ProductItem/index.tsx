@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
-import LoadingButton from "../../../../components/LoadingButton";
 import { Link } from "react-router-dom";
 import { deleteProduct } from "../../../../api/Product";
 import { ProductTypes } from "../../../../types/ProductTypes";
+import { ButtonDanger, ButtonWarning } from "../../../../components/Button";
 
 interface ProductItemProps {
   children?: React.ReactNode;
@@ -27,19 +26,16 @@ const ProductItem = ({ product, children, onDelete }: ProductItemProps) => {
       <td>{product.category.name}</td>
       <td>
         <S.Actions>
-          <LoadingButton
+          <ButtonDanger
             isLoading={isLoading}
             size="small"
-            color="red"
             onClick={removeProduct}
           >
             Delete
-          </LoadingButton>
-          <Link to={`edit/${product.id}`}>
-            <G.Button size="small" color="orange">
-              Edit
-            </G.Button>
-          </Link>
+          </ButtonDanger>
+          <ButtonWarning size="small">
+            <Link to={`edit/${product.id}`}>Edit</Link>
+          </ButtonWarning>
         </S.Actions>
       </td>
     </tr>

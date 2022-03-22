@@ -17,7 +17,7 @@ import { updateProduct, deleteProductImage } from "../../../../api/Product";
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
 import Alert from "../../../../components/Alert";
-import LoadingButton from "../../../../components/LoadingButton";
+import {Button} from "../../../../components/Button";
 
 import { getProduct } from "../../../../api/Product";
 import { useParams } from "react-router-dom";
@@ -176,9 +176,9 @@ const ProductEdit = () => {
               ) : (
                 <S.CategoryInf>
                   <p>Category name: {currentProduct.category.name}</p>
-                  <G.Button size="small" onClick={showCategorySelect}>
+                  <Button size="small" onClick={showCategorySelect}>
                     Change category
-                  </G.Button>
+                  </Button>
                 </S.CategoryInf>
               )}
             </S.SelectGroup>
@@ -197,7 +197,7 @@ const ProductEdit = () => {
           </S.Group>
 
           <S.Group>
-            <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
+            <Button isLoading={isLoading}>Submit</Button>
           </S.Group>
         </form>
       ) : (

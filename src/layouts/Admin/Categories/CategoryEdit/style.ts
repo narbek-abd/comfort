@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../../../globalStyle";
+import { Button } from "../../../../components/Button/style";
 
 export const Create = styled.div`
 	form {

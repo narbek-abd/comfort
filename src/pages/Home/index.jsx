@@ -6,6 +6,7 @@ import FeaturedProducts from "../../layouts/FeaturedProducts";
 import TabsProducts from "../../layouts/TabsProducts";
 import Advantages from "../../layouts/Advantages";
 import UniqueProduct from "../../layouts/UniqueProduct";
+import {Button} from '../../components/Button';
 
 const Home = () => {
 	return (
