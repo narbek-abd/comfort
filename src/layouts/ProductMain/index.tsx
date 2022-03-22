@@ -4,6 +4,7 @@ import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
 import { Icon } from "../../components/Icon";
+import {Button} from "../../components/Button"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
@@ -66,9 +67,9 @@ const ProductMain = ({ product }: ProductMainProps) => {
             <S.Desc>{product.description}</S.Desc>
 
             <S.Actions>
-              <G.Button onClick={addToCart} disabled={alreadyInCart}>
+              <Button onClick={addToCart} disabled={alreadyInCart}>
                 {alreadyInCart ? "Added to Cart" : "Add To Cart"}
-              </G.Button>
+              </Button>
 
               <S.Like>
                 <Icon name="heart" />
@@ -94,29 +95,5 @@ const ProductMain = ({ product }: ProductMainProps) => {
     </S.ProductMain>
   );
 };
-
-const images = [
-  {
-    id: 1,
-    url: "https://images.pexels.com/photos/7863536/pexels-photo-7863536.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    main: true,
-  },
-  {
-    id: 2,
-    url: "https://images.pexels.com/photos/3771691/pexels-photo-3771691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  },
-  {
-    id: 3,
-    url: "https://images.pexels.com/photos/2258083/pexels-photo-2258083.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  },
-  {
-    id: 4,
-    url: "https://images.pexels.com/photos/7606067/pexels-photo-7606067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  },
-  {
-    id: 5,
-    url: "https://images.pexels.com/photos/8003996/pexels-photo-8003996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  },
-];
 
 export default ProductMain;

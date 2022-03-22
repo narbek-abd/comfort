@@ -17,7 +17,7 @@ import { createProduct } from "../../../../api/Product";
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
 import Alert from "../../../../components/Alert";
-import LoadingButton from "../../../../components/LoadingButton";
+import {Button} from "../../../../components/Button";
 
 const ProductCreate = () => {
   const {
@@ -133,7 +133,7 @@ const ProductCreate = () => {
         </S.Group>
 
         <S.Group>
-          <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
+          <Button isLoading={isLoading}>Submit</Button>
         </S.Group>
       </form>
     </S.Create>
