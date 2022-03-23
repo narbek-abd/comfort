@@ -2,10 +2,31 @@ import React from "react";
 import * as S from "./style";
 import Spinner from "../Spinner";
 
-const ButtonWrapper = (Componenet: any, props: ButtonProps) => {
-  const { children, disabled, isLoading, ...params } = props;
+interface ButtonProps {
+  children?: React.ReactNode;
+  size?: "small";
+  color?: "danger" | "warning";
+  variant?: "contained" | "outlined";
+  disabled?: boolean;
+  isLoading?: boolean;
+  [params: string]: any;
+}
+
+export const Button = (props: ButtonProps) => {
+  const {
+    children,
+    disabled,
+    variant = "contained",
+    isLoading,
+    ...params
+  } = props;
   return (
-    <Componenet disabled={disabled || isLoading} isLoading {...params}>
+    <S.Button
+      disabled={disabled || isLoading}
+      variant={variant}
+      isLoading={isLoading}
+      {...params}
+    >
       {isLoading ? (
         <>
           <span>{children}</span>
@@ -14,22 +35,6 @@ const ButtonWrapper = (Componenet: any, props: ButtonProps) => {
       ) : (
         <>{children}</>
       )}
-    </Componenet>
+    </S.Button>
   );
 };
-
-interface ButtonProps {
-  children?: React.ReactNode;
-  size?: "small";
-  disabled?: boolean;
-  isLoading?: boolean;
-  [params: string]: any;
-}
-
-export const Button = (props: ButtonProps) => ButtonWrapper(S.Button, props);
-
-export const ButtonWarning = (props: ButtonProps) =>
-  ButtonWrapper(S.ButtonWarning, props);
-
-export const ButtonDanger = (props: ButtonProps) =>
-  ButtonWrapper(S.ButtonDanger, props);
