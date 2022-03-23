@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
-import { ButtonDanger, ButtonWarning } from "../../../../components/Button";
+import { Button } from "../../../../components/Button";
 import { Link } from "react-router-dom";
 import { deleteCategory } from "../../../../api/Category";
 import { CategoryTypes } from "../../../../types/CategoryTypes";
@@ -26,16 +26,17 @@ const CategoryItem = ({ category, children, onDelete }: CategoryItemProps) => {
       <td>Vend</td>
       <td>
         <S.Actions>
-          <ButtonDanger
+          <Button
             isLoading={isLoading}
             size="small"
+            color="danger"
             onClick={removeCategory}
           >
             Delete
-          </ButtonDanger>
-          <ButtonWarning size="small">
+          </Button>
+          <Button size="small" color="warning">
             <Link to={`edit/${category.id}`}>Edit</Link>
-          </ButtonWarning>
+          </Button>
         </S.Actions>
       </td>
     </tr>

@@ -3,7 +3,7 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 import { deleteProduct } from "../../../../api/Product";
 import { ProductTypes } from "../../../../types/ProductTypes";
-import { ButtonDanger, ButtonWarning } from "../../../../components/Button";
+import { Button } from "../../../../components/Button";
 
 interface ProductItemProps {
   children?: React.ReactNode;
@@ -26,16 +26,17 @@ const ProductItem = ({ product, children, onDelete }: ProductItemProps) => {
       <td>{product.category.name}</td>
       <td>
         <S.Actions>
-          <ButtonDanger
+          <Button
             isLoading={isLoading}
             size="small"
+            color="danger"
             onClick={removeProduct}
           >
             Delete
-          </ButtonDanger>
-          <ButtonWarning size="small">
+          </Button>
+          <Button size="small" color="warning">
             <Link to={`edit/${product.id}`}>Edit</Link>
-          </ButtonWarning>
+          </Button>
         </S.Actions>
       </td>
     </tr>
