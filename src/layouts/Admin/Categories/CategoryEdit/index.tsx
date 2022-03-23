@@ -3,11 +3,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
 import Alert from "../../../../components/Alert";
-import LoadingButton from "../../../../components/LoadingButton";
+import {Button} from "../../../../components/Button";
 import { useParams } from "react-router-dom";
 import {
   getCategories,
-  getCategory,
   updateCategory,
 } from "../../../../api/Category";
 import { CategoryValidation } from "../../../../validation/Category";
@@ -105,7 +104,7 @@ const CategoryEdit = () => {
             {errors.parent_id && <span>{errors.parent_id.message}</span>}
           </S.Group>
 
-          <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
+          <Button isLoading={isLoading}>Submit</Button>
         </form>
       )}
     </S.Create>

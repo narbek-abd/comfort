@@ -18,12 +18,12 @@ export const Spinner = styled.div<{ variant: string }>`
 		return (
 			props.variant === "button" &&
 			css`
-				width: 15px;
-				height: 15px;
+				width: 20px;
+				height: 20px;
 				border-top: 3px solid #fff;
 				position: absolute;
 				top: calc(50% - 9px);
-				left: calc(50% - 9px);
+				right: calc(50% - 9px);
 			`
 		);
 	}}

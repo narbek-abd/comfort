@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
-import LoadingButton from "../../../../components/LoadingButton";
+import { Button } from "../../../../components/Button";
 import { Link } from "react-router-dom";
 import { deleteCategory } from "../../../../api/Category";
-import { CategoryTypes } from '../../../../types/CategoryTypes';
+import { CategoryTypes } from "../../../../types/CategoryTypes";
 
 interface CategoryItemProps {
   children?: React.ReactNode;
@@ -26,12 +26,17 @@ const CategoryItem = ({ category, children, onDelete }: CategoryItemProps) => {
       <td>Vend</td>
       <td>
         <S.Actions>
-          <LoadingButton isLoading={isLoading} size="small" color="red">
-            <span onClick={removeCategory}>Delete</span>
-          </LoadingButton>
-          <G.Button size="small" color="orange">
+          <Button
+            isLoading={isLoading}
+            size="small"
+            color="danger"
+            onClick={removeCategory}
+          >
+            Delete
+          </Button>
+          <Button size="small" color="warning">
             <Link to={`edit/${category.id}`}>Edit</Link>
-          </G.Button>
+          </Button>
         </S.Actions>
       </td>
     </tr>

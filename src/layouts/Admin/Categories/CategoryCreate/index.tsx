@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
-import Alert from "../../../../components/Alert";
-import Spinner from "../../../../components/Spinner";
-import LoadingButton from "../../../../components/LoadingButton";
+
 import { CategoryValidation } from "../../../../validation/Category";
 import { CategoryFormTypes } from "../../../../types/CategoryTypes";
 import { createCategory, getCategories } from "../../../../api/Category";
+
+import Alert from "../../../../components/Alert";
+import {Button} from "../../../../components/Button";
 
 const CategoryCreate = () => {
   const {
@@ -69,7 +68,7 @@ const CategoryCreate = () => {
           {errors.parent_id && <span>{errors.parent_id.message}</span>}
         </S.Group>
 
-        <LoadingButton isLoading={isLoading}>Submit</LoadingButton>
+        <Button isLoading={isLoading}>Submit</Button>
       </form>
     </S.Create>
   );
