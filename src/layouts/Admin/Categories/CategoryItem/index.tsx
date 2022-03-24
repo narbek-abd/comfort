@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
-import { Button } from "../../../../components/Button";
+import Button from "../../../../components/Button";
 import { Link } from "react-router-dom";
 import { deleteCategory } from "../../../../api/Category";
 import { CategoryTypes } from "../../../../types/CategoryTypes";

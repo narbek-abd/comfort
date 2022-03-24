@@ -3,7 +3,7 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 import { deleteProduct } from "../../../../api/Product";
 import { ProductTypes } from "../../../../types/ProductTypes";
-import { Button } from "../../../../components/Button";
+import Button from "../../../../components/Button";
 
 interface ProductItemProps {
   children?: React.ReactNode;

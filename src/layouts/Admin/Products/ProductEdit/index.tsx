@@ -17,7 +17,7 @@ import { updateProduct, deleteProductImage } from "../../../../api/Product";
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
 import Alert from "../../../../components/Alert";
-import {Button} from "../../../../components/Button";
+import Button from "../../../../components/Button";
 
 import { getProduct } from "../../../../api/Product";
 import { useParams } from "react-router-dom";
