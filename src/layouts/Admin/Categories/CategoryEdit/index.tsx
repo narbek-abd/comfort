@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
 import Alert from "../../../../components/Alert";
-import {Button} from "../../../../components/Button";
+import Button from "../../../../components/Button";
 import { useParams } from "react-router-dom";
 import {
   getCategories,

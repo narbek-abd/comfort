@@ -12,7 +12,7 @@ interface ButtonProps {
   [params: string]: any;
 }
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const {
     children,
     disabled,
@@ -38,3 +38,5 @@ export const Button = (props: ButtonProps) => {
     </S.Button>
   );
 };
+
+export default Button;

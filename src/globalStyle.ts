@@ -37,56 +37,6 @@ export const Logo = styled(Link)`
   }
 `;
 
-const ButtonColor = (color: string) => {
-  switch (color) {
-    case "pink":
-      return "background-color: var(--color-pink);";
-    case "red":
-      return "background-color: #dc3545;";
-    case "orange":
-      return "background-color: #ffc107;";
-  }
-};
-
-const ButtonSize = (color: string) => {
-  switch (color) {
-    case "big":
-      return "padding: 17px 47px; font-size: 17px;";
-    case "small":
-      return "padding: .25rem .50rem; font-size: 12px;";
-  }
-};
-
-export const Button = styled.button<{
-  disabled?: boolean;
-  color?: string;
-  size?: string;
-}>`
-  ${({ size }) => ButtonSize(size)};
-  ${({ color }) => ButtonColor(color)};
-  display: inline-block;
-  text-align: center;
-  font-family: Josefin Sans;
-  font-weight: 600;
-  line-height: 17px;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  border-radius: 3px;
-  transition: all .2s linear;
-  position: relative;
-
-  ${(props) =>
-    props.disabled &&
-    css`
-      filter: brightness(125%);
-      cursor: default;
-    `}
-`;
-
-Button.defaultProps = {
-  color: "pink",
-  size: "big",
-};
 
 export const Input = styled.input<{ square: any }>`
   padding: 0 15px;

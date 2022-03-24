@@ -9,7 +9,7 @@ import { CategoryFormTypes } from "../../../../types/CategoryTypes";
 import { createCategory, getCategories } from "../../../../api/Category";
 
 import Alert from "../../../../components/Alert";
-import {Button} from "../../../../components/Button";
+import Button from "../../../../components/Button";
 
 const CategoryCreate = () => {
   const {
