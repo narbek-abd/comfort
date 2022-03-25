@@ -37,7 +37,7 @@ export const Logo = styled(Link)`
   }
 `;
 
-
+ 
 export const Input = styled.input<{ square: any }>`
   padding: 0 15px;
 
