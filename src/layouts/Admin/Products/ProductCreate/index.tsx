@@ -17,7 +17,7 @@ import { createProduct } from "../../../../api/Product";
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
 import Alert from "../../../../components/Alert";
-import {Button} from "../../../../components/Button";
+import Button from "../../../../components/Button";
 
 const ProductCreate = () => {
   const {
