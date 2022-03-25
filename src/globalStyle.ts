@@ -37,7 +37,9 @@ export const Logo = styled(Link)`
   }
 `;
 
+export const Button = styled.input<{ square: any }>`
  
+ `
 export const Input = styled.input<{ square: any }>`
   padding: 0 15px;
 
