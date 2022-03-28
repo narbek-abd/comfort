@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as S from "./style";
 import NavbarItem from "../NavbarItem";
-import { Icon } from "../../../../components/Icon";
+import Icon from "../../../../components/Icon";
 import slideToggle, { slideUp } from "../../../../utils/SlideUpDown";
 
 interface NavbarDropdownProps {

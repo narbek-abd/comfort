@@ -51,7 +51,7 @@ const ProductCreate = () => {
   }
 
   /** UI */
-  const [alertmessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -97,7 +97,7 @@ const ProductCreate = () => {
 
   return (
     <S.Create>
-      <Alert message={alertmessage} variant={alertvariant} />
+      {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>

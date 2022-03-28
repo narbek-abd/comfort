@@ -3,7 +3,7 @@ import * as G from "../../globalStyle";
 import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
-import { Icon } from "../../components/Icon";
+import Icon from "../../components/Icon";
 import Button from "../../components/Button"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

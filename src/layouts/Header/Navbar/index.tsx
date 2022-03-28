@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import * as S from "./style";
 import axios from "axios";
 import CatalogMenu from "../../../components/CatalogMenu";
-import { Icon } from "../../../components/Icon";
+import Icon from "../../../components/Icon";
 
 import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";

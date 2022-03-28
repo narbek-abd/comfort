@@ -82,7 +82,7 @@ const ProductEdit = () => {
   }
 
   /** UI */
-  const [alertmessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -139,7 +139,7 @@ const ProductEdit = () => {
 
   return (
     <S.Edit>
-      <Alert message={alertmessage} variant={alertvariant} />
+      {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
 
       {currentProduct ? (
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -37,9 +37,7 @@ export const Logo = styled(Link)`
   }
 `;
 
-export const Button = styled.input<{ square: any }>`
- 
- `
+export const Button = styled.input<{ square: any }>``;
 export const Input = styled.input<{ square: any }>`
   padding: 0 15px;
 
@@ -48,6 +46,60 @@ export const Input = styled.input<{ square: any }>`
     css`
       border: 2px solid #e7e6ef;
     `}
+`;
+
+export const Checkbox = styled.div`
+  position: relative;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked ~ label {
+      &:before {
+        background-color: var(--color-pink);
+        border-color: transparent;
+      }
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    &:before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid #d5d5d5;
+
+      display: inline-block;
+      flex-shrink: 0;
+      flex-grow: 0;
+      margin-right: 0.5em;
+    }
+
+    &:after {
+      content: "";
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      position: absolute;
+      transform: rotate(45deg);
+      display: none;
+      width: 4px;
+      height: 10px;
+      top: 3px;
+      left: 8px;
+      box-sizing: content-box;
+    }
+  }
 `;
 
 export const Err = styled.span`

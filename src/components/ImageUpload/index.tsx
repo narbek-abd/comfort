@@ -5,7 +5,7 @@ import {
 } from "../../types/UploadedImageTypes";
 import * as S from "./style";
 import * as G from "../../globalStyle";
-import { Icon } from "../Icon";
+import Icon from "../Icon";
 
 interface ImageUploadProps {
   onUpload: (images: UploadedImageTypes[]) => void;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as G from "../../../globalStyle";
 import * as S from "./style";
-import { Icon } from "../../../components/Icon";
+import Icon from "../../../components/Icon";
 import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";

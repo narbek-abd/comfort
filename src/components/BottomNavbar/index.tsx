@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Icon } from "../Icon";
+import Icon from "../Icon";
 import * as S from "./style";
 
 

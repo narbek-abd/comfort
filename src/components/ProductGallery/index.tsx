@@ -6,7 +6,7 @@ import ImageZoom from "../ImageZoom";
 import "swiper/css";
 
 import * as S from "./style";
-import { Icon } from "../Icon";
+import Icon from "../Icon";
 
 interface ProductGalleryProps {
   imgLinks: string[];

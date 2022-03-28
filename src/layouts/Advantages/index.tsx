@@ -6,7 +6,7 @@ import premium from "../../assets/icons/premium.svg";
 import support from "../../assets/icons/support.svg";
 
 import * as S from "./style";
-import { Icon } from "../../components/Icon";
+import Icon from "../../components/Icon";
 
 const Advantages = () => {
   return (

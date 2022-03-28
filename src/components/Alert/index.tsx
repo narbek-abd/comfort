@@ -1,24 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import * as G from "../../globalStyle";
 
 import * as S from "./style";
 
 interface AlertProps {
   children?: React.ReactNode;
-  message: string;
   variant: string;
 }
 
-const Alert = ({ message, variant, children }: AlertProps) => {
+const Alert = ({ variant, children }: AlertProps) => {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <>
-      {message !== "" && (
+      {isVisible && (
         <S.Alert variant={variant}>
-          <S.Inner>
-            {message}
-
-            {children}
-          </S.Inner>
+          <button onClick={() => setIsVisible(false)}>X</button>
+          {children}
         </S.Alert>
       )}
     </>

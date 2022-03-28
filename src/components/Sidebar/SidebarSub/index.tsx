@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import * as S from "./style";
 import SidebarItem from "../SidebarItem";
 import slideToggle from "../../../utils/SlideUpDown";
-import { Icon } from "../../Icon";
+import Icon from "../../Icon";
 import { SidebarItemType } from "../../../types/SidebarTypes";
 
 interface SidebarSubProps {
