@@ -1,14 +1,13 @@
 import React from "react";
-import * as G from "../../globalStyle";
 import * as S from "./style";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import getSearchParams from "../../utils/getSearchParams"
 
 interface PaginationProps {
   children?: React.ReactNode;
   totalItem: number;
   perPage: number;
   rangeCount?: number;
-  onChange: (page: string) => void;
 }
 
 const Pagination = ({
@@ -16,9 +15,7 @@ const Pagination = ({
   perPage,
   rangeCount = 7,
   children,
-  onChange,
 }: PaginationProps) => {
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = +(searchParams.get("page") ?? 1);
 
@@ -40,24 +37,27 @@ const Pagination = ({
 
   function onPageChange(e: React.MouseEvent) {
     e.preventDefault();
-    onChange((e.target as HTMLElement).dataset.page);
+    let params = getSearchParams();
+
+    params["page"] = (e.target as HTMLElement).dataset.page;
+    setSearchParams(params);
   }
 
   return (
     <S.Pagination>
       {currentPage - 1 !== 0 && (
         <S.Item>
-          <a data-page={currentPage - 1} onClick={onPageChange}>
+          <button data-page={currentPage - 1} onClick={onPageChange}>
             prev
-          </a>
+          </button>
         </S.Item>
       )}
 
       {pageOffsetIndex > 0 && (
         <S.Item>
-          <a data-page={1} onClick={onPageChange}>
+          <button data-page={1} onClick={onPageChange}>
             1
-          </a>
+          </button>
           <span>...</span>
         </S.Item>
       )}
@@ -66,9 +66,9 @@ const Pagination = ({
         page += 1;
         return (
           <S.Item key={page} active={page === currentPage - pageOffsetIndex}>
-            <a data-page={page + pageOffsetIndex} onClick={onPageChange}>
+            <button data-page={page + pageOffsetIndex} onClick={onPageChange}>
               {page + pageOffsetIndex}
-            </a>
+            </button>
           </S.Item>
         );
       })}
@@ -76,17 +76,17 @@ const Pagination = ({
       {pageOffsetIndex + pageRangeCount < lastPage && (
         <S.Item>
           <span>...</span>
-          <a data-page={lastPage} onClick={onPageChange}>
+          <button data-page={lastPage} onClick={onPageChange}>
             {lastPage}
-          </a>
+          </button>
         </S.Item>
       )}
 
       {currentPage * perPage < totalItem && (
         <S.Item>
-          <a data-page={currentPage + 1} onClick={onPageChange}>
+          <button data-page={currentPage + 1} onClick={onPageChange}>
             next
-          </a>
+          </button>
         </S.Item>
       )}
     </S.Pagination>

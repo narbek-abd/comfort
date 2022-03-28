@@ -3,7 +3,7 @@ import * as S from "./style";
 import { CategoryTypes } from "../../../types/CategoryTypes";
 
 import MenuItem from "../MenuItem";
-import { Icon } from "../../Icon";
+import Icon from "../../Icon";
 
 interface MenuSubProps {
   list: CategoryTypes[];

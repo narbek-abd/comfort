@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Pagination = styled.ul`
 	display: flex;
+	justify-content: center;
 `;
 
 export const Item = styled.li<{ active?: boolean }>`
 	display: flex;
-	align-items: end;
-	a {
+	button {
 		cursor: pointer;
 		border-radius: 3px;
 		margin: 0 3px;

@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 
-import { Icon } from "../../../components/Icon";
+import Icon from "../../../components/Icon";
 import * as G from "../../../globalStyle";
 
 

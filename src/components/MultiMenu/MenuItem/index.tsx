@@ -3,7 +3,7 @@ import * as S from "./style";
 import { CategoryTypes } from "../../../types/CategoryTypes";
 import MenuSub from "../MenuSub";
 import { Link } from "react-router-dom";
-import { Icon } from "../../Icon";
+import Icon from "../../Icon";
 
 interface MenuItemProps {
   item: CategoryTypes;

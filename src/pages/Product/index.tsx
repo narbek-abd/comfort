@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ProductMain from "../../layouts/ProductMain";
-
-import * as S from "./style";
 import { useParams } from "react-router-dom";
 import Header from "../../layouts/Header";
 
@@ -18,7 +16,7 @@ const Product = () => {
   return (
     <>
       <Header />
-      <S.Product>{product && <ProductMain product={product} />}</S.Product>;
+      {product && <ProductMain product={product} />};
     </>
   );
 };

@@ -5,10 +5,7 @@ import * as S from "./style";
 import Alert from "../../../../components/Alert";
 import Button from "../../../../components/Button";
 import { useParams } from "react-router-dom";
-import {
-  getCategories,
-  updateCategory,
-} from "../../../../api/Category";
+import { getCategories, updateCategory } from "../../../../api/Category";
 import { CategoryValidation } from "../../../../validation/Category";
 import {
   CategoryTypes,
@@ -68,7 +65,7 @@ const CategoryEdit = () => {
 
   return (
     <S.Create>
-      <Alert message={alertmessage} variant={alertvariant} />
+      {alertmessage && <Alert variant={alertvariant}>{alertmessage}</Alert>}
 
       {currentCategory && (
         <form onSubmit={handleSubmit(onSubmit)}>

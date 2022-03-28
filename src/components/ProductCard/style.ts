@@ -35,6 +35,7 @@ export const ProductCard = styled.div`
 export const Img = styled.div`
 	height: 269.96px;
 	position: relative;
+	overflow: hidden;
 
 	img {
 		position: absolute;
@@ -45,6 +46,7 @@ export const Img = styled.div`
 `;
 export const Inf = styled.div`
 	color: var(--color-dark-blue);
+	margin-top: 30px;
 `;
 export const Name = styled.p`
 	font-family: Josefin Sans;
