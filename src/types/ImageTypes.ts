@@ -4,7 +4,7 @@ export interface UploadedImageTypes {
 	img: any;
 }
 
-export interface InitialImagesTypes {
+export interface ImageTypes {
 	id: number;
 	image: string;
 }
