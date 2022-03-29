@@ -6,7 +6,7 @@ import { ProductValidation } from "../../../../validation/Product";
 
 import { ProductFormTypes, ProductTypes } from "../../../../types/ProductTypes";
 import { CategoryTypes } from "../../../../types/CategoryTypes";
-import { UploadedImageTypes } from "../../../../types/UploadedImageTypes";
+import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
