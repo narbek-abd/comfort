@@ -8,7 +8,7 @@ import getSearchParams from "../../../utils/getSearchParams";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FilterSideBarFormTypes } from "../../../types/FilterSideBarFormTypes";
-import Button from '../../../components/Button';
+import Button from "../../../components/Button";
 
 const ProductsFilterSidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();

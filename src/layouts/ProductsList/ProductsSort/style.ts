@@ -22,6 +22,10 @@ export const SortLeft = styled.div`
 		color: #8a8fb9;
 		margin-top: 8px;
 	}
+
+	@media only screen and (max-width: 768px) {
+		display: none;
+	}
 `;
 
 export const SortRight = styled.div`
@@ -43,6 +47,12 @@ export const SortRight = styled.div`
 			line-height: 19px;
 			color: #3f509e;
 			margin-right: 4px;
+		}
+
+		svg {
+			height: 19px;
+			color: var(--color-dark-blue);
+			cursor: pointer;
 		}
 	}
 
