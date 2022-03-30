@@ -6,12 +6,13 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 
 interface ProductCardProps {
-	product: { id: number; name: string; price: number; description?: string; images: any };
+	product: { id: number; name: string; price: number; description?: string; images: any; };
+	variant?: "vertical" | "horizontal";
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 	return (
-		<S.ProductCard>
+		<S.ProductCard variant={variant}>
 			<Link to={`/product/${product.id}`}>
 				<S.Img>
 					<img src={'http://comfort.loc/storage/' + product.images[0].image} alt="" />
@@ -27,8 +28,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
 			</Link>
 
 			<S.Actions>
-				<Icon name="basket" />
-				<Icon name="heart" />
+				<span><Icon name="basket" /></span>
+				<span><Icon name="heart" /></span>
 			</S.Actions>
 		</S.ProductCard>
 	);
