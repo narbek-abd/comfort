@@ -4,7 +4,7 @@ import * as G from "../../globalStyle";
 import * as S from "./style";
 import Navbar from "./Navbar";
 import HeaderTop from "./HeaderTop";
-import { Icon } from "../../components/Icon";
+import Icon from "../../components/Icon";
 import SearchBar from "./SearchBar";
 
 const Header = () => {

@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ProductMain from "../../layouts/ProductMain";
-
-import * as S from "./style";
 import { useParams } from "react-router-dom";
 import Header from "../../layouts/Header";
+import { getProduct } from '../../api/Product';
 
 const Product = () => {
   const params = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${params.id}`)
-      .then((response) => response.json())
-      .then((json) => setProduct(json));
+    getProduct(+params.id).then(response => setProduct(response.data))
   }, []);
 
   return (
     <>
       <Header />
-      <S.Product>{product && <ProductMain product={product} />}</S.Product>;
+      {product && <ProductMain product={product} />};
     </>
   );
 };

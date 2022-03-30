@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as G from "../../globalStyle";
 import * as S from "./style";
 import ProductCard from "../../components/ProductCard";
+import {getProducts} from "../../api/Product"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
@@ -9,13 +10,7 @@ import { Pagination } from "swiper";
 const FeaturedProducts = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
-		function getProducts() {
-			fetch("https://dummyjson.com/products?limit=10")
-				.then((response) => response.json())
-				.then((json) => setProducts(json.products));
-		}
-
-		getProducts();
+		getProducts().then((response) => setProducts(response.data));
 	}, []);
 	return (
 		<S.FeaturedProducts>

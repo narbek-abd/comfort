@@ -37,12 +37,12 @@ const CategoryCreate = () => {
     getCategories().then((response) => setCategories(response.data));
   }, []);
 
-  const [alertmessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
 
   return (
     <S.Create>
-      <Alert message={alertmessage} variant={alertvariant} />
+    {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>

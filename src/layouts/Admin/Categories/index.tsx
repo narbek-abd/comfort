@@ -9,7 +9,7 @@ import { CategoryTypes } from "../../../types/CategoryTypes";
 const Categories = () => {
   const [categories, setCategories] = useState<CategoryTypes[]>([]);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const currentPage = +(searchParams.get("page") ?? 1);
 
   const perPage = 6;
@@ -29,10 +29,6 @@ const Categories = () => {
         setCategories(response.data.data);
         setTotalItems(response.data.total);
       });
-  }
-
-  function onChange(page: string) {
-    setSearchParams({ page: page });
   }
 
   return (
@@ -59,13 +55,7 @@ const Categories = () => {
           </tbody>
         </table>
 
-        {totalItems && (
-          <Pagination
-            onChange={onChange}
-            totalItem={totalItems}
-            perPage={perPage}
-          />
-        )}
+        {totalItems && <Pagination totalItem={totalItems} perPage={perPage} />}
       </S.Categories>
     )
   );

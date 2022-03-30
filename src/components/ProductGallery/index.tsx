@@ -2,26 +2,28 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageZoom from "../ImageZoom";
+import { apiUrl } from "../../constants/project";
+import {ImageTypes} from "../../types/ImageTypes"
 
 import "swiper/css";
 
 import * as S from "./style";
-import { Icon } from "../Icon";
+import Icon from "../Icon";
 
 interface ProductGalleryProps {
-  imgLinks: string[];
+  imageItems: ImageTypes[];
 }
 
-const ProductGallery = ({ imgLinks }: ProductGalleryProps) => {
-  const [mainImgUrl, setMainImgUrl] = useState(imgLinks[0]);
+const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
+  const [mainImg, setMainImg] = useState(imageItems[0]);
 
   function changeMainImg(e: React.MouseEvent) {
-    let selectedImgUrl = (e.target as HTMLElement)
-      .closest(".swiper-slide")
-      .querySelector("img")
-      .getAttribute("src");
+    let selectedImg = imageItems.find(
+      (image: any) =>
+        image.id === +(e.currentTarget as HTMLElement).dataset.imageId
+    );
 
-    setMainImgUrl(selectedImgUrl);
+    setMainImg(selectedImg);
   }
 
   return (
@@ -51,11 +53,18 @@ const ProductGallery = ({ imgLinks }: ProductGalleryProps) => {
           }}
           style={{ height: "490px" }}
         >
-          {imgLinks.map((url, index) => {
+          {imageItems.map((imageItem: any, index: any) => {
             return (
-              <SwiperSlide onClick={changeMainImg} key={url + index.toString()}>
-                <S.ImgWrap active={url === mainImgUrl}>
-                  <img src={url} alt="product img" />
+              <SwiperSlide
+                onClick={changeMainImg}
+                key={imageItem.id}
+                data-image-id={imageItem.id}
+              >
+                <S.ImgWrap active={imageItem.image === mainImg.image}>
+                  <img
+                    src={apiUrl + "storage/" + imageItem.image}
+                    alt="product img"
+                  />
                 </S.ImgWrap>
               </SwiperSlide>
             );
@@ -67,7 +76,7 @@ const ProductGallery = ({ imgLinks }: ProductGalleryProps) => {
       </S.Left>
 
       <S.Right>
-        <ImageZoom src={mainImgUrl} />
+        <ImageZoom src={apiUrl + "storage/" + mainImg.image} />
       </S.Right>
     </S.ProductGallery>
   );

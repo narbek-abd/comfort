@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
+  ImageTypes,
   UploadedImageTypes,
-  InitialImagesTypes,
-} from "../../types/UploadedImageTypes";
+} from "../../types/ImageTypes";
 import * as S from "./style";
 import * as G from "../../globalStyle";
-import { Icon } from "../Icon";
+import Icon from "../Icon";
 
 interface ImageUploadProps {
   onUpload: (images: UploadedImageTypes[]) => void;
-  initialImages?: InitialImagesTypes[];
+  initialImages?: ImageTypes[];
   onRemoveInitialImage?: (id: number) => void;
   keyForReRender?: number;
 }

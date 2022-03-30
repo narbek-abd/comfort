@@ -1,5 +1,5 @@
 import { CategoryTypes } from "./CategoryTypes";
-import { InitialImagesTypes } from "./UploadedImageTypes";
+import { ImageTypes } from "./ImageTypes";
 
 export interface ProductFormTypes {
     name: string;
@@ -13,6 +13,7 @@ export interface ProductTypes {
     name: string;
     price: number;
     category_id: number;
+    description: string;
     category: CategoryTypes;
-    images: InitialImagesTypes;
+    images: ImageTypes[];
 }

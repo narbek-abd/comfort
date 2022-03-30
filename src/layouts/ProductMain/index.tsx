@@ -3,20 +3,20 @@ import * as G from "../../globalStyle";
 import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
-import { Icon } from "../../components/Icon";
+import Icon from "../../components/Icon";
 import Button from "../../components/Button"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
 import { addProduct } from "../../store/action-creators/Cart";
+import { ProductTypes } from '../../types/ProductTypes';
 
 interface ProductMainProps {
-  product: {
-    [key: string]: any;
-  };
+  product: ProductTypes;
 }
 
 const ProductMain = ({ product }: ProductMainProps) => {
+  console.log(product)
   const dispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart.products);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
@@ -40,15 +40,15 @@ const ProductMain = ({ product }: ProductMainProps) => {
       <G.Container>
         <S.Inner>
           <S.Left>
-            {product.images && <ProductGallery imgLinks={product.images} />}
+            {product.images && <ProductGallery imageItems={product.images} />}
           </S.Left>
           <S.Right>
-            <S.Name>{product.title}</S.Name>
+            <S.Name>{product.name}</S.Name>
 
             <S.Rating>
               <S.Stars>⭐️⭐️⭐️⭐️⭐️</S.Stars>
 
-              <span>({product.stock})</span>
+            {/*  <span>({product.stock})</span>*/}
             </S.Rating>
 
             <S.Price>

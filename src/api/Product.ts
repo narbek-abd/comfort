@@ -1,6 +1,12 @@
 import axiosClient from "./axiosClient";
 import axios from "axios";
 
+
+export function getProducts() {
+			return axiosClient.get("/products/list");
+}
+
+
 export function createProduct(formData: any) {
 	return axiosClient.post("/products", formData);
 }

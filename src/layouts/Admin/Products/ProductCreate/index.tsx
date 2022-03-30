@@ -6,7 +6,7 @@ import { ProductValidation } from "../../../../validation/Product";
 
 import { ProductFormTypes } from "../../../../types/ProductTypes";
 import { CategoryTypes } from "../../../../types/CategoryTypes";
-import { UploadedImageTypes } from "../../../../types/UploadedImageTypes";
+import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
@@ -51,7 +51,7 @@ const ProductCreate = () => {
   }
 
   /** UI */
-  const [alertmessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [alertvariant, setAlertvariant] = useState("success");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -97,7 +97,7 @@ const ProductCreate = () => {
 
   return (
     <S.Create>
-      <Alert message={alertmessage} variant={alertvariant} />
+      {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>
