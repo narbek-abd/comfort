@@ -7,7 +7,16 @@ import getSearchParams from "../../../utils/getSearchParams";
 import Icon from "../../../components/Icon";
 import Dropdown from "../../../components/Dropdown";
 
-const ProductsSort = () => {
+interface ProductsSortProps {
+  changeView: (selectedView: "vertical" | "horizontal") => void;
+  isDeskTop: boolean;
+  openFilterModal: () => void;
+}
+const ProductsSort = ({
+  isDeskTop,
+  changeView,
+  openFilterModal,
+}: ProductsSortProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [currentSortBy, setCurrentSortBy] = useState("New");
@@ -27,6 +36,17 @@ const ProductsSort = () => {
     }
   }
 
+  function changeListView(e: React.MouseEvent) {
+    changeView(
+      (e.currentTarget as HTMLElement).dataset.view as "vertical" | "horizontal"
+    );
+  }
+
+  function openModal(e: React.MouseEvent) {
+    e.stopPropagation();
+    openFilterModal();
+  }
+
   return (
     <S.Sort>
       <S.SortLeft>
@@ -39,11 +59,11 @@ const ProductsSort = () => {
           <p>Sort By:</p>
 
           <Dropdown title={currentSortBy}>
-            {sortByOptions.map((soryOption) => {
+            {sortByOptions.map((sortOption) => {
               return (
-                soryOption !== currentSortBy && (
-                  <li key={soryOption} onClick={sortProductsBy}>
-                    {soryOption}
+                sortOption !== currentSortBy && (
+                  <li key={sortOption} onClick={sortProductsBy}>
+                    {sortOption}
                   </li>
                 )
               );
@@ -51,10 +71,24 @@ const ProductsSort = () => {
           </Dropdown>
         </div>
         <div>
-          <p>View</p>
-          <Icon name="grid-view" />
-          <Icon name="list-view" />
+          <p>View:</p>
+          <Icon
+            name="grid-view"
+            onClick={changeListView}
+            data-view="vertical"
+          />
+          <Icon
+            name="list-view"
+            onClick={changeListView}
+            data-view="horizontal"
+          />
         </div>
+
+        {!isDeskTop && (
+          <div>
+            <Icon name="filter" data-view="vertical" onClick={openModal} />
+          </div>
+        )}
       </S.SortRight>
     </S.Sort>
   );

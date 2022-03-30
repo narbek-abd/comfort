@@ -108,3 +108,10 @@ export const Err = styled.span`
   color: var(--color-pink);
   font-size: 12px;
 `;
+
+export const Close = styled.span`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+`;

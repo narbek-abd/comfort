@@ -1,8 +1,6 @@
 import styled from "styled-components";
-
-export const FilterSidebar = styled.div`
-	flex: 0 0 210px;
-`;
+import { Checkbox } from "../../../globalStyle";
+import { Button } from "../../../components/Button/style";
 
 export const FilterBlock = styled.div`
 	margin-bottom: 30px;
@@ -55,4 +53,26 @@ export const FilterRange = styled.div`
 
 export const FilterGroup = styled.div`
 	margin-top: 12px;
+`;
+
+export const FilterSidebar = styled.div`
+	width: 256px;
+	margin-right: 44px;
+
+	@media only screen and (max-width: 992px) {
+		text-align: left;
+		padding: 20px;
+		${FilterRange} {
+			justify-content: flex-start;
+		}
+
+		${Checkbox} {
+			text-align: left;
+		}
+
+		${Button} {
+			width: 100%;
+			padding: 15px 0;
+		}
+	}
 `;
