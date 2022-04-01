@@ -33,9 +33,15 @@ const ProductsList = () => {
   >("horizontal");
 
   useEffect(() => {
+    let sortBy = "";
+
+    if (!searchParams.get("sort_by")) {
+      sortBy = "sort_by=new";
+    }
+
     axios
       .get(
-        `http://comfort.loc/api/products/list?limit=${perPage}&${searchParams.toString()}`
+        `http://comfort.loc/api/products/list?limit=${perPage}&${searchParams.toString()}&${sortBy}`
       )
       .then(function (response) {
         setIsLoading(false);
@@ -55,7 +61,7 @@ const ProductsList = () => {
         setIsLoading(false);
         setAlertMessage("Something went wrong, try later");
       });
-  }, [searchParams]);
+  }, [searchParams.toString()]);
 
   function changeView(selectedView: "vertical" | "horizontal") {
     setProductsCardView(selectedView);
