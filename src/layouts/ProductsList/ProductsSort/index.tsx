@@ -20,18 +20,37 @@ const ProductsSort = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [currentSortBy, setCurrentSortBy] = useState("New");
-  const sortByOptions = ["New", "Price: Low to High", "Price: High to Low"];
+  const sortByOptions = [
+    {
+      id: 1,
+      slug: "new",
+      name: "New",
+    },
+
+    {
+      id: 2,
+      slug: "price_low_to_high",
+      name: "Price: Low to High",
+    },
+
+    {
+      id: 3,
+      slug: "price_high_to_low",
+      name: "Price: High to Low",
+    },
+  ];
 
   function sortProductsBy(e: React.MouseEvent) {
-    let selectedOption = (e.currentTarget as HTMLElement).innerHTML;
+    let selectedOptionId = +(e.currentTarget as HTMLElement).dataset.id;
+    let selectedOption = sortByOptions.find(
+      (option) => option.id === selectedOptionId
+    );
 
-    if (sortByOptions.find((option) => option === selectedOption)) {
-      setCurrentSortBy(selectedOption);
+    if (selectedOption) {
+      setCurrentSortBy(selectedOption.name);
 
       let params = getSearchParams();
-
-      params["sortBy"] = selectedOption;
-
+      params["sort_by"] = selectedOption.slug;
       setSearchParams(params);
     }
   }
@@ -61,9 +80,13 @@ const ProductsSort = ({
           <Dropdown title={currentSortBy}>
             {sortByOptions.map((sortOption) => {
               return (
-                sortOption !== currentSortBy && (
-                  <li key={sortOption} onClick={sortProductsBy}>
-                    {sortOption}
+                sortOption.name !== currentSortBy && (
+                  <li
+                    key={sortOption.id}
+                    onClick={sortProductsBy}
+                    data-id={sortOption.id}
+                  >
+                    {sortOption.name}
                   </li>
                 )
               );
