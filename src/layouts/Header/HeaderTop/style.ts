@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const HeaderTop = styled.div`
 	background-color: var(--color-purple);
@@ -51,7 +51,7 @@ export const Left = styled.div`
 export const CartCount = styled.p`
 	position: absolute;
 	top: 0;
-	right: -10px;
+	right: 4px;
 	padding-right: 0;
 	font-size: 12px;
 	background-color: var(--color-dark-blue);
