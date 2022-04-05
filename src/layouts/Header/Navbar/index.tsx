@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as S from "./style";
 import axios from "axios";
@@ -10,7 +10,7 @@ import navbarLinks from "../HeaderData";
 import MultiMenu from "../../../components/MultiMenu";
 
 const Navbar = () => {
-	let [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
 	const [isdeskTop, setIsDeskTop] = useState(true);
 	const [catalogList, setCatalogList] = useState([]);
@@ -123,42 +123,5 @@ const Navbar = () => {
 		</>
 	);
 };
-
-const catalogListss = [
-	{
-		id: 1,
-		name: "Phones",
-
-		children: [
-			{
-				id: 11,
-				name: "Mobile Phones",
-		
-			children: [
-					{ id: 4, name: "Samsung" },
-					{ id: 5, name: "LG" },
-				],
-			},
-			{
-				id: 3,
-				name: "Gadgets",
-		
-				children: [
-					{ id: 6, name: "HeadPhones" },
-					{ id: 7, name: "battaries" },
-				],
-			},
-		],
-	},
-
-	{
-		id: 8,
-		name: "Clothing",
-		children: [
-			{ id: 9, name: "Clothing for men" },
-			{ id: 10, name: "Clothing for women" },
-		],
-	},
-];
 
 export default Navbar;
