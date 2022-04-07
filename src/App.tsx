@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Order from "./pages/Order";
 
 import "./App.css";
 
@@ -25,6 +26,8 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path="/order" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </AuthProviderProps>
