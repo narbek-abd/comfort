@@ -82,6 +82,7 @@ const ProductCreate = () => {
     formData.append("name", String(data.name));
     formData.append("price", String(data.price));
     formData.append("category_id", String(selectedCategory));
+    formData.append("quantity", String(data.quantity));
 
     createProduct(formData).then((response) => {
       setIsLoading(false);
@@ -108,6 +109,11 @@ const ProductCreate = () => {
         <S.Group>
           <input type="text" placeholder="price" {...register("price")} />
           {errors.price && <G.Err>{errors.price.message}</G.Err>}
+        </S.Group>
+
+        <S.Group>
+          <input type="text" placeholder="quantity" {...register("quantity")} />
+          {errors.quantity && <G.Err>{errors.quantity.message}</G.Err>}
         </S.Group>
 
         <S.Group>

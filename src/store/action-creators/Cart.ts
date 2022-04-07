@@ -55,7 +55,7 @@ export const changeProductCount = (product: any, count: number) => {
 
 export const getTotalQuantity = () => {
   let products: any = store.getState().cart.products;
-  
+
   let quantity = 0;
 
   products.forEach((product: any) => {
@@ -63,4 +63,12 @@ export const getTotalQuantity = () => {
   });
 
   return quantity;
+};
+
+export const clearCart = () => {
+  localStorage.removeItem("cart");
+
+  return {
+    type: CartActionTypes.CLEAR_CART,
+  };
 };

@@ -5,10 +5,13 @@ import * as S from "./style";
 import CartProductItem from "./CartProductItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
+import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
   const [storageProducts, setStorageProducts] = useState([]);
   let cart = useSelector((state: RootState) => state.cart);
+
 
   useEffect(() => {
     setStorageProducts(cart.products);
@@ -33,6 +36,12 @@ const ShoppingCart = () => {
                 <S.CartEmpty>Корзина пуста</S.CartEmpty>
               )}
             </S.ProductList>
+
+              <Link to="/order">
+                <Button>
+                  Buy
+                </Button>
+              </Link>
           </S.Left>
           <S.Right></S.Right>
         </S.Inner>

@@ -112,6 +112,7 @@ const ProductEdit = () => {
     });
     formData.append("name", String(data.name));
     formData.append("price", String(data.price));
+    formData.append("quantity", String(data.quantity));
 
     if (categorySelectIsVisible) {
       formData.append("category_id", String(selectedCategory));
@@ -121,7 +122,7 @@ const ProductEdit = () => {
       setIsLoading(false);
 
       if (response.status === 200) {
-        setAlertMessage("Category was updated successfully");
+        setAlertMessage("Product was updated successfully");
 
         setCurrentProduct(response.data);
         setInitialProductImages(response.data.images ?? []);
@@ -161,6 +162,16 @@ const ProductEdit = () => {
               {...register("price")}
             />
             {errors.price && <G.Err>{errors.price.message}</G.Err>}
+          </S.Group>
+
+          <S.Group>
+            <input
+              defaultValue={currentProduct.quantity}
+              type="text"
+              placeholder="quantity"
+              {...register("quantity")}
+            />
+            {errors.quantity && <G.Err>{errors.quantity.message}</G.Err>}
           </S.Group>
 
           <S.Group>
