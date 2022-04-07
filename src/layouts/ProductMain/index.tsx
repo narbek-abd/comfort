@@ -16,7 +16,6 @@ interface ProductMainProps {
 }
 
 const ProductMain = ({ product }: ProductMainProps) => {
-  console.log(product)
   const dispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart.products);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
