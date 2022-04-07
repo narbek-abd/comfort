@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 
 const axiosClient = axios.create({
   baseURL: `http://localhost:8000/api`,
+  withCredentials: true,
 });
 
 export const webAxiosClient = axios.create({
