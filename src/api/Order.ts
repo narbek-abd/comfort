@@ -1,6 +1,5 @@
 import axiosClient, { webAxiosClient } from "./axiosClient";
-import axios from "axios";
-import { OrderFormTypes } from '../types/FormTypes';
+import { OrderFormTypes } from "../types/FormTypes";
 
 export function createOrder(data: OrderFormTypes) {
 	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
@@ -8,3 +7,8 @@ export function createOrder(data: OrderFormTypes) {
 	});
 }
 
+export function deleteOrder(id: number) {
+	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
+		return axiosClient.delete(`/orders/${id}`);
+	});
+}
