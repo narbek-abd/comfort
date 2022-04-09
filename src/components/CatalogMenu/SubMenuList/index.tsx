@@ -25,14 +25,14 @@ const SubMenuList = ({ list, focusedItemId }: CatalogMenuChildrenProps) => {
       {activeCategoryList.map((category) => {
         return (
           <div key={category.id}>
-            <Link to="#s">{category.name}</Link>
+            <Link to={"/catalog/" + category.slug}>{category.name}</Link>
 
             {category["children"] && (
               <S.SubList>
                 {category["children"].map((child: CategoryTypes) => {
                   return (
                     <li key={child.id}>
-                      <Link to="#">{child.name}</Link>
+                      <Link to={"/catalog/" + category.slug + "/" + child.slug}>{child.name}</Link>
                     </li>
                   );
                 })}
