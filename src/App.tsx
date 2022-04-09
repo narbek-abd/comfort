@@ -10,6 +10,7 @@ import Admin from "./pages/Admin";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Order from "./pages/Order";
+import Orders from "./pages/User/Orders";
 
 import "./App.css";
 
@@ -28,6 +29,8 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/order" element={<Order />} />
+
+          <Route path="/user/orders" element={<Orders />} />
         </Routes>
       </BrowserRouter>
     </AuthProviderProps>
