@@ -51,7 +51,7 @@ export const Left = styled.div`
 export const CartCount = styled.p`
 	position: absolute;
 	top: 0;
-	right: 4px;
+	right: -7px;
 	padding-right: 0;
 	font-size: 12px;
 	background-color: var(--color-dark-blue);
@@ -105,28 +105,26 @@ export const Right = styled.div`
 	line-height: 44px;
 	justify-content: space-between;
 	${UserButton} {
-		span {
-			padding-right: 16px;
-		}
-		a {
-			padding-right: 16px;
-		}
-		&:last-child {
-			a {
-				padding-right: 0;
-				padding-left: 10px;
-			}
-		}
+		margin-left: 16px;
+
 		${CartCount} {
 			span {
 				height: auto;
-				padding-right: 0;
 			}
 		}
 	}
 	ul {
 		background-color: #7e33e0;
-		z-index: 1;
+		z-index: 2;
+	}
+
+	.dropdown {
+		ul {
+			width: 100px;
+			li {
+				cursor: pointer;
+			}
+		}
 	}
 
 	@media only screen and (max-width: 992px) {

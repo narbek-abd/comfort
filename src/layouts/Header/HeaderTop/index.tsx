@@ -98,8 +98,11 @@ const HeaderTop = () => {
 							)}
 
 							{user && (
-								<Dropdown title={user.name}>
-									<li onClick={logout}>logout</li>
+								<Dropdown title={user.name} position="right">
+									<li>
+										<Link to="/user/orders">My orders</Link>
+									</li>
+									<li onClick={logout}>Logout</li>
 								</Dropdown>
 							)}
 						</S.UserButton>
