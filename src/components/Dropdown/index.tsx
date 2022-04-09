@@ -4,10 +4,16 @@ import "./style.scss";
 interface DropdownProps {
 	title: any;
 	children: React.ReactNode;
+	position?: "right" | "left";
 	[params: string]: any;
 }
 
-const Dropdown = ({ title, children, ...params }: DropdownProps) => {
+const Dropdown = ({
+	title,
+	position = "left",
+	children,
+	...params
+}: DropdownProps) => {
 	const [openedDropdown, setOpenDropdown] = useState(false);
 	const el = useRef(null);
 
@@ -31,7 +37,7 @@ const Dropdown = ({ title, children, ...params }: DropdownProps) => {
 	}, []);
 
 	return (
-		<div className="dropdown" ref={el} {...params}>
+		<div ref={el} {...params} className={position + " dropdown"}>
 			<span onClick={() => setOpenDropdown(!openedDropdown)}>
 				{title}
 			</span>
