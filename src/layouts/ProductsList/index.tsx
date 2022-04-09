@@ -4,8 +4,9 @@ import * as G from "../../globalStyle";
 import * as S from "./style";
 
 import { ProductTypes } from "../../types/ProductTypes";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import axios from "axios";
 
@@ -18,50 +19,90 @@ import Modal from "../../components/Modal";
 import ProductsSort from "./ProductsSort";
 import ProductsFilterSidebar from "./ProductsFilterSidebar";
 
+import { getCategoryBySlug } from "../../api/Category";
+import { getChildrenIds } from "../../utils/getChildrenIds";
+
 const ProductsList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [alertMessage, setAlertMessage] = useState(null);
   const [products, setProducts] = useState<ProductTypes[]>([]);
 
   const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   const perPage = 6;
   const [totalItems, setTotalItems] = useState(null);
+
+  const [categoryChildrens, setCategoryChildrens] = useState([]);
 
   const [productsCardView, setProductsCardView] = useState<
     "vertical" | "horizontal"
   >("horizontal");
 
   useEffect(() => {
+    let locationArray = location.pathname.split("/");
+    let currentCategorySlug = locationArray[locationArray.length - 1];
+
+    getCategoryBySlug(currentCategorySlug).then((response) => {
+      if (response.status === 200) {
+        setCategoryChildrens(response.data.children);
+
+        let categories = defaultFilterCategories(response.data);
+        let sortBy = defaultSortBy();
+
+        axios
+          .get(
+            `http://comfort.loc/api/products/list?limit=${perPage}&${sortBy}&${categories}&${searchParams.toString()}`
+          )
+          .then(function (response) {
+            setIsLoading(false);
+
+            if (response.status === 200) {
+              let products = response.data.data;
+
+              if (products.length === 0) {
+                setProducts([]);
+                setAlertMessage("List is empty");
+                return;
+              }
+              setProducts(products);
+              setTotalItems(response.data.total);
+              setAlertMessage("");
+            }
+          })
+          .catch(function (error) {
+            setIsLoading(false);
+            setAlertMessage("Something went wrong, try later");
+          });
+      }
+    });
+  }, [searchParams.toString(), location]);
+
+  function defaultFilterCategories(currentCategory: CategoryTypes) {
+    let categories = "";
+
+    if (!searchParams.get("categories")) {
+      let currentCategoryId = currentCategory.id;
+      let categoryIds = getChildrenIds(currentCategory.children);
+      categoryIds.push(currentCategoryId);
+
+      let categoryIdsJoined = categoryIds.join("-");
+
+      categories = `categories=${categoryIdsJoined}`;
+    }
+
+    return categories;
+  }
+
+  function defaultSortBy() {
     let sortBy = "";
 
     if (!searchParams.get("sort_by")) {
       sortBy = "sort_by=new";
     }
 
-    axios
-      .get(
-        `http://comfort.loc/api/products/list?limit=${perPage}&${searchParams.toString()}&${sortBy}`
-      )
-      .then(function (response) {
-        setIsLoading(false);
-
-        if (response.status === 200) {
-          let products = response.data.data;
-
-          if (products.length === 0) {
-            setAlertMessage("List is empty");
-            return;
-          }
-          setProducts(products);
-          setTotalItems(response.data.total);
-        }
-      })
-      .catch(function (error) {
-        setIsLoading(false);
-        setAlertMessage("Something went wrong, try later");
-      });
-  }, [searchParams.toString()]);
+    return sortBy;
+  }
 
   function changeView(selectedView: "vertical" | "horizontal") {
     setProductsCardView(selectedView);
@@ -104,14 +145,14 @@ const ProductsList = () => {
 
         <S.ProductsBox>
           {isDeskTop ? (
-            <ProductsFilterSidebar />
+            <ProductsFilterSidebar categoryChildrens={categoryChildrens} />
           ) : (
             <Modal
               isOpen={modalIsOpen}
               onClose={closeFilterModal}
               fullscreen={true}
             >
-              <ProductsFilterSidebar />
+              <ProductsFilterSidebar categoryChildrens={categoryChildrens} />
               <G.Close onClick={closeFilterModal}>x</G.Close>
             </Modal>
           )}

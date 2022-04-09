@@ -36,7 +36,7 @@ const CategoryEdit = () => {
     categories.forEach((category) => {
       if (category.id == categoryid) {
         setCurrentCategory(category);
-        setCategoryParentId(category.parent_id);
+        setCategoryParentId(category.parent_id ?? 0);
       }
     });
   }

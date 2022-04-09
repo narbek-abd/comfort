@@ -8,12 +8,14 @@ import Icon from "../../../components/Icon";
 import NavbarItem from "./NavbarItem";
 import navbarLinks from "../HeaderData";
 import MultiMenu from "../../../components/MultiMenu";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
 	const [isdeskTop, setIsDeskTop] = useState(true);
 	const [catalogList, setCatalogList] = useState([]);
+	const location = useLocation();
 
 	/** Определяем ширину экрана и следим за шириной через watchmedia */
 	useEffect(() => {
@@ -55,6 +57,10 @@ const Navbar = () => {
 			document.removeEventListener("click", handleClick);
 		};
 	}, []);
+
+	useEffect(() => {
+		setCatalogMenuVisible(false);
+	}, [location]);
 
 	useEffect(() => {
 		axios

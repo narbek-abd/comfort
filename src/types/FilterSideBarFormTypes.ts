@@ -3,4 +3,6 @@ export interface FilterSideBarFormTypes {
     price_to: string;
     in_stock: boolean;
     out_of_stock: boolean;
+    categories: boolean;
+    [params:string]: any;
 }
