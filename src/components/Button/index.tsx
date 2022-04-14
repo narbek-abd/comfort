@@ -4,7 +4,7 @@ import Spinner from "../Spinner";
 
 interface ButtonProps {
   children?: React.ReactNode;
-  size?: "small";
+  size?: "small" | "large";
   color?: "danger" | "warning";
   variant?: "contained" | "outlined";
   disabled?: boolean;
