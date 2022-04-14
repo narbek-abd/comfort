@@ -6,17 +6,29 @@ import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
 import { getTotalQuantity } from "../../../store/action-creators/Cart";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { logoutUser } from "../../../api/User";
+import { deleteUser } from "../../../store/action-creators/User";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
 
 const HeaderTop = () => {
+	const dispatch = useDispatch();
 	let cart = useSelector((state: RootState) => state.cart);
 	let [cartProductsTotal, setCartProductsTotal] = useState(0);
+	let user = useSelector((state: RootState) => state.user.data);
 
 	useEffect(() => {
-		let totalQuant = getTotalQuantity()
+		let totalQuant = getTotalQuantity();
 
 		setCartProductsTotal(totalQuant);
 	}, [cart]);
+
+	async function logout() {
+		await logoutUser();
+		Cookies.remove("auth-token");
+		dispatch(deleteUser());
+	}
 
 	return (
 		<S.HeaderTop>
@@ -65,12 +77,6 @@ const HeaderTop = () => {
 
 						<S.UserButton>
 							<a href="#">
-								Login <Icon name="user" />
-							</a>
-						</S.UserButton>
-
-						<S.UserButton>
-							<a href="#">
 								Wishlist <Icon name="heart" />
 							</a>
 						</S.UserButton>
@@ -82,6 +88,23 @@ const HeaderTop = () => {
 									<span>{cartProductsTotal}</span>
 								</S.CartCount>
 							</Link>
+						</S.UserButton>
+
+						<S.UserButton>
+							{!user && (
+								<Link to="/login">
+									Login <Icon name="user" />
+								</Link>
+							)}
+
+							{user && (
+								<Dropdown title={user.name} position="right">
+									<li>
+										<Link to="/user/orders">My orders</Link>
+									</li>
+									<li onClick={logout}>Logout</li>
+								</Dropdown>
+							)}
 						</S.UserButton>
 					</S.Right>
 				</S.Inner>

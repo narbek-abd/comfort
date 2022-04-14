@@ -1,25 +1,44 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Product from './pages/Product';
-import Cart from './pages/Cart';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Admin from './pages/Admin';
+import AuthProviderProps from "./providers/AuthProvider";
+import CSRFProvider from "./providers/CSRFProvider";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
+import Admin from "./pages/Admin";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Order from "./pages/Order";
+import Orders from "./pages/User/Orders";
 
-import'./App.css';
+import "./App.css";
 
 function App() {
+  CSRFProvider();
+
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products/" element={<Products />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/admin/*" element={<Admin />} />
-        </Routes>
-      </BrowserRouter>
+    <>
+      <AuthProviderProps>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog/*" element={<Products />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/admin/*" element={<Admin />} />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+
+            <Route path="/order" element={<Order />} />
+
+            <Route path="/user/orders" element={<Orders />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProviderProps>
+    </>
   );
 }
 

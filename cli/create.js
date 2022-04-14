@@ -22,23 +22,12 @@ const componentPath = [...srcPath, ...arrPath];
 
 // создание компонента
 const componentCode = `import React from 'react';
-import * as G from "../../globalStyle";
-
 import * as S from "./style";
 
-interface ${componentName}Props {
-  children?: React.ReactNode;
-}
-
-const ${componentName} = ({children} : ${componentName}Props) => {
+const ${componentName} = () => {
   return (
     <S.${componentName}>
-      <G.Container>
-        <S.Inner>
-        
-        </S.Inner>
-      </G.Container>
-      
+  
     </S.${componentName}>
   );
 };
@@ -50,11 +39,6 @@ fs.writeFileSync(path.resolve(...componentPath, `index.tsx`), componentCode);
 const styleCode = `import styled from "styled-components";
 
 export const ${componentName} = styled.div\`
-
-
-\`
-
-export const Inner = styled.div\`
 
 
 \`

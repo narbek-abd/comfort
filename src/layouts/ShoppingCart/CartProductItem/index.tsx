@@ -2,29 +2,28 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 import Counter from "../../../components/Counter";
-import { removeFromCart, changeProductCount } from "../../../store/action-creators/Cart";
-import { useDispatch } from 'react-redux';
-
+import {
+  removeFromCart,
+  changeProductCount,
+} from "../../../store/action-creators/Cart";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../../api/Product";
+import { apiUrl } from "../../../constants/project";
 
 interface CartProductItemProps {
-  storageProduct: any;
+  storageProduct: { id: number; quantity: number };
 }
 
-const CartProductItem = ({
-  storageProduct,
-}: CartProductItemProps) => {
+const CartProductItem = ({ storageProduct }: CartProductItemProps) => {
   const [product, setProduct] = useState(null);
-   const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${storageProduct.id}`)
-      .then((response) => response.json())
-      .then((json) => setProduct(json));
+    getProduct(storageProduct.id).then((response) => setProduct(response.data));
   }, []);
 
   function onCountChange(count: number) {
-        dispatch(changeProductCount(product, count))
+    dispatch(changeProductCount(product, count));
   }
 
   function removeProduct() {
@@ -36,12 +35,15 @@ const CartProductItem = ({
       <S.CartProductItem>
         <S.ProductImg>
           <Link to="/">
-            <img src={product.images[0]} alt="product" />
+            <img
+              src={apiUrl + "/storage/" + product.images[0].image}
+              alt="product"
+            />
           </Link>
         </S.ProductImg>
         <S.Inf>
           <S.Name>
-            <Link to="/">{product.title}</Link>
+            <Link to="/">{product.name}</Link>
           </S.Name>
           <span>Color: Brown</span>
           <span>Size: XL</span>

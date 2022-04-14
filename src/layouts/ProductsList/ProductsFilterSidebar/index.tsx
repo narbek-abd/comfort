@@ -8,9 +8,16 @@ import getSearchParams from "../../../utils/getSearchParams";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FilterSideBarFormTypes } from "../../../types/FilterSideBarFormTypes";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 import Button from "../../../components/Button";
 
-const ProductsFilterSidebar = () => {
+interface ProductsFilterSidebarProps {
+  categoryChildrens: CategoryTypes[];
+}
+
+const ProductsFilterSidebar = ({
+  categoryChildrens,
+}: ProductsFilterSidebarProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { register, handleSubmit } = useForm<FilterSideBarFormTypes>();
 
@@ -19,11 +26,17 @@ const ProductsFilterSidebar = () => {
 
     for (let param in data) {
       delete filterParams[param];
-      if (
-        data[param as keyof typeof data] !== "" &&
-        data[param as keyof typeof data] !== false
-      ) {
-        filterParams[param] = data[param as keyof typeof data];
+      if (data[param] !== "" && data[param] !== false) {
+        if (Array.isArray(data[param])) {
+          let filters;
+
+          if (data[param].length !== 0) {
+            filters = data[param].join("-");
+            filterParams[param] = filters;
+            continue;
+          }
+        }
+        filterParams[param] = data[param];
       }
     }
 
@@ -33,6 +46,29 @@ const ProductsFilterSidebar = () => {
   return (
     <S.FilterSidebar>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {categoryChildrens.length > 0 && (
+          <S.FilterBlock>
+            <S.FilterTitle>Categories</S.FilterTitle>
+            <S.FilterContent>
+              {categoryChildrens.map((categoryChildren) => {
+                return (
+                  <G.Checkbox key={categoryChildren.id}>
+                    <input
+                      value={categoryChildren.id}
+                      id={categoryChildren.slug}
+                      type="checkbox"
+                      {...register("categories")}
+                    />
+                    <label htmlFor={categoryChildren.slug}>
+                      {categoryChildren.name}
+                    </label>
+                  </G.Checkbox>
+                );
+              })}
+            </S.FilterContent>
+          </S.FilterBlock>
+        )}
+
         <S.FilterBlock>
           <S.FilterTitle>Price</S.FilterTitle>
           <S.FilterContent>

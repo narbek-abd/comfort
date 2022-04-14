@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button } from "../../globalStyle";
 import { Link } from "react-router-dom";
+import { Button } from '../../components/Button/style';
 
 export const ShoppingCart = styled.div`
 	margin-top: 257px;

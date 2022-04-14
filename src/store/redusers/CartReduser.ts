@@ -1,10 +1,9 @@
-import { CartState, CartAction, CartActionTypes } from '../../types/Cart'
+import { CartState, CartAction, CartActionTypes } from "../../types/Cart";
 
 const cart: CartState = {
-  products: (JSON.parse(localStorage.getItem("cart")) || []),
+  products: JSON.parse(localStorage.getItem("cart")) || [],
 };
 
-  
 export const CartReduser = (state = cart, action: CartAction) => {
   switch (action.type) {
     case CartActionTypes.ADD_PRODUCTS:
@@ -16,8 +15,10 @@ export const CartReduser = (state = cart, action: CartAction) => {
     case CartActionTypes.CHANGE_PRODUCT_COUNT:
       return { products: action.payload };
 
+    case CartActionTypes.CLEAR_CART:
+      return { products: [] };
+
     default:
       return state;
   }
 };
-
