@@ -24,6 +24,10 @@ export function getProduct(id: number) {
 	return axiosClient.get(`/products/${id}`);
 }
 
+export function getProductComments(id: number, limit: number) {
+	return axiosClient.get(`/product/comments/${id}?limit=${limit}`);
+}
+
 export function deleteProduct(id: number) {
 	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
 		return axiosClient.delete(`/products/${id}`);
