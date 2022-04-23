@@ -6,57 +6,62 @@ import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
 import { ProductTypes } from "../../../types/ProductTypes";
 import Spinner from "../../../components/Spinner";
+import useIsMounted from "../../../hooks/useIsMounted";
+import api from "../../../api";
 
 const Products = () => {
   const [products, setProducts] = useState<ProductTypes[]>([]);
 
   const [searchParams] = useSearchParams();
   const currentPage = +(searchParams.get("page") ?? 1);
+  const isMounted = useIsMounted();
 
   const perPage = 6;
-  const [totalItems, setTotalItems] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     getProducts();
-  }, [searchParams]);
+  }, [searchParams, isMounted]);
 
-  function getProducts() {
-    axios
-      .get(
-        `http://comfort.loc/api/products/list?limit=${perPage}&page=` +
-          currentPage
-      )
-      .then(function (response) {
-        setProducts(response.data.data);
-        setTotalItems(response.data.total);
-      });
+  async function getProducts() {
+    let response = await api.products.getProducts(
+      `?limit=${perPage}&page=${currentPage}`
+    );
+    if (!isMounted()) return;
+
+    setProducts(response.data.data);
+    setTotalItems(response.data.total);
   }
 
   return products.length > 0 ? (
     <S.Products>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product: ProductTypes) => {
-            return (
-              <ProductItem
-                key={product.id}
-                product={product}
-                onDelete={getProducts}
-              />
-            );
-          })}
-        </tbody>
-      </table>
+      <S.ProductsList>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product: ProductTypes) => {
+              return (
+                <ProductItem
+                  key={product.id}
+                  product={product}
+                  onDelete={getProducts}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </S.ProductsList>
 
-      {totalItems && <Pagination totalItem={totalItems} perPage={perPage} />}
+      {totalItems !== 0 && (
+        <Pagination totalItem={totalItems} perPage={perPage} />
+      )}
     </S.Products>
   ) : (
     <Spinner />

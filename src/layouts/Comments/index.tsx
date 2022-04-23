@@ -3,11 +3,12 @@ import * as G from "../../globalStyle";
 import * as S from "./style";
 import { CommentsTypes } from "../../types/CommentsTypes";
 import useIntersection from "../../hooks/useIntersection";
-import { getProductComments } from "../../api/Product";
+import useIsMounted from "../../hooks/useIsMounted";
 
 import CommentsForm from "./CommentsForm";
 import CommentsItem from "./CommentsItem";
 import Spinner from "../../components/Spinner";
+import api from "../../api";
 
 interface CommentsProps {
   product_id: number;
@@ -17,12 +18,13 @@ const Comments = ({ product_id }: CommentsProps) => {
   const [comments, setComments] = useState<CommentsTypes[]>(null);
   const [commentsLimit, setCommentsLimit] = useState(6);
   const [hasMore, setHasMore] = useState(true);
+  const isMounted = useIsMounted();
 
   useEffect(() => {
     if (!hasMore) return;
 
     getComemnts();
-  }, [commentsLimit]);
+  }, [commentsLimit, isMounted]);
 
   const loadMoreElemRef = useRef(null);
 
@@ -30,12 +32,15 @@ const Comments = ({ product_id }: CommentsProps) => {
     setCommentsLimit((limit) => limit + limit)
   );
 
-  function getComemnts() {
-    getProductComments(product_id, commentsLimit).then((response) => {
-      setHasMore(response.data.next_page_url !== null);
+  async function getComemnts() {
+    let response = await api.products.getProductComments(
+      product_id,
+      commentsLimit
+    );
+    if (!isMounted()) return;
 
-      setComments(response.data.data);
-    });
+    setHasMore(response.data.next_page_url !== null);
+    setComments(response.data.data);
   }
 
   return (
@@ -45,22 +50,20 @@ const Comments = ({ product_id }: CommentsProps) => {
         <CommentsForm onSubmit={getComemnts} product_id={product_id} />
 
         <S.CommentsList>
-          {comments && comments.length > 0 && (
-            <>
-              {comments.map((comment, index, arr) => {
-                return (
-                  <CommentsItem
-                    changeList={getComemnts}
-                    key={comment.id}
-                    comment={comment}
-                    product_id={product_id}
-                  />
-                );
-              })}
-            </>
-          )}
+          {comments &&
+            comments.length > 0 &&
+            comments.map((comment) => {
+              return (
+                <CommentsItem
+                  changeList={getComemnts}
+                  key={comment.id}
+                  comment={comment}
+                  product_id={product_id}
+                />
+              );
+            })}
         </S.CommentsList>
-        <S.LoadMore ref={loadMoreElemRef}>{hasMore && <Spinner />}</S.LoadMore>
+        <div ref={loadMoreElemRef}>{hasMore && <Spinner />}</div>
       </G.Container>
     </S.Comments>
   );

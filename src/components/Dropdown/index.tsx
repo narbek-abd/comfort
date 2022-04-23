@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./style.scss";
+import * as S from "./style";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 interface DropdownProps {
 	title: any;
@@ -14,38 +15,24 @@ const Dropdown = ({
 	children,
 	...params
 }: DropdownProps) => {
-	const [openedDropdown, setOpenDropdown] = useState(false);
-	const el = useRef(null);
+	const [isVisible, setIsVisible] = useState(false);
+	const dropdownRef = useRef(null);
 
-	useEffect(() => {
-		function toggleClick(e: MouseEvent) {
-			const dropdown = (e.target as HTMLElement).closest(".dropdown");
-			if (dropdown && dropdown !== el.current) {
-				setOpenDropdown(false);
-			}
-
-			if (!dropdown) {
-				setOpenDropdown(false);
-			}
-		}
-
-		document.addEventListener("click", toggleClick);
-
-		return () => {
-			document.removeEventListener("click", toggleClick);
-		};
-	}, []);
+	useOnClickOutside(dropdownRef, () => setIsVisible(false));
 
 	return (
-		<div ref={el} {...params} className={position + " dropdown"}>
-			<span onClick={() => setOpenDropdown(!openedDropdown)}>
+		<S.Dropdown
+			position={position}
+			opened={isVisible}
+			ref={dropdownRef}
+			{...params}
+		>
+			<span onClick={() => setIsVisible(!isVisible)}>
 				{title}
 			</span>
 
-			<ul style={{ display: openedDropdown ? "block" : "none" }}>
-				{children}
-			</ul>
-		</div>
+			<ul>{children}</ul>
+		</S.Dropdown>
 	);
 };
 

@@ -1,29 +1,29 @@
 import styled from "styled-components";
-import { Container } from '../../globalStyle';
+import { Container } from "../../globalStyle";
+import { Button } from '../../components/Button/style';
 
-export const ProductMain = styled.div`
-	margin-top: 260px;
+export const ProductMain = styled.section`
+	margin-top: 150px;
 
-@media only screen and (max-width:992px) {
-	${Container} {
-		padding: 0;
-		max-width: 1500px;
+	@media only screen and (max-width: 992px) {
+		${Container} {
+			padding: 0;
+			max-width: 1500px;
+		}
 	}
-	
-}
 `;
 
 export const Inner = styled.div`
 	display: flex;
 
-	@media only screen and (max-width:992px) {
+	@media only screen and (max-width: 992px) {
 		display: block;
 	}
 `;
 
 export const Left = styled.div`
 	width: 547px;
-	@media only screen and (max-width:992px) {
+	@media only screen and (max-width: 992px) {
 		width: auto;
 	}
 `;
@@ -72,6 +72,9 @@ export const Price = styled.div`
 export const Color = styled.div`
 	margin-top: 12px;
 	line-height: 16px;
+	span {
+		margin-right: 8px;
+	}
 `;
 
 export const Desc = styled.p`
@@ -88,21 +91,16 @@ export const Actions = styled.div`
 `;
 
 export const Like = styled.div`
-	padding: 17px 25px;
 	cursor: pointer;
+	${Button} {
+	padding: 17px 25px;
+		background-color: transparent;
+		border: none;
+	}
 `;
 
 export const Categories = styled.div`
 	margin-top: 17px;
-	display: flex;
-
-	div {
-		margin-left: 16px;
-	}
-`;
-
-export const Tags = styled.div`
-	margin-top: 10px;
 	display: flex;
 
 	div {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as G from "../../../globalStyle";
 import * as S from "./style";
 import Icon from "../../../components/Icon";
@@ -6,26 +6,23 @@ import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
 import { getTotalQuantity } from "../../../store/action-creators/Cart";
-import { Link } from "react-router-dom";
-import { logoutUser } from "../../../api/User";
+import { Link, useLocation } from "react-router-dom";
 import { deleteUser } from "../../../store/action-creators/User";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
+import api from '../../../api';
 
 const HeaderTop = () => {
 	const dispatch = useDispatch();
-	let cart = useSelector((state: RootState) => state.cart);
-	let [cartProductsTotal, setCartProductsTotal] = useState(0);
+	let location = useLocation();
+
+	let wishlist = useSelector((state: RootState) => state.wishlist);
 	let user = useSelector((state: RootState) => state.user.data);
-
-	useEffect(() => {
-		let totalQuant = getTotalQuantity();
-
-		setCartProductsTotal(totalQuant);
-	}, [cart]);
+	let cart = useSelector((state: RootState) => state.cart);
 
 	async function logout() {
-		await logoutUser();
+		await api.users.logoutUser();
+		
 		Cookies.remove("auth-token");
 		dispatch(deleteUser());
 	}
@@ -50,49 +47,26 @@ const HeaderTop = () => {
 					</S.Left>
 					<S.Right>
 						<S.UserButton>
-							<Dropdown
-								title={
-									<>
-										{" "}
-										English <Icon name="arrow" />
-									</>
-								}
-							>
-								<li>Russian</li>
-							</Dropdown>
-						</S.UserButton>
-
-						<S.UserButton>
-							<Dropdown
-								title={
-									<>
-										{" "}
-										USD <Icon name="arrow" />
-									</>
-								}
-							>
-								<li>Euro</li>
-							</Dropdown>
-						</S.UserButton>
-
-						<S.UserButton>
-							<a href="#">
+							<Link to="/user/wishlist">
 								Wishlist <Icon name="heart" />
-							</a>
+								<S.CartCount>
+									<span>{wishlist.products.length}</span>
+								</S.CartCount>
+							</Link>
 						</S.UserButton>
 
 						<S.UserButton>
 							<Link to="/cart">
 								<Icon name="basket" />
 								<S.CartCount>
-									<span>{cartProductsTotal}</span>
+									<span>{getTotalQuantity()}</span>
 								</S.CartCount>
 							</Link>
 						</S.UserButton>
 
 						<S.UserButton>
 							{!user && (
-								<Link to="/login">
+								<Link to="/login" state={{ from: location }}>
 									Login <Icon name="user" />
 								</Link>
 							)}

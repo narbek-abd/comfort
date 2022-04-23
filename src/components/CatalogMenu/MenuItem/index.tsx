@@ -4,7 +4,7 @@ import { CategoryTypes } from "../../../types/CategoryTypes";
 
 interface CatalogMenuItemProps {
   item: CategoryTypes;
-  changeFocusedItem: (e: React.MouseEvent) => void;
+  changeFocusedItem: (id: number) => void;
   focusedItemId: number | null;
 }
 
@@ -15,9 +15,8 @@ const MenuItem = ({
 }: CatalogMenuItemProps) => {
   return (
     <S.MenuItem
-      focused={focusedItemId == item.id}
-      onMouseEnter={changeFocusedItem}
-      data-item-id={item.id}
+      focused={focusedItemId === item.id}
+      onMouseEnter={() => changeFocusedItem(item.id)}
     >
       {item.name}
     </S.MenuItem>

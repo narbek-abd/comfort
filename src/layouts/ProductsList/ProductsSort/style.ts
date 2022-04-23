@@ -1,10 +1,9 @@
 import styled from "styled-components";
+import {Dropdown} from '../../../components/Dropdown/style';
 
 export const Sort = styled.div`
-	margin-top: 126px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 `;
 
 export const SortLeft = styled.div`
@@ -30,7 +29,6 @@ export const SortLeft = styled.div`
 
 export const SortRight = styled.div`
 	display: flex;
-	align-items: center;
 
 	div {
 		&:not(:last-child) {
@@ -38,7 +36,6 @@ export const SortRight = styled.div`
 		}
 	}
 	> div {
-		align-items: center;
 		display: flex;
 		p,
 		svg {
@@ -56,7 +53,7 @@ export const SortRight = styled.div`
 		}
 	}
 
-	.dropdown ul {
+	${Dropdown} ul {
 		margin-top: 10px;
 		width: 170px;
 		background-color: #3333331c;

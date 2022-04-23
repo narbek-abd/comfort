@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as G from "../../globalStyle";
 import * as S from "./style";
 
 interface CounterProps {
@@ -16,8 +15,8 @@ const Counter = ({ min, max, current, onChange }: CounterProps) => {
   const plusBtn = useRef(null);
 
   useEffect(() => {
-    minusBtn.current.disabled = min == current;
-    plusBtn.current.disabled = max == current
+    minusBtn.current.disabled = min === current;
+    plusBtn.current.disabled = max === current;
   }, []);
 
   function increment() {
@@ -63,7 +62,7 @@ const Counter = ({ min, max, current, onChange }: CounterProps) => {
   function changeCount(e: React.SyntheticEvent) {
     let value = (e.target as HTMLInputElement).value;
 
-    if (value == "") {
+    if (value === "") {
       minusBtn.current.disabled = true;
       setCount("");
       return;
@@ -86,8 +85,8 @@ const Counter = ({ min, max, current, onChange }: CounterProps) => {
       return;
     }
 
-    minusBtn.current.disabled = +value == min;
-    plusBtn.current.disabled = +value == max;
+    minusBtn.current.disabled = +value === min;
+    plusBtn.current.disabled = +value === max;
 
     setWarning("");
     setCount(+value);

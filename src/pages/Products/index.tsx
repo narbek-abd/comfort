@@ -1,13 +1,18 @@
-import React from 'react';
-import Header from '../../layouts/Header';
-import ProductsList from "../../layouts/ProductsList"
+import React from "react";
+import ProductsList from "../../layouts/ProductsList";
+import BreadCrumbs from "../../components/BreadCrumbs";
+import * as G from "../../globalStyle";
 
 const Products = () => {
+  
   return (
     <>
-        <Header />
-        <ProductsList />
-        </>
+      <G.Container>
+        <BreadCrumbs />
+      </G.Container>
+
+      <ProductsList />
+    </>
   );
 };
 

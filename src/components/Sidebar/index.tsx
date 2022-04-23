@@ -1,7 +1,14 @@
 import React from "react";
 import * as S from "./style";
 import SidebarItem from "./SidebarItem";
-import { SidebarItemType } from "../../types/SidebarTypes";
+
+export interface SidebarItemType {
+  id: number;
+  name: string;
+  icon?: string;
+  link?: string;
+  children?: SidebarItemType[];
+}
 
 interface SidebarProps {
   list: SidebarItemType[];

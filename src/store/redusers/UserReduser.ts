@@ -1,4 +1,4 @@
-import { UserState, UserAction, UserActionTypes } from "../../types/User";
+import { UserState, UserAction, UserActionTypes } from "../../types/UserReduxTypes";
 
 const user: UserState = {
   data: null,

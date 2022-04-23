@@ -8,8 +8,6 @@ import { CategoryTypes } from "../../types/CategoryTypes";
 
 import { useLocation, useSearchParams } from "react-router-dom";
 
-import axios from "axios";
-
 import Spinner from "../../components/Spinner";
 import Alert from "../../components/Alert";
 import Pagination from "../../components/Pagination";
@@ -19,19 +17,22 @@ import Modal from "../../components/Modal";
 import ProductsSort from "./ProductsSort";
 import ProductsFilterSidebar from "./ProductsFilterSidebar";
 
-import { getCategoryBySlug } from "../../api/Category";
 import { getChildrenIds } from "../../utils/getChildrenIds";
+import api from "../../api";
+import useIsMounted from "../../hooks/useIsMounted";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const ProductsList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [alertMessage, setAlertMessage] = useState(null);
   const [products, setProducts] = useState<ProductTypes[]>([]);
+  const isMounted = useIsMounted();
 
   const [searchParams] = useSearchParams();
   const location = useLocation();
 
   const perPage = 6;
-  const [totalItems, setTotalItems] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
 
   const [categoryChildrens, setCategoryChildrens] = useState([]);
 
@@ -40,45 +41,58 @@ const ProductsList = () => {
   >("horizontal");
 
   useEffect(() => {
-    let locationArray = location.pathname.split("/");
+    setProducts([]);
+    setIsLoading(true);
+
+    let locationArray = location.pathname.replace(/\/$/, "").split("/");
     let currentCategorySlug = locationArray[locationArray.length - 1];
 
-    getCategoryBySlug(currentCategorySlug).then((response) => {
-      if (response.status === 200) {
+    if (currentCategorySlug === "catalog") {
+      api.categories.getCategoriesWithChildren().then((response) => {
+        if (!isMounted()) return;
+
+        setCategoryChildrens(response.data);
+        getProducts();
+      });
+    } else {
+      api.categories.getCategoryBySlug(currentCategorySlug).then((response) => {
+        if (!isMounted()) return;
+
         setCategoryChildrens(response.data.children);
 
-        let categories = defaultFilterCategories(response.data);
-        let sortBy = defaultSortBy();
+        let categoriesIds = getSubCategoryIds(response.data);
+        getProducts(categoriesIds);
+      });
+    }
+  }, [searchParams.toString(), location, isMounted]);
 
-        axios
-          .get(
-            `http://comfort.loc/api/products/list?limit=${perPage}&${sortBy}&${categories}&${searchParams.toString()}`
-          )
-          .then(function (response) {
-            setIsLoading(false);
+  async function getProducts(categoryIds: string = "") {
+    let sortBy = defaultSortBy();
 
-            if (response.status === 200) {
-              let products = response.data.data;
+    try {
+      let response = await api.products.getProducts(
+        `?limit=${perPage}&${sortBy}&${categoryIds}&${searchParams.toString()}`
+      );
 
-              if (products.length === 0) {
-                setProducts([]);
-                setAlertMessage("List is empty");
-                return;
-              }
-              setProducts(products);
-              setTotalItems(response.data.total);
-              setAlertMessage("");
-            }
-          })
-          .catch(function (error) {
-            setIsLoading(false);
-            setAlertMessage("Something went wrong, try later");
-          });
+      if (!isMounted()) return;
+      setIsLoading(false);
+      let products = response.data.data;
+
+      if (products.length === 0) {
+        setProducts([]);
+        setAlertMessage("List is empty");
+        return;
       }
-    });
-  }, [searchParams.toString(), location]);
+      setProducts(products);
+      setTotalItems(response.data.total);
+      setAlertMessage("");
+    } catch (err: any) {
+      setIsLoading(false);
+      setAlertMessage("Something went wrong, try later");
+    }
+  }
 
-  function defaultFilterCategories(currentCategory: CategoryTypes) {
+  function getSubCategoryIds(currentCategory: CategoryTypes) {
     let categories = "";
 
     if (!searchParams.get("categories")) {
@@ -108,23 +122,8 @@ const ProductsList = () => {
     setProductsCardView(selectedView);
   }
 
-  const [isDeskTop, setIsDeskTop] = useState(true);
+  const isDeskTop = useMediaQuery("(min-width: 992px)");
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (window.innerWidth <= 992) {
-      setIsDeskTop(false);
-    }
-  }, []);
-
-  const mediaQueryList = window.matchMedia("(max-width: 992px)");
-  mediaQueryList.addEventListener("change", (event) => {
-    if (event.matches) {
-      setIsDeskTop(false);
-    } else {
-      setIsDeskTop(true);
-    }
-  });
 
   function openFilterModal() {
     setModalIsOpen(true);
@@ -173,7 +172,10 @@ const ProductsList = () => {
             {isLoading && <Spinner />}
           </S.List>
         </S.ProductsBox>
-        {totalItems && <Pagination totalItem={totalItems} perPage={perPage} />}
+        
+        {totalItems !== 0 && (
+          <Pagination totalItem={totalItems} perPage={perPage} />
+        )}
       </G.Container>
     </S.ProductsList>
   );

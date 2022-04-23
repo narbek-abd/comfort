@@ -31,4 +31,7 @@ export const Group = styled.div`
 		color: var(--color-pink);
 		font-size: 12px;
 	}
+	@media only screen and (max-width:576px) {
+		width: 100%;
+	}
 `;

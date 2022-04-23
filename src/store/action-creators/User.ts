@@ -1,6 +1,7 @@
-import { UserActionTypes } from "../../types/User";
+import { UserActionTypes } from "../../types/UserReduxTypes";
+import { UserTypes } from "../../types/UserTypes";
 
-export function setUser(data: any) {
+export function setUser(data: UserTypes) {
 	return {
 		type: UserActionTypes.SET_USER,
 		payload: data,

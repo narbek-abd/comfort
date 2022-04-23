@@ -1,11 +1,11 @@
-import { CartActionTypes } from "../../types/Cart";
+import { CartActionTypes, ProductItemTypes } from "../../types/CartReduxTypes";
 import { store } from "../";
 
-export const addProduct = (product: any) => {
-  let products: any = store.getState().cart.products;
+export const addProduct = (product: ProductItemTypes) => {
+  let products:ProductItemTypes[] = store.getState().cart.products;
 
   let productExists = products.find(
-    (productItem: any) => productItem.id == product.id
+    (productItem) => productItem.id === product.id
   );
 
   if (productExists) {
@@ -22,11 +22,11 @@ export const addProduct = (product: any) => {
   };
 };
 
-export const removeFromCart = (product: any) => {
-  let products: any = store.getState().cart.products;
+export const removeFromCart = (product: ProductItemTypes) => {
+  let products:ProductItemTypes[] = store.getState().cart.products;
 
   let filteredProductList = products.filter(
-    (productItem: any) => productItem.id !== product.id
+    (productItem) => productItem.id !== product.id
   );
   localStorage.setItem("cart", JSON.stringify(filteredProductList));
 
@@ -36,10 +36,10 @@ export const removeFromCart = (product: any) => {
   };
 };
 
-export const changeProductCount = (product: any, count: number) => {
-  let products: any = store.getState().cart.products;
+export const changeProductCount = (product: ProductItemTypes, count: number) => {
+  let products:ProductItemTypes[] = store.getState().cart.products;
 
-  products.forEach((productItem: any) => {
+  products.forEach((productItem) => {
     if (productItem.id === product.id) {
       productItem.quantity = count;
     }
@@ -54,11 +54,11 @@ export const changeProductCount = (product: any, count: number) => {
 };
 
 export const getTotalQuantity = () => {
-  let products: any = store.getState().cart.products;
+  let products:ProductItemTypes[] = store.getState().cart.products;
 
   let quantity = 0;
 
-  products.forEach((product: any) => {
+  products.forEach((product) => {
     quantity += product.quantity;
   });
 

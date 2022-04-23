@@ -13,8 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
 
 import { useNavigate } from "react-router-dom";
-import { createOrder } from "../../api/Order";
 import { clearCart } from "../../store/action-creators/Cart";
+import api from '../../api';
 
 const OrderForm = () => {
   const {
@@ -44,10 +44,11 @@ const OrderForm = () => {
     data.products = cart.products;
 
     try {
-      await createOrder(data);
+      await api.orders.createOrder(data);
 
       dispatch(clearCart());
-      navigate("/", { replace: true });
+
+      user ? navigate("/user/orders", { replace: true }) : navigate("/", { replace: true });
     } catch (e: any) {
       if (e.response.status === 422) {
         Object.keys(e.response.data.errors).forEach((key) => {

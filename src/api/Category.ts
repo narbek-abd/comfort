@@ -1,45 +1,25 @@
-import axiosClient, { webAxiosClient } from "./axiosClient";
-import { CategoryFormTypes } from "../types/CategoryTypes";
+import axiosClient from "./axiosClient";
+import { CategoryFormTypes } from "../types/FormTypes";
 import { slugTransliterate } from "../utils/slugTransliterate";
 
-export function getCategories() {
-	return axiosClient.get("/categories/list");
-}
+const Categories = {
+	getCategories: (params = '') => axiosClient.get(`/categories/list${params}`),
+	getCategoriesCount: () => axiosClient.get(`/categories/count`),
+	getCategoriesWithChildren: () => axiosClient.get("/categories"),
+	getCategory: (id: number) => axiosClient.get(`/categories/${id}`),
+	getCategoryBySlug: (slug: string) =>axiosClient.get(`/categories/list?slug=${slug}`),
 
-export function getCategoriesWithChildren() {
-	return axiosClient.get("/categories");
-}
+	createCategory: (data: CategoryFormTypes) => {
+		data.slug = slugTransliterate(data.name);
+		return axiosClient.post("/categories", data);
+	},
 
-export function getCategory(id: number) {
-	return axiosClient.get(`/categories/${id}`);
-}
+	updateCategory: (id: number, data: CategoryFormTypes) => {
+		data.slug = slugTransliterate(data.name);
+		return axiosClient.put(`/categories/${id}`, data);
+	},
 
-export function getCategoryBySlug(slug: string) {
-	return axiosClient.get(`/categories/list?slug=${slug}`);
-}
+	deleteCategory: (id: number) => axiosClient.delete(`/categories/${id}`),
+};
 
-export function createCategory(data: CategoryFormTypes) {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return axiosClient.post("/categories", {
-			name: data.name,
-			slug: slugTransliterate(data.name),
-			parent_id: data.parent_id,
-		});
-	});
-}
-
-export function updateCategory(id: number, data: CategoryFormTypes) {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return axiosClient.put(`/categories/${id}`, {
-			name: data.name,
-			slug: slugTransliterate(data.name),
-			parent_id: data.parent_id,
-		});
-	});
-}
-
-export function deleteCategory(id: number) {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return axiosClient.delete(`/categories/${id}`);
-	});
-}
+export default Categories;
