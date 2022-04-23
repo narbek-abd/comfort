@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { Name } from "../../components/ProductCard/style";
+import { Spinner } from '../../components/Spinner/style';
 
 export const FeaturedProducts = styled.section`
 	margin-top: 130px;
 
-	.swiper-pagination {
+	.featured-swiper-pagination {
 		position: static;
 		margin-top: 53px;
+		text-align: center;
 	}
 
 	.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -17,6 +19,10 @@ export const FeaturedProducts = styled.section`
 		&.swiper-pagination-bullet-active {
 			width: 24px;
 		}
+	}
+
+	${Spinner} {
+		margin-top: 40px;
 	}
 `;
 

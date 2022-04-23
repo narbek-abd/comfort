@@ -2,8 +2,11 @@ import styled, { css } from "styled-components";
 import { ProductCard } from "../../components/ProductCard/style";
 import { Pagination } from "../../components/Pagination/style";
 import { Spinner } from "../../components/Spinner/style";
+import { Button } from '../../components/Button/style';
 
-export const ProductsList = styled.div`
+export const ProductsList = styled.section`
+	margin-top: 126px;
+
 	${Pagination} {
 		justify-content: center;
 		margin-top: 60px;
@@ -13,7 +16,7 @@ export const ProductsList = styled.div`
 export const ProductsBox = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-top: 50px;
+	margin-top: 60px;
 `;
 
 export const List = styled.div<{ variant: string }>`
@@ -48,7 +51,7 @@ export const List = styled.div<{ variant: string }>`
 	}
 
 	${(props) =>
-		props.variant == "horizontal" &&
+		props.variant === "horizontal" &&
 		css`
 			${ProductCard} {
 				width: 100%;
@@ -59,6 +62,10 @@ export const List = styled.div<{ variant: string }>`
 				@media only screen and (max-width: 480px) {
 					width: 100%;
 				}
+			}
+
+			${Button} {
+				margin-right: 8px;
 			}
 		`}
 

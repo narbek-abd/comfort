@@ -1,14 +1,6 @@
 import { CategoryTypes } from "./CategoryTypes";
 import { ImageTypes } from "./ImageTypes";
 
-export interface ProductFormTypes {
-    name: string;
-    price: number;
-    quantity: number;
-    category_id: number;
-    images: any;
-}
-
 export interface ProductTypes {
     id: number;
     name: string;
@@ -18,4 +10,5 @@ export interface ProductTypes {
     description: string;
     category: CategoryTypes;
     images: ImageTypes[];
+    storageQuantity?: number;
 }

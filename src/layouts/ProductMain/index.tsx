@@ -4,12 +4,13 @@ import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
 import Icon from "../../components/Icon";
-import Button from "../../components/Button"
+import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/redusers";
 import { addProduct } from "../../store/action-creators/Cart";
-import { ProductTypes } from '../../types/ProductTypes';
+import { addProductToWishlist } from "../../store/action-creators/Wishlist";
+import { ProductTypes } from "../../types/ProductTypes";
 
 interface ProductMainProps {
   product: ProductTypes;
@@ -18,20 +19,39 @@ interface ProductMainProps {
 const ProductMain = ({ product }: ProductMainProps) => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart.products);
+  const wishlistProducts = useSelector(
+    (state: RootState) => state.wishlist.products
+  );
+
   const [alreadyInCart, setAlreadyInCart] = useState(false);
+  const [alreadyInWishlist, setAlreadyInWishlist] = useState(false);
 
   useEffect(() => {
-    cartProducts.forEach((cartProduct: any) => {
+    cartProducts.forEach((cartProduct) => {
       if (cartProduct.id === product.id) {
         setAlreadyInCart(true);
       }
     });
-  }, []);
+  }, [cartProducts]);
+
+  useEffect(() => {
+    wishlistProducts.forEach((wishlistProduct) => {
+      if (wishlistProduct.id === product.id) {
+        setAlreadyInWishlist(true);
+      }
+    });
+  }, [wishlistProducts]);
 
   function addToCart(e: React.MouseEvent) {
     dispatch(addProduct(product));
 
     setAlreadyInCart(true);
+  }
+
+  function addToWishlist() {
+    dispatch(addProductToWishlist(product));
+
+    setAlreadyInWishlist(true);
   }
 
   return (
@@ -47,7 +67,7 @@ const ProductMain = ({ product }: ProductMainProps) => {
             <S.Rating>
               <S.Stars>⭐️⭐️⭐️⭐️⭐️</S.Stars>
 
-            {/*  <span>({product.stock})</span>*/}
+              <span>(55)</span>
             </S.Rating>
 
             <S.Price>
@@ -56,11 +76,8 @@ const ProductMain = ({ product }: ProductMainProps) => {
             </S.Price>
 
             <S.Color>
-              <p>Color</p>
-
-              <div>
-                <span></span>
-              </div>
+              <span>Quantity: </span>
+              <span>{product.quantity}</span>
             </S.Color>
 
             <S.Desc>{product.description}</S.Desc>
@@ -71,23 +88,25 @@ const ProductMain = ({ product }: ProductMainProps) => {
               </Button>
 
               <S.Like>
-                <Icon name="heart" />
+                <Button
+                  onClick={addToWishlist}
+                  disabled={alreadyInWishlist}
+                  variant="outlined"
+                  color="blue"
+                >
+                  <Icon name="heart" />
+                </Button>
               </S.Like>
             </S.Actions>
 
             <S.Categories>
-              <p>Categories:</p>
+              <p>Category:</p>
               <div>
-                <Link to="/">Chairs</Link>
+                <Link to={`/catalog/${product.category.slug}`}>
+                  {product.category.name}
+                </Link>
               </div>
             </S.Categories>
-
-            <S.Tags>
-              <p>Tags:</p>
-              <div>
-                <Link to="/">Chairs</Link>
-              </div>
-            </S.Tags>
           </S.Right>
         </S.Inner>
       </G.Container>

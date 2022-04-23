@@ -11,37 +11,48 @@ import axiosClient from "../../../api/axiosClient";
 
 import OrderItem from "./OrderItem";
 import Alert from "../../../components/Alert";
+import Spinner from "../../../components/Spinner";
+import useIsMounted from "../../../hooks/useIsMounted";
+import api from "../../../api";
 
 const UserOrders = () => {
+	const [isLoading, setIsLoading] = useState(true);
+	const [alertMessage, setAlertMessage] = useState("");
+	const isMounted = useIsMounted();
+
 	const [orders, setOrders] = useState<OrderTypes[]>([]);
 
 	const [searchParams] = useSearchParams();
 	const currentPage = +(searchParams.get("page") ?? 1);
 
 	const perPage = 6;
-	const [totalItems, setTotalItems] = useState(null);
+	const [totalItems, setTotalItems] = useState(0);
 
 	useEffect(() => {
 		getOrders();
-	}, [searchParams]);
+	}, [searchParams, isMounted]);
 
-	function getOrders() {
-		axiosClient
-			.get(
-				`http://comfort.loc/api/orders?limit=${perPage}&page=` +
-					currentPage
-			)
-			.then(function (response) {
-				setOrders(response.data.data);
-				setTotalItems(response.data.total);
-			});
+	async function getOrders() {
+		let response = await api.orders.getOrders(
+			`?limit=${perPage}&page=${currentPage}`
+		);
+
+		if (!isMounted()) return;
+
+		setIsLoading(false);
+
+		if (response.data.data.length === 0) {
+			setAlertMessage("List is empty");
+		}
+		setOrders(response.data.data);
+		setTotalItems(response.data.total);
 	}
 
 	return (
 		<S.Orders>
 			<G.Container>
-				{orders.length > 0 ? (
-					<>
+				{orders.length > 0 && (
+					<S.OrdersList>
 						<table>
 							<thead>
 								<tr>
@@ -53,7 +64,7 @@ const UserOrders = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{orders.map((order: any) => {
+								{orders.map((order) => {
 									return (
 										<OrderItem
 											key={order.id}
@@ -64,16 +75,16 @@ const UserOrders = () => {
 								})}
 							</tbody>
 						</table>
+					</S.OrdersList>
+				)}
 
-						{totalItems && (
-							<Pagination
-								totalItem={totalItems}
-								perPage={perPage}
-							/>
-						)}
-					</>
-				) : (
-					<Alert variant="warning">List is empty</Alert>
+				{totalItems !==0 && (
+					<Pagination totalItem={totalItems} perPage={perPage} />
+				)}
+
+				{isLoading && <Spinner />}
+				{alertMessage && (
+					<Alert variant="warning">{alertMessage}</Alert>
 				)}
 			</G.Container>
 		</S.Orders>

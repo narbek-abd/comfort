@@ -1,25 +1,12 @@
-import axiosClient, { webAxiosClient } from "./axiosClient";
-import RegisterFormTypes from "../types/RegisterFormTypes";
-import LoginFormTypes from "../types/LoginFormTypes";
+import axiosClient from "./axiosClient";
+import { RegisterFormTypes } from "../types/FormTypes";
+import { LoginFormTypes } from "../types/FormTypes";
 
-export function getCurrentUser() {
-	return axiosClient.get("/user/me");
-}
+const Users = {
+	getCurrentUser: () => axiosClient.get("/user/me"),
+	registerUser: (data: RegisterFormTypes) => axiosClient.post("/register", data),
+	loginUser: (data: LoginFormTypes) => axiosClient.post("/login", data),
+	logoutUser: () => axiosClient.post("logout"),
+};
 
-export function registerUser(data: RegisterFormTypes) {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return webAxiosClient.post("/register", data);
-	});
-}
-
-export function loginUser(data: LoginFormTypes) {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return webAxiosClient.post("/login", data);
-	});
-}
-
-export function logoutUser() {
-	return webAxiosClient.get("/sanctum/csrf-cookie").then(() => {
-		return webAxiosClient.post("logout");
-	});
-}
+export default Users;

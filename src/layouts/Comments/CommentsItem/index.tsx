@@ -24,7 +24,7 @@ const CommentsItem = ({
   product_id,
 }: CommentsItemProps) => {
   const user = useSelector((state: RootState) => state.user.data);
-  const canChangeComment = user?.id === comment.user_id;
+  const canChangeComment = user?.id === +comment.user_id;
 
   const [formVisible, setFormVisible] = useState(false);
   const [isEditing, setisEditing] = useState(false);

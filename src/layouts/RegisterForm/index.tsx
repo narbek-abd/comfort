@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import RegisterFormValidation from "../../validation/Register";
-import RegisterFormTypes from "../../types/RegisterFormTypes";
+import { RegisterFormValidation } from "../../validation";
+import { RegisterFormTypes } from "../../types/FormTypes";
 
-import { registerUser } from "../../api/User";
 import Cookies from "js-cookie";
 import { setUser } from "../../store/action-creators/User";
 import { useDispatch } from "react-redux";
+import api from '../../api';
 
 const RegisterForm = () => {
   const {
@@ -36,7 +36,7 @@ const RegisterForm = () => {
     setIsLoading(true);
 
     try {
-      let response = await registerUser(data);
+      let response = await api.users.registerUser(data);
       dispatch(setUser(response.data.user));
       Cookies.set("auth-token", response.data.token, {
         expires: 7,

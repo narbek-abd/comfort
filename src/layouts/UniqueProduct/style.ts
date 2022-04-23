@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { Button, SectionTitle } from "../../globalStyle";
+import { SectionTitle } from "../../globalStyle";
+import { Button } from '../../components/Button/style';
 
-export const UniqueProduct = styled.div`
+export const UniqueProduct = styled.section`
 	margin-top: 150px;
 `;
 

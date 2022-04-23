@@ -1,17 +1,14 @@
 import styled from "styled-components";
-import { Container } from "../../globalStyle";
 
-export const CatalogMenu = styled.div<{ visible: boolean }>`
-  display: ${(props) => (props.visible ? "flex" : "none")};
-
-  position: fixed;
-  min-height: 80vh;
-  width: 80%;
-  max-width: 1207px;
-  left: 50%;
-  transform: translateX(-50%);
+export const CatalogMenu = styled.div`
+  display: flex;
+  position: absolute;
+  left: 0;
+  width: 100%;
   z-index: 99;
   background-color: #fff;
+  min-height: 250px;
+  border-radius: 30px;
 `;
 
 export const MenuList = styled.ul`
@@ -23,4 +20,3 @@ export const MenuList = styled.ul`
   padding-right: 0px;
   overflow: auto;
 `;
-

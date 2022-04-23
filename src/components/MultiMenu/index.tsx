@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 
 import * as S from "./style";
 import MenuItem from "./MenuItem";
-import MenuSub from "./MenuSub";
 import { CategoryTypes } from "../../types/CategoryTypes";
 
 interface MultiMenuProps {
@@ -17,7 +16,7 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
   useEffect(() => {
     let childLists = listContainer.current.querySelectorAll("li ul");
 
-    childLists.forEach((childList: any) => {
+    childLists.forEach((childList: HTMLElement) => {
       listContainer.current.append(childList);
     });
   }, [list]);
@@ -26,11 +25,12 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
     let item = (e.target as HTMLElement).closest("li");
     let childListId = +item.dataset.listId;
     let parentListId = +item.dataset.parentId;
+    console.log(parentListId);
 
     if (Number.isInteger(parentListId)) {
       // prevList текщуго prevList
       let prevListOfPrev =
-        prevListId == 0
+        parentListId == 0
           ? -1
           : listContainer.current
               .querySelector(`li[data-list-id="${prevListId}"]`)
@@ -49,12 +49,20 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
 
   return (
     <S.MultiMenu ref={listContainer}>
-      <MenuSub
-        list={list}
-        changeCurrentList={changeCurrentList}
-        activeListId={activeListId}
-        prevListId={prevListId}
-      />
+      <ul>
+        {list.map((item) => {
+          return (
+            <MenuItem
+              key={item.id}
+              changeCurrentList={changeCurrentList}
+              activeListId={activeListId}
+              prevListId={prevListId}
+              parentId={0}
+              item={item}
+            />
+          );
+        })}
+      </ul>
     </S.MultiMenu>
   );
 };

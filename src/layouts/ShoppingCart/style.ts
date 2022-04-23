@@ -1,35 +1,14 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Button } from '../../components/Button/style';
+import { Button } from "../../components/Button/style";
 
-export const ShoppingCart = styled.div`
-	margin-top: 257px;
+export const ShoppingCart = styled.section`
+	margin-top: 60px;
 `;
 
-export const Inner = styled.div`
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-`;
-export const ProductList = styled.div``;
-
-export const Left = styled.div`
-	flex-basis: 702px;
+export const ProductList = styled.div`
 	${Button} {
 		margin-top: ${49 + 15}px;
 		margin-left: auto;
 		display: block;
 	}
-
-	@media only screen and (max-width: 768px) {
-		flex-basis: 100%;
-	}
-`;
-
-export const Right = styled.div`
-	flex-basis: 370px;
-`;
-
-export const CartEmpty = styled.div`
-	text-align: center;
 `;

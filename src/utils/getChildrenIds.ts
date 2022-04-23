@@ -4,22 +4,21 @@ interface list {
 }
 
 let ids: number[] = [];
-let finished = false;
 
 export function getChildrenIds(list: list[]) {
-	if (finished) {
-		ids = [];
-	}
+	ids = [];
 
+	__recursiveGetIds(list);
+
+	return ids;
+}
+
+function __recursiveGetIds(list: list[]) {
 	list.forEach((item) => {
 		ids.push(item.id);
 
 		if (item.children && item.children.length > 0) {
-			getChildrenIds(item.children);
+			__recursiveGetIds(item.children);
 		}
 	});
-
-	finished = true;
-
-	return ids;
 }

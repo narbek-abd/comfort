@@ -1,35 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import MenuItem from "./MenuItem";
 import SubMenuList from "./SubMenuList";
-import Icon from "../Icon";
 import { CategoryTypes } from "../../types/CategoryTypes";
 
 interface CatalogMenuProps {
   list: CategoryTypes[];
-  isVisible?: boolean;
   activeItemId?: number;
 }
 
-const CatalogMenu = ({
-  list,
-  isVisible = true,
-  activeItemId = 1,
-}: CatalogMenuProps) => {
-  const [focusedItemId, setFocusedItemId] = useState(activeItemId);
+const CatalogMenu = ({ list, activeItemId = 1 }: CatalogMenuProps) => {
+  const [focusedItemId, setFocusedItemId] = useState(null);
 
-  function changeFocusedItem(e: React.MouseEvent) {
-    setFocusedItemId(+(e.currentTarget as HTMLElement).dataset.itemId);
+  useEffect(() => {
+    changeFocusedItem(activeItemId);
+  }, [activeItemId, list]);
+
+  function changeFocusedItem(id: number) {
+    setFocusedItemId(id);
   }
 
   return (
-    <S.CatalogMenu visible={isVisible} onClick={(e) => e.stopPropagation()}>
+    <S.CatalogMenu onClick={(e) => e.stopPropagation()}>
       <S.MenuList>
         {list.map((item) => {
           return (
             <MenuItem
               item={item}
-              key={item["id"]}
+              key={item.id}
               focusedItemId={focusedItemId}
               changeFocusedItem={changeFocusedItem}
             />

@@ -76,3 +76,21 @@ export const FilterSidebar = styled.div`
 		}
 	}
 `;
+
+
+
+export const ParentCategories = styled.div`
+margin-bottom: 40px;
+
+`; 
+
+export const ParentCategory = styled.div`
+	margin-bottom: 5px;
+a {
+	text-decoration: underline;
+	color: var(--color-pink);
+	font-size: 18px;
+}
+
+`; 
+

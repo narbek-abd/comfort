@@ -15,44 +15,25 @@ export const NavbarWrapper = styled.div<{ active: boolean }>`
 `;
 
 export const Navbar = styled.nav<{ opened: boolean }>`
-	&>ul {
-		display: flex;
-	}
-	.catalog-menu {
-		span {
-			display: block;
-			height: 50px;
-			line-height: 50px;
-			margin: 0 15px 0 45px;
-			color: var(--color-pink);
-			text-decoration: none;
-			outline: 0;
-			transition: all 0.5s linear;
-			white-space: nowrap;
-			cursor: pointer;
-			transition: var(--color-tr);
-	}
-} 
-
-	@media only screen and (max-width:768px) {
+	@media only screen and (max-width: 768px) {
 		position: fixed;
-		z-index: 99;
-		left: -100%;
+		left: 0;
 		top: 0;
-		transition: left .3s;
-		background-color: #fff;
-		padding: 20px 20px;
+		transform: translateX(-100%);
+		z-index: 99;
+		transition: transform 0.3s;
 
 		${(props) =>
 			props.opened &&
 			css`
-				left: 0;
+				transform: translateX(0);
 			`}
-
-	@media only screen and (max-width:768px) {
-		padding: 0;
 	}
-	`;
+`;
+
+export const NavbarList = styled.ul`
+	display: flex;
+`;
 
 export const Hamburger = styled.div<{ crossed: boolean }>`
 	display: inline-block;

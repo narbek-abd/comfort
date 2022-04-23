@@ -23,6 +23,10 @@ export const Group = styled.div`
 	${Button} {
 		margin-top: 10px;
 	}
+
+	@media only screen and (max-width:576px) {
+		width: 100%;
+	}
 `;
 
 export const SelectGroup = styled(Group)`

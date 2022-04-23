@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
-import Alert from "../../../../components/Alert";
+import Alert, { AlertProps } from "../../../../components/Alert";
 import Button from "../../../../components/Button";
 import { useParams } from "react-router-dom";
-import { getCategories, updateCategory } from "../../../../api/Category";
-import { CategoryValidation } from "../../../../validation/Category";
-import {
-  CategoryTypes,
-  CategoryFormTypes,
-} from "../../../../types/CategoryTypes";
+import { CategoryValidation } from "../../../../validation";
+import { CategoryTypes } from "../../../../types/CategoryTypes";
+import { CategoryFormTypes } from "../../../../types/FormTypes";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const CategoryEdit = () => {
   const {
@@ -20,7 +19,12 @@ const CategoryEdit = () => {
   } = useForm<CategoryFormTypes>({ resolver: yupResolver(CategoryValidation) });
 
   const [categories, setCategories] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
+  const isMounted = useIsMounted();
+  const [alertmessage, setAlertMessage] = useState("");
+  const [alertvariant, setAlertvariant] =
+    useState<AlertProps["variant"]>("success");
 
   let { categoryid } = useParams();
   const [currentCategory, setCurrentCategory] = useState<CategoryTypes | null>(
@@ -29,8 +33,10 @@ const CategoryEdit = () => {
   const [categoryParentId, setCategoryParentId] = useState(0);
 
   useEffect(() => {
-    getCategories().then((response) => setCategories(response.data));
-  }, []);
+    api.categories.getCategories().then((response) => {
+      isMounted() && setCategories(response.data);
+    });
+  }, [isMounted]);
 
   function defineCurrentCategory() {
     categories.forEach((category) => {
@@ -45,23 +51,20 @@ const CategoryEdit = () => {
     defineCurrentCategory();
   }, [categoryid, categories]);
 
-  const onSubmit: SubmitHandler<CategoryFormTypes> = (data) => {
+  const onSubmit: SubmitHandler<CategoryFormTypes> = async (data) => {
     setIsLoading(true);
 
-    updateCategory(currentCategory.id, data).then(function (response) {
-      if (response.data === 1) {
-        defineCurrentCategory();
-        setAlertMessage("The category has been successfully updated");
-      } else {
-        setAlertMessage("An error has occurred");
-        setAlertvariant("error");
-      }
-      setIsLoading(false);
-    });
-  };
+    try {
+      api.categories.updateCategory(currentCategory.id, data);
+      defineCurrentCategory();
+      setAlertMessage("The category has been successfully updated");
+    } catch (err: any) {
+      setAlertMessage("An error has occurred");
+      setAlertvariant("error");
+    }
 
-  const [alertmessage, setAlertMessage] = useState("");
-  const [alertvariant, setAlertvariant] = useState("success");
+    setIsLoading(false);
+  };
 
   return (
     <S.Create>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Dropdown} from '../../../components/Dropdown/style';
 
 export const HeaderTop = styled.div`
 	background-color: var(--color-purple);
@@ -77,7 +78,7 @@ export const UserButton = styled.div`
 		margin-left: 5px;
 	}
 
-	.dropdown {
+	${Dropdown} {
 		svg {
 			width: 24px;
 			height: 24px;
@@ -118,7 +119,7 @@ export const Right = styled.div`
 		z-index: 2;
 	}
 
-	.dropdown {
+	${Dropdown} {
 		ul {
 			width: 100px;
 			li {

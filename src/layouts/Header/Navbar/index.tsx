@@ -1,126 +1,63 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./style";
-import axios from "axios";
-import CatalogMenu from "../../../components/CatalogMenu";
-import Icon from "../../../components/Icon";
-
 import NavbarItem from "./NavbarItem";
-import navbarLinks from "../HeaderData";
+import navbarItems from "../HeaderData";
 import MultiMenu from "../../../components/MultiMenu";
-import { useLocation } from "react-router-dom";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import CatalogBar from "../CatalogBar";
+import api from "../../../api";
+import useIsMounted from "../../../hooks/useIsMounted";
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const [isCatalogMenuVisible, setCatalogMenuVisible] = useState(false);
-	const [isdeskTop, setIsDeskTop] = useState(true);
 	const [catalogList, setCatalogList] = useState([]);
-	const location = useLocation();
+	const isMobile = useMediaQuery("(max-width: 768px)");
+	const isMounted = useIsMounted();
 
-	/** Определяем ширину экрана и следим за шириной через watchmedia */
 	useEffect(() => {
-		if (window.innerWidth <= 768) {
-			setIsDeskTop(false);
-		}
-	}, []);
+		api.categories.getCategoriesWithChildren().then(function (response) {
+			isMounted() && setCatalogList(response.data);
+		});
+	}, [isMounted]);
 
-	const mediaQueryList = window.matchMedia("(max-width: 768px)");
-	mediaQueryList.addEventListener("change", (event) => {
-		if (event.matches) {
-			setIsDeskTop(false);
-		} else {
-			setIsDeskTop(true);
+	const hamburgerRef = useRef(null);
+	const navbarRef = useRef(null);
+	useOnClickOutside(navbarRef, (e: MouseEvent) => {
+		if (
+			isMobileMenuOpen &&
+			!hamburgerRef.current.contains(e.target as HTMLElement)
+		) {
+			setMobileMenuOpen(false);
 		}
 	});
 
-	function toggleHam() {
-		if (window.innerWidth <= 768) {
-			setMobileMenuOpen(!isMobileMenuOpen);
-		}
-	}
-
-	function stop(e: React.MouseEvent) {
-		if (window.innerWidth <= 768) {
-			e.stopPropagation();
-		}
-	}
-
-	useEffect(() => {
-		function handleClick(e: MouseEvent) {
-			if (!(e.target as HTMLElement).closest(".catalog-menu")) {
-				setCatalogMenuVisible(false);
-			}
-		}
-		document.addEventListener("click", handleClick);
-
-		return () => {
-			document.removeEventListener("click", handleClick);
-		};
-	}, []);
-
-	useEffect(() => {
-		setCatalogMenuVisible(false);
-	}, [location]);
-
-	useEffect(() => {
-		axios
-			.get("http://comfort.loc/api/categories")
-			.then(function (response) {
-				setCatalogList(response.data);
-			});
-	}, []);
-
 	return (
 		<>
-			<S.NavbarWrapper
-				active={isMobileMenuOpen ? true : false}
-				onClick={toggleHam}
-			>
-				<S.Navbar
-					opened={isMobileMenuOpen ? true : false}
-					onClick={stop}
-				>
-					{isdeskTop && (
-						<ul>
-							<li
-								className="catalog-menu"
-								onClick={() =>
-									setCatalogMenuVisible(!isCatalogMenuVisible)
-								}
-							>
-								<span>
-									Catalog <Icon name="arrow" />
-								</span>
-								<CatalogMenu
-									list={catalogList}
-									isVisible={isCatalogMenuVisible}
-									activeItemId={1}
-								/>
-							</li>
-
-							{navbarLinks.map((link) => {
+			<S.NavbarWrapper active={isMobileMenuOpen}>
+				<S.Navbar ref={navbarRef} opened={isMobileMenuOpen}>
+					{!isMobile && (
+						<S.NavbarList>
+							<CatalogBar list={catalogList} />
+							{navbarItems.map((item) => {
 								return (
 									<NavbarItem
-										link={link}
-										key={link.id}
-										hasChildren={
-											link["children"] === undefined
-												? false
-												: true
-										}
+										item={item}
+										key={item.id}
 									></NavbarItem>
 								);
 							})}
-						</ul>
+						</S.NavbarList>
 					)}
 
-					{!isdeskTop && <MultiMenu list={catalogList} />}
+					{isMobile && <MultiMenu list={catalogList} />}
 				</S.Navbar>
 			</S.NavbarWrapper>
 
 			<S.Hamburger
-				crossed={isMobileMenuOpen ? true : false}
-				onClick={toggleHam}
+				ref={hamburgerRef}
+				crossed={isMobileMenuOpen}
+				onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
 			>
 				<span></span>
 				<span></span>

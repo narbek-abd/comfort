@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "../../../../components/Button";
 import { Link } from "react-router-dom";
-import { deleteOrder } from "../../../../api/Order";
 import { OrderTypes } from "../../../../types/OrderTypes";
+import api from '../../../../api';
 
 interface OrderItemProps {
 	order: OrderTypes;
@@ -14,7 +14,7 @@ const OrderItem = ({ order, onDelete }: OrderItemProps) => {
 
 	function removeOrder() {
 		setIsLoading(true);
-		deleteOrder(order.id).then((response) => onDelete());
+		api.orders.deleteOrder(order.id).then((response) => onDelete());
 	}
 	return (
 		<tr>
@@ -25,7 +25,7 @@ const OrderItem = ({ order, onDelete }: OrderItemProps) => {
 			<td>
 				{order.products.map((product) => {
 					return (
-						<Link key={product.id} to={`/product${product.id}`}>
+						<Link key={product.id} to={`/product/${product.id}`}>
 							{product.name},{" "}
 						</Link>
 					);

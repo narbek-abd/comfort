@@ -1,21 +1,67 @@
-import React from "react";
-import productImg from "../../assets/img/products/product1.jpg";
-import Icon from "../Icon";
-
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
+import Icon from "../Icon";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../constants/project";
+import { RootState } from "../../store/redusers";
+import { addProduct } from "../../store/action-creators/Cart";
+import { addProductToWishlist } from "../../store/action-creators/Wishlist";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../Button";
+import { ProductTypes } from "../../types/ProductTypes";
 
 interface ProductCardProps {
-	product: { id: number; name: string; price: number; description?: string; images: any; };
+	product: ProductTypes;
 	variant?: "vertical" | "horizontal";
 }
 
 const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
+	const dispatch = useDispatch();
+
+	const cartProducts = useSelector((state: RootState) => state.cart.products);
+	const wishlistProducts = useSelector(
+		(state: RootState) => state.wishlist.products
+	);
+
+	const [alreadyInCart, setAlreadyInCart] = useState(false);
+	const [alreadyInWishlist, setAlreadyInWishlist] = useState(false);
+
+	useEffect(() => {
+		cartProducts.forEach((cartProduct) => {
+			if (cartProduct.id === product.id) {
+				setAlreadyInCart(true);
+			}
+		});
+	}, [cartProducts]);
+
+	useEffect(() => {
+		wishlistProducts.forEach((wishlistProduct) => {
+			if (wishlistProduct.id === product.id) {
+				setAlreadyInWishlist(true);
+			}
+		});
+	}, [wishlistProducts]);
+
+	function addToCart() {
+		dispatch(addProduct(product));
+
+		setAlreadyInCart(true);
+	}
+
+	function addToWishlist() {
+		dispatch(addProductToWishlist(product));
+
+		setAlreadyInWishlist(true);
+	}
+
 	return (
 		<S.ProductCard variant={variant}>
 			<Link to={`/product/${product.id}`}>
 				<S.Img>
-					<img src={'http://comfort.loc/storage/' + product.images[0].image} alt="" />
+					<img
+						src={apiUrl + "/storage/" + product.images[0].image}
+						alt=""
+					/>
 				</S.Img>
 
 				<S.Inf>
@@ -28,8 +74,23 @@ const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 			</Link>
 
 			<S.Actions>
-				<span><Icon name="basket" /></span>
-				<span><Icon name="heart" /></span>
+				<Button
+					size="small"
+					color="blue"
+					onClick={addToCart}
+					disabled={alreadyInCart}
+				>
+					<Icon name="basket" />
+				</Button>
+
+				<Button
+					size="small"
+					color="blue"
+					onClick={addToWishlist}
+					disabled={alreadyInWishlist}
+				>
+					<Icon name="heart" />
+				</Button>
 			</S.Actions>
 		</S.ProductCard>
 	);

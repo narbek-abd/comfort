@@ -1,11 +1,9 @@
 import React from "react";
-import RegisterForm from "../../layouts/RegisterForm"
-import Header from '../../layouts/Header';
+import RegisterForm from "../../layouts/RegisterForm";
 
 const Register = () => {
   return (
     <>
-      <Header />
       <RegisterForm />
     </>
   );

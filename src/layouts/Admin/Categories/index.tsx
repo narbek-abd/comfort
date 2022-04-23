@@ -5,35 +5,37 @@ import Pagination from "../../../components/Pagination";
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
 import { CategoryTypes } from "../../../types/CategoryTypes";
+import useIsMounted from "../../../hooks/useIsMounted";
+import api from "../../../api";
+import Spinner from "../../../components/Spinner";
 
 const Categories = () => {
   const [categories, setCategories] = useState<CategoryTypes[]>([]);
+  const isMounted = useIsMounted();
 
   const [searchParams] = useSearchParams();
   const currentPage = +(searchParams.get("page") ?? 1);
 
   const perPage = 6;
-  const [totalItems, setTotalItems] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     getCategories();
   }, [searchParams]);
 
-  function getCategories() {
-    axios
-      .get(
-        `http://comfort.loc/api/categories/list?limit=${perPage}&page=` +
-          currentPage
-      )
-      .then(function (response) {
-        setCategories(response.data.data);
-        setTotalItems(response.data.total);
-      });
+  async function getCategories() {
+    let response = await api.categories.getCategories(
+      `?limit=${perPage}&page=${currentPage}`
+    );
+    if (!isMounted()) return;
+
+    setCategories(response.data.data);
+    setTotalItems(response.data.total);
   }
 
-  return (
-    categories.length > 0 && (
-      <S.Categories>
+  return categories.length > 0 ? (
+    <S.Categories>
+      <S.CategoriesList>
         <table>
           <thead>
             <tr>
@@ -54,10 +56,12 @@ const Categories = () => {
             })}
           </tbody>
         </table>
+      </S.CategoriesList>
 
-        {totalItems && <Pagination totalItem={totalItems} perPage={perPage} />}
-      </S.Categories>
-    )
+      {totalItems !==0 && <Pagination totalItem={totalItems} perPage={perPage} />}
+    </S.Categories>
+  ) : (
+    <Spinner />
   );
 };
 

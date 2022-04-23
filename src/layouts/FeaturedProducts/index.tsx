@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
 import * as G from "../../globalStyle";
 import * as S from "./style";
+import "swiper/css";
+import "swiper/css/pagination";
 import ProductCard from "../../components/ProductCard";
-import {getProducts} from "../../api/Product"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
+import api from "../../api";
+import Spinner from "../../components/Spinner";
+import useIsMounted from '../../hooks/useIsMounted';
 
 const FeaturedProducts = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [products, setProducts] = useState([]);
+	const isMounted = useIsMounted();
+
 	useEffect(() => {
-		getProducts().then((response) => setProducts(response.data));
-	}, []);
+		api.products
+			.getProducts("?sort_by=price_high_to_low&limit=8")
+			.then((response) => {
+				if (response.status === 200 && isMounted()) {
+					setIsLoading(false);
+					setProducts(response.data.data);
+				}
+			});
+	}, [isMounted]);
+
 	return (
 		<S.FeaturedProducts>
 			<G.SectionTitle>Featured Products</G.SectionTitle>
@@ -21,7 +36,10 @@ const FeaturedProducts = () => {
 					modules={[Pagination]}
 					spaceBetween={50}
 					slidesPerView={3}
-					pagination={{ el: ".swiper-pagination", clickable: true }}
+					pagination={{
+						el: ".featured-swiper-pagination",
+						clickable: true,
+					}}
 					breakpoints={{
 						1: {
 							slidesPerView: 1,
@@ -29,7 +47,7 @@ const FeaturedProducts = () => {
 						576: {
 							slidesPerView: 2,
 						},
-						768: {
+						992: {
 							slidesPerView: 3,
 						},
 					}}
@@ -43,7 +61,9 @@ const FeaturedProducts = () => {
 							</SwiperSlide>
 						);
 					})}
-					<div className="swiper-pagination"></div>
+
+					{isLoading && <Spinner />}
+					<div className="featured-swiper-pagination"></div>
 				</Swiper>
 			</G.Container>
 		</S.FeaturedProducts>

@@ -1,23 +1,16 @@
 import React from "react";
-import Header from "../../layouts/Header";
-import BottomNavBar from "../../components/BottomNavbar";
-import MainSlider from "../../layouts/MainSlider";
 import FeaturedProducts from "../../layouts/FeaturedProducts";
-import TabsProducts from "../../layouts/TabsProducts";
+import LatestProducts from "../../layouts/LatestProducts";
 import Advantages from "../../layouts/Advantages";
 import UniqueProduct from "../../layouts/UniqueProduct";
-import {Button} from '../../components/Button';
 
 const Home = () => {
 	return (
 		<>
-			<Header />
-			<MainSlider />
 			<FeaturedProducts />
-			<TabsProducts />
+			<LatestProducts />
 			<Advantages />
 			<UniqueProduct />
-			<BottomNavBar name="home" />
 		</>
 	);
 };
