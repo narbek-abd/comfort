@@ -2,26 +2,26 @@ import React, { useState, useEffect } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ProductValidation } from "../../../../validation/Product";
+import { ProductValidation } from "../../../../validation";
 
-import { ProductFormTypes, ProductTypes } from "../../../../types/ProductTypes";
+import { ProductFormTypes } from "../../../../types/FormTypes";
+import { ProductTypes } from "../../../../types/ProductTypes";
+
 import { CategoryTypes } from "../../../../types/CategoryTypes";
 import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
 
-import { getCategoriesWithChildren } from "../../../../api/Category";
-import { updateProduct, deleteProductImage } from "../../../../api/Product";
-
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
-import Alert from "../../../../components/Alert";
+import Alert, { AlertProps } from "../../../../components/Alert";
 import Button from "../../../../components/Button";
 
-import { getProduct } from "../../../../api/Product";
 import { useParams } from "react-router-dom";
 import Spinner from "../../../../components/Spinner";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const ProductEdit = () => {
   const {
@@ -32,18 +32,19 @@ const ProductEdit = () => {
   } = useForm<ProductFormTypes>({ resolver: yupResolver(ProductValidation) });
 
   let { productid } = useParams();
+  const isMounted = useIsMounted();
   const [currentProduct, setCurrentProduct] = useState<ProductTypes | null>(
     null
   );
 
   useEffect(() => {
-    getProduct(+productid).then((response) => {
-      if (response.status == 200) {
+    api.products.getProduct(+productid).then((response) => {
+      if (response.status == 200 && isMounted()) {
         setCurrentProduct(response.data);
         setInitialProductImages(response.data.images ?? []);
       }
     });
-  }, []);
+  }, [isMounted]);
 
   /** Категорий */
   const [categories, setCategories] = useState([]);
@@ -51,10 +52,10 @@ const ProductEdit = () => {
   const [keyForReRender, setkeyForReRender] = useState(0);
 
   useEffect(() => {
-    getCategoriesWithChildren().then((response) => {
-      setCategories(response.data);
+    api.categories.getCategoriesWithChildren().then((response) => {
+      isMounted() && setCategories(response.data);
     });
-  }, []);
+  }, [isMounted]);
 
   function onCategorySelectedWithNoChildren(category: CategoryTypes) {
     setSelectedCategory(category.id);
@@ -71,7 +72,7 @@ const ProductEdit = () => {
   const [initialProductImages, setInitialProductImages] = useState([]);
 
   function removeInitialImage(id: number) {
-    deleteProductImage(id).then((response) => {
+    api.products.deleteProductImage(id).then((response) => {
       if (response.data === 1) {
         let filteredImageList = initialProductImages.filter(
           (image) => image.id !== id
@@ -83,11 +84,12 @@ const ProductEdit = () => {
 
   /** UI */
   const [alertMessage, setAlertMessage] = useState("");
-  const [alertvariant, setAlertvariant] = useState("success");
+  const [alertvariant, setAlertvariant] =
+    useState<AlertProps["variant"]>("success");
   const [isLoading, setIsLoading] = useState(false);
 
   /** Submit */
-  const onSubmit: SubmitHandler<ProductFormTypes> = (data) => {
+  const onSubmit: SubmitHandler<ProductFormTypes> = async (data) => {
     if (selectedCategory === 0 && categorySelectIsVisible) {
       setError("category_id", {
         message: "Select category",
@@ -118,18 +120,19 @@ const ProductEdit = () => {
       formData.append("category_id", String(selectedCategory));
     }
 
-    updateProduct(currentProduct.id, formData).then((response) => {
-      setIsLoading(false);
+    let response = await api.products.updateProduct(
+      currentProduct.id,
+      formData
+    );
+    if (!isMounted()) return;
+    setIsLoading(false);
 
-      if (response.status === 200) {
-        setAlertMessage("Product was updated successfully");
+    setAlertMessage("Product was updated successfully");
 
-        setCurrentProduct(response.data);
-        setInitialProductImages(response.data.images ?? []);
-        setkeyForReRender((old) => ++old);
-        setCtegorySelectIsVisible(false);
-      }
-    });
+    setCurrentProduct(response.data);
+    setInitialProductImages(response.data.images ?? []);
+    setkeyForReRender((old) => ++old);
+    setCtegorySelectIsVisible(false);
   };
 
   const [categorySelectIsVisible, setCtegorySelectIsVisible] = useState(false);

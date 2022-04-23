@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
 import Button from "../../../../components/Button";
 import { Link } from "react-router-dom";
-import { deleteCategory } from "../../../../api/Category";
 import { CategoryTypes } from "../../../../types/CategoryTypes";
+import api from "../../../../api";
 
 interface CategoryItemProps {
   children?: React.ReactNode;
@@ -15,15 +14,17 @@ interface CategoryItemProps {
 const CategoryItem = ({ category, children, onDelete }: CategoryItemProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  function removeCategory() {
+  async function removeCategory() {
     setIsLoading(true);
-    deleteCategory(category.id).then((response) => onDelete());
+    await api.categories.deleteCategory(category.id);
+    onDelete();
   }
+
   return (
     <tr>
       <td>{category.id}</td>
       <td>{category.name}</td>
-      <td>Vend</td>
+      <td>{category.parent?.name || "-"}</td>
       <td>
         <S.Actions>
           <Button

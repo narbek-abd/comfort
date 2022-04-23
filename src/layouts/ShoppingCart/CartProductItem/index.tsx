@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 import Counter from "../../../components/Counter";
@@ -6,21 +6,28 @@ import {
   removeFromCart,
   changeProductCount,
 } from "../../../store/action-creators/Cart";
-import { useDispatch } from "react-redux";
-import { getProduct } from "../../../api/Product";
+import { useDispatch, useSelector } from "react-redux";
 import { apiUrl } from "../../../constants/project";
+import { ProductTypes } from "../../../types/ProductTypes";
+import { RootState } from "../../../store/redusers";
 
 interface CartProductItemProps {
-  storageProduct: { id: number; quantity: number };
+  product: ProductTypes;
 }
 
-const CartProductItem = ({ storageProduct }: CartProductItemProps) => {
-  const [product, setProduct] = useState(null);
+const CartProductItem = ({ product }: CartProductItemProps) => {
   const dispatch = useDispatch();
+  const [localProduct, setLocalProduct] = useState(null);
+
+  let cart = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
-    getProduct(storageProduct.id).then((response) => setProduct(response.data));
-  }, []);
+    let localProduct = cart.products.find(
+      (localProduct) => localProduct.id === product.id
+    );
+
+    setLocalProduct(localProduct);
+  }, [cart]);
 
   function onCountChange(count: number) {
     dispatch(changeProductCount(product, count));
@@ -30,43 +37,41 @@ const CartProductItem = ({ storageProduct }: CartProductItemProps) => {
     dispatch(removeFromCart(product));
   }
 
-  return (
-    product && (
-      <S.CartProductItem>
-        <S.ProductImg>
-          <Link to="/">
-            <img
-              src={apiUrl + "/storage/" + product.images[0].image}
-              alt="product"
-            />
-          </Link>
-        </S.ProductImg>
-        <S.Inf>
-          <S.Name>
-            <Link to="/">{product.name}</Link>
-          </S.Name>
-          <span>Color: Brown</span>
-          <span>Size: XL</span>
-        </S.Inf>
+  return localProduct ? (
+    <S.CartProductItem>
+      <S.ProductImg>
+        <Link to="/">
+          <img
+            src={apiUrl + "/storage/" + product.images[0].image}
+            alt="product"
+          />
+        </Link>
+      </S.ProductImg>
+      <S.Inf>
+        <S.Name>
+          <Link to={`/product/${product.id}`}>{product.name}</Link>
+        </S.Name>
+        <span>Category: <Link to={`/catalog/${product.category.slug}`}>{product.category.name}</Link></span>
+        <span>Size: XL</span>
+      </S.Inf>
 
-        <S.Price>
-          <S.CurrentPrice>{product.price}</S.CurrentPrice>
-          <S.Count>
-            <Counter
-              min={1}
-              max={product.stock}
-              current={storageProduct.quantity}
-              onChange={onCountChange}
-            />
-          </S.Count>
+      <S.Price>
+        <S.CurrentPrice>{product.price}</S.CurrentPrice>
+        <S.Count>
+          <Counter
+            min={1}
+            max={product.quantity}
+            current={localProduct.quantity}
+            onChange={onCountChange}
+          />
+        </S.Count>
 
-          <S.Total>{product.price * storageProduct.quantity}</S.Total>
-        </S.Price>
+        <S.Total>{product.price * localProduct.quantity}</S.Total>
+      </S.Price>
 
-        <S.RemoveProductBtn onClick={removeProduct}>X</S.RemoveProductBtn>
-      </S.CartProductItem>
-    )
-  );
+      <S.RemoveProductBtn onClick={removeProduct}>X</S.RemoveProductBtn>
+    </S.CartProductItem>
+  ) : null;
 };
 
 export default CartProductItem;

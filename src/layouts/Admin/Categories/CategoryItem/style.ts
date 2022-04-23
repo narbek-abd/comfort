@@ -3,10 +3,10 @@ import Button from "../../../../components/Button";
 
 export const Actions = styled.div`
 	display: flex;
-	align-items: center;
+	justify-content: flex-end;
 
 	button {
-		margin-right: 15px;
+		margin-left: 15px;
 		a {
 			color: #fff;
 		}

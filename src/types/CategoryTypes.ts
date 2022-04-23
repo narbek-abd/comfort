@@ -3,10 +3,6 @@ export interface CategoryTypes {
 	name: string;
 	slug: string;
 	parent_id: number;
+	parent: CategoryTypes;
 	children?: CategoryTypes[];
-}
-
-export interface CategoryFormTypes {
-	name: string;
-	parent_id: number;
 }

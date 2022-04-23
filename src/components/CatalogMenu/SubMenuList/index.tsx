@@ -13,12 +13,12 @@ const SubMenuList = ({ list, focusedItemId }: CatalogMenuChildrenProps) => {
   const [activeCategoryList, setActiveCategoryList] = useState([]);
 
   useEffect(() => {
-    let activeCategory = list.filter((item) => item.id == focusedItemId)[0];
+    let activeCategory = list.filter((item) => item.id === focusedItemId)[0];
 
     if (activeCategory !== undefined) {
       setActiveCategoryList(activeCategory["children"]);
     }
-  }, [focusedItemId]);
+  }, [focusedItemId, list]);
 
   return (
     <S.SubMenuList>

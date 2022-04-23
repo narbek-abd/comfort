@@ -19,6 +19,10 @@ export const Group = styled.div`
 		border-radius: 3px;
 		padding: 10px;
 	}
+
+	@media only screen and (max-width:576px) {
+		width: 100%;
+	}
 `;
 
 export const SelectGroup = styled(Group)`

@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import api from "../../../api";
-import Alert from "../../../components/Alert";
+import Alert, {AlertProps} from "../../../components/Alert";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
 
@@ -36,7 +36,7 @@ const CommentsForm = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const [alertMessage, setAlertMessage] = useState("");
-  const [alertvariant, setAlertvariant] = useState("success");
+  const [alertvariant, setAlertvariant] = useState<AlertProps["variant"]>("success");
 
   const user = useSelector((state: RootState) => state.user.data);
 

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import * as G from "../../../globalStyle";
 import * as S from "./style";
 
-import { useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import getSearchParams from "../../../utils/getSearchParams";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FilterSideBarFormTypes } from "../../../types/FilterSideBarFormTypes";
+import { FilterSideBarFormTypes } from "../../../types/FormTypes";
 import { CategoryTypes } from "../../../types/CategoryTypes";
 import Button from "../../../components/Button";
+import api from "../../../api";
 
 interface ProductsFilterSidebarProps {
   categoryChildrens: CategoryTypes[];
@@ -18,6 +19,8 @@ interface ProductsFilterSidebarProps {
 const ProductsFilterSidebar = ({
   categoryChildrens,
 }: ProductsFilterSidebarProps) => {
+  const location = useLocation()
+  const currentPath = location.pathname.replace(/\/$/, "");
   const [searchParams, setSearchParams] = useSearchParams();
   const { register, handleSubmit } = useForm<FilterSideBarFormTypes>();
 
@@ -46,22 +49,26 @@ const ProductsFilterSidebar = ({
   return (
     <S.FilterSidebar>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {categoryChildrens.length > 0 && (
+        {categoryChildrens && categoryChildrens.length > 0 && (
           <S.FilterBlock>
             <S.FilterTitle>Categories</S.FilterTitle>
             <S.FilterContent>
-              {categoryChildrens.map((categoryChildren) => {
-                return (
-                  <G.Checkbox key={categoryChildren.id}>
+              {categoryChildrens.map((category) => {
+                return category.children.length > 0 ? (
+                  <S.ParentCategory key={category.id}>
+                    <Link to={`${currentPath + '/' + category.slug}`}>
+                      {category.name}
+                    </Link>
+                  </S.ParentCategory>
+                ) : (
+                  <G.Checkbox key={category.id}>
                     <input
-                      value={categoryChildren.id}
-                      id={categoryChildren.slug}
+                      value={category.id}
+                      id={category.slug}
                       type="checkbox"
                       {...register("categories")}
                     />
-                    <label htmlFor={categoryChildren.slug}>
-                      {categoryChildren.name}
-                    </label>
+                    <label htmlFor={category.slug}>{category.name}</label>
                   </G.Checkbox>
                 );
               })}

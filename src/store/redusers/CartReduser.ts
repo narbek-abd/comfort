@@ -1,4 +1,4 @@
-import { CartState, CartAction, CartActionTypes } from "../../types/Cart";
+import { CartState, CartAction, CartActionTypes } from "../../types/CartReduxTypes";
 
 const cart: CartState = {
   products: JSON.parse(localStorage.getItem("cart")) || [],

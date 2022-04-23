@@ -12,7 +12,7 @@ export const MobileNav = styled.div`
   border-top: 1px solid rgb(230, 230, 230);
   display: flex;
 
-  @media only screen and (min-width:992px) {
+  @media only screen and (min-width: 992px) {
     display: none;
   }
 `;
@@ -22,21 +22,24 @@ export const MobileList = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
-
-export const MobileItem = styled.span<{active: number}>`
-  width: 25%;
-  height: 100%;
+export const MobileItem = styled.span<{ active: number }>`
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   cursor: pointer;
 
   svg {
     width: 28px;
     height: 28px;
-    color: ${props => props.active ? "#7e33e0" : "#ccc"};
+    color: ${(props) => (props.active ? "#7e33e0" : "#ccc")};
   }
 `;

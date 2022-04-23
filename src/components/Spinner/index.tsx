@@ -3,10 +3,10 @@ import * as S from "./style";
 
 interface SpinnerProps {
   [params:string]: any;
-  variant?: string;
+  variant?: "default" | "button";
 }
 
-const Spinner = ({variant, ...params} : SpinnerProps) => {
+const Spinner = ({variant = "default", ...params} : SpinnerProps) => {
   return (
     <S.Spinner {...params} variant={variant}>
     </S.Spinner>

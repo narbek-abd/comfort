@@ -2,22 +2,21 @@ import React, { useState, useEffect } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ProductValidation } from "../../../../validation/Product";
+import { ProductValidation } from "../../../../validation";
 
-import { ProductFormTypes } from "../../../../types/ProductTypes";
+import { ProductFormTypes } from "../../../../types/FormTypes";
 import { CategoryTypes } from "../../../../types/CategoryTypes";
 import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
 
-import { getCategoriesWithChildren } from "../../../../api/Category";
-import { createProduct } from "../../../../api/Product";
-
 import ImageUpload from "../../../../components/ImageUpload";
 import SelectNested from "../../../../components/SelectNested";
-import Alert from "../../../../components/Alert";
+import Alert, { AlertProps } from "../../../../components/Alert";
 import Button from "../../../../components/Button";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const ProductCreate = () => {
   const {
@@ -27,6 +26,7 @@ const ProductCreate = () => {
     reset,
     formState: { errors },
   } = useForm<ProductFormTypes>({ resolver: yupResolver(ProductValidation) });
+  const isMounted = useIsMounted();
 
   /** Категорий */
   const [categories, setCategories] = useState([]);
@@ -34,10 +34,10 @@ const ProductCreate = () => {
   const [keyForReRender, setkeyForReRender] = useState(0);
 
   useEffect(() => {
-    getCategoriesWithChildren().then((response) => {
-      setCategories(response.data);
+    api.categories.getCategoriesWithChildren().then((response) => {
+      isMounted() && setCategories(response.data);
     });
-  }, []);
+  }, [isMounted]);
 
   function onCategorySelectedWithNoChildren(category: CategoryTypes) {
     setSelectedCategory(category.id);
@@ -52,11 +52,12 @@ const ProductCreate = () => {
 
   /** UI */
   const [alertMessage, setAlertMessage] = useState("");
-  const [alertvariant, setAlertvariant] = useState("success");
+  const [alertvariant, setAlertvariant] =
+    useState<AlertProps["variant"]>("success");
   const [isLoading, setIsLoading] = useState(false);
 
   /** Submit */
-  const onSubmit: SubmitHandler<ProductFormTypes> = (data) => {
+  const onSubmit: SubmitHandler<ProductFormTypes> = async (data) => {
     if (selectedCategory === 0) {
       setError("category_id", {
         message: "Select category",
@@ -84,16 +85,14 @@ const ProductCreate = () => {
     formData.append("category_id", String(selectedCategory));
     formData.append("quantity", String(data.quantity));
 
-    createProduct(formData).then((response) => {
-      setIsLoading(false);
+    let response = api.products.createProduct(formData);
+    if (!isMounted()) return;
+    setIsLoading(false);
 
-      if (response.status === 201) {
-        reset();
-        setAlertMessage("Category was created successfully");
-        setSelectedCategory(0);
-        setkeyForReRender((old) => ++old);
-      }
-    });
+    reset();
+    setAlertMessage("Product was created successfully");
+    setSelectedCategory(0);
+    setkeyForReRender((old) => ++old);
   };
 
   return (

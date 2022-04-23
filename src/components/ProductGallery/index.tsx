@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageZoom from "../ImageZoom";
@@ -19,7 +19,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
 
   function changeMainImg(e: React.MouseEvent) {
     let selectedImg = imageItems.find(
-      (image: any) =>
+      (image) =>
         image.id === +(e.currentTarget as HTMLElement).dataset.imageId
     );
 
@@ -53,7 +53,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
           }}
           style={{ height: "490px" }}
         >
-          {imageItems.map((imageItem: any, index: any) => {
+          {imageItems.map((imageItem, index) => {
             return (
               <SwiperSlide
                 onClick={changeMainImg}
@@ -62,7 +62,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
               >
                 <S.ImgWrap active={imageItem.image === mainImg.image}>
                   <img
-                    src={apiUrl + "storage/" + imageItem.image}
+                    src={apiUrl + "/storage/" + imageItem.image}
                     alt="product img"
                   />
                 </S.ImgWrap>
@@ -76,7 +76,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
       </S.Left>
 
       <S.Right>
-        <ImageZoom src={apiUrl + "storage/" + mainImg.image} />
+        <ImageZoom src={apiUrl + "/storage/" + mainImg.image} />
       </S.Right>
     </S.ProductGallery>
   );

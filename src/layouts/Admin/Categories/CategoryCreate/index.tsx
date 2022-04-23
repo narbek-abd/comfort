@@ -4,12 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
 
-import { CategoryValidation } from "../../../../validation/Category";
-import { CategoryFormTypes } from "../../../../types/CategoryTypes";
-import { createCategory, getCategories } from "../../../../api/Category";
+import { CategoryValidation } from "../../../../validation";
+import { CategoryFormTypes } from "../../../../types/FormTypes";
 
-import Alert from "../../../../components/Alert";
+import Alert, { AlertProps } from "../../../../components/Alert";
 import Button from "../../../../components/Button";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const CategoryCreate = () => {
   const {
@@ -20,42 +21,43 @@ const CategoryCreate = () => {
   } = useForm<CategoryFormTypes>({ resolver: yupResolver(CategoryValidation) });
 
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit: SubmitHandler<CategoryFormTypes> = (data) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const isMounted = useIsMounted();
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertvariant, setAlertvariant] =
+    useState<AlertProps["variant"]>("success");
+
+  const onSubmit: SubmitHandler<CategoryFormTypes> = async (data) => {
     setIsLoading(true);
 
-    createCategory(data).then(function (response) {
-      setCategories([...categories, response.data]);
-      reset();
-      setAlertMessage("Category was created successfully");
-      setIsLoading(false);
-    });
+    let response = await api.categories.createCategory(data);
+    if (!isMounted()) return;
+
+    setCategories([...categories, response.data]);
+    reset();
+    setAlertMessage("Category was created successfully");
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    getCategories().then((response) => setCategories(response.data));
-  }, []);
-
-  const [alertMessage, setAlertMessage] = useState("");
-  const [alertvariant, setAlertvariant] = useState("success");
+    api.categories.getCategories().then((response) => {
+      isMounted() && setCategories(response.data);
+    });
+  }, [isMounted]);
 
   return (
     <S.Create>
-    {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
+      {alertMessage && <Alert variant={alertvariant}>{alertMessage}</Alert>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Group>
-          <input
-            type="text"
-            placeholder="name"
-            {...register("name", { required: true })}
-          />
+          <input type="text" placeholder="name" {...register("name")} />
           {errors.name && <span>{errors.name.message}</span>}
         </S.Group>
 
         <S.Group>
-          <select {...register("parent_id", { required: true })}>
+          <select {...register("parent_id")}>
             <option value="">no parent category</option>
             {categories.map((category) => {
               return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import * as S from "./style";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 interface ModalProps {
   children?: React.ReactNode;
@@ -21,27 +22,16 @@ const Modal = ({
     setIsVisible(isOpen);
   }, [isOpen]);
 
-  const el = useRef(null);
+  const modalRef = useRef(null);
 
-  useEffect(() => {
-    function toggleClick(e: MouseEvent) {
-      const modal = (e.target as HTMLElement).closest(".modal");
-      if (!modal) {
-        onClose();
-      }
-    }
-
-    document.addEventListener("click", toggleClick);
-
-    return () => {
-      document.removeEventListener("click", toggleClick);
-    };
-  }, []);
+  useOnClickOutside(modalRef, () => {
+    onClose();
+  });
 
   return ReactDOM.createPortal(
     <>
       <S.Overlay isVisible={isVisible} fullscreen={fullscreen}>
-        <S.Modal className="modal" ref={el}>
+        <S.Modal ref={modalRef}>
           {children}
         </S.Modal>
       </S.Overlay>{" "}

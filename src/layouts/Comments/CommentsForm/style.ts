@@ -39,6 +39,9 @@ export const Group = styled.div`
 	textarea {
 		width: 730px;
 		height: 150px;
+		@media only screen and (max-width:992px) {
+			width: 100%;
+		}
 	}
 `;
 

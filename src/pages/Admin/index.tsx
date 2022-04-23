@@ -1,6 +1,10 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import * as S from "./style";
+import * as G from "../../globalStyle";
+
+import Dashboard from "../../layouts/Admin/Dashboard";
+
 import Categories from "../../layouts/Admin/Categories";
 import CategoryCreate from "../../layouts/Admin/Categories/CategoryCreate";
 import CategoryEdit from "../../layouts/Admin/Categories/CategoryEdit";
@@ -8,6 +12,7 @@ import CategoryEdit from "../../layouts/Admin/Categories/CategoryEdit";
 import Products from "../../layouts/Admin/Products";
 import ProductCreate from "../../layouts/Admin/Products/ProductCreate";
 import ProductEdit from "../../layouts/Admin/Products/ProductEdit";
+
 import { Route, Routes } from "react-router-dom";
 
 interface AdminProps {
@@ -16,28 +21,42 @@ interface AdminProps {
 
 const Admin = ({ children }: AdminProps) => {
   return (
-    <S.Admin>
-      <S.Left>
-        <Sidebar list={sidebarList} />
-      </S.Left>
+    <>
+      <S.Admin>
+        <G.Container>
+          <S.Inner>
+            <S.Left>
+              <Sidebar list={sidebarList} />
+            </S.Left>
 
-      <S.Right>
-        <Routes>
-          <Route path="categories" element={<Categories />} />
-          <Route path="categories/create" element={<CategoryCreate />} />
-          <Route path="categories/edit/:categoryid" element={<CategoryEdit />} />
+            <S.Right>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                
+                <Route path="categories" element={<Categories />} />
+                <Route path="categories/create" element={<CategoryCreate />} />
+                <Route
+                  path="categories/edit/:categoryid"
+                  element={<CategoryEdit />}
+                />
 
-          <Route path="products" element={<Products />} />
-          <Route path="products/create" element={<ProductCreate />} />
-          <Route path="products/edit/:productid" element={<ProductEdit />} />
-        </Routes>
-      </S.Right>
-    </S.Admin>
+                <Route path="products" element={<Products />} />
+                <Route path="products/create" element={<ProductCreate />} />
+                <Route
+                  path="products/edit/:productid"
+                  element={<ProductEdit />}
+                />
+              </Routes>
+            </S.Right>
+          </S.Inner>
+        </G.Container>
+      </S.Admin>
+    </>
   );
 };
 
 const sidebarList = [
-  { id: 1, name: "dashboard", icon: "heart", link: "admin/dashboard" },
+  { id: 1, name: "dashboard", icon: "heart", link: "/admin" },
   {
     id: 2,
     name: "products",

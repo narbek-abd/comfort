@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import { Button } from '../Button/style';
 
 export const Actions = styled.div`
 	opacity: 0;
@@ -11,9 +11,8 @@ export const Actions = styled.div`
 	flex-direction: column;
 	transition: var(--opacity-tr);
 
-	span {
+	${Button} {
 		padding: 10px;
-		background-color: var(--color-dark-blue);
 		cursor: pointer;
 		margin-bottom: 3px;
 		display: flex;
@@ -56,7 +55,7 @@ export const ProductCard = styled.div<{ variant: string }>`
 	}
 
 	${(props) =>
-		props.variant == "horizontal" &&
+		props.variant === "horizontal" &&
 		css`
 			height: 230px;
 

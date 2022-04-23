@@ -1,11 +1,9 @@
 import React from "react";
-import UserOrders from "../../../layouts/User/UserOrders"
-import Header from '../../../layouts/Header';
+import UserOrders from "../../../layouts/User/UserOrders";
 
 const Orders = () => {
   return (
     <>
-      <Header />
       <UserOrders />
     </>
   );

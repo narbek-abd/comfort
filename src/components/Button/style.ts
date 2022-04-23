@@ -46,6 +46,12 @@ export const Button = styled.button<{
 			background-color: #dc3545;
 		`}
 
+	${(props) =>
+		props.variant === "contained" &&
+		props.color === "blue" &&
+		css`
+			background-color: var(--color-dark-blue);
+		`}
 
 
 
@@ -76,6 +82,18 @@ export const Button = styled.button<{
 		css`
 			border: 2px solid #dc3545;
 			color: #dc3545;
+
+			${Spinner} {
+				border-top-color: #dc3545;
+			}
+		`}
+
+		${(props) =>
+		props.variant === "outlined" &&
+		props.color === "blue" &&
+		css`
+			border: 2px solid var(--color-dark-blue);
+			color: var(--color-dark-blue);
 
 			${Spinner} {
 				border-top-color: #dc3545;
