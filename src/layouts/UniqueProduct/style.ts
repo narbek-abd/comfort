@@ -17,11 +17,11 @@ export const Inner = styled.div`
 export const Left = styled.div`
 	flex: 0 0 544px;
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		flex: 0 0 400px;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		display: none;
 	}
 `;

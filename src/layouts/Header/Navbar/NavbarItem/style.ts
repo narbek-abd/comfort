@@ -8,7 +8,7 @@ export const NavbarItem = styled.li`
 	cursor: pointer;
 	text-align: center;
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		display: block;
 	}
 `;
@@ -59,7 +59,7 @@ export const DropdownList = styled.ul`
 	list-style-type: none;
 	display: none;
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		position: static;
 	}
 

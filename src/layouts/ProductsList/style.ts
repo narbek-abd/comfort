@@ -30,18 +30,18 @@ export const List = styled.div<{ variant: string }>`
 		width: 32%;
 		margin-bottom: 50px;
 
-		@media only screen and (max-width: 1200px) {
+		@media (max-width: 1200px) {
 			width: 49%;
 		}
 
-		@media only screen and (max-width: 992px) {
+		@media (max-width: 992px) {
 			width: 32%;
 		}
 
-		@media only screen and (max-width: 576px) {
+		@media (max-width: 576px) {
 			width: 49%;
 		}
-		@media only screen and (max-width: 480px) {
+		@media (max-width: 480px) {
 			width: 100%;
 		}
 	}
@@ -55,11 +55,11 @@ export const List = styled.div<{ variant: string }>`
 		css`
 			${ProductCard} {
 				width: 100%;
-				@media only screen and (max-width: 576px) {
+				@media (max-width: 576px) {
 					width: 49%;
 				}
 
-				@media only screen and (max-width: 480px) {
+				@media (max-width: 480px) {
 					width: 100%;
 				}
 			}
@@ -69,7 +69,7 @@ export const List = styled.div<{ variant: string }>`
 			}
 		`}
 
-	@media only screen and (max-width:992px) {
+	@media (max-width:992px) {
 		width: 100%;
 	}
 `;

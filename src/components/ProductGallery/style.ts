@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const ProductGallery = styled.div`
 	display: flex;
 
-	@media only screen and (max-width:992px) {
+	@media (max-width:992px) {
 		display: block;
 	}
 `;
@@ -23,11 +23,11 @@ const imageContainer = css`
 
 export const Left = styled.div`
 .swiper-slide {
-	@media only screen and (max-width:992px) {
+	@media (max-width:992px) {
 		width: 72%;
 	}
 
-	@media only screen and (max-width:778px) {
+	@media (max-width:778px) {
 		width: 90%;
 	}
 }
@@ -51,7 +51,7 @@ export const Left = styled.div`
 			}
 		}
 
-		@media only screen and (max-width:992px) {
+		@media (max-width:992px) {
 			display: none
 		}
 	}
@@ -76,19 +76,19 @@ export const ImgWrap = styled.div<{ active: boolean }>`
 		border-radius: 4px;
 	}
 
-	@media only screen and (max-width:992px) {
+	@media (max-width:992px) {
 			width: 500px;
 			height: 100%;
 			border-color: transparent;
 	}
-	@media only screen and (max-width:768px) {
+	@media (max-width:768px) {
 		width: 100%;
 	}
 `;
 
 export const Right = styled.div`
 	margin-left: 21px;
-	@media only screen and (max-width:992px) {
+	@media (max-width:992px) {
 		display: none;
 	}
 `;

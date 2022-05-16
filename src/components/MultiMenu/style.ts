@@ -7,7 +7,7 @@ export const MultiMenu = styled.div`
    overflow: hidden;
    overflow-y: auto;
    background-color: #fff;
-   @media only screen and (max-width:480px) {
+   @media (max-width:480px) {
       width: 200px;
    }
 `;

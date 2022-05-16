@@ -4,7 +4,7 @@ export const SearchBar = styled.div`
 	margin-left: auto;
 	position: relative;
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -17,10 +17,10 @@ export const SearchBarForm = styled.form`
 		border: 1px solid var(--color-dark-blue);
 		padding: 0 15px;
 		width: 265px;
-		@media only screen and (max-width: 992px) {
+		@media (max-width: 992px) {
 			width: 200px;
 		}
-		@media only screen and (max-width: 480px) {
+		@media (max-width: 480px) {
 			width: calc(100% - 51px);
 		}
 	}
@@ -58,7 +58,7 @@ export const Product = styled.div`
 		align-items: center;
 		color: var(--color-dark-blue);
 
-		@media only screen and (max-width:480px) {
+		@media (max-width:480px) {
 		font-size: 13px;
 	}
 	}
@@ -72,7 +72,7 @@ export const ProductImg = styled.img`
 	width: 25px;
 	height: 25px;
 
-	@media only screen and (max-width:480px) {
+	@media (max-width:480px) {
 		display: none;
 	}
 `;

@@ -59,7 +59,7 @@ export const FilterSidebar = styled.div`
 	width: 256px;
 	margin-right: 44px;
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		text-align: left;
 		padding: 20px;
 		${FilterRange} {

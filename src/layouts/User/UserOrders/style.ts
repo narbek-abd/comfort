@@ -10,7 +10,7 @@ export const Orders = styled.section`
 export const OrdersList = styled.div`
 	margin-bottom: 40px;
 
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		overflow-x: scroll;
 	}
 `;
