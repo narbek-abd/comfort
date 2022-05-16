@@ -1,41 +1,21 @@
 import { WishlistActionTypes } from "../../types/WishlistReduxTypes";
 import { store } from "../";
 
-export const addProductToWishlist = (product: { id: number }) => {
-  let products: { id: number }[] = store.getState().wishlist.products;
-
-  let alreadyInWishlist = products.find(
-    (storageProduct) => storageProduct.id === product.id
-  );
-  if (alreadyInWishlist) return;
-
-  products.push({ id: product.id });
-
-  localStorage.setItem("wishlist", JSON.stringify(products));
-
+export const addProductToWishlist = (product_id: number) => {
   return {
     type: WishlistActionTypes.ADD_PRODUCT_TO_WISHLIST,
-    payload: products,
+    payload: product_id,
   };
 };
 
-export const removeFromWishlist = (product: { id: number }) => {
-  let products: { id: number }[] = store.getState().wishlist.products;
-
-  let filteredProductList = products.filter(
-    (productItem) => productItem.id !== product.id
-  );
-  localStorage.setItem("wishlist", JSON.stringify(filteredProductList));
-
+export const removeFromWishlist = (product_id: number) => {
   return {
     type: WishlistActionTypes.REMOVE_PRODUCT_FROM_WISHLIT,
-    payload: filteredProductList,
+    payload: product_id,
   };
 };
 
 export const clearWishlist = () => {
-  localStorage.removeItem("wishlist");
-
   return {
     type: WishlistActionTypes.CLEAR_WISHLIST,
   };

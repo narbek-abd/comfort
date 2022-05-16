@@ -30,11 +30,11 @@ const CartProductItem = ({ product }: CartProductItemProps) => {
   }, [cart]);
 
   function onCountChange(count: number) {
-    dispatch(changeProductCount(product, count));
+    dispatch(changeProductCount(product.id, count));
   }
 
   function removeProduct() {
-    dispatch(removeFromCart(product));
+    dispatch(removeFromCart(product.id));
   }
 
   return localProduct ? (

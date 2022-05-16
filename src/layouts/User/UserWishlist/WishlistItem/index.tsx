@@ -26,7 +26,7 @@ const WishlistItem = ({ product }: WishlistItemProps) => {
   }, [wishlist]);
 
   function removeProduct(e: React.MouseEvent) {
-    dispatch(removeFromWishlist(product));
+    dispatch(removeFromWishlist(product.id));
   }
 
   return localProduct ? (

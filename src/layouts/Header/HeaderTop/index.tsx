@@ -5,7 +5,7 @@ import Icon from "../../../components/Icon";
 import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/redusers";
-import { getTotalQuantity } from "../../../store/action-creators/Cart";
+import { selectCartQuantity } from "../../../store/redusers/CartReduser";
 import { Link, useLocation } from "react-router-dom";
 import { deleteUser } from "../../../store/action-creators/User";
 import Cookies from "js-cookie";
@@ -19,6 +19,9 @@ const HeaderTop = () => {
 	let wishlist = useSelector((state: RootState) => state.wishlist);
 	let user = useSelector((state: RootState) => state.user.data);
 	let cart = useSelector((state: RootState) => state.cart);
+
+	let wishlistQuantity = wishlist.products.length;
+	let cartProductsQuantity = useSelector(selectCartQuantity);
 
 	async function logout() {
 		await api.users.logoutUser();
@@ -50,7 +53,7 @@ const HeaderTop = () => {
 							<Link to="/user/wishlist">
 								Wishlist <Icon name="heart" />
 								<S.CartCount>
-									<span>{wishlist.products.length}</span>
+									<span>{wishlistQuantity}</span>
 								</S.CartCount>
 							</Link>
 						</S.UserButton>
@@ -59,7 +62,7 @@ const HeaderTop = () => {
 							<Link to="/cart">
 								<Icon name="basket" />
 								<S.CartCount>
-									<span>{getTotalQuantity()}</span>
+									<span>{cartProductsQuantity}</span>
 								</S.CartCount>
 							</Link>
 						</S.UserButton>

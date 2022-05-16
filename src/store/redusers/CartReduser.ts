@@ -1,4 +1,9 @@
-import { CartState, CartAction, CartActionTypes } from "../../types/CartReduxTypes";
+import {
+  CartState,
+  CartAction,
+  CartActionTypes,
+} from "../../types/CartReduxTypes";
+import { RootState } from "./index";
 
 const cart: CartState = {
   products: JSON.parse(localStorage.getItem("cart")) || [],
@@ -7,18 +12,64 @@ const cart: CartState = {
 export const CartReduser = (state = cart, action: CartAction) => {
   switch (action.type) {
     case CartActionTypes.ADD_PRODUCTS:
-      return { products: action.payload };
+      let productExists = state.products.find(
+        (productItem) => productItem.id === action.payload
+      );
+
+      let newList = [];
+
+      if (productExists) {
+        newList = state.products.map((product) =>
+          product.id === action.payload
+            ? { ...product, quantity: productExists.quantity++ }
+            : product
+        );
+      } else {
+        newList = [...state.products, { id: action.payload, quantity: 1 }];
+      }
+
+      localStorage.setItem("cart", JSON.stringify(newList));
+
+      return {
+        products: newList,
+      };
 
     case CartActionTypes.REMOVE_PRODUCT:
-      return { products: action.payload };
+      let filteredProductList = state.products.filter(
+        (product) => product.id !== action.payload
+      );
+      localStorage.setItem("cart", JSON.stringify(filteredProductList));
+
+      return { products: filteredProductList };
 
     case CartActionTypes.CHANGE_PRODUCT_COUNT:
-      return { products: action.payload };
+      let changedList = state.products.map((product) =>
+        product.id === action.payload.product_id
+          ? { ...product, quantity: action.payload.count }
+          : product
+      );
+
+      localStorage.setItem("cart", JSON.stringify(changedList));
+
+      return { products: changedList };
 
     case CartActionTypes.CLEAR_CART:
+      localStorage.removeItem("cart");
       return { products: [] };
 
     default:
       return state;
   }
+};
+
+export const selectCartQuantity = (state: RootState) => {
+  let products = state.cart.products;
+
+  let quantity = 0;
+
+  products.forEach((product) => {
+    quantity += product.quantity;
+  });
+
+  return quantity;
 };
