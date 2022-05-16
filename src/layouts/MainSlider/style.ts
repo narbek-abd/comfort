@@ -31,7 +31,7 @@ font-size: 16px;
 line-height: 28px;
 color: var(--color-pink);
 
-@media only screen and (max-width:768px) {
+@media (max-width:768px) {
 padding-top: 50px;
 }
 `; 
@@ -44,7 +44,7 @@ letter-spacing: 0.015em;
 color: #000000;
 max-width: 654px;
 margin-top: 12px;
-@media only screen and (max-width:576px) {
+@media (max-width:576px) {
 font-size: 43px;
 line-height: 50px;
 }

@@ -4,7 +4,7 @@ import {Dropdown} from '../../../components/Dropdown/style';
 export const HeaderTop = styled.div`
 	background-color: var(--color-purple);
 
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		display: none;
 	}
 `;
@@ -128,7 +128,7 @@ export const Right = styled.div`
 		}
 	}
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		display: none;
 	}
 `;

@@ -25,7 +25,6 @@ const MultiMenu = ({ list }: MultiMenuProps) => {
     let item = (e.target as HTMLElement).closest("li");
     let childListId = +item.dataset.listId;
     let parentListId = +item.dataset.parentId;
-    console.log(parentListId);
 
     if (Number.isInteger(parentListId)) {
       // prevList текщуго prevList

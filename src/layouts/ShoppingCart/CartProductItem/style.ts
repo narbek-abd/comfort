@@ -54,14 +54,14 @@ export const Price = styled.div`
 	justify-content: space-around;
 	height: 87px;
 	margin-left: auto;
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		flex-direction: column-reverse;
 	}
 `;
 
 export const CurrentPrice = styled.div`
 	margin-left: 90px;
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		display: none;
 	}
 `;
@@ -69,20 +69,20 @@ export const CurrentPrice = styled.div`
 export const Count = styled.div`
 	margin-left: 122px;
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		margin-left: 70px;
 	}
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		margin-left: 0;
 	}
 `;
 
 export const Total = styled.div`
 	margin-left: 140px;
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		margin-left: 70px;
 	}
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		margin-left: 0;
 	}
 `;

@@ -51,7 +51,7 @@ export const CommentTop = styled.div`
 		font-size: 12.4695px;
 		line-height: 15px;
 		color: #a3a2b6;
-		@media only screen and (max-width: 480px) {
+		@media (max-width: 480px) {
 			display: none;
 		}
 	}

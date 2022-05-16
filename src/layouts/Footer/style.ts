@@ -8,7 +8,7 @@ export const Footer = styled.footer`
 	background-color: var(--color-dark-blue);
 	padding: 24px 0;
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		padding-bottom: 74px;
 	}
 `;

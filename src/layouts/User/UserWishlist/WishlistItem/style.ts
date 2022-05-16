@@ -54,7 +54,7 @@ export const Price = styled.div`
 	justify-content: space-around;
 	height: 87px;
 	margin-left: auto;
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		flex-direction: column-reverse;
 	}
 `;
