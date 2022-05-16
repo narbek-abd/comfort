@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MobileNav = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const MobileNav = styled.div`
   border-top: 1px solid rgb(230, 230, 230);
   display: flex;
 
-  @media only screen and (min-width: 992px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `;

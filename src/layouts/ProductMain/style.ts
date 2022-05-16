@@ -5,7 +5,7 @@ import { Button } from '../../components/Button/style';
 export const ProductMain = styled.section`
 	margin-top: 150px;
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		${Container} {
 			padding: 0;
 			max-width: 1500px;
@@ -16,14 +16,14 @@ export const ProductMain = styled.section`
 export const Inner = styled.div`
 	display: flex;
 
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		display: block;
 	}
 `;
 
 export const Left = styled.div`
 	width: 547px;
-	@media only screen and (max-width: 992px) {
+	@media (max-width: 992px) {
 		width: auto;
 	}
 `;

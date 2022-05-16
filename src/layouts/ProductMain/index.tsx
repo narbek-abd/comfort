@@ -43,13 +43,13 @@ const ProductMain = ({ product }: ProductMainProps) => {
   }, [wishlistProducts]);
 
   function addToCart(e: React.MouseEvent) {
-    dispatch(addProduct(product));
+    dispatch(addProduct(product.id));
 
     setAlreadyInCart(true);
   }
 
   function addToWishlist() {
-    dispatch(addProductToWishlist(product));
+    dispatch(addProductToWishlist(product.id));
 
     setAlreadyInWishlist(true);
   }

@@ -22,7 +22,7 @@ export const SortLeft = styled.div`
 		margin-top: 8px;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		display: none;
 	}
 `;

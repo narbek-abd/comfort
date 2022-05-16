@@ -43,13 +43,13 @@ const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 	}, [wishlistProducts]);
 
 	function addToCart() {
-		dispatch(addProduct(product));
+		dispatch(addProduct(product.id));
 
 		setAlreadyInCart(true);
 	}
 
 	function addToWishlist() {
-		dispatch(addProductToWishlist(product));
+		dispatch(addProductToWishlist(product.id));
 
 		setAlreadyInWishlist(true);
 	}

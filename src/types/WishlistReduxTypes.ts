@@ -11,11 +11,11 @@ export enum WishlistActionTypes {
 
 interface AddProductsAction {
     type: WishlistActionTypes.ADD_PRODUCT_TO_WISHLIST;
-    payload: { id: number }[];
+    payload: number;
 }
 interface RemoveProductsAction {
     type: WishlistActionTypes.REMOVE_PRODUCT_FROM_WISHLIT;
-    payload: { id: number }[];
+    payload: number;
 }
 
 interface ClearWishlist {

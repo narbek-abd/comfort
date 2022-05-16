@@ -6,16 +6,16 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 15px;
   position: relative;
-  @media only screen and (max-width: 1200px) {
+  @media (max-width: 1200px) {
     max-width: ${960 + 30}px;
   }
-  @media only screen and (max-width: 992px) {
+  @media (max-width: 992px) {
     max-width: ${720 + 30}px;
   }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     max-width: ${540 + 30}px;
   }
-  @media only screen and (max-width: 576px) {
+  @media (max-width: 576px) {
     max-width: auto;
   }
 `;

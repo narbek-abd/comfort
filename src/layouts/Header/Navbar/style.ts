@@ -15,7 +15,7 @@ export const NavbarWrapper = styled.div<{ active: boolean }>`
 `;
 
 export const Navbar = styled.nav<{ opened: boolean }>`
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -87,7 +87,7 @@ export const Hamburger = styled.div<{ crossed: boolean }>`
 			}
 		`}
 
-	@media only screen and (max-width:768px) {
+	@media (max-width:768px) {
 		display: block;
 	}
 `;

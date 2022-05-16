@@ -32,9 +32,14 @@ export const Actions = styled.div`
 `;
 
 export const Img = styled.div`
-	height: 269.96px;
 	position: relative;
 	overflow: hidden;
+	&:before {
+		content: "";
+		padding-bottom: 110%;
+		display: block;
+		width: 100%;
+	}
 
 	img {
 		position: absolute;
@@ -83,7 +88,7 @@ export const ProductCard = styled.div<{ variant: string }>`
 				}
 			}
 
-			@media only screen and (max-width: 576px) {
+			@media (max-width: 576px) {
 				margin-bottom: 30px;
 				height: auto;
 

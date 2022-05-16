@@ -16,16 +16,16 @@ export enum CartActionTypes {
 
 interface AddProductsAction {
     type: CartActionTypes.ADD_PRODUCTS;
-    payload: ProductItemTypes[];
+    payload: number;
 }
 interface RemoveProductsAction {
     type: CartActionTypes.REMOVE_PRODUCT;
-    payload: ProductItemTypes[];
+    payload: number;
 }
 
 interface ChangeProductCountAction {
     type: CartActionTypes.CHANGE_PRODUCT_COUNT;
-    payload: ProductItemTypes[];
+    payload: {product_id: number, count: number};
 }
 
 interface ClearCart {

@@ -20,7 +20,7 @@ export const Group = styled.div`
 		padding: 10px;
 	}
 
-	@media only screen and (max-width:576px) {
+	@media (max-width:576px) {
 		width: 100%;
 	}
 `;

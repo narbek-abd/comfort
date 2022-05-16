@@ -32,14 +32,14 @@ export const Item = styled.div`
 		color: rgba(26, 11, 91, 0.3);
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media (max-width: 768px) {
 		width: 49%;
 		&:nth-child(n + 3) {
 			margin-top: 50px;
 		}
 	}
 
-	@media only screen and (max-width: 576px) {
+	@media (max-width: 576px) {
 		width: 100%;
 		&:not(:first-child) {
 			margin-top: 50px;
