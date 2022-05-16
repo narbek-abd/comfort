@@ -7,10 +7,10 @@ const user: UserState = {
 export const UserReduser = (state = user, action: UserAction) => {
   switch (action.type) {
     case UserActionTypes.SET_USER:
-      return { ...state, data: action.payload };
+      return { data: action.payload };
 
     case UserActionTypes.DELETE_USER:
-      return { ...state, data: null };
+      return { data: null };
 
     default:
       return state;
