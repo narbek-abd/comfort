@@ -21,17 +21,10 @@ const Dropdown = ({
 	useOnClickOutside(dropdownRef, () => setIsVisible(false));
 
 	return (
-		<S.Dropdown
-			position={position}
-			opened={isVisible}
-			ref={dropdownRef}
-			{...params}
-		>
-			<span onClick={() => setIsVisible(!isVisible)}>
-				{title}
-			</span>
+		<S.Dropdown position={position} ref={dropdownRef} {...params}>
+			<span onClick={() => setIsVisible(!isVisible)}>{title}</span>
 
-			<ul>{children}</ul>
+			{isVisible && <ul>{children}</ul>}
 		</S.Dropdown>
 	);
 };
