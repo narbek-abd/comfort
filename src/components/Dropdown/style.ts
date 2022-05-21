@@ -18,12 +18,4 @@ export const Dropdown = styled.div<{ position: string; opened: boolean }>`
 				right: 0;
 			}
 		`}
-
-	${(props) =>
-		props.opened &&
-		css`
-			ul {
-				display: block;
-			}
-		`}
 `;

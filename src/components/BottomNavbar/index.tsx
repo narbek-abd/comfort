@@ -44,19 +44,24 @@ const BottomNavBar = () => {
     }, [location]);
 
     return (
-        <S.MobileNav>
-            <S.MobileList>
-                {tabs.map((tab) => {
-                    return (
-                        <Link key={tab.id} to={tab.link}>
-                            <S.MobileItem active={+(activeTabId === tab.id)}>
-                                <Icon name={tab.icon} width={88} />
-                            </S.MobileItem>
-                        </Link>
-                    );
-                })}
-            </S.MobileList>
-        </S.MobileNav>
+            <S.MobileNav>
+                <S.MobileList>
+                    {tabs.map((tab) => {
+                        return (
+                            <Link key={tab.id} to={tab.link}>
+                                <S.MobileItem
+                                    active={+(activeTabId === tab.id)}
+                                    data-testid={
+                                        activeTabId === tab.id ? tab.name : ''
+                                    }
+                                >
+                                    <Icon name={tab.icon} width={88} />
+                                </S.MobileItem>
+                            </Link>
+                        );
+                    })}
+                </S.MobileList>
+            </S.MobileNav>
     );
 };
 
