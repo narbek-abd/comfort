@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
-import getSearchParams from "../../utils/getSearchParams"
+import getSearchParams from "../../utils/getSearchParams";
 
 interface PaginationProps {
   children?: React.ReactNode;
@@ -64,10 +64,17 @@ const Pagination = ({
 
       {pages.map((page) => {
         page += 1;
+        let isActive = page === currentPage - pageOffsetIndex;
+        page = page + pageOffsetIndex;
+
         return (
-          <S.Item key={page} active={page === currentPage - pageOffsetIndex}>
-            <button data-page={page + pageOffsetIndex} onClick={onPageChange}>
-              {page + pageOffsetIndex}
+          <S.Item
+            key={page}
+            active={isActive}
+            data-testid={isActive ? page : 0}
+          >
+            <button data-page={page} onClick={onPageChange}>
+              {page}
             </button>
           </S.Item>
         );
