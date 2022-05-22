@@ -47,7 +47,7 @@ export const Image = styled.div`
 	}
 
 	button {
-		display: none;
+		opacity: 0;
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -67,7 +67,7 @@ export const Image = styled.div`
 
 	&:hover {
 		button {
-			display: flex;
+		opacity: 1;
 		}
 	}
 `;
