@@ -116,7 +116,7 @@ const ImageUpload = ({
         {images.map((image) => {
           return (
             <S.Image key={image.id}>
-              <img src={image.url} alt="uploaded item" />
+              <img src={image.url} alt="uploaded item" data-testid="uploadedImage"/>
 
               <button onClick={removeImg} data-img-id={image.id}>
                 X
@@ -134,6 +134,7 @@ const ImageUpload = ({
           type="file"
           multiple
           onChange={addImg}
+          data-testid="uploadInput"
         />
       </S.Images>
       {errors && <G.Err>{errors}</G.Err>}
