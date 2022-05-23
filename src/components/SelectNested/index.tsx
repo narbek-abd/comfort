@@ -38,7 +38,7 @@ const SelectNested = ({
     );
 
     // Если нет childen, вызываем колбэк
-    let hasChildren = selectedItem.children.length > 0;
+    let hasChildren = selectedItem.children?.length > 0;
     if (!hasChildren) {
       onSelected(selectedItem);
       setSelectList([...filteredSelectList]);
@@ -76,6 +76,7 @@ const SelectNested = ({
               onChange={handleSelectChange}
               data-level={list.level}
               defaultValue=""
+              data-testid={list.level}
             >
               <option value="" disabled>
                 {desc}
