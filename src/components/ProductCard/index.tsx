@@ -79,6 +79,7 @@ const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 					color="blue"
 					onClick={addToCart}
 					disabled={alreadyInCart}
+					data-testid="addToCartBtn"
 				>
 					<Icon name="basket" />
 				</Button>
@@ -88,6 +89,7 @@ const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 					color="blue"
 					onClick={addToWishlist}
 					disabled={alreadyInWishlist}
+					data-testid="addToWishlistBtn"
 				>
 					<Icon name="heart" />
 				</Button>
