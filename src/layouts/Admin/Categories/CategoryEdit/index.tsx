@@ -55,7 +55,7 @@ const CategoryEdit = () => {
     setIsLoading(true);
 
     try {
-      api.categories.updateCategory(currentCategory.id, data);
+      await api.categories.updateCategory(currentCategory.id, data);
       defineCurrentCategory();
       setAlertMessage("The category has been successfully updated");
     } catch (err: any) {
