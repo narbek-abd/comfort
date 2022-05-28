@@ -10,6 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
   isLoading?: boolean;
   [params: string]: any;
+  as: "div" | "button";
 }
 
 const Button = (props: ButtonProps) => {
@@ -17,6 +18,7 @@ const Button = (props: ButtonProps) => {
     children,
     disabled,
     variant = "contained",
+    as = "button",
     isLoading,
     ...params
   } = props;
@@ -25,6 +27,7 @@ const Button = (props: ButtonProps) => {
       disabled={disabled || isLoading}
       variant={variant}
       isLoading={isLoading}
+      as={as}
       {...params}
     >
       {isLoading ? (
