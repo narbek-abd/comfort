@@ -60,7 +60,7 @@ const ProductCreate = () => {
   const onSubmit: SubmitHandler<ProductFormTypes> = async (data) => {
     if (selectedCategory === 0) {
       setError("category_id", {
-        message: "Select category",
+        message: "Error: select product category",
       });
 
       return;
@@ -68,7 +68,7 @@ const ProductCreate = () => {
 
     if (productImages.length === 0) {
       setError("images", {
-        message: "Upload product images",
+        message: "Error: upload product images",
       });
 
       return;

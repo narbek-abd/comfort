@@ -190,7 +190,7 @@ const ProductEdit = () => {
               ) : (
                 <S.CategoryInf>
                   <p>Category name: {currentProduct.category.name}</p>
-                  <Button size="small" onClick={showCategorySelect}>
+                  <Button size="small" onClick={showCategorySelect} as="div">
                     Change category
                   </Button>
                 </S.CategoryInf>

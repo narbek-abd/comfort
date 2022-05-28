@@ -18,6 +18,16 @@ const Modal = ({
 }: ModalProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
+  let modalRoot = document.getElementById("app-modal");
+
+  if (!modalRoot) {
+    let rootElem = document.createElement("div");
+    rootElem.setAttribute("id", "app-modal");
+
+    document.body.append(rootElem);
+    modalRoot = rootElem;
+  }
+
   useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
@@ -31,12 +41,10 @@ const Modal = ({
   return ReactDOM.createPortal(
     <>
       <S.Overlay isVisible={isVisible} fullscreen={fullscreen}>
-        <S.Modal ref={modalRef}>
-          {children}
-        </S.Modal>
+        <S.Modal ref={modalRef}>{children}</S.Modal>
       </S.Overlay>{" "}
     </>,
-    document.getElementById("app-modal")
+    modalRoot
   );
 };
 

@@ -64,6 +64,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
                   <img
                     src={apiUrl + "/storage/" + imageItem.image}
                     alt="product img"
+                    data-testid={imageItem.id}
                   />
                 </S.ImgWrap>
               </SwiperSlide>
@@ -76,7 +77,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
       </S.Left>
 
       <S.Right>
-        <ImageZoom src={apiUrl + "/storage/" + mainImg.image} />
+        <ImageZoom src={apiUrl + "/storage/" + mainImg.image} data-testid={`main-${mainImg.id}`}/>
       </S.Right>
     </S.ProductGallery>
   );
