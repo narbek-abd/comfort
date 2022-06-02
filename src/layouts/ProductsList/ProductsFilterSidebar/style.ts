@@ -24,7 +24,7 @@ export const FilterRange = styled.div`
 	justify-content: space-between;
 
 	div {
-		span {
+		label {
 			color: #999;
 		}
 		input {
