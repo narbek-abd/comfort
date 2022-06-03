@@ -69,7 +69,7 @@ const CartProductItem = ({ product }: CartProductItemProps) => {
         <S.Total>{product.price * localProduct.quantity}</S.Total>
       </S.Price>
 
-      <S.RemoveProductBtn onClick={removeProduct}>X</S.RemoveProductBtn>
+      <S.RemoveProductBtn onClick={removeProduct} data-testid="shoppingCart-remove-btn">X</S.RemoveProductBtn>
     </S.CartProductItem>
   ) : null;
 };
