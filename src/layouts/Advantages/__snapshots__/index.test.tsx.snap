@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advantages component should display component 1`] = `
+<div>
+  <section
+    class="sc-iCfMLu bMNXMi"
+  >
+    <h2
+      class="sc-gsDKAQ eeQIaO"
+    >
+      What Shopex Offer!
+    </h2>
+    <div
+      class="sc-bdvvtL gFjKpS"
+    >
+      <div
+        class="sc-furwcr jmgjLu"
+      >
+        <div
+          class="sc-pVTFL hHPiwM"
+        >
+          <img
+            alt=""
+            src="delivery.svg"
+          />
+          <h3>
+            24/7 Support
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+          </p>
+        </div>
+        <div
+          class="sc-pVTFL hHPiwM"
+        >
+          <img
+            alt=""
+            src="cashback.svg"
+          />
+          <h3>
+            24/7 Support
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+          </p>
+        </div>
+        <div
+          class="sc-pVTFL hHPiwM"
+        >
+          <img
+            alt=""
+            src="premium.svg"
+          />
+          <h3>
+            24/7 Support
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+          </p>
+        </div>
+        <div
+          class="sc-pVTFL hHPiwM"
+        >
+          <img
+            alt=""
+            src="support.svg"
+          />
+          <h3>
+            24/7 Support
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
