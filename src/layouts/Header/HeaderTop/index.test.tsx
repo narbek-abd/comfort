@@ -6,6 +6,8 @@ import axios from "axios";
 import { setUser } from "../../../store/action-creators/User";
 import { addProductToWishlist } from "../../../store/action-creators/Wishlist";
 import { addProduct } from "../../../store/action-creators/Cart";
+import { CartActionTypes } from "../../../types/CartReduxTypes";
+import { WishlistActionTypes } from "../../../types/WishlistReduxTypes";
 
 describe("HeaderTop component", () => {
 	test("should display the login button if the user is not authentificated", async () => {
@@ -17,7 +19,7 @@ describe("HeaderTop component", () => {
 	test("should display the user naem if the user is authentificated", async () => {
 		render(<HeaderTop />);
 
-		store.dispatch(setUser({ id: 1, name: "Alan" }));
+		store.dispatch(setUser({ id: 1, name: "Alan", email: "alan@mail.ru" }));
 
 		expect(await screen.findByText("Alan")).toBeInTheDocument();
 	});
@@ -25,7 +27,10 @@ describe("HeaderTop component", () => {
 	test("should display the wishlist products quantity", async () => {
 		render(<HeaderTop />);
 
-		store.dispatch(addProductToWishlist(2));
+		store.dispatch({
+			type: WishlistActionTypes.ADD_PRODUCT_TO_WISHLIST,
+			payload: 2,
+		});
 
 		expect(await screen.findByText(1)).toBeInTheDocument();
 	});
@@ -33,8 +38,15 @@ describe("HeaderTop component", () => {
 	test("should display the cart products quantity", async () => {
 		render(<HeaderTop />);
 
-		store.dispatch(addProduct(2));
-		store.dispatch(addProduct(3));
+		store.dispatch({
+			type: CartActionTypes.ADD_PRODUCTS,
+			payload: 3,
+		});
+
+		store.dispatch({
+			type: CartActionTypes.ADD_PRODUCTS,
+			payload: 2,
+		});
 
 		expect(await screen.findByText(2)).toBeInTheDocument();
 	});

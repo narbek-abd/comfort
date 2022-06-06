@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event"
 import Counter from "./index";
 
 test("should render current value", () => {
-	render(<Counter max={4} min={0} current={1} />);
+	render(<Counter max={4} min={0} current={1} onChange={() => {}}/>);
 
 	const input = screen.getByDisplayValue(1);
 

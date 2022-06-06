@@ -6,22 +6,19 @@ import { createMemoryHistory } from "history";
 import { Router, Routes, Route } from "react-router-dom";
 import { store } from "../../store";
 import { Provider } from "react-redux";
+import { mockMatchmeda } from "../../test/mock";
 
 describe("ProductsList component", () => {
-	let history;
+	let history: any;
 
 	beforeAll(() => {
 		history = createMemoryHistory();
 		history.push("/catalog");
 
-		global.matchMedia = (media) => ({
-			addListener: () => {},
-			removeListener: () => {},
-			matches: media === "(max-width: 900px)",
-		});
+		mockMatchmeda(900);
 	});
 	beforeEach(() => {
-		axios.get.mockImplementation((url) => {
+		(axios.get as jest.Mock).mockImplementation((url) => {
 			switch (url) {
 				case "/categories":
 					return Promise.resolve({

@@ -1,17 +1,21 @@
 import { screen, waitFor } from "@testing-library/react";
 import { render, store } from "../../test/test-utils";
 import { addProduct } from "../../store/action-creators/Cart";
+import { CartActionTypes } from "../../types/CartReduxTypes";
 import userEvent from "@testing-library/user-event";
 import ShoppingCart from "./index";
 import axios from "axios";
 
 describe("ShoppingCart component", () => {
 	beforeAll(() => {
-		store.dispatch(addProduct(77));
+		store.dispatch({
+			type: CartActionTypes.ADD_PRODUCTS,
+			payload: 77,
+		});
 	});
 
 	beforeEach(() => {
-		axios.get.mockImplementation((url, params) => {
+		(axios.get as jest.Mock).mockImplementation((url, params) => {
 			if (url === "/products" && params.params.ids[0] === 77) {
 				return Promise.resolve({
 					data: [
@@ -42,7 +46,9 @@ describe("ShoppingCart component", () => {
 	test("should remove the product from the cart", async () => {
 		render(<ShoppingCart />);
 
-		await userEvent.click(await screen.findByTestId('shoppingCart-remove-btn'));
+		await userEvent.click(
+			await screen.findByTestId("shoppingCart-remove-btn")
+		);
 
 		expect(store.getState().cart.products).toEqual([]);
 	});

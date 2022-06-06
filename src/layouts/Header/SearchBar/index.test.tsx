@@ -8,7 +8,7 @@ describe("Header SearchBar component", () => {
 	beforeAll(() => {});
 
 	beforeEach(() => {
-		axios.get.mockImplementation(() =>
+		(axios.get as jest.Mock).mockImplementation(() =>
 			Promise.resolve({
 				data: [
 					{

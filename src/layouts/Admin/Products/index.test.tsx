@@ -8,7 +8,7 @@ import { Router, Routes, Route } from "react-router-dom";
 
 describe("Admin Products component", () => {
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: {
 					data: [

@@ -3,6 +3,6 @@ export interface CategoryTypes {
 	name: string;
 	slug: string;
 	parent_id: number;
-	parent: CategoryTypes;
+	parent?: CategoryTypes;
 	children?: CategoryTypes[];
 }

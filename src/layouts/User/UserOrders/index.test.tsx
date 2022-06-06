@@ -7,7 +7,7 @@ import axios from "axios";
 describe("UserOrders component", () => {
 
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: {
 					data: [

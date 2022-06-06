@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageZoom from "../ImageZoom";
 import { apiUrl } from "../../constants/project";
 import {ImageTypes} from "../../types/ImageTypes"
 
-import "swiper/swiper.scss";
+import "swiper/css";
 
 import * as S from "./style";
 import Icon from "../Icon";

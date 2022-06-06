@@ -5,10 +5,8 @@ import LoginForm from "./index";
 import axios from "axios";
 
 describe("LoginForm component", () => {
-	beforeAll(() => {});
-
 	beforeEach(() => {
-		axios.post.mockImplementation(() =>
+		(axios.post as jest.Mock).mockImplementation(() =>
 			Promise.resolve({
 				data: {
 					user: {

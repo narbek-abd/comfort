@@ -1,9 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ImageUpload from "./index";
+import { UploadedImageTypes } from "../../types/ImageTypes";
 
 describe("ImageUpload componenet", () => {
-	let file;
+	let file: File;
 
 	beforeAll(() => {
 		file = new File(["hello"], "hello.png", { type: "image/png" });
@@ -17,12 +18,12 @@ describe("ImageUpload componenet", () => {
 
 		await userEvent.upload(uploadInput, file);
 
-		expect(uploadInput.files[0]).toBe(file);
-		expect(uploadInput.files).toHaveLength(1);
+		expect((uploadInput as HTMLInputElement).files[0]).toBe(file);
+		expect((uploadInput as HTMLInputElement).files).toHaveLength(1);
 	});
 
 	test("should return image list to the callback function when image is uploaded", async () => {
-		function callback(imageList) {
+		function callback(imageList: UploadedImageTypes[]) {
 			expect(imageList[0].img).toBe(file);
 		}
 
@@ -36,7 +37,7 @@ describe("ImageUpload componenet", () => {
 	test("should return image list to the callback function when remove button is clicked", async () => {
 		let calls = 0;
 
-		function callback(imageList) {
+		function callback(imageList: UploadedImageTypes[]) {
 			if (calls === 0) {
 				calls = 1;
 				return;

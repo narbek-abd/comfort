@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { CategoryTypes } from "../../types/CategoryTypes";
 
-interface SelectNestedProps {
-  list: CategoryTypes[];
+export interface listItem {
+  id: number;
+  name: string;
+  children?: listItem[];
+}
+
+export interface SelectNestedProps {
+  list: listItem[];
   name: string;
   desc?: string;
-  onSelected: (selectedItem: CategoryTypes) => void;
+  onSelected: (selectedItem: listItem) => void;
   keyForReRender?: number;
 }
 
@@ -52,7 +57,7 @@ const SelectNested = ({
   }
 
   // рекурсивно находим элемент по вложенному списку
-  function findItemById(id: number, list: CategoryTypes[]): CategoryTypes {
+  function findItemById(id: number, list: listItem[]): listItem {
     for (let item of list) {
       if (item.id === id) {
         return item;
@@ -81,7 +86,7 @@ const SelectNested = ({
               <option value="" disabled>
                 {desc}
               </option>
-              {list.list.map((item: CategoryTypes) => {
+              {list.list.map((item: listItem) => {
                 return (
                   <option key={item.id} value={item.id}>
                     {item.name}
