@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import Icon from "../Icon";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../../constants/project";
 import { RootState } from "../../store/redusers";
 import { addProduct } from "../../store/action-creators/Cart";
 import { addProductToWishlist } from "../../store/action-creators/Wishlist";
@@ -59,7 +58,7 @@ const ProductCard = ({ product, variant = "vertical" }: ProductCardProps) => {
 			<Link to={`/product/${product.id}`}>
 				<S.Img>
 					<img
-						src={apiUrl + "/storage/" + product.images[0].image}
+						src={process.env.REACT_APP_API_STORAGE_URL + product.images[0].image}
 						alt=""
 					/>
 				</S.Img>
