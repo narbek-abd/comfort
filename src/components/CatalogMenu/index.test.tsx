@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event"
+import userEvent from "@testing-library/user-event";
 import CatalogMenu from "./index";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
-let list;
-let history;
+let list: CategoryTypes[];
+let history: any;
 
 beforeAll(() => {
 	history = createMemoryHistory();
@@ -15,13 +16,17 @@ beforeAll(() => {
 			id: 1,
 			name: "Books",
 			slug: "books",
-			children: [{ subid: 1, name: "Hardcover", slug: "hardcover" }],
+			parent_id: 5,
+			children: [
+				{ id: 1, name: "Hardcover", slug: "hardcover", parent_id: 1 },
+			],
 		},
 		{
 			id: 2,
 			name: "Movies",
 			slug: "Movies",
-			children: [{ subid: 4, name: "DVD", slug: "dvd" }],
+			parent_id: 5,
+			children: [{ id: 4, name: "DVD", slug: "dvd", parent_id: 2 }],
 		},
 	];
 });
@@ -29,7 +34,7 @@ beforeAll(() => {
 test("should render list", () => {
 	render(
 		<Router location={history.location} navigator={history}>
-			<CatalogMenu list={list}>message</CatalogMenu>
+			<CatalogMenu list={list} /> 
 		</Router>
 	);
 
@@ -39,7 +44,7 @@ test("should render list", () => {
 test("should not render unselected sub list", () => {
 	render(
 		<Router location={history.location} navigator={history}>
-			<CatalogMenu list={list}>message</CatalogMenu>
+			<CatalogMenu list={list} />
 		</Router>
 	);
 
@@ -49,7 +54,7 @@ test("should not render unselected sub list", () => {
 test("should render sub list on hover", async () => {
 	render(
 		<Router location={history.location} navigator={history}>
-			<CatalogMenu list={list}>message</CatalogMenu>
+			<CatalogMenu list={list} />
 		</Router>
 	);
 

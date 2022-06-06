@@ -7,14 +7,13 @@ import { ProductValidation } from "../../../../validation";
 import { ProductFormTypes } from "../../../../types/FormTypes";
 import { ProductTypes } from "../../../../types/ProductTypes";
 
-import { CategoryTypes } from "../../../../types/CategoryTypes";
 import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
 import * as G from "../../../../globalStyle";
 
 import ImageUpload from "../../../../components/ImageUpload";
-import SelectNested from "../../../../components/SelectNested";
+import SelectNested, {listItem} from "../../../../components/SelectNested";
 import Alert, { AlertProps } from "../../../../components/Alert";
 import Button from "../../../../components/Button";
 
@@ -57,7 +56,7 @@ const ProductEdit = () => {
     });
   }, [isMounted]);
 
-  function onCategorySelectedWithNoChildren(category: CategoryTypes) {
+  function onCategorySelectedWithNoChildren(category: listItem) {
     setSelectedCategory(category.id);
   }
 

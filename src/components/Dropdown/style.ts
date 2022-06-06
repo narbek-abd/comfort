@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Dropdown = styled.div<{ position: string; opened: boolean }>`
+export const Dropdown = styled.div<{ position: string; }>`
 	position: relative;
 	span {
 		cursor: pointer;

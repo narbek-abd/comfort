@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageZoom from "../ImageZoom";
-import { apiUrl } from "../../constants/project";
 import {ImageTypes} from "../../types/ImageTypes"
 
 import "swiper/css";
@@ -62,7 +61,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
               >
                 <S.ImgWrap active={imageItem.image === mainImg.image}>
                   <img
-                    src={apiUrl + "/storage/" + imageItem.image}
+                    src={process.env.REACT_APP_API_STORAGE_URL + imageItem.image}
                     alt="product img"
                     data-testid={imageItem.id}
                   />
@@ -77,7 +76,7 @@ const ProductGallery = ({ imageItems }: ProductGalleryProps) => {
       </S.Left>
 
       <S.Right>
-        <ImageZoom src={apiUrl + "/storage/" + mainImg.image} data-testid={`main-${mainImg.id}`}/>
+        <ImageZoom src={process.env.REACT_APP_API_STORAGE_URL + mainImg.image} data-testid={`main-${mainImg.id}`}/>
       </S.Right>
     </S.ProductGallery>
   );

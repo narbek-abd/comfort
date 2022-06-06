@@ -4,8 +4,7 @@ import Pagination from "./index";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
-let list;
-let history;
+let history: any;
 
 jest.mock("");
 

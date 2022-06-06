@@ -1,5 +1,4 @@
-import { CartActionTypes, ProductItemTypes } from "../../types/CartReduxTypes";
-import { store } from "../";
+import { CartActionTypes } from "../../types/CartReduxTypes";
 
 export const addProduct = (product_id: number) => {
   return {

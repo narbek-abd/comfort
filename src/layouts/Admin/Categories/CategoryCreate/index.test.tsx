@@ -5,13 +5,13 @@ import axios from "axios";
 
 describe("CategoryCreate component", () => {
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: [{ id: 1, name: "books" }],
 			});
 		});
 
-		axios.post.mockImplementation(() => {
+		(axios.post as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: { id: 2, name: "new category" },
 			});

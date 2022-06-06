@@ -1,13 +1,13 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, RenderOptions } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import { store } from "../store";
 import { Provider } from "react-redux";
 
-let history;
+let history: any;
 
-const AllTheProviders = ({ children }) => {
+const AllTheProviders = ({ children }: { children: React.ReactElement }) => {
   history = createMemoryHistory();
 
   return (
@@ -19,8 +19,10 @@ const AllTheProviders = ({ children }) => {
   );
 };
 
-const appRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+const appRender = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, "queries">
+) => render(ui, { wrapper: AllTheProviders, ...options });
 
 export * from "@testing-library/react";
 

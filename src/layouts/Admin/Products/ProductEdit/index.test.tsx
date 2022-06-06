@@ -6,14 +6,14 @@ import { createMemoryHistory } from "history";
 import { Router, Routes, Route } from "react-router-dom";
 
 describe("ProductEdit component", () => {
-	let history;
+	let history: any;
 	beforeAll(() => {
 		history = createMemoryHistory();
 		history.push("/admin/products/edit/1");
 	});
 
 	beforeEach(() => {
-		axios.get.mockImplementation((url) => {
+		(axios.get as jest.Mock).mockImplementation((url) => {
 			switch (url) {
 				case "/categories":
 					return Promise.resolve({
@@ -47,7 +47,7 @@ describe("ProductEdit component", () => {
 			}
 		});
 
-		axios.post.mockImplementation(() => Promise.resolve());
+		(axios.post as jest.Mock).mockImplementation(() => Promise.resolve());
 	});
 
 	test("should display form", async () => {

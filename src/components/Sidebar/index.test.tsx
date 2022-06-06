@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import { render } from "../../test/test-utils";
-import Sidebar from "./index";
+import Sidebar, {SidebarItemType} from "./index";
 
 describe("Sidebar component", () => {
-	let sidebarList;
+	let sidebarList: SidebarItemType[];
 
 	beforeAll(() => {
 		sidebarList = [

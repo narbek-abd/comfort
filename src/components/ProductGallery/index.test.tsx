@@ -1,39 +1,38 @@
-// import { render, screen } from "@testing-library/react";
-// import userEvent from "@testing-library/user-event";
-// import ProductGallery from "./index";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import ProductGallery from "./index";
+import {ImageTypes} from "../../types/ImageTypes"
 
+describe("ProductGallery component", () => {
+	let imageItems: ImageTypes[];
 
+	beforeAll(() => {
+		imageItems = [
+			{ id: 1, image: "https://image.png" },
+			{ id: 2, image: "https://image.png" },
+		];
+	});
 
-// describe("ProductGallery component", () => {
-// 	let imageItems;
+	test("should display image list", () => {
+		render(<ProductGallery imageItems={imageItems} />);
 
-// 	beforeAll(() => {
-// 		imageItems = [
-// 			{ id: 1, image: "https://image.png" },
-// 			{ id: 2, image: "https://image.png" },
-// 		];
-// 	});
+		expect(screen.getByTestId(1)).toBeInTheDocument();
+		expect(screen.getByTestId(2)).toBeInTheDocument();
+	});
 
-// 	test("should display image list", () => {
-// 		render(<ProductGallery imageItems={imageItems} />);
+	test("should display main image", () => {
+		render(<ProductGallery imageItems={imageItems} />);
 
-// 		expect(screen.getByTestId(1)).toBeInTheDocument();
-// 		expect(screen.getByTestId(2)).toBeInTheDocument();
-// 	});
+		expect(screen.getByTestId(`main-${1}`)).toBeInTheDocument();
+	});
 
-// 	test("should display main image", () => {
-// 		render(<ProductGallery imageItems={imageItems} />);
+	test("should change main image on click", async () => {
+		render(<ProductGallery imageItems={imageItems} />);
 
-// 		expect(screen.getByTestId(`main-${1}`)).toBeInTheDocument();
-// 	});
+		let secondImage = screen.getByTestId(2);
 
-// 	test("should change main image on click", async () => {
-// 		render(<ProductGallery imageItems={imageItems} />);
+		userEvent.click(secondImage);
 
-// 		let secondImage = screen.getByTestId(2);
-
-// 		userEvent.click(secondImage);
-
-// 		expect(screen.getByTestId(`main-${2}`)).toBeInTheDocument();
-// 	});
-// });
+		expect(screen.getByTestId(`main-${2}`)).toBeInTheDocument();
+	});
+});

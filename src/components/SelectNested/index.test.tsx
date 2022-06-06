@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SelectNested from "./index";
+import SelectNested, {listItem} from "./index";
 
 describe("SelectNested component", () => {
-	let nestedCategories;
+	let nestedCategories:listItem[];
 
 	beforeAll(() => {
 		nestedCategories = [
@@ -27,7 +27,7 @@ describe("SelectNested component", () => {
 	});
 
 	test("should return last level option to the callback", async () => {
-		function callback(lastLevelOption) {
+		function callback(lastLevelOption: listItem) {
 			expect(lastLevelOption.name).toBe("Others");
 		}
 

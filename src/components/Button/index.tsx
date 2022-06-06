@@ -10,7 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
   isLoading?: boolean;
   [params: string]: any;
-  as: "div" | "button";
+  as?: "div" | "button";
 }
 
 const Button = (props: ButtonProps) => {

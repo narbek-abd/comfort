@@ -54,7 +54,7 @@ const ProductsFilterSidebar = ({
             <S.FilterTitle>Categories</S.FilterTitle>
             <S.FilterContent>
               {categoryChildrens.map((category) => {
-                return category.children.length > 0 ? (
+                return category.children?.length > 0 ? (
                   <S.ParentCategory key={category.id}>
                     <Link to={`${currentPath + '/' + category.slug}`}>
                       {category.name}
@@ -81,16 +81,18 @@ const ProductsFilterSidebar = ({
           <S.FilterContent>
             <S.FilterRange>
               <div>
-                <span>from</span>
+                <label htmlFor="price_from">from</label>
                 <input
+                id="price_from"
                   type="text"
                   defaultValue={searchParams.get("price_from") ?? ""}
                   {...register("price_from")}
                 />
               </div>
               <div>
-                <span>to</span>
+                <label htmlFor="price_to">to</label>
                 <input
+                id="price_to"
                   type="text"
                   defaultValue={searchParams.get("price_to") ?? ""}
                   {...register("price_to")}
