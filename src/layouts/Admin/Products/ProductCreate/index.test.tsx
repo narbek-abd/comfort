@@ -4,7 +4,7 @@ import ProductCreate from "./index";
 import axios from "axios";
 
 describe("ProductCreate component", () => {
-	let file;
+	let file: File;
 
 	beforeAll(() => {
 		file = new File(["hello"], "hello.png", { type: "image/png" });
@@ -13,7 +13,7 @@ describe("ProductCreate component", () => {
 	});
 
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: [
 					{
@@ -30,7 +30,7 @@ describe("ProductCreate component", () => {
 			});
 		});
 
-		axios.post.mockImplementation(() => Promise.resolve());
+		(axios.post as jest.Mock).mockImplementation(() => Promise.resolve());
 	});
 
 	test("should display form", async () => {
@@ -68,7 +68,7 @@ describe("ProductCreate component", () => {
 	});
 
 	describe("ProductCreate manual validate", () => {
-		let newProduct;
+		let newProduct: {name: string; price: number; quantity: number};
 
 		beforeAll(() => {
 			newProduct = { name: "new product", price: 123, quantity: 12 };

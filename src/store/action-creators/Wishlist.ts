@@ -1,5 +1,4 @@
 import { WishlistActionTypes } from "../../types/WishlistReduxTypes";
-import { store } from "../";
 
 export const addProductToWishlist = (product_id: number) => {
   return {

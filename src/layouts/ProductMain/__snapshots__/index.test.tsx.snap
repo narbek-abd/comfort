@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductMain component should display product data 1`] = `
+<div>
+  <section
+    class="sc-egiyK lgVpO"
+  >
+    <div
+      class="sc-bdvvtL gFjKpS"
+    >
+      <div
+        class="sc-bqiRlB iRNXfC"
+      >
+        <div
+          class="sc-ksdxgE hmrQvX"
+        >
+          <div
+            class="sc-furwcr evUCzD"
+          >
+            <div
+              class="sc-pVTFL kgiFwU"
+            >
+              <div
+                class="swiper-button-prev"
+              >
+                <svg
+                  class="icon icon-arrow"
+                >
+                  <use
+                    xlink:href="symbol-defs.svg#arrow"
+                  />
+                </svg>
+              </div>
+              <div
+                class="swiper swiper-initialized swiper-horizontal swiper-pointer-events"
+                style="height: 490px;"
+              >
+                <div
+                  class="swiper-wrapper"
+                  style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+                >
+                  <div
+                    class="swiper-slide"
+                    data-image-id="1"
+                  >
+                    <div
+                      class="sc-jrQzAO dULXpj"
+                    >
+                      <img
+                        alt="product img"
+                        data-testid="1"
+                        src="http://localhost:8000/storage/https://image.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="swiper-button-next"
+              >
+                <svg
+                  class="icon icon-arrow"
+                >
+                  <use
+                    xlink:href="symbol-defs.svg#arrow"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="sc-kDTinF dzDmCB"
+            >
+              <div
+                class="sc-iCfMLu cFiRNz"
+              >
+                <img
+                  data-testid="main-1"
+                  src="http://localhost:8000/storage/https://image.png"
+                  style="transform: translate(-50%, -50%) scale(1);"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-hBUSln lljyfE"
+        >
+          <h3
+            class="sc-fotOHu fuObcD"
+          >
+            Iphone
+          </h3>
+          <div
+            class="sc-fFeiMQ dQcjYt"
+          >
+            <div
+              class="sc-bkkeKt dLdkR"
+            >
+              ⭐️⭐️⭐️⭐️⭐️
+            </div>
+            <span>
+              (55)
+            </span>
+          </div>
+          <div
+            class="sc-ieecCq jJsfOQ"
+          >
+            123
+            <span>
+              $40.00
+            </span>
+          </div>
+          <div
+            class="sc-dJjYzT hpkcdk"
+          >
+            <span>
+              Quantity: 
+            </span>
+            <span>
+              12
+            </span>
+          </div>
+          <p
+            class="sc-hGPBjI cERqgi"
+          />
+          <div
+            class="sc-dlVxhl foLraq"
+          >
+            <button
+              class="sc-crHmcD vGuTY"
+            >
+              Add To Cart
+            </button>
+            <div
+              class="sc-kfPuZi kwcZcE"
+            >
+              <button
+                class="sc-crHmcD cdydW"
+                color="blue"
+              >
+                <svg
+                  class="icon icon-heart"
+                >
+                  <use
+                    xlink:href="symbol-defs.svg#heart"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div
+            class="sc-fKVqWL hksQPY"
+          >
+            <p>
+              Category:
+            </p>
+            <div>
+              <a
+                href="/catalog/phones"
+              >
+                phones
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

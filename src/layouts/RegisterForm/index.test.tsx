@@ -8,7 +8,7 @@ describe("RegisterForm component", () => {
 	beforeAll(() => {});
 
 	beforeEach(() => {
-		axios.post.mockImplementation(() =>
+		(axios.post as jest.Mock).mockImplementation(() =>
 			Promise.resolve({
 				data: {
 					user: {

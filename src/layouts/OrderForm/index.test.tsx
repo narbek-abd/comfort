@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import { render, store } from "../../test/test-utils";
 import { addProduct } from "../../store/action-creators/Cart";
+import { CartActionTypes } from "../../types/CartReduxTypes";
 import { setUser } from "../../store/action-creators/User";
 import userEvent from "@testing-library/user-event";
 import OrderForm from "./index";
@@ -8,12 +9,16 @@ import axios from "axios";
 
 describe("OrderForm component", () => {
 	beforeEach(() => {
-		axios.post.mockImplementation(() => Promise.resolve());
+		(axios.post as jest.Mock).mockImplementation(() => Promise.resolve());
 	});
 
 	test("should send a request to create an order with the correct params", async () => {
 		render(<OrderForm />);
-		store.dispatch(addProduct(99));
+
+		store.dispatch({
+			type: CartActionTypes.ADD_PRODUCTS,
+			payload: 99,
+		});
 
 		await submitForm();
 
@@ -34,7 +39,11 @@ describe("OrderForm component", () => {
 
 	test("should clear the cart after sending the request", async () => {
 		render(<OrderForm />);
-		store.dispatch(addProduct(99));
+		
+		store.dispatch({
+			type: CartActionTypes.ADD_PRODUCTS,
+			payload: 99,
+		});
 
 		await submitForm();
 

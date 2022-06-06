@@ -2,16 +2,26 @@ import { screen } from "@testing-library/react";
 import { render, store } from "../../test/test-utils";
 import ProductCard from "./index";
 import userEvent from "@testing-library/user-event";
+import { ProductTypes } from "../../types/ProductTypes";
 
 describe("ProductCard component", () => {
-	let product;
+	let product: ProductTypes;
 
 	beforeAll(() => {
 		product = {
 			id: 1,
 			name: "iPhone",
-			images: [{ image: "http://image.png" }],
+			images: [{ id: 1, image: "http://image.png" }],
 			price: 100,
+			category_id: 5,
+			description: "",
+			quantity: 99,
+			category: {
+				id: 1,
+				name: "Smartphoes",
+				slug: "smartphones",
+				parent_id: 5,
+			},
 		};
 	});
 

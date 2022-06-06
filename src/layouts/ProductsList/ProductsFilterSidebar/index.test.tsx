@@ -2,9 +2,10 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { render, history } from "../../../test/test-utils";
 import ProductsFilterSidebar from "./index";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 
 describe("ProductsFilterSidebar component", () => {
-	let categoryChildrens;
+	let categoryChildrens: CategoryTypes[];
 
 	beforeAll(() => {
 		categoryChildrens = [
@@ -12,11 +13,13 @@ describe("ProductsFilterSidebar component", () => {
 				id: 1,
 				name: "Smartphoes",
 				slug: "smartphoes",
+				parent_id: 0,
 			},
 			{
 				id: 2,
 				name: "Ihpones",
 				slug: "ihpones",
+				parent_id: 0,
 			},
 		];
 

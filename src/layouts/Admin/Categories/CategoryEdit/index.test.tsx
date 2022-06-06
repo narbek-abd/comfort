@@ -6,7 +6,7 @@ import { createMemoryHistory } from "history";
 import { Router, Routes, Route } from "react-router-dom";
 
 describe("CategoryEdit component", () => {
-	let history;
+	let history: any;
 
 	beforeAll(() => {
 		history = createMemoryHistory();
@@ -14,13 +14,13 @@ describe("CategoryEdit component", () => {
 	});
 
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: [{ id: 1, name: "books" }],
 			});
 		});
 
-		axios.put.mockImplementation(() => Promise.resolve(1));
+		(axios.put as jest.Mock).mockImplementation(() => Promise.resolve(1));
 	});
 
 	test("should display form", async () => {

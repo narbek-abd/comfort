@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import { render } from "../../../test/test-utils";
+import { mockMatchmeda } from "../../../test/mock";
 import Navbar from "./index";
 import CatalogBar from "../CatalogBar";
 import axios from "axios";
@@ -15,15 +16,11 @@ jest.mock("../CatalogBar", () => {
 
 describe("Header Navbar component", () => {
 	beforeAll(() => {
-		global.matchMedia = (media) => ({
-			addListener: () => {},
-			removeListener: () => {},
-			matches: media === "(max-width: 900px)",
-		});
+		mockMatchmeda(900);
 	});
 
 	beforeEach(() => {
-		axios.get.mockImplementation(() => Promise.resolve({}));
+		(axios.get as jest.Mock).mockImplementation(() => Promise.resolve({}));
 	});
 
 	test("should display the navbar list", async () => {

@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ProductGallery from "./index";
+import {ImageTypes} from "../../types/ImageTypes"
 
 describe("ProductGallery component", () => {
-	let imageItems;
+	let imageItems: ImageTypes[];
 
 	beforeAll(() => {
 		imageItems = [

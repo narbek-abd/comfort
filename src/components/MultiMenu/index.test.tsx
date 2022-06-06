@@ -2,9 +2,10 @@ import { render, screen } from "@testing-library/react";
 import MultiMenu from "./index";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
-let list;
-let history;
+let list: CategoryTypes[];
+let history: any;
 
 describe("MultiMenu component", () => {
 	beforeAll(() => {
@@ -15,13 +16,15 @@ describe("MultiMenu component", () => {
 				id: 1,
 				name: "Books",
 				slug: "books",
-				children: [{ subid: 1, name: "Hardcover", slug: "hardcover" }],
+				parent_id: 5,
+				children: [{ id: 1, name: "Hardcover", slug: "hardcover", parent_id: 1 }],
 			},
 			{
 				id: 2,
 				name: "Movies",
 				slug: "Movies",
-				children: [{ subid: 4, name: "DVD", slug: "dvd" }],
+				parent_id: 5,
+				children: [{ id: 4, name: "DVD", slug: "dvd", parent_id: 2 }],
 			},
 		];
 	});

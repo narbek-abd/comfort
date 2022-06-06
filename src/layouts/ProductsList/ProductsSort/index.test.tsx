@@ -5,7 +5,13 @@ import ProductsSort from "./index";
 
 describe("ProductsSort component", () => {
 	test("should change the query params when selecting the option", async () => {
-		render(<ProductsSort />);
+		render(
+			<ProductsSort
+				isDeskTop={true}
+				changeView={() => {}}
+				openFilterModal={() => {}}
+			/>
+		);
 
 		await userEvent.click(await screen.findByText("New"));
 		await userEvent.click(await screen.findByText("Price: Low to High"));

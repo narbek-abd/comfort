@@ -7,7 +7,7 @@ import { setUser } from "../../store/action-creators/User";
 
 describe("Comments component", () => {
 	beforeEach(() => {
-		axios.get.mockImplementation(() => {
+		(axios.get as jest.Mock).mockImplementation(() => {
 			return Promise.resolve({
 				data: {
 					data: [
@@ -46,7 +46,7 @@ describe("Comments component", () => {
 	test("should display edit and delete buttons for the comment author", async () => {
 		render(<Comments product_id={99} />);
 
-		store.dispatch(setUser({ id: 1 }));
+		store.dispatch(setUser({ id: 1, name: "Alan", email: "alan@mail.ru" }));
 
 		expect(await screen.findByText(/edit/i)).toBeInTheDocument();
 		expect(await screen.findByText(/delete/i)).toBeInTheDocument();

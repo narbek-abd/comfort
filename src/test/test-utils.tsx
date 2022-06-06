@@ -5,7 +5,7 @@ import { Router } from "react-router-dom";
 import { store } from "../store";
 import { Provider } from "react-redux";
 
-let history;
+let history: any;
 
 const AllTheProviders = ({ children }: { children: React.ReactElement }) => {
   history = createMemoryHistory();
