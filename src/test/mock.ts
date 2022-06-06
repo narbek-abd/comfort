@@ -1,6 +1,6 @@
 export function mockMatchmeda(currentMediaWidth: number) {
   window.matchMedia = (query) => ({
-    matches: query === "(max-width: 900px)",
+    matches: query === `(max-width: ${currentMediaWidth}px)`,
     media: query,
     onchange: null,
     addListener: jest.fn(), // Deprecated
