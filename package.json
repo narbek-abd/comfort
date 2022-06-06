@@ -130,8 +130,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "make": "node cli/create.js --path"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [
