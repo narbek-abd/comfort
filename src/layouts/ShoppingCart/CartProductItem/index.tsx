@@ -7,7 +7,6 @@ import {
   changeProductCount,
 } from "../../../store/action-creators/Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { apiUrl } from "../../../constants/project";
 import { ProductTypes } from "../../../types/ProductTypes";
 import { RootState } from "../../../store/redusers";
 
@@ -42,7 +41,7 @@ const CartProductItem = ({ product }: CartProductItemProps) => {
       <S.ProductImg>
         <Link to="/">
           <img
-            src={apiUrl + "/storage/" + product.images[0].image}
+            src={process.env.REACT_APP_API_STORAGE_URL + product.images[0].image}
             alt="product"
           />
         </Link>

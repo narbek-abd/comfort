@@ -3,7 +3,6 @@ import { ImageTypes, UploadedImageTypes } from "../../types/ImageTypes";
 import * as S from "./style";
 import * as G from "../../globalStyle";
 import Icon from "../Icon";
-import { apiUrl } from "../../constants/project";
 
 interface ImageUploadProps {
   onUpload: (images: UploadedImageTypes[]) => void;
@@ -101,7 +100,7 @@ const ImageUpload = ({
             return (
               <S.Image key={image.id}>
                 <img
-                  src={apiUrl + "/storage/" + image.image}
+                  src={process.env.REACT_APP_API_STORAGE_URL + image.image}
                   alt="uploaded item"
                 />
 

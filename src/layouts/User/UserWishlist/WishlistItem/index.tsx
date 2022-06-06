@@ -3,7 +3,6 @@ import * as S from "./style";
 import { Link } from "react-router-dom";
 import { removeFromWishlist } from "../../../../store/action-creators/Wishlist";
 import { useDispatch, useSelector } from "react-redux";
-import { apiUrl } from "../../../../constants/project";
 import { ProductTypes } from "../../../../types/ProductTypes";
 import { RootState } from "../../../../store/redusers";
 
@@ -34,7 +33,7 @@ const WishlistItem = ({ product }: WishlistItemProps) => {
       <Link to={`/product/${product.id}`}>
         <S.ProductImg>
           <img
-            src={apiUrl + "/storage/" + product.images[0].image}
+            src={process.env.REACT_APP_API_STORAGE_URL + product.images[0].image}
             alt="product"
           />
         </S.ProductImg>

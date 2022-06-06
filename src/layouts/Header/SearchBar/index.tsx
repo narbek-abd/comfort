@@ -6,7 +6,6 @@ import useDebounce from "../../../hooks/useDebounce";
 import api from "../../../api";
 import { ProductTypes } from "../../../types/ProductTypes";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../../../constants/project";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 
 const SearchBar = () => {
@@ -67,8 +66,8 @@ const SearchBar = () => {
 								<Link to={`product/${product.id}`}>
 									<S.ProductImg
 										src={
-											apiUrl +
-											"/storage/" +
+											process.env
+												.REACT_APP_API_STORAGE_URL +
 											product.images[0].image
 										}
 										alt="product"
