@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeaturedProducts component should display component 1`] = `
+<div>
+  <section
+    class="sc-hBUSln gvamLO"
+  >
+    <h2
+      class="sc-gsDKAQ eeQIaO"
+    >
+      Featured Products
+    </h2>
+    <div
+      class="sc-bdvvtL gFjKpS"
+    >
+      <div
+        class="swiper swiper-initialized swiper-horizontal swiper-pointer-events"
+      >
+        <div
+          class="swiper-wrapper"
+          style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+        >
+          <div
+            class="swiper-slide"
+          >
+            <div
+              class="sc-fotOHu jcXKKh"
+            >
+              <div
+                class="sc-kDTinF kQXnMp"
+              >
+                <a
+                  href="/product/1"
+                >
+                  <div
+                    class="sc-jrQzAO bEkxKQ"
+                  >
+                    <img
+                      alt=""
+                      src="http://localhost:8000/storage/https://image.png"
+                    />
+                  </div>
+                  <div
+                    class="sc-iqseJM jkMtrh"
+                  >
+                    <p
+                      class="sc-crHmcD bBfZnZ"
+                    >
+                      Iphone
+                    </p>
+                    <div
+                      class="sc-egiyK dzJGIt"
+                    >
+                      <span
+                        class="sc-bqiRlB gBSleL"
+                      >
+                        123
+                      </span>
+                      <span
+                        class="sc-ksdxgE bGkJQH"
+                      >
+                        $65.00
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <div
+                  class="sc-pVTFL grgGmh"
+                >
+                  <button
+                    class="sc-furwcr eSYANX"
+                    color="blue"
+                    data-testid="addToCartBtn"
+                  >
+                    <svg
+                      class="icon icon-basket"
+                    >
+                      <use
+                        xlink:href="symbol-defs.svg#basket"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="sc-furwcr eSYANX"
+                    color="blue"
+                    data-testid="addToWishlistBtn"
+                  >
+                    <svg
+                      class="icon icon-heart"
+                    >
+                      <use
+                        xlink:href="symbol-defs.svg#heart"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="featured-swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+        />
+      </div>
+    </div>
+  </section>
+</div>
+`;
