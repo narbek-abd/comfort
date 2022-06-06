@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainSlider component should display component 1`] = `
+<div>
+  <section
+    class="sc-bdvvtL fxAsie"
+  >
+    <div
+      class="swiper swiper-initialized swiper-horizontal swiper-pointer-events"
+    >
+      <div
+        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+      />
+      <div
+        class="swiper-wrapper"
+        style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+      >
+        <div
+          class="swiper-slide"
+        >
+          <a
+            class="sc-gsDKAQ cFWpXN"
+            href="#"
+          >
+            <div
+              class="sc-jRQBWg iwMRJr"
+            >
+              <div
+                class="sc-dkPtRN laWALu"
+              >
+                Best Furniture For Your Castle....
+              </div>
+              <div
+                class="sc-hKwDye eVwihf"
+              >
+                New Furniture Collection Trends in 2020
+              </div>
+              <div
+                class="sc-eCImPb fRjHc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          class="swiper-slide"
+        >
+          <a
+            class="sc-gsDKAQ cFWpXN"
+            href="#"
+          >
+            <div
+              class="sc-jRQBWg iwMRJr"
+            >
+              <div
+                class="sc-dkPtRN laWALu"
+              >
+                Best Furniture For Your Castle....
+              </div>
+              <div
+                class="sc-hKwDye eVwihf"
+              >
+                New Furniture Collection Trends in 2020
+              </div>
+              <div
+                class="sc-eCImPb fRjHc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          class="swiper-slide"
+        >
+          <a
+            class="sc-gsDKAQ cFWpXN"
+            href="#"
+          >
+            <div
+              class="sc-jRQBWg iwMRJr"
+            >
+              <div
+                class="sc-dkPtRN laWALu"
+              >
+                Best Furniture For Your Castle....
+              </div>
+              <div
+                class="sc-hKwDye eVwihf"
+              >
+                New Furniture Collection Trends in 2020
+              </div>
+              <div
+                class="sc-eCImPb fRjHc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          class="swiper-slide"
+        >
+          <a
+            class="sc-gsDKAQ cFWpXN"
+            href="#"
+          >
+            <div
+              class="sc-jRQBWg iwMRJr"
+            >
+              <div
+                class="sc-dkPtRN laWALu"
+              >
+                Best Furniture For Your Castle....
+              </div>
+              <div
+                class="sc-hKwDye eVwihf"
+              >
+                New Furniture Collection Trends in 2020
+              </div>
+              <div
+                class="sc-eCImPb fRjHc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          class="swiper-slide"
+        >
+          <a
+            class="sc-gsDKAQ cFWpXN"
+            href="#"
+          >
+            <div
+              class="sc-jRQBWg iwMRJr"
+            >
+              <div
+                class="sc-dkPtRN laWALu"
+              >
+                Best Furniture For Your Castle....
+              </div>
+              <div
+                class="sc-hKwDye eVwihf"
+              >
+                New Furniture Collection Trends in 2020
+              </div>
+              <div
+                class="sc-eCImPb fRjHc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
