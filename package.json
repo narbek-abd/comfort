@@ -1,10 +1,10 @@
 {
   "name": "pain",
   "jest": {
-    "resolver": "jest-node-exports-resolver",
     "roots": [
       "<rootDir>/src"
     ],
+    "resolver": "jest-node-exports-resolver",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
@@ -154,5 +154,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "jest-node-exports-resolver": "^1.1.6"
   }
 }
