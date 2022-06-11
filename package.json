@@ -154,5 +154,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "jest-node-exports-resolver": "^1.1.6"
   }
 }
