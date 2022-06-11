@@ -1,3 +1,5 @@
+[![react_test](https://github.com/narbek-abd/comfort/actions/workflows/react_test.yml/badge.svg)](https://github.com/narbek-abd/comfort/actions/workflows/react_test.yml)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
