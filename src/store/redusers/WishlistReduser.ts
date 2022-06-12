@@ -17,14 +17,12 @@ export const WishlistReduser = (state = wishlist, action: WishlistAction) => {
       if (alreadyInWishlist) return state;
 
       let newList = [...state.products, { id: action.payload }];
-      localStorage.setItem("wishlist", JSON.stringify(newList));
       return { products: newList };
 
     case WishlistActionTypes.REMOVE_PRODUCT_FROM_WISHLIT:
       let filteredProductList = state.products.filter(
         (product) => (product as any).id !== action.payload
       );
-      localStorage.setItem("wishlist", JSON.stringify(filteredProductList));
 
       return { products: filteredProductList };
 
