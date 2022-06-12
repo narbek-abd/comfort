@@ -12,23 +12,21 @@ const cart: CartState = {
 export const CartReduser = (state = cart, action: CartAction) => {
   switch (action.type) {
     case CartActionTypes.ADD_PRODUCTS:
-      let productExists = state.products.find(
+      let exitingProduct = state.products.find(
         (productItem) => productItem.id === action.payload
       );
 
       let newList = [];
 
-      if (productExists) {
+      if (exitingProduct) {
         newList = state.products.map((product) =>
           product.id === action.payload
-            ? { ...product, quantity: productExists.quantity++ }
+            ? { ...product, quantity: exitingProduct.quantity++ }
             : product
         );
       } else {
         newList = [...state.products, { id: action.payload, quantity: 1 }];
       }
-
-      localStorage.setItem("cart", JSON.stringify(newList));
 
       return {
         products: newList,
@@ -38,8 +36,7 @@ export const CartReduser = (state = cart, action: CartAction) => {
       let filteredProductList = state.products.filter(
         (product) => product.id !== action.payload
       );
-      localStorage.setItem("cart", JSON.stringify(filteredProductList));
-
+      
       return { products: filteredProductList };
 
     case CartActionTypes.CHANGE_PRODUCT_COUNT:
@@ -48,8 +45,6 @@ export const CartReduser = (state = cart, action: CartAction) => {
           ? { ...product, quantity: action.payload.count }
           : product
       );
-
-      localStorage.setItem("cart", JSON.stringify(changedList));
 
       return { products: changedList };
 
