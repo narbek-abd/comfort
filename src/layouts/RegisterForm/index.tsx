@@ -14,9 +14,9 @@ import { RegisterFormValidation } from "../../validation";
 import { RegisterFormTypes } from "../../types/FormTypes";
 
 import Cookies from "js-cookie";
-import { setUser } from "../../store/action-creators/User";
+import { register as registerUser } from "../../store/action-creators/User";
 import { useDispatch } from "react-redux";
-import api from '../../api';
+import api from "../../api";
 
 const RegisterForm = () => {
   const {
@@ -32,16 +32,14 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<RegisterFormTypes> = async (data) => {
+  const onSubmit: SubmitHandler<RegisterFormTypes> = async (
+    registrationData
+  ) => {
     setIsLoading(true);
 
     try {
-      let response = await api.users.registerUser(data);
-      dispatch(setUser(response.data.user));
-      Cookies.set("auth-token", response.data.token, {
-        expires: 7,
-        sameSite: "Lax",
-      });
+      await dispatch(registerUser(registrationData));
+
       navigate("/", { replace: true });
     } catch (e: any) {
       if (e.response.status === 422) {

@@ -24,9 +24,6 @@ const HeaderTop = () => {
 	let cartProductsQuantity = useSelector(selectCartQuantity);
 
 	async function logout() {
-		await api.users.logoutUser();
-		
-		Cookies.remove("auth-token");
 		dispatch(deleteUser());
 	}
 
