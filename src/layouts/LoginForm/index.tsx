@@ -3,7 +3,6 @@ import * as S from "./style";
 import * as G from "../../globalStyle";
 
 import Button from "../../components/Button";
-import Cookies from "js-cookie";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +12,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoginFormValidation } from "../../validation";
 import { LoginFormTypes } from "../../types/FormTypes";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/action-creators/User";
+import { login } from "../../store/action-creators/User";
 import api from "../../api";
 import useIsMounted from "../../hooks/useIsMounted";
 
@@ -35,18 +34,11 @@ const LoginForm = () => {
   let location = useLocation();
   let from = (location.state as any)?.from?.pathname || "/";
 
-  const onSubmit: SubmitHandler<LoginFormTypes> = async (data) => {
+  const onSubmit: SubmitHandler<LoginFormTypes> = async (loginData) => {
     setIsLoading(true);
 
     try {
-      let response = await api.users.loginUser(data);
-      if (!isMounted()) return;
-
-      dispatch(setUser(response.data.user));
-      Cookies.set("auth-token", response.data.token, {
-        expires: 7,
-        sameSite: "Lax",
-      });
+      await dispatch(login(loginData));
 
       navigate(from, { replace: true });
     } catch (e: any) {

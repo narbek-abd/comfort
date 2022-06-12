@@ -8,6 +8,7 @@ import { addProductToWishlist } from "../../../store/action-creators/Wishlist";
 import { addProduct } from "../../../store/action-creators/Cart";
 import { CartActionTypes } from "../../../types/CartReduxTypes";
 import { WishlistActionTypes } from "../../../types/WishlistReduxTypes";
+import { UserActionTypes } from "../../../types/UserReduxTypes";
 
 describe("HeaderTop component", () => {
 	test("should display the login button if the user is not authentificated", async () => {
@@ -19,7 +20,10 @@ describe("HeaderTop component", () => {
 	test("should display the user naem if the user is authentificated", async () => {
 		render(<HeaderTop />);
 
-		store.dispatch(setUser({ id: 1, name: "Alan", email: "alan@mail.ru" }));
+		store.dispatch({
+			type: UserActionTypes.SET_USER,
+			payload: { id: 1, name: "Alan", email: "alan@mail.ru" },
+		});
 
 		expect(await screen.findByText("Alan")).toBeInTheDocument();
 	});
