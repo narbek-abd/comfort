@@ -1,14 +1,14 @@
 import { screen } from "@testing-library/react";
-import { render, store } from "../../../test/test-utils";
-import "../../../test/mock";
+import { render, store } from "test/test-utils";
+import "test/mock";
 import HeaderTop from "./index";
 import axios from "axios";
-import { setUser } from "../../../store/action-creators/User";
-import { addProductToWishlist } from "../../../store/action-creators/Wishlist";
-import { addProduct } from "../../../store/action-creators/Cart";
-import { CartActionTypes } from "../../../types/CartReduxTypes";
-import { WishlistActionTypes } from "../../../types/WishlistReduxTypes";
-import { UserActionTypes } from "../../../types/UserReduxTypes";
+import { setUser } from "store/action-creators/User";
+import { addProductToWishlist } from "store/action-creators/Wishlist";
+import { addProduct } from "store/action-creators/Cart";
+import { CartActionTypes } from "types/CartReduxTypes";
+import { WishlistActionTypes } from "types/WishlistReduxTypes";
+import { UserActionTypes } from "types/UserReduxTypes";
 
 describe("HeaderTop component", () => {
 	test("should display the login button if the user is not authentificated", async () => {

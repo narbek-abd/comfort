@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Button from "../../../../components/Button";
+import Button from "components/Button";
 import { Link } from "react-router-dom";
-import { OrderTypes } from "../../../../types/OrderTypes";
-import api from '../../../../api';
+import { OrderTypes } from "types/OrderTypes";
+import api from 'api';
 
 interface OrderItemProps {
 	order: OrderTypes;

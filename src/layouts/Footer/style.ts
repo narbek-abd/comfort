@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { SectionTitle } from "../../globalStyle";
-import { Button } from "../../components/Button/style";
+import { SectionTitle } from "globalStyle";
+import { Button } from "components/Button/style";
 
 export const Footer = styled.footer`
 	flex-shrink: 0;

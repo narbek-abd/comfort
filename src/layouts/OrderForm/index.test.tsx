@@ -1,9 +1,9 @@
 import { screen, waitFor } from "@testing-library/react";
-import { render, store } from "../../test/test-utils";
-import { addProduct } from "../../store/action-creators/Cart";
-import { CartActionTypes } from "../../types/CartReduxTypes";
-import { setUser } from "../../store/action-creators/User";
-import { UserActionTypes } from "../../types/UserReduxTypes";
+import { render, store } from "test/test-utils";
+import { addProduct } from "store/action-creators/Cart";
+import { CartActionTypes } from "types/CartReduxTypes";
+import { setUser } from "store/action-creators/User";
+import { UserActionTypes } from "types/UserReduxTypes";
 import userEvent from "@testing-library/user-event";
 import OrderForm from "./index";
 import axios from "axios";

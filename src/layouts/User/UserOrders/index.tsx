@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
-import * as G from "../../../globalStyle";
+import * as G from "globalStyle";
 
-import Pagination from "../../../components/Pagination";
+import Pagination from "components/Pagination";
 
 import { useSearchParams } from "react-router-dom";
-import { OrderTypes } from "../../../types/OrderTypes";
-import axiosClient from "../../../api/axiosClient";
+import { OrderTypes } from "types/OrderTypes";
+import axiosClient from "api/axiosClient";
 
 import OrderItem from "./OrderItem";
-import Alert from "../../../components/Alert";
-import Spinner from "../../../components/Spinner";
-import useIsMounted from "../../../hooks/useIsMounted";
-import api from "../../../api";
+import Alert from "components/Alert";
+import Spinner from "components/Spinner";
+import useIsMounted from "hooks/useIsMounted";
+import api from "api";
 
 const UserOrders = () => {
 	const [isLoading, setIsLoading] = useState(true);

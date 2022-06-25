@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
-import Icon from "../Icon";
+import Icon from "components/Icon";
 import * as S from "./style";
 
 const BottomNavBar = () => {

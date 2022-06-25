@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import MultiMenu from "./index";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { CategoryTypes } from "../../types/CategoryTypes";
+import { CategoryTypes } from "types/CategoryTypes";
 
 let list: CategoryTypes[];
 let history: any;

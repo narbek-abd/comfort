@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Button } from "../../../components/Button/style";
+import { Button } from "components/Button/style";
 
 export const CommentItem = styled.li<{ depth: number }>`
 	${(props) =>

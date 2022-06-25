@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import * as S from "./style";
 import NavbarItem from "./NavbarItem";
 import navbarItems from "../HeaderData";
-import MultiMenu from "../../../components/MultiMenu";
-import useMediaQuery from "../../../hooks/useMediaQuery";
-import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import MultiMenu from "components/MultiMenu";
+import useMediaQuery from "hooks/useMediaQuery";
+import useOnClickOutside from "hooks/useOnClickOutside";
 import CatalogBar from "../CatalogBar";
-import api from "../../../api";
-import useIsMounted from "../../../hooks/useIsMounted";
+import api from "api";
+import useIsMounted from "hooks/useIsMounted";
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);

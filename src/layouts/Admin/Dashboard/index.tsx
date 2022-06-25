@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import api from "../../../api";
-import Spinner from "../../../components/Spinner";
-import Icon from "../../../components/Icon";
+import api from "api";
+import Spinner from "components/Spinner";
+import Icon from "components/Icon";
 
 const Dashboard = () => {
   const [ordersCount, setOrdersCount] = useState(0);

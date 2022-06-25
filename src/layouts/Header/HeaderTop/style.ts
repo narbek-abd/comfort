@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Dropdown} from '../../../components/Dropdown/style';
+import {Dropdown} from 'components/Dropdown/style';
 
 export const HeaderTop = styled.div`
 	background-color: var(--color-purple);

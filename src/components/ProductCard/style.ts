@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Button } from '../Button/style';
+import { Button } from 'components/Button/style';
 
 export const Actions = styled.div`
 	opacity: 0;

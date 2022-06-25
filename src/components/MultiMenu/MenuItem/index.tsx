@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
-import { CategoryTypes } from "../../../types/CategoryTypes";
-import Icon from "../../Icon";
+import { CategoryTypes } from "types/CategoryTypes";
+import Icon from "components/Icon";
 import { Link } from "react-router-dom";
 
 interface MenuItemProps {

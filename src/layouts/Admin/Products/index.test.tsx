@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import { render } from "../../../test/test-utils";
+import { render } from "test/test-utils";
 import userEvent from "@testing-library/user-event";
 import Products from "./index";
 import axios from "axios";

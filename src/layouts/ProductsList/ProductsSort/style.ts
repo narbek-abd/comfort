@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Dropdown} from '../../../components/Dropdown/style';
+import {Dropdown} from 'components/Dropdown/style';
 
 export const Sort = styled.div`
 	display: flex;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 import * as S from "./style";
 
 export interface AlertProps {

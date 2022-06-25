@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
-import { render, store } from "../../test/test-utils";
-import "../../test/mock";
+import { render, store } from "test/test-utils";
+import "test/mock";
 import ProductMain from "./index";
 import axios from "axios";
-import { ProductTypes } from "../../types/ProductTypes";
+import { ProductTypes } from "types/ProductTypes";
 
 describe("ProductMain component", () => {
 	let product: ProductTypes;

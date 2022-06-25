@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import ProductMain from "../../layouts/ProductMain";
-import Comments from "../../layouts/Comments";
+import ProductMain from "layouts/ProductMain";
+import Comments from "layouts/Comments";
 import { useParams } from "react-router-dom";
-import api from "../../api";
-import Spinner from "../../components/Spinner";
-import BreadCrumbs from "../../components/BreadCrumbs";
-import * as G from "../../globalStyle";
-import useIsMounted from "../../hooks/useIsMounted";
-import { CategoryTypes } from "../../types/CategoryTypes";
+import api from "api";
+import Spinner from "components/Spinner";
+import BreadCrumbs from "components/BreadCrumbs";
+import * as G from "globalStyle";
+import useIsMounted from "hooks/useIsMounted";
+import { CategoryTypes } from "types/CategoryTypes";
 
 const Product = () => {
   const [isLoading, setIsLoading] = useState(true);

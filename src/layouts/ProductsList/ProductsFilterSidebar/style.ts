@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Checkbox } from "../../../globalStyle";
-import { Button } from "../../../components/Button/style";
+import { Checkbox } from "globalStyle";
+import { Button } from "components/Button/style";
 
 export const FilterBlock = styled.div`
 	margin-bottom: 30px;

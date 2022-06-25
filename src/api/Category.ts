@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient";
-import { CategoryFormTypes } from "../types/FormTypes";
-import { slugTransliterate } from "../utils/slugTransliterate";
+import { CategoryFormTypes } from "types/FormTypes";
+import { slugTransliterate } from "utils/slugTransliterate";
 
 const Categories = {
 	getCategories: (params = '') => axiosClient.get(`/categories/list${params}`),

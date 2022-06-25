@@ -1,10 +1,10 @@
 import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
 import { RootState } from "../redusers";
-import { UserActionTypes } from "../../types/UserReduxTypes";
-import { UserTypes } from "../../types/UserTypes";
-import api from "../../api";
-import { LoginFormTypes, RegisterFormTypes } from "../../types/FormTypes";
+import { UserActionTypes } from "types/UserReduxTypes";
+import { UserTypes } from "types/UserTypes";
+import api from "api";
+import { LoginFormTypes, RegisterFormTypes } from "types/FormTypes";
 import Cookies from "js-cookie";
 
 export const register =

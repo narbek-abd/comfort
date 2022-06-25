@@ -1,8 +1,8 @@
 import React from "react";
-import FeaturedProducts from "../../layouts/FeaturedProducts";
-import LatestProducts from "../../layouts/LatestProducts";
-import Advantages from "../../layouts/Advantages";
-import UniqueProduct from "../../layouts/UniqueProduct";
+import FeaturedProducts from "layouts/FeaturedProducts";
+import LatestProducts from "layouts/LatestProducts";
+import Advantages from "layouts/Advantages";
+import UniqueProduct from "layouts/UniqueProduct";
 
 const Home = () => {
 	return (
