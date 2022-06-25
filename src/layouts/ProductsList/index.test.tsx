@@ -4,9 +4,9 @@ import ProductsList from "./index";
 import axios from "axios";
 import { createMemoryHistory } from "history";
 import { Router, Routes, Route } from "react-router-dom";
-import { store } from "../../store";
+import { store } from "store";
 import { Provider } from "react-redux";
-import { mockMatchmeda } from "../../test/mock";
+import { mockMatchmeda } from "test/mock";
 
 describe("ProductsList component", () => {
 	let history: any;

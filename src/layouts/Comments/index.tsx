@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 import * as S from "./style";
-import { CommentsTypes } from "../../types/CommentsTypes";
-import useIntersection from "../../hooks/useIntersection";
-import useIsMounted from "../../hooks/useIsMounted";
+import { CommentsTypes } from "types/CommentsTypes";
+import useIntersection from "hooks/useIntersection";
+import useIsMounted from "hooks/useIsMounted";
 
 import CommentsForm from "./CommentsForm";
 import CommentsItem from "./CommentsItem";
-import Spinner from "../../components/Spinner";
-import api from "../../api";
+import Spinner from "components/Spinner";
+import api from "api";
 
 interface CommentsProps {
   product_id: number;

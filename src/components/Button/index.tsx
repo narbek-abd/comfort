@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import Spinner from "../Spinner";
+import Spinner from "components/Spinner";
 
 interface ButtonProps {
   children?: React.ReactNode;

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 
-import Button from "../../components/Button";
+import Button from "components/Button";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { LoginFormValidation } from "../../validation";
-import { LoginFormTypes } from "../../types/FormTypes";
+import { LoginFormValidation } from "validation";
+import { LoginFormTypes } from "types/FormTypes";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/action-creators/User";
-import api from "../../api";
-import useIsMounted from "../../hooks/useIsMounted";
+import { login } from "store/action-creators/User";
+import api from "api";
+import useIsMounted from "hooks/useIsMounted";
 
 const LoginForm = () => {
   const {

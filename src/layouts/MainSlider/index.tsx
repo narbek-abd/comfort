@@ -6,8 +6,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import * as S from "./style";
 
-import mainImg from "../../assets/img/main.jpg";
-import * as G from "../../globalStyle";
+import mainImg from "assets/img/main.jpg";
+import * as G from "globalStyle";
 
 const MainSlider = () => {
 	return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import MenuItem from "./MenuItem";
 import SubMenuList from "./SubMenuList";
-import { CategoryTypes } from "../../types/CategoryTypes";
+import { CategoryTypes } from "types/CategoryTypes";
 
 interface CatalogMenuProps {
   list: CategoryTypes[];

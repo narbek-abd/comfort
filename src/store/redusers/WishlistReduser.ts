@@ -2,7 +2,7 @@ import {
   WishlistState,
   WishlistAction,
   WishlistActionTypes,
-} from "../../types/WishlistReduxTypes";
+} from "types/WishlistReduxTypes";
 
 const wishlist: WishlistState = {
   products: JSON.parse(localStorage.getItem("wishlist")) || [],

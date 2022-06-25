@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import { CommentsTypes } from "../../../types/CommentsTypes";
+import { CommentsTypes } from "types/CommentsTypes";
 import CommentsForm from "../CommentsForm";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store/redusers";
-import api from "../../../api";
-import Button from "../../../components/Button";
-import avatarDefault from "../../../assets/img/avatar_default.png";
+import { RootState } from "store/redusers";
+import api from "api";
+import Button from "components/Button";
+import avatarDefault from "assets/img/avatar_default.png";
 
 interface CommentsItemProps {
   comment: CommentsTypes;
