@@ -1,17 +1,17 @@
 import React from "react";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "components/Sidebar";
 import * as S from "./style";
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 
-import Dashboard from "../../layouts/Admin/Dashboard";
+import Dashboard from "layouts/Admin/Dashboard";
 
-import Categories from "../../layouts/Admin/Categories";
-import CategoryCreate from "../../layouts/Admin/Categories/CategoryCreate";
-import CategoryEdit from "../../layouts/Admin/Categories/CategoryEdit";
+import Categories from "layouts/Admin/Categories";
+import CategoryCreate from "layouts/Admin/Categories/CategoryCreate";
+import CategoryEdit from "layouts/Admin/Categories/CategoryEdit";
 
-import Products from "../../layouts/Admin/Products";
-import ProductCreate from "../../layouts/Admin/Products/ProductCreate";
-import ProductEdit from "../../layouts/Admin/Products/ProductEdit";
+import Products from "layouts/Admin/Products";
+import ProductCreate from "layouts/Admin/Products/ProductCreate";
+import ProductEdit from "layouts/Admin/Products/ProductEdit";
 
 import { Route, Routes } from "react-router-dom";
 

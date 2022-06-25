@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 
-import Button from "../../components/Button";
+import Button from "components/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useNavigate } from "react-router-dom";
@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { RegisterFormValidation } from "../../validation";
-import { RegisterFormTypes } from "../../types/FormTypes";
+import { RegisterFormValidation } from "validation";
+import { RegisterFormTypes } from "types/FormTypes";
 
 import Cookies from "js-cookie";
-import { register as registerUser } from "../../store/action-creators/User";
+import { register as registerUser } from "store/action-creators/User";
 import { useDispatch } from "react-redux";
-import api from "../../api";
+import api from "api";
 
 const RegisterForm = () => {
   const {

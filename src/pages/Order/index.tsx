@@ -1,5 +1,5 @@
 import React from "react";
-import OrderForm from "../../layouts/OrderForm"
+import OrderForm from "layouts/OrderForm"
 
 const Order = () => {
   return (

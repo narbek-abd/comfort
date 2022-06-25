@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient";
-import { RegisterFormTypes } from "../types/FormTypes";
-import { LoginFormTypes } from "../types/FormTypes";
+import { RegisterFormTypes } from "types/FormTypes";
+import { LoginFormTypes } from "types/FormTypes";
 
 const Users = {
 	getCurrentUser: () => axiosClient.get("/user/me"),

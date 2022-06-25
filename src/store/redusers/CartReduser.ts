@@ -2,7 +2,7 @@ import {
   CartState,
   CartAction,
   CartActionTypes,
-} from "../../types/CartReduxTypes";
+} from "types/CartReduxTypes";
 import { RootState } from "./index";
 
 const cart: CartState = {

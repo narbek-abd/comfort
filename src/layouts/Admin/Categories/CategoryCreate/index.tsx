@@ -4,13 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as S from "./style";
 
-import { CategoryValidation } from "../../../../validation";
-import { CategoryFormTypes } from "../../../../types/FormTypes";
+import { CategoryValidation } from "validation";
+import { CategoryFormTypes } from "types/FormTypes";
 
-import Alert, { AlertProps } from "../../../../components/Alert";
-import Button from "../../../../components/Button";
-import api from "../../../../api";
-import useIsMounted from "../../../../hooks/useIsMounted";
+import Alert, { AlertProps } from "components/Alert";
+import Button from "components/Button";
+import api from "api";
+import useIsMounted from "hooks/useIsMounted";
 
 const CategoryCreate = () => {
   const {

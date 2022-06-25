@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { CategoryTypes } from "../../../types/CategoryTypes";
+import { CategoryTypes } from "types/CategoryTypes";
 
 interface CatalogMenuItemProps {
   item: CategoryTypes;

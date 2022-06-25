@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import * as G from "../../../globalStyle";
-import Alert from "../../../components/Alert";
+import * as G from "globalStyle";
+import Alert from "components/Alert";
 import WishlistItem from "./WishlistItem";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store/redusers";
-import { getChildrenIds } from "../../../utils/getChildrenIds";
-import api from "../../../api";
-import Spinner from "../../../components/Spinner";
-import useIsMounted from "../../../hooks/useIsMounted";
+import { RootState } from "store/redusers";
+import { getChildrenIds } from "utils/getChildrenIds";
+import api from "api";
+import Spinner from "components/Spinner";
+import useIsMounted from "hooks/useIsMounted";
 
 const UserWishlist = () => {
   const [isLoading, setIsLoading] = useState(true);

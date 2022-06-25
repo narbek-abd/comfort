@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ProductValidation } from "../../../../validation";
+import { ProductValidation } from "validation";
 
-import { ProductFormTypes } from "../../../../types/FormTypes";
-import { UploadedImageTypes } from "../../../../types/ImageTypes";
+import { ProductFormTypes } from "types/FormTypes";
+import { UploadedImageTypes } from "types/ImageTypes";
 
 import * as S from "./style";
-import * as G from "../../../../globalStyle";
+import * as G from "globalStyle";
 
-import ImageUpload from "../../../../components/ImageUpload";
-import SelectNested, {listItem} from "../../../../components/SelectNested";
-import Alert, { AlertProps } from "../../../../components/Alert";
-import Button from "../../../../components/Button";
-import api from "../../../../api";
-import useIsMounted from "../../../../hooks/useIsMounted";
+import ImageUpload from "components/ImageUpload";
+import SelectNested, {listItem} from "components/SelectNested";
+import Alert, { AlertProps } from "components/Alert";
+import Button from "components/Button";
+import api from "api";
+import useIsMounted from "hooks/useIsMounted";
 
 const ProductCreate = () => {
   const {

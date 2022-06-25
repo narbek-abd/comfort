@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CatalogMenu } from '../../../components/CatalogMenu/style';
+import { CatalogMenu } from 'components/CatalogMenu/style';
 
 export const CatalogBar = styled.li`
 	span {

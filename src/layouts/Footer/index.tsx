@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import * as G from "../../globalStyle";
+import * as G from "globalStyle";
 
 const Footer = () => {
   return (
