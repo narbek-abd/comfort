@@ -1,16 +1,16 @@
 import React from "react";
-import * as G from "globalStyle";
+import * as G from "../../../globalStyle";
 import * as S from "./style";
-import Icon from "components/Icon";
-import Dropdown from "components/Dropdown";
+import Icon from "../../../components/Icon";
+import Dropdown from "../../../components/Dropdown";
 import { useSelector } from "react-redux";
-import { RootState } from "store/redusers";
-import { selectCartQuantity } from "store/redusers/CartReduser";
+import { RootState } from "../../../store/redusers";
+import { selectCartQuantity } from "../../../store/redusers/CartReduser";
 import { Link, useLocation } from "react-router-dom";
-import { deleteUser } from "store/action-creators/User";
+import { deleteUser } from "../../../store/action-creators/User";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import api from 'api';
+import api from '../../../api';
 
 const HeaderTop = () => {
 	const dispatch = useDispatch();

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import * as S from "./style";
 
 import { useSearchParams } from "react-router-dom";
-import getSearchParams from "utils/getSearchParams";
+import getSearchParams from "../../../utils/getSearchParams";
 
-import Icon from "components/Icon";
-import Dropdown from "components/Dropdown";
+import Icon from "../../../components/Icon";
+import Dropdown from "../../../components/Dropdown";
 
 interface ProductsSortProps {
   changeView: (selectedView: "vertical" | "horizontal") => void;

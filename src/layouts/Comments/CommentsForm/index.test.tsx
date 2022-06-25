@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { render } from "test/test-utils";
+import { render } from "../../../test/test-utils";
 import CommentsForm from "./index";
 
 describe("CommentsForm component", () => {

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import * as G from "globalStyle";
-import ProductGallery from "components/ProductGallery";
+import * as G from "../../globalStyle";
+import ProductGallery from "../../components/ProductGallery";
 
 import * as S from "./style";
-import Icon from "components/Icon";
-import Button from "components/Button";
+import Icon from "../../components/Icon";
+import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/redusers";
-import { addProduct } from "store/action-creators/Cart";
-import { addProductToWishlist } from "store/action-creators/Wishlist";
-import { ProductTypes } from "types/ProductTypes";
+import { RootState } from "../../store/redusers";
+import { addProduct } from "../../store/action-creators/Cart";
+import { addProductToWishlist } from "../../store/action-creators/Wishlist";
+import { ProductTypes } from "../../types/ProductTypes";
 
 interface ProductMainProps {
   product: ProductTypes;

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/redusers";
-import { setUser } from "store/action-creators/User";
+import { RootState } from "../store/redusers";
+import { setUser } from "../store/action-creators/User";
 import Cookies from "js-cookie";
-import api from 'api';
+import api from '../api';
 
 export default function AuthProvider() {
 	const dispatch = useDispatch();

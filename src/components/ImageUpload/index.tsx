@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ImageTypes, UploadedImageTypes } from "types/ImageTypes";
+import { ImageTypes, UploadedImageTypes } from "../../types/ImageTypes";
 import * as S from "./style";
-import * as G from "globalStyle";
-import Icon from "components/Icon";
+import * as G from "../../globalStyle";
+import Icon from "../Icon";
 
 interface ImageUploadProps {
   onUpload: (images: UploadedImageTypes[]) => void;

@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { render, history } from "test/test-utils";
+import { render, history } from "../../../test/test-utils";
 import ProductsSort from "./index";
 
 describe("ProductsSort component", () => {

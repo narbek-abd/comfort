@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { render, store } from "test/test-utils";
-import { WishlistActionTypes } from "types/WishlistReduxTypes";
+import { render, store } from "../../../test/test-utils";
+import { WishlistActionTypes } from "../../../types/WishlistReduxTypes";
 import UserWishlist from "./index";
 import axios from "axios";
 

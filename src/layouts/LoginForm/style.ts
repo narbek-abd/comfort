@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button } from "components/Button/style";
-import { Err } from "globalStyle";
+import { Button } from "../../components/Button/style";
+import { Err } from "../../globalStyle";
 
 export const LoginForm = styled.div`
 	color: #9096b2;

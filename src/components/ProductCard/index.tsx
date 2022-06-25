@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import Icon from "components/Icon";
+import Icon from "../Icon";
 import { Link } from "react-router-dom";
-import { RootState } from "store/redusers";
-import { addProduct } from "store/action-creators/Cart";
-import { addProductToWishlist } from "store/action-creators/Wishlist";
+import { RootState } from "../../store/redusers";
+import { addProduct } from "../../store/action-creators/Cart";
+import { addProductToWishlist } from "../../store/action-creators/Wishlist";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "components/Button";
-import { ProductTypes } from "types/ProductTypes";
+import Button from "../Button";
+import { ProductTypes } from "../../types/ProductTypes";
 
 interface ProductCardProps {
 	product: ProductTypes;

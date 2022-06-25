@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "components/Button/style";
+import { Button } from "../../components/Button/style";
 
 export const OrderForm = styled.div`
 	margin-top: 60px;

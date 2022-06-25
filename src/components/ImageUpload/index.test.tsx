@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ImageUpload from "./index";
-import { UploadedImageTypes } from "types/ImageTypes";
+import { UploadedImageTypes } from "../../types/ImageTypes";
 
 describe("ImageUpload componenet", () => {
 	let file: File;

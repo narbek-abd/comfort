@@ -1,8 +1,8 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { render, history } from "test/test-utils";
+import { render, history } from "../../../test/test-utils";
 import ProductsFilterSidebar from "./index";
-import { CategoryTypes } from "types/CategoryTypes";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 
 describe("ProductsFilterSidebar component", () => {
 	let categoryChildrens: CategoryTypes[];

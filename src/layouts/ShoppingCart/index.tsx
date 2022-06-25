@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import * as G from "globalStyle";
+import * as G from "../../globalStyle";
 import * as S from "./style";
 
 import CartProductItem from "./CartProductItem";
 import { useSelector } from "react-redux";
-import { RootState } from "store/redusers";
-import Button from "components/Button";
+import { RootState } from "../../store/redusers";
+import Button from "../../components/Button";
 import { Link } from "react-router-dom";
-import Alert from "components/Alert";
-import { getChildrenIds } from "utils/getChildrenIds";
-import api from "api";
-import Spinner from "components/Spinner";
-import useIsMounted from "hooks/useIsMounted";
+import Alert from "../../components/Alert";
+import { getChildrenIds } from "../../utils/getChildrenIds";
+import api from "../../api";
+import Spinner from "../../components/Spinner";
+import useIsMounted from "../../hooks/useIsMounted";
 
 const ShoppingCart = () => {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import * as S from "./style";
-import useOnClickOutside from "hooks/useOnClickOutside";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 interface ModalProps {
   children?: React.ReactNode;

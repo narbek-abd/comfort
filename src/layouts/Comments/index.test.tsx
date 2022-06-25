@@ -1,10 +1,10 @@
 import { screen } from "@testing-library/react";
-import { render, store } from "test/test-utils";
-import "test/mock";
+import { render, store } from "../../test/test-utils";
+import "../../test/mock";
 import Comments from "./index";
 import axios from "axios";
-import { setUser } from "store/action-creators/User";
-import { UserActionTypes } from "types/UserReduxTypes";
+import { setUser } from "../../store/action-creators/User";
+import { UserActionTypes } from "../../types/UserReduxTypes";
 
 describe("Comments component", () => {
 	beforeEach(() => {

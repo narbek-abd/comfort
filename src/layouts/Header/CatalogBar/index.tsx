@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as S from "./style";
-import CatalogMenu from "components/CatalogMenu";
-import Icon from "components/Icon";
+import CatalogMenu from "../../../components/CatalogMenu";
+import Icon from "../../../components/Icon";
 
 import { useLocation } from "react-router-dom";
-import useOnClickOutside from "hooks/useOnClickOutside";
-import { CategoryTypes } from "types/CategoryTypes";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 
 interface CatalogBarProps {
 	list: CategoryTypes[];

@@ -1,5 +1,5 @@
 import axiosClient, { webAxiosClient } from "./axiosClient";
-import { OrderFormTypes } from "types/FormTypes";
+import { OrderFormTypes } from "../types/FormTypes";
 
 const Orders = {
 	getOrders: (params = '') => axiosClient.get(`/orders${params}`),

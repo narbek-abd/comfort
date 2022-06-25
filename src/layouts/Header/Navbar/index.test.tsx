@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { render } from "test/test-utils";
-import { mockMatchmeda } from "test/mock";
+import { render } from "../../../test/test-utils";
+import { mockMatchmeda } from "../../../test/mock";
 import Navbar from "./index";
 import CatalogBar from "../CatalogBar";
 import axios from "axios";

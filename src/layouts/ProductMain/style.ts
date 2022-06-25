@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Container } from "globalStyle";
-import { Button } from 'components/Button/style';
+import { Container } from "../../globalStyle";
+import { Button } from '../../components/Button/style';
 
 export const ProductMain = styled.section`
 	margin-top: 150px;

@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
-import getSearchParams from "utils/getSearchParams";
+import getSearchParams from "../../utils/getSearchParams";
 
 interface PaginationProps {
   children?: React.ReactNode;
