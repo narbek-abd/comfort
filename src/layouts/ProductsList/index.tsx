@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 
-import * as G from "globalStyle";
+import * as G from "../../globalStyle";
 import * as S from "./style";
 
-import { ProductTypes } from "types/ProductTypes";
-import { CategoryTypes } from "types/CategoryTypes";
+import { ProductTypes } from "../../types/ProductTypes";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
 import { useLocation, useSearchParams } from "react-router-dom";
 
-import Spinner from "components/Spinner";
-import Alert from "components/Alert";
-import Pagination from "components/Pagination";
-import ProductCard from "components/ProductCard";
-import Modal from "components/Modal";
+import Spinner from "../../components/Spinner";
+import Alert from "../../components/Alert";
+import Pagination from "../../components/Pagination";
+import ProductCard from "../../components/ProductCard";
+import Modal from "../../components/Modal";
 
 import ProductsSort from "./ProductsSort";
 import ProductsFilterSidebar from "./ProductsFilterSidebar";
 
-import { getChildrenIds } from "utils/getChildrenIds";
-import api from "api";
-import useIsMounted from "hooks/useIsMounted";
-import useMediaQuery from "hooks/useMediaQuery";
+import { getChildrenIds } from "../../utils/getChildrenIds";
+import api from "../../api";
+import useIsMounted from "../../hooks/useIsMounted";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const ProductsList = () => {
   const [isLoading, setIsLoading] = useState(true);

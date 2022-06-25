@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CategoryItem from "./CategoryItem";
-import Pagination from "components/Pagination";
+import Pagination from "../../../components/Pagination";
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
-import { CategoryTypes } from "types/CategoryTypes";
-import useIsMounted from "hooks/useIsMounted";
-import api from "api";
-import Spinner from "components/Spinner";
+import { CategoryTypes } from "../../../types/CategoryTypes";
+import useIsMounted from "../../../hooks/useIsMounted";
+import api from "../../../api";
+import Spinner from "../../../components/Spinner";
 
 const Categories = () => {
   const [categories, setCategories] = useState<CategoryTypes[]>([]);

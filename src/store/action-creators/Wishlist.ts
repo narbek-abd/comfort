@@ -1,4 +1,4 @@
-import { WishlistActionTypes } from "types/WishlistReduxTypes";
+import { WishlistActionTypes } from "../../types/WishlistReduxTypes";
 import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
 import { RootState } from "../redusers";

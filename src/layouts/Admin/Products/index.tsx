@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductItem from "./ProductItem";
-import Pagination from "components/Pagination";
+import Pagination from "../../../components/Pagination";
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
-import { ProductTypes } from "types/ProductTypes";
-import Spinner from "components/Spinner";
-import useIsMounted from "hooks/useIsMounted";
-import api from "api";
+import { ProductTypes } from "../../../types/ProductTypes";
+import Spinner from "../../../components/Spinner";
+import useIsMounted from "../../../hooks/useIsMounted";
+import api from "../../../api";
 
 const Products = () => {
   const [products, setProducts] = useState<ProductTypes[]>([]);

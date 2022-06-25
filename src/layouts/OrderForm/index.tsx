@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
-import * as G from "globalStyle";
-import Button from "components/Button";
+import * as G from "../../globalStyle";
+import Button from "../../components/Button";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { OrderFormValidation } from "validation";
-import { OrderFormTypes } from "types/FormTypes";
+import { OrderFormValidation } from "../../validation";
+import { OrderFormTypes } from "../../types/FormTypes";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/redusers";
+import { RootState } from "../../store/redusers";
 
 import { useNavigate } from "react-router-dom";
-import { clearCart } from "store/action-creators/Cart";
-import api from 'api';
+import { clearCart } from "../../store/action-creators/Cart";
+import api from '../../api';
 
 const OrderForm = () => {
   const {

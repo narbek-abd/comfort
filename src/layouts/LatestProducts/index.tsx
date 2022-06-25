@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import * as G from "globalStyle";
+import * as G from "../../globalStyle";
 import * as S from "./style";
 import "swiper/css";
 import "swiper/css/pagination";
-import ProductCard from "components/ProductCard";
+import ProductCard from "../../components/ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import api from "api";
-import Spinner from "components/Spinner";
-import useIsMounted from 'hooks/useIsMounted';
+import api from "../../api";
+import Spinner from "../../components/Spinner";
+import useIsMounted from '../../hooks/useIsMounted';
 
 const LatestProducts = () => {
   const [isLoading, setIsLoading] = useState(true);

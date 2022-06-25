@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import Button from "components/Button";
+import Button from "../../../../components/Button";
 import { Link } from "react-router-dom";
-import { CategoryTypes } from "types/CategoryTypes";
-import api from "api";
+import { CategoryTypes } from "../../../../types/CategoryTypes";
+import api from "../../../../api";
 
 interface CategoryItemProps {
   children?: React.ReactNode;

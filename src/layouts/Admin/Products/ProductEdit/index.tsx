@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ProductValidation } from "validation";
+import { ProductValidation } from "../../../../validation";
 
-import { ProductFormTypes } from "types/FormTypes";
-import { ProductTypes } from "types/ProductTypes";
+import { ProductFormTypes } from "../../../../types/FormTypes";
+import { ProductTypes } from "../../../../types/ProductTypes";
 
-import { UploadedImageTypes } from "types/ImageTypes";
+import { UploadedImageTypes } from "../../../../types/ImageTypes";
 
 import * as S from "./style";
-import * as G from "globalStyle";
+import * as G from "../../../../globalStyle";
 
-import ImageUpload from "components/ImageUpload";
-import SelectNested, {listItem} from "components/SelectNested";
-import Alert, { AlertProps } from "components/Alert";
-import Button from "components/Button";
+import ImageUpload from "../../../../components/ImageUpload";
+import SelectNested, {listItem} from "../../../../components/SelectNested";
+import Alert, { AlertProps } from "../../../../components/Alert";
+import Button from "../../../../components/Button";
 
 import { useParams } from "react-router-dom";
-import Spinner from "components/Spinner";
-import api from "api";
-import useIsMounted from "hooks/useIsMounted";
+import Spinner from "../../../../components/Spinner";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const ProductEdit = () => {
   const {

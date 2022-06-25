@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-import * as G from "globalStyle";
+import * as G from "../../../globalStyle";
 import * as S from "./style";
 
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-import getSearchParams from "utils/getSearchParams";
+import getSearchParams from "../../../utils/getSearchParams";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FilterSideBarFormTypes } from "types/FormTypes";
-import { CategoryTypes } from "types/CategoryTypes";
-import Button from "components/Button";
-import api from "api";
+import { FilterSideBarFormTypes } from "../../../types/FormTypes";
+import { CategoryTypes } from "../../../types/CategoryTypes";
+import Button from "../../../components/Button";
+import api from "../../../api";
 
 interface ProductsFilterSidebarProps {
   categoryChildrens: CategoryTypes[];

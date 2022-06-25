@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import * as S from "./style";
-import useOnClickOutside from "hooks/useOnClickOutside";
-import slideToggle, { slideUp } from "utils/SlideUpDown";
-import Icon from "components/Icon";
+import useOnClickOutside from "../../../../hooks/useOnClickOutside";
+import slideToggle, { slideUp } from "../../../../utils/SlideUpDown";
+import Icon from "../../../../components/Icon";
 
 interface NavbarItemProps {
 	item: {

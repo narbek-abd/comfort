@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import CatalogMenu from "./index";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { CategoryTypes } from "types/CategoryTypes";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
 let list: CategoryTypes[];
 let history: any;

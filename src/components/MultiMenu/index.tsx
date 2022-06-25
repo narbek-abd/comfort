@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import * as S from "./style";
 import MenuItem from "./MenuItem";
-import { CategoryTypes } from "types/CategoryTypes";
+import { CategoryTypes } from "../../types/CategoryTypes";
 
 interface MultiMenuProps {
   list: CategoryTypes[];

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import * as G from "globalStyle";
-import { CommentsFormTypes } from "types/FormTypes";
+import * as G from "../../../globalStyle";
+import { CommentsFormTypes } from "../../../types/FormTypes";
 import {
   CommentsFormValidation,
   CommentsFormGuestValidation,
-} from "validation";
+} from "../../../validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button from "components/Button";
-import api from "api";
-import Alert, {AlertProps} from "components/Alert";
+import Button from "../../../components/Button";
+import api from "../../../api";
+import Alert, {AlertProps} from "../../../components/Alert";
 import { useSelector } from "react-redux";
-import { RootState } from "store/redusers";
+import { RootState } from "../../../store/redusers";
 
 interface CommentsFormProps {
   product_id: number;

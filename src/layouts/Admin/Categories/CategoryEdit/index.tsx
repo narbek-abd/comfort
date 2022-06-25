@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
-import Alert, { AlertProps } from "components/Alert";
-import Button from "components/Button";
+import Alert, { AlertProps } from "../../../../components/Alert";
+import Button from "../../../../components/Button";
 import { useParams } from "react-router-dom";
-import { CategoryValidation } from "validation";
-import { CategoryTypes } from "types/CategoryTypes";
-import { CategoryFormTypes } from "types/FormTypes";
-import api from "api";
-import useIsMounted from "hooks/useIsMounted";
+import { CategoryValidation } from "../../../../validation";
+import { CategoryTypes } from "../../../../types/CategoryTypes";
+import { CategoryFormTypes } from "../../../../types/FormTypes";
+import api from "../../../../api";
+import useIsMounted from "../../../../hooks/useIsMounted";
 
 const CategoryEdit = () => {
   const {

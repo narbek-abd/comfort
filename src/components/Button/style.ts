@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Spinner } from "components/Spinner/style";
+import { Spinner } from "../Spinner/style";
 
 export const Button = styled.button<{
 	size?: string;

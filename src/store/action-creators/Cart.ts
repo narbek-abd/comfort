@@ -1,4 +1,4 @@
-import { CartActionTypes } from "types/CartReduxTypes";
+import { CartActionTypes } from "../../types/CartReduxTypes";
 import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
 import { RootState } from "../redusers";

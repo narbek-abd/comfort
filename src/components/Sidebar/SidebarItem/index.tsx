@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import * as S from "./style";
-import Icon from "components/Icon";
+import Icon from "../../Icon";
 import { Link } from "react-router-dom";
 import { SidebarItemType } from "../../Sidebar";
-import slideToggle from "utils/SlideUpDown";
+import slideToggle from "../../../utils/SlideUpDown";
 
 interface SidebarItemProps {
   item: SidebarItemType;

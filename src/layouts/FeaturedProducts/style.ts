@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Name } from "components/ProductCard/style";
-import { Spinner } from 'components/Spinner/style';
+import { Name } from "../../components/ProductCard/style";
+import { Spinner } from '../../components/Spinner/style';
 
 export const FeaturedProducts = styled.section`
 	margin-top: 130px;

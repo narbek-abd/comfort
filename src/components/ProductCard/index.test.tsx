@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
-import { render, store } from "test/test-utils";
+import { render, store } from "../../test/test-utils";
 import ProductCard from "./index";
 import userEvent from "@testing-library/user-event";
-import { ProductTypes } from "types/ProductTypes";
+import { ProductTypes } from "../../types/ProductTypes";
 
 describe("ProductCard component", () => {
 	let product: ProductTypes;

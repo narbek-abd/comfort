@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { CategoryTypes } from "types/CategoryTypes";
+import { CategoryTypes } from "../../../types/CategoryTypes";
 import * as S from "./style";
 import { Link } from "react-router-dom";
 

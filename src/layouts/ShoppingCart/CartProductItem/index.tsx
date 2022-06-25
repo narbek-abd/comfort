@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
-import Counter from "components/Counter";
+import Counter from "../../../components/Counter";
 import {
   removeFromCart,
   changeProductCount,
-} from "store/action-creators/Cart";
+} from "../../../store/action-creators/Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductTypes } from "types/ProductTypes";
-import { RootState } from "store/redusers";
+import { ProductTypes } from "../../../types/ProductTypes";
+import { RootState } from "../../../store/redusers";
 
 interface CartProductItemProps {
   product: ProductTypes;

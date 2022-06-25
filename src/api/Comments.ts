@@ -1,5 +1,5 @@
 import axiosClient from "./axiosClient";
-import { CommentsFormTypes } from 'types/FormTypes';
+import { CommentsFormTypes } from '../types/FormTypes';
 
 const Comments = {
   createComment: (data: CommentsFormTypes) => axiosClient.post("/product/comments", data),

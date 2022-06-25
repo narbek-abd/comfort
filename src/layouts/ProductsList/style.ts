@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { ProductCard } from "components/ProductCard/style";
-import { Pagination } from "components/Pagination/style";
-import { Spinner } from "components/Spinner/style";
-import { Button } from 'components/Button/style';
+import { ProductCard } from "../../components/ProductCard/style";
+import { Pagination } from "../../components/Pagination/style";
+import { Spinner } from "../../components/Spinner/style";
+import { Button } from '../../components/Button/style';
 
 export const ProductsList = styled.section`
 	margin-top: 126px;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import { Link } from "react-router-dom";
-import { removeFromWishlist } from "store/action-creators/Wishlist";
+import { removeFromWishlist } from "../../../../store/action-creators/Wishlist";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductTypes } from "types/ProductTypes";
-import { RootState } from "store/redusers";
+import { ProductTypes } from "../../../../types/ProductTypes";
+import { RootState } from "../../../../store/redusers";
 
 interface WishlistItemProps {
   product: ProductTypes;

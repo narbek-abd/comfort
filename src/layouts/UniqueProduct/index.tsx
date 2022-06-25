@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
-import * as G from "globalStyle";
-import unique from "assets/img/unique-product.jpg";
+import * as G from "../../globalStyle";
+import unique from "../../assets/img/unique-product.jpg";
 
 const UniqueProduct = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageZoom from "../ImageZoom";
-import {ImageTypes} from "types/ImageTypes"
+import {ImageTypes} from "../../types/ImageTypes"
 
 import "swiper/css";
 

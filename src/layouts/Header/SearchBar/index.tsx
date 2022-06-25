@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import * as S from "./style";
 
-import Icon from "components/Icon";
-import useDebounce from "hooks/useDebounce";
-import api from "api";
-import { ProductTypes } from "types/ProductTypes";
+import Icon from "../../../components/Icon";
+import useDebounce from "../../../hooks/useDebounce";
+import api from "../../../api";
+import { ProductTypes } from "../../../types/ProductTypes";
 import { Link } from "react-router-dom";
-import useOnClickOutside from "hooks/useOnClickOutside";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 
 const SearchBar = () => {
 	const [products, setProducts] = useState<ProductTypes[]>([]);

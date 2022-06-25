@@ -1,12 +1,12 @@
 import React from "react";
-import * as G from "globalStyle";
-import delivery from "assets/icons/delivery.svg";
-import cashback from "assets/icons/cashback.svg";
-import premium from "assets/icons/premium.svg";
-import support from "assets/icons/support.svg";
+import * as G from "../../globalStyle";
+import delivery from "../../assets/icons/delivery.svg";
+import cashback from "../../assets/icons/cashback.svg";
+import premium from "../../assets/icons/premium.svg";
+import support from "../../assets/icons/support.svg";
 
 import * as S from "./style";
-import Icon from "components/Icon";
+import Icon from "../../components/Icon";
 
 const Advantages = () => {
   return (

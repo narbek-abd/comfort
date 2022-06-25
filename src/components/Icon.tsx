@@ -1,5 +1,5 @@
 import React from "react";
-import Icons from "assets/symbol-defs.svg";
+import Icons from "../assets/symbol-defs.svg";
 
 interface IconProps {
   name: string;
